@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>กระเป๋าเงินของคุณ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none" mode="ios" color="danger">
+    <p> walletName </p>
+    <p slot="end">
+      <ion-icon name="star"></ion-icon> บัญชีหลัก
+    </p>
+  </ion-item>
+  <ion-item lines="none" mode="ios" color="danger" class="ion-text-center">
+    <ion-label>
+      <p>ยอดเงินปัจจุบัน</p>
+      <h1><b>0.00</b></h1>
+    </ion-label>
+  </ion-item>
+  <ion-list lines="full" class="ion-no-padding">
+    <ion-item mode="ios" button detail="false" color="tertiary">
+      <ion-avatar slot="start">
+        <img [src]="getActionImage('paycart')" />
+      </ion-avatar>
+      <ion-label>
+        <p><b>{{getActionDisplay('paycart')}}</b><span class="text-gray"> (actionWalletName)</span></p>
+        <p class="text-gray">04/03/20 11:50</p>
+      </ion-label>
+      <span slot="end" class="text-red">-50.00</span>
+    </ion-item>
+    <ion-item mode="ios" button detail="false" color="tertiary">
+      <ion-avatar slot="start">
+        <img [src]="getActionImage('payback')" />
+      </ion-avatar>
+      <ion-label>
+        <p><b>{{getActionDisplay('payback')}}</b><span class="text-gray"> (actionWalletName)</span></p>
+        <p class="text-gray">04/03/20 11:50</p>
+      </ion-label>
+      <span slot="end" class="text-blue">+50.00</span>
+    </ion-item>
+    <ion-item mode="ios" button detail="false" color="tertiary">
+      <ion-avatar slot="start">
+        <img [src]="getActionImage('deposit')" />
+      </ion-avatar>
+      <ion-label>
+        <p><b>{{getActionDisplay('deposit')}}</b><span class="text-gray"> (actionWalletName)</span></p>
+        <p class="text-gray">04/03/20 11:50</p>
+      </ion-label>
+      <span slot="end" class="text-blue">+50.00</span>
+    </ion-item>
+    <ion-item mode="ios" button detail="false" color="tertiary">
+      <ion-avatar slot="start">
+        <img [src]="getActionImage('withdraw')" />
+      </ion-avatar>
+      <ion-label>
+        <p><b>{{getActionDisplay('withdraw')}}</b><span class="text-gray"> (actionWalletName)</span></p>
+        <p class="text-gray">04/03/20 11:50</p>
+      </ion-label>
+      <span slot="end" class="text-red">-50.00</span>
+    </ion-item>
+    <ion-item mode="ios" button detail="false" color="tertiary">
+      <ion-avatar slot="start">
+        <img [src]="getActionImage('receivemoney')" />
+      </ion-avatar>
+      <ion-label>
+        <p><b>{{getActionDisplay('receivemoney')}}</b><span class="text-gray"> (actionWalletName)</span></p>
+        <p class="text-gray">04/03/20 11:50</p>
+      </ion-label>
+      <span slot="end" class="text-blue">+50.00</span>
+    </ion-item>
+    <ion-item mode="ios" button detail="false" color="tertiary">
+      <ion-avatar slot="start">
+        <img [src]="getActionImage('withdraw2mct')" />
+      </ion-avatar>
+      <ion-label>
+        <p><b>{{getActionDisplay('withdraw2mct')}}</b><span class="text-gray"> (actionWalletName)</span></p>
+        <p class="text-gray">04/03/20 11:50</p>
+      </ion-label>
+      <span slot="end" class="text-red">-50.00</span>
+    </ion-item>
+    <ion-item mode="ios" button detail="false" color="tertiary">
+      <ion-avatar slot="start">
+        <img [src]="getActionImage('withdrawfrommct')" />
+      </ion-avatar>
+      <ion-label>
+        <p><b>{{getActionDisplay('withdrawfrommct')}}</b><span class="text-gray"> (actionWalletName)</span></p>
+        <p class="text-gray">04/03/20 11:50</p>
+      </ion-label>
+      <span slot="end" class="text-blue">+50.00</span>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -35,10 +35,10 @@
     color: gray !important;
 }
 .text-blue{
-    color: var(--ion-color-dark) !important;
+    color: var(--ion-color-primary) !important;
 }
 .text-black{
-    color: var(--ion-color-primary) !important;
+    color: var(--ion-color-dark) !important;
 }
 .text-yellow{
     color: var(--ion-color-warning) !important;
@@ -217,6 +217,5 @@ ion-fab {
   $font-family-ios-base: 'Kanit';
   $font-family-md-base: 'Kanit';
   $font-family-wp-base: 'Kanit';
-  
 //   @import "roboto";
 //   @import "noto-sans";
