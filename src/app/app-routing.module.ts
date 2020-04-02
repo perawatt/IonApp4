@@ -7,7 +7,12 @@ const routes: Routes = [
   {
     path: 'user-profile-edit-name',
     loadChildren: () => import('./user-profile-edit-name/user-profile-edit-name.module').then( m => m.UserProfileEditNamePageModule)
-  },  {
+  },
+  {
+    path: 'wallet-transaction-receive',
+    loadChildren: () => import('./wallet-transaction-receive/wallet-transaction-receive.module').then( m => m.WalletTransactionReceivePageModule)
+  },
+  {
     path: 'wallet-detail',
     loadChildren: () => import('./wallet-detail/wallet-detail.module').then( m => m.WalletDetailPageModule)
   },
