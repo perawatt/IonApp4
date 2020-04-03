@@ -1,38 +1,65 @@
 <ion-header class="home-header" mode="ios">
   <ion-item lines="none" color="light" class="ion-no-padding">
     <ion-label class="text-red ion-padding-start"><b>รายการโปรด</b></ion-label>
-
   </ion-item>
-  <ion-item lines="none" color="light" class="ion-no-padding">
-    <div scrollX>
-      <ion-item class="ion-text-center" color="light" class="scroll-item" lines="none">
-        <img class="ion-text-center" src="assets/imgs/shop-default.png">
-        <p>Shop A</p>
+  <ion-slides [options]="slideOpts">
+    <ion-slide>
+      <ion-item class="ion-text-center" color="light" lines="none">
+        <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+          <ion-text>
+            <img class="ion-text-center" src="assets/imgs/shop-default.png">
+          </ion-text>
+          <p>Shop Bbbbbb</p>
+        </ion-label>
       </ion-item>
-      <ion-item class="ion-text-center" color="light" class="scroll-item" lines="none">
-        <img class="ion-text-center" src="assets/imgs/shop-default.png">
-        <ion-label>Shop B</ion-label>
+    </ion-slide>
+    <ion-slide>
+      <ion-item class="ion-text-center" color="light" lines="none">
+        <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+          <ion-text>
+            <img class="ion-text-center" src="assets/imgs/shop-default.png">
+          </ion-text>
+          <p>Shop Bbbbbb</p>
+        </ion-label>
       </ion-item>
-      <ion-item class="ion-text-center" color="light" class="scroll-item" lines="none">
-        <img class="ion-text-center" src="assets/imgs/shop-default.png">
-        <p>Shop c</p>
+    </ion-slide>
+    <ion-slide>
+      <ion-item class="ion-text-center" color="light" lines="none">
+        <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+          <ion-text>
+            <img class="ion-text-center" src="assets/imgs/shop-default.png">
+          </ion-text>
+          <p>Shop Bbbbbb</p>
+        </ion-label>
       </ion-item>
-      <ion-item class="ion-text-center" color="light" class="scroll-item" lines="none">
-        <img class="ion-text-center" src="assets/imgs/shop-default.png">
-        <p>Shop c</p>
+    </ion-slide>
+    <ion-slide>
+      <ion-item class="ion-text-center" color="light" lines="none">
+        <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+          <ion-text>
+            <img class="ion-text-center" src="assets/imgs/shop-default.png">
+          </ion-text>
+          <p>Shop Bbbbbb</p>
+        </ion-label>
       </ion-item>
-      <ion-item class="ion-text-center" color="light" class="scroll-item" lines="none">
-        <img class="ion-text-center" src="assets/imgs/shop-default.png">
-        <p>Shop c</p>
+    </ion-slide>
+    <ion-slide>
+      <ion-item class="ion-text-center" color="light" lines="none">
+        <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+          <ion-text>
+            <img class="ion-text-center" src="assets/imgs/shop-default.png">
+          </ion-text>
+          <p>Shop Bbbbbb</p>
+        </ion-label>
       </ion-item>
-    </div>
-  </ion-item>
+    </ion-slide>
+  </ion-slides>
 </ion-header>
 
 <ion-content color="tertiary">
 
   <ion-refresher slot="fixed">
-    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+    <ion-refresher-content pullingIcon="chevron-down-sharp" pullingText="Pull to refresh" refreshingSpinner="circles"
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>

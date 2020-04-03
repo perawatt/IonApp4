@@ -12,4 +12,8 @@ export class HomeFeedPage implements OnInit {
   ngOnInit() {
   }
 
+  slideOpts = {
+    slidesPerView: 4
+  }
+
 }
