@@ -19,6 +19,18 @@ const routes: Routes = [
     path: 'membership-shop-select',
     loadChildren: () => import('./membership-shop-select/membership-shop-select.module').then( m => m.MembershipShopSelectPageModule)
   },
+  {
+    path: 'shopping-cart',
+    loadChildren: () => import('./shopping-cart/shopping-cart.module').then( m => m.ShoppingCartPageModule)
+  },
+  {
+    path: 'shopping-cart-creating',
+    loadChildren: () => import('./shopping-cart-creating/shopping-cart-creating.module').then( m => m.ShoppingCartCreatingPageModule)
+  },
+  {
+    path: 'shopping-cart-into',
+    loadChildren: () => import('./shopping-cart-into/shopping-cart-into.module').then( m => m.ShoppingCartIntoPageModule)
+  },
 
 
 ];
