@@ -186,11 +186,18 @@ ion-fab {
     }
 
     .transaction-img {
-        width: 35px;
-        height: 35px;
+      width: 35px;
+      height: 35px;
     }
-  }
+}
 
+ion-item.shopLogo img {
+    max-width: min-content;
+    height: 90px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
   // Fonts
 // --------------------------------------------------
 @font-face {

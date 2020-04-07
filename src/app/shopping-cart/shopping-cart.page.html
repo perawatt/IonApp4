@@ -6,20 +6,20 @@
 
 <ion-content mode="ios">
   <form>
-    <ion-item color="tertiary" class="ion-margin-top" lines="none">
-      <ion-avatar slot="start">
-        <img [src]="'assets/imgs/logo.png'">
-      </ion-avatar>
-      <ion-label>
-        <b>Shop Name</b>
-        <p>detail</p>
-      </ion-label>
-      <ion-button color="danger" shape="round" slot="end">
-        <ion-icon name="add"></ion-icon> เพิ่มสินค้า
-      </ion-button>
-    </ion-item>
-    <ion-list class="ion-margin-top" lines="none">
-      <ion-item color="tertiary">
+    <ion-list lines="none">
+      <ion-item color="tertiary" class="ion-margin-top">
+        <ion-avatar slot="start">
+          <img [src]="'assets/imgs/logo.png'">
+        </ion-avatar>
+        <ion-label>
+          <b>Shop Name</b>
+          <p>detail</p>
+        </ion-label>
+        <ion-button color="danger" shape="round" slot="end">
+          <ion-icon name="add"></ion-icon> เพิ่มสินค้า
+        </ion-button>
+      </ion-item>
+      <ion-item class="ion-margin-top" color="tertiary">
         <ion-label>
           <b>รายละเอียดการจ่ายเงิน</b>
         </ion-label>
@@ -44,23 +44,23 @@
           ฿40
         </ion-note>
       </ion-item>
-      <ion-fab horizontal="end">
-        <ion-fab-button size="small" color="danger">
-          <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-        <ion-fab-list side="start">
-          <ion-fab-button>
-            <ion-icon src="assets/imgs/point.svg"></ion-icon>
-          </ion-fab-button>
-          <ion-fab-button>
-            <ion-icon src="assets/imgs/coupon.svg"></ion-icon>
-          </ion-fab-button>
-        </ion-fab-list>
-      </ion-fab>
       <ion-item color="tertiary">
-        <ion-label>
-          ใส่คูปองหรือแต้ม
+        <ion-label class="ion-padding-top ion-padding-bottom">
+          ใส่ส่วนลด
         </ion-label>
+        <ion-fab horizontal="end">
+          <ion-fab-button size="small" color="danger">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list side="start">
+            <ion-fab-button>
+              <ion-icon src="assets/imgs/point.svg"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button>
+              <ion-icon src="assets/imgs/coupon.svg"></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+        </ion-fab>
       </ion-item>
       <ion-item color="tertiary">
         Coupon Name
