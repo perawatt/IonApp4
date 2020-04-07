@@ -1,0 +1,24 @@
+ion-avatar {
+    img {
+        height: 40px !important;
+        width: 40px !important;
+    }
+}
+
+ion-slides{
+    height: 80px;
+    ion-slide {
+        height: 80px;
+        img {
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+        }
+    }
+}
+
+ion-note {
+    font-size: 14px;
+    align-self: flex-start;
+    margin-top: 14px;
+}

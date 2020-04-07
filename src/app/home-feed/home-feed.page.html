@@ -1,0 +1,120 @@
+<ion-header class="home-header" mode="ios">
+  <ion-item lines="none" color="light" class="ion-no-padding">
+    <ion-label class="text-red ion-padding-start"><b>รายการโปรด</b></ion-label>
+  </ion-item>
+  <ion-slides [options]="slideOpts">
+    <ion-slide>
+      <ion-item class="ion-text-center" color="light" lines="none">
+        <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+          <ion-text>
+            <img class="ion-text-center" src="assets/imgs/shop-default.png">
+          </ion-text>
+          <p>Shop Bbbbbb</p>
+        </ion-label>
+      </ion-item>
+    </ion-slide>
+    <ion-slide>
+      <ion-item class="ion-text-center" color="light" lines="none">
+        <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+          <ion-text>
+            <img class="ion-text-center" src="assets/imgs/shop-default.png">
+          </ion-text>
+          <p>Shop Bbbbbb</p>
+        </ion-label>
+      </ion-item>
+    </ion-slide>
+    <ion-slide>
+      <ion-item class="ion-text-center" color="light" lines="none">
+        <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+          <ion-text>
+            <img class="ion-text-center" src="assets/imgs/shop-default.png">
+          </ion-text>
+          <p>Shop Bbbbbb</p>
+        </ion-label>
+      </ion-item>
+    </ion-slide>
+    <ion-slide>
+      <ion-item class="ion-text-center" color="light" lines="none">
+        <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+          <ion-text>
+            <img class="ion-text-center" src="assets/imgs/shop-default.png">
+          </ion-text>
+          <p>Shop Bbbbbb</p>
+        </ion-label>
+      </ion-item>
+    </ion-slide>
+    <ion-slide>
+      <ion-item class="ion-text-center" color="light" lines="none">
+        <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+          <ion-text>
+            <img class="ion-text-center" src="assets/imgs/shop-default.png">
+          </ion-text>
+          <p>Shop Bbbbbb</p>
+        </ion-label>
+      </ion-item>
+    </ion-slide>
+  </ion-slides>
+</ion-header>
+
+<ion-content color="tertiary">
+
+  <ion-refresher slot="fixed">
+    <ion-refresher-content pullingIcon="chevron-down-sharp" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list lines="full" class="ion-no-padding" mode="ios">
+    <ion-item-sliding color="red">
+      <ion-item button mode="ios" detail="false" color="tertiary">
+        <ion-avatar slot="start">
+          <img src="assets/imgs/menushopowner.png">
+        </ion-avatar>
+
+        <ion-label color="dark">
+          <b>Title AAAAAAAAAAAAA AAAAAAAA</b>
+          <p>aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaa</p>
+        </ion-label>
+
+        <ion-note slot="end" *ngIf="false">
+          <img src="assets/imgs/timered.png" width="12">
+          <span> 10</span>
+        </ion-note>
+      </ion-item>
+
+      <ion-item button mode="ios" detail="false" color="tertiary">
+        <ion-avatar slot="start">
+          <img src="assets/imgs/menushopowner.png">
+        </ion-avatar>
+
+        <ion-label color="dark">
+          <b>Title Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</b>
+          <p>aaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </ion-label>
+
+        <ion-note slot="end" *ngIf="true">
+          <img src="assets/imgs/timered.png" width="12">
+          <span> 10</span>
+        </ion-note>
+      </ion-item>
+
+      <ion-item button mode="ios" detail="false" color="tertiary">
+        <ion-avatar slot="start">
+          <img src="assets/imgs/menushopowner.png">
+        </ion-avatar>
+
+        <ion-label color="medium">
+          <b>Title Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</b>
+          <p>aaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </ion-label>
+
+        <ion-note slot="end" *ngIf="true">
+          <img src="assets/imgs/timegray.png" width="12">
+          <span> 10</span>
+        </ion-note>
+      </ion-item>
+
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

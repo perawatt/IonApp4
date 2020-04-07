@@ -15,7 +15,12 @@ const routes: Routes = [
   {
     path: 'wallet-detail',
     loadChildren: () => import('./wallet-detail/wallet-detail.module').then( m => m.WalletDetailPageModule)
-  },  {
+  },
+  {
+    path: 'home-feed',
+    loadChildren: () => import('./home-feed/home-feed.module').then( m => m.HomeFeedPageModule)
+  },
+  {
     path: 'membership-shop-select',
     loadChildren: () => import('./membership-shop-select/membership-shop-select.module').then( m => m.MembershipShopSelectPageModule)
   },
