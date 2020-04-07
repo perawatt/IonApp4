@@ -1,0 +1,21 @@
+.financial-circle{
+    border: 1px solid;
+    border-color: var(--ion-color-danger) !important;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    line-height: 30px;
+    padding-top: 15px;
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-vertical-center
+{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    // flex-direction: column;
+}

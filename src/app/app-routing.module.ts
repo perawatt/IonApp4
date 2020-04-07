@@ -25,6 +25,22 @@ const routes: Routes = [
     loadChildren: () => import('./membership-shop-select/membership-shop-select.module').then( m => m.MembershipShopSelectPageModule)
   },
   {
+    path: 'financial-menu',
+    loadChildren: () => import('./financial-menu/financial-menu.module').then( m => m.FinancialMenuPageModule)
+  },
+  {
+    path: 'membership-agreement',
+    loadChildren: () => import('./membership-agreement/membership-agreement.module').then( m => m.MembershipAgreementPageModule)
+  },
+  {
+    path: 'user-account',
+    loadChildren: () => import('./user-account/user-account.module').then( m => m.UserAccountPageModule)
+  },
+  {
+    path: 'user-profile',
+    loadChildren: () => import('./user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+  },
+  {
     path: 'shopping-cart',
     loadChildren: () => import('./shopping-cart/shopping-cart.module').then( m => m.ShoppingCartPageModule)
   },
@@ -35,7 +51,19 @@ const routes: Routes = [
   {
     path: 'shopping-cart-into',
     loadChildren: () => import('./shopping-cart-into/shopping-cart-into.module').then( m => m.ShoppingCartIntoPageModule)
+  },  {
+    path: 'user-profile-address',
+    loadChildren: () => import('./user-profile-address/user-profile-address.module').then( m => m.UserProfileAddressPageModule)
   },
+  {
+    path: 'user-profile-edit-address',
+    loadChildren: () => import('./user-profile-edit-address/user-profile-edit-address.module').then( m => m.UserProfileEditAddressPageModule)
+  },
+  {
+    path: 'user-profile-new-address',
+    loadChildren: () => import('./user-profile-new-address/user-profile-new-address.module').then( m => m.UserProfileNewAddressPageModule)
+  },
+
 
 
 ];
