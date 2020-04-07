@@ -25,6 +25,10 @@ const routes: Routes = [
     loadChildren: () => import('./membership-shop-select/membership-shop-select.module').then( m => m.MembershipShopSelectPageModule)
   },
   {
+    path: 'financial-menu',
+    loadChildren: () => import('./financial-menu/financial-menu.module').then( m => m.FinancialMenuPageModule)
+  },
+  {
     path: 'shopping-cart',
     loadChildren: () => import('./shopping-cart/shopping-cart.module').then( m => m.ShoppingCartPageModule)
   },
