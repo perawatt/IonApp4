@@ -29,6 +29,10 @@ const routes: Routes = [
     loadChildren: () => import('./financial-menu/financial-menu.module').then( m => m.FinancialMenuPageModule)
   },
   {
+    path: 'membership-agreement',
+    loadChildren: () => import('./membership-agreement/membership-agreement.module').then( m => m.MembershipAgreementPageModule)
+  },
+  {
     path: 'shopping-cart',
     loadChildren: () => import('./shopping-cart/shopping-cart.module').then( m => m.ShoppingCartPageModule)
   },
