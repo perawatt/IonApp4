@@ -1,9 +1,74 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>shopping-cart-into</ion-title>
+    <ion-title>จ่ายเงิน</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content mode="ios">
+  <form>
+    <ion-list lines="none">
+      <ion-item color="tertiary" class="ion-margin-top imageCenter">
+        <img src="assets/imgs/logo.png" class="ion-margin-top">
+      </ion-item>
+      <ion-item color="tertiary" class="ion-text-center">
+        <ion-label><b>Shop Name</b></ion-label>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label>
+          <b>รายละเอียดการจ่ายเงิน</b>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label color="medium">
+          รวมค่าสินค้า
+        </ion-label>
+        <ion-note color="dark" slot="end">฿50</ion-note>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label color="medium">
+          ส่วนลด
+        </ion-label>
+        <ion-note color="dark" slot="end">฿10</ion-note>
+      </ion-item>
+      <ion-item color="tertiary" lines="full">
+        <ion-label color="medium">
+          ราคารวมทั้งหมด
+        </ion-label>
+        <ion-note color="danger" slot="end">
+          ฿40
+        </ion-note>
+      </ion-item>
+      <ion-item color="tertiary" class="ion-margin-top">
+        <ion-label color="medium" class="ion-padding-top ion-padding-bottom">
+          ใส่ส่วนลด
+        </ion-label>
+        <ion-fab horizontal="end">
+          <ion-fab-button size="small" color="danger">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list side="start">
+            <ion-fab-button>
+              <ion-icon src="assets/svgs/point.svg"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button>
+              <ion-icon src="assets/svgs/coupon.svg"></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+        </ion-fab>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-avatar slot="start">
+          <img src="assets/imgs/couponred.png">
+        </ion-avatar>
+        <ion-label color="medium">
+          คุณมีส่วนลดที่สามารถใช้ได้
+        </ion-label>
+        <ion-button color="danger" shape="round" slot="end" fill="outline">
+          ใช้เลยตอนนี้
+        </ion-button>
+      </ion-item>
+    </ion-list>
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">จ่ายเงิน
+    </ion-button>
+  </form>
 </ion-content>
