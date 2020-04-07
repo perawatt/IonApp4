@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ข้อมูลส่วนตัว</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+
+  <ng-container>
+    <ion-card color="light" class="ion-text-center">
+      <ion-card-content>
+        <img class="qr center circle ion-margin-bottom" src="assets/imgs/user-icon.png" width="100" height="100">
+        <ion-label>
+          <p>เปลี่ยนภาพ</p>
+          <h2><b>xxxx@xxx.com</b></h2>
+        </ion-label>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-list lines="none">
+      <ion-list-header mode="md">
+        <ion-label>ชื่อเล่น</ion-label>
+      </ion-list-header>
+      <ion-item color="tertiary" button class="ion-margin-bottom" (click)="onSelectEditName()">
+        <ion-label> 
+          <b>Firsttname Lastname</b>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" button (click)="onSelectViewAddress()">
+        <ion-label> 
+          <b>จัดการที่อยู่</b>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <!-- <ng-container *ngIf="(data$ | async)?.profile as data">
+    <ion-card color="light" text-center *ngIf="hasLoaded">
+      <ion-card-content>
+        <img *ngIf="data && data.profileImageUrl" margin-bottom class="qr center circle" [src]="data.profileImageUrl"
+          width="100" height="100">
+        <img *ngIf="!data || !data.profileImageUrl" margin-bottom class="qr center circle"
+          src="assets/imgs/user-icon.png" width="100" height="100">
+        <p>เปลี่ยนภาพ</p>
+        <h2 *ngIf="data.email"><b>{{ data.email }}</b></h2>
+        <h2 *ngIf="!data.email"><b>-</b></h2>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-list no-lines *ngIf="hasLoaded">
+      <ion-list-header no-lines mode="ios">
+        <h2>ชื่อเล่น</h2>
+      </ion-list-header>
+      <button ion-item mode="ios" (click)="onSelectEditName()">
+        <b *ngIf="data && data.displayName">{{ data.displayName }}</b>
+        <b *ngIf="!data || !data.displayName">-</b>
+      </button>
+      <button margin-top ion-item mode="ios" (click)="onSelectViewAddress()">
+        <b>จัดการที่อยู่</b>
+      </button>
+    </ion-list>
+  </ng-container>
+
+  <ng-container *ngIf="!hasLoaded">
+    <ion-card color="light" text-center>
+      <ion-card-content>
+        <img margin-bottom class="qr center circle" src="assets/imgs/user-icon.png" width="100" height="100">
+        <p>เปลี่ยนภาพ</p>
+        <h2><b>-</b></h2>
+      </ion-card-content>
+    </ion-card>
+    <ion-list no-lines>
+      <ion-list-header no-lines mode="ios">
+        <h2>ชื่อเล่น</h2>
+      </ion-list-header>
+      <button ion-item mode="ios">-</button>
+      <button margin-top ion-item mode="ios">
+        <b>จัดการที่อยู่</b>
+      </button>
+    </ion-list>
+  </ng-container> -->
+
+</ion-content>

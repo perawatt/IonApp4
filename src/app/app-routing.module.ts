@@ -33,6 +33,14 @@ const routes: Routes = [
     loadChildren: () => import('./membership-agreement/membership-agreement.module').then( m => m.MembershipAgreementPageModule)
   },
   {
+    path: 'user-account',
+    loadChildren: () => import('./user-account/user-account.module').then( m => m.UserAccountPageModule)
+  },
+  {
+    path: 'user-profile',
+    loadChildren: () => import('./user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+  },
+  {
     path: 'shopping-cart',
     loadChildren: () => import('./shopping-cart/shopping-cart.module').then( m => m.ShoppingCartPageModule)
   },
