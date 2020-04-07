@@ -55,6 +55,14 @@ const routes: Routes = [
     path: 'user-profile-address',
     loadChildren: () => import('./user-profile-address/user-profile-address.module').then( m => m.UserProfileAddressPageModule)
   },
+  {
+    path: 'user-profile-edit-address',
+    loadChildren: () => import('./user-profile-edit-address/user-profile-edit-address.module').then( m => m.UserProfileEditAddressPageModule)
+  },
+  {
+    path: 'user-profile-new-address',
+    loadChildren: () => import('./user-profile-new-address/user-profile-new-address.module').then( m => m.UserProfileNewAddressPageModule)
+  },
 
 
 
