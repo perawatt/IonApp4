@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfilePage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -16,6 +17,7 @@ export class UserProfilePage implements OnInit {
   }
 
   public onSelectViewAddress() {
+    this.router.navigate(['/user-profile-address'])  
   }
 
 
