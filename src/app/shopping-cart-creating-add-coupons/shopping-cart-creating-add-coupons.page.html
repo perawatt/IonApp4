@@ -1,9 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>shopping-cart-creating-add-coupons</ion-title>
+    <ion-title>เลือกคูปอง</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content mode="ios">
+  <form>
+    <ion-list lines="none" class="ion-text-center">
+      <ion-button color="danger" shape="round" class="ion-margin-top ion-margin-bottom">เลือกใช้คูปองทั้งหมด
+      </ion-button>
+      <ion-item color="tertiary">
+        <ion-label>Coupon Name A</ion-label>
+        <ion-checkbox slot="start"></ion-checkbox>
+      </ion-item>
+      <ion-item color="tertiary" lines="full">
+        <img src="assets/imgs/Coupontest.png" class="ion-margin-bottom">
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label>Coupon Name B</ion-label>
+        <ion-checkbox slot="start"></ion-checkbox>
+      </ion-item>
+      <ion-item color="tertiary" lines="full">
+        <img src="assets/imgs/Coupontest.png" class="ion-margin-bottom">
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label>Coupon Name C</ion-label>
+        <ion-checkbox slot="start"></ion-checkbox>
+      </ion-item>
+      <ion-item color="tertiary" lines="full">
+        <img src="assets/imgs/Coupontest.png" class="ion-margin-bottom">
+      </ion-item>
+    </ion-list>
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ตกลง
+    </ion-button>
+  </form>
 </ion-content>
