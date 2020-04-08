@@ -1,0 +1,13 @@
+    .eslip-aproved-logo{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: unset;
+    }
+    .eslip-dim {
+        -webkit-filter:brightness(50%);
+        -moz-filter:brightness(50%);
+        filter: url(#brightness);
+        filter:brightness(50%);
+    }
