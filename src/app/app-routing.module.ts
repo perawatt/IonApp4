@@ -63,6 +63,14 @@ const routes: Routes = [
     path: 'user-profile-new-address',
     loadChildren: () => import('./user-profile-new-address/user-profile-new-address.module').then( m => m.UserProfileNewAddressPageModule)
   },
+  {
+    path: 'shopping-cart-creating-add-coupons',
+    loadChildren: () => import('./shopping-cart-creating-add-coupons/shopping-cart-creating-add-coupons.module').then( m => m.ShoppingCartCreatingAddCouponsPageModule)
+  },
+  {
+    path: 'shopping-cart-creating-add-points',
+    loadChildren: () => import('./shopping-cart-creating-add-points/shopping-cart-creating-add-points.module').then( m => m.ShoppingCartCreatingAddPointsPageModule)
+  },
 
 
 
