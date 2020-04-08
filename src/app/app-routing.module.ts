@@ -95,6 +95,22 @@ const routes: Routes = [
     path: 'eslip-wait-approve',
     loadChildren: () => import('./eslip-wait-approve/eslip-wait-approve.module').then( m => m.EslipWaitApprovePageModule)
   },
+  {
+    path: 'wallet-transaction-expense',
+    loadChildren: () => import('./wallet-transaction-expense/wallet-transaction-expense.module').then( m => m.WalletTransactionExpensePageModule)
+  },
+  {
+    path: 'wallet-transaction-topup',
+    loadChildren: () => import('./wallet-transaction-topup/wallet-transaction-topup.module').then( m => m.WalletTransactionTopupPageModule)
+  },
+  {
+    path: 'wallet-transaction-transfer-bc',
+    loadChildren: () => import('./wallet-transaction-transfer-bc/wallet-transaction-transfer-bc.module').then( m => m.WalletTransactionTransferBcPageModule)
+  },
+  {
+    path: 'wallet-transaction-withdraw',
+    loadChildren: () => import('./wallet-transaction-withdraw/wallet-transaction-withdraw.module').then( m => m.WalletTransactionWithdrawPageModule)
+  },
 
 
 
