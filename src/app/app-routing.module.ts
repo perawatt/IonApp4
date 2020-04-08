@@ -71,6 +71,30 @@ const routes: Routes = [
     path: 'shopping-cart-creating-add-points',
     loadChildren: () => import('./shopping-cart-creating-add-points/shopping-cart-creating-add-points.module').then( m => m.ShoppingCartCreatingAddPointsPageModule)
   },
+  {
+    path: 'eslip-select',
+    loadChildren: () => import('./eslip-select/eslip-select.module').then( m => m.EslipSelectPageModule)
+  },
+  {
+    path: 'eslip-shop-select',
+    loadChildren: () => import('./eslip-shop-select/eslip-shop-select.module').then( m => m.EslipShopSelectPageModule)
+  },
+  {
+    path: 'eslip-approved',
+    loadChildren: () => import('./eslip-approved/eslip-approved.module').then( m => m.EslipApprovedPageModule)
+  },
+  {
+    path: 'eslip-receive',
+    loadChildren: () => import('./eslip-receive/eslip-receive.module').then( m => m.EslipReceivePageModule)
+  },
+  {
+    path: 'eslip-use',
+    loadChildren: () => import('./eslip-use/eslip-use.module').then( m => m.EslipUsePageModule)
+  },
+  {
+    path: 'eslip-wait-approve',
+    loadChildren: () => import('./eslip-wait-approve/eslip-wait-approve.module').then( m => m.EslipWaitApprovePageModule)
+  },
 
 
 
