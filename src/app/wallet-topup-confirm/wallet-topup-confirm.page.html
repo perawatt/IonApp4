@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ยืนยันการเติมเงิน</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios" class="ion-padding-top">
+
+  <ng-container>
+
+    <div class="ion-margin-bottom" *ngIf="true">
+      <ion-card color="tertiary">
+        <ion-card-content>
+          <ion-label>
+            <h2 class="ion-margin-top">หมายเลขพร้อมเพย์</h2>
+            <h2 class="ion-margin-top">
+              <b>1111111</b>
+            </h2>
+            <h2 class="ion-margin-top">ชื่อบัญชี</h2>
+            <h2 class="ion-margin-top">
+              <b>เนมเอ</b>
+            </h2>
+            <h2 class="ion-margin-top">
+              <b>NAME A</b>
+            </h2>
+          </ion-label>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div class="ion-margin-bottom">
+      <ion-card color="tertiary">
+        <ion-card-content>
+          <ion-label>
+            <h2 class="ion-margin-top">จำนวนเงินที่ต้องการเติม</h2>
+            <h2 class="ion-margin-top">
+              <b>THB</b>
+              <ion-text color="danger">
+                <b> 20.00</b>
+              </ion-text>
+            </h2>
+          </ion-label>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <ion-card class="ion-margin-top" *ngIf="false" color="tertiary">
+      <ion-card-content>
+        <img
+          src="https://chart.googleapis.com/chart?cht=qr&chl=QRHERE&chs=500x500&choe=UTF-8&chld=L|2%27%20rel=%27nofollow" />
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+</ion-content>
+
+<ion-footer *ngIf="false" mode="ios">
+  <ion-button color="danger" class="ion-no-margin" expand="full" type="submit">ปิด
+  </ion-button>
+</ion-footer>

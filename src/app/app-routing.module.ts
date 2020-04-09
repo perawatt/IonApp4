@@ -96,6 +96,42 @@ const routes: Routes = [
     loadChildren: () => import('./eslip-wait-approve/eslip-wait-approve.module').then( m => m.EslipWaitApprovePageModule)
   },
   {
+    path: 'wallet-transaction-expense',
+    loadChildren: () => import('./wallet-transaction-expense/wallet-transaction-expense.module').then( m => m.WalletTransactionExpensePageModule)
+  },
+  {
+    path: 'wallet-transaction-topup',
+    loadChildren: () => import('./wallet-transaction-topup/wallet-transaction-topup.module').then( m => m.WalletTransactionTopupPageModule)
+  },
+  {
+    path: 'wallet-transaction-transfer-bc',
+    loadChildren: () => import('./wallet-transaction-transfer-bc/wallet-transaction-transfer-bc.module').then( m => m.WalletTransactionTransferBcPageModule)
+  },
+  {
+    path: 'wallet-transaction-withdraw',
+    loadChildren: () => import('./wallet-transaction-withdraw/wallet-transaction-withdraw.module').then( m => m.WalletTransactionWithdrawPageModule)
+  },
+  {
+    path: 'wallet-topup-select',
+    loadChildren: () => import('./wallet-topup-select/wallet-topup-select.module').then( m => m.WalletTopupSelectPageModule)
+  },
+  {
+    path: 'wallet-topup-detail',
+    loadChildren: () => import('./wallet-topup-detail/wallet-topup-detail.module').then( m => m.WalletTopupDetailPageModule)
+  },
+  {
+    path: 'wallet-topup-confirm',
+    loadChildren: () => import('./wallet-topup-confirm/wallet-topup-confirm.module').then( m => m.WalletTopupConfirmPageModule)
+  },
+  {
+    path: 'wallet-topup-detail-by-mtm',
+    loadChildren: () => import('./wallet-topup-detail-by-mtm/wallet-topup-detail-by-mtm.module').then( m => m.WalletTopupDetailByMtmPageModule)
+  },
+  {
+    path: 'wallet-topup-detail-by-mtm-info',
+    loadChildren: () => import('./wallet-topup-detail-by-mtm-info/wallet-topup-detail-by-mtm-info.module').then( m => m.WalletTopupDetailByMtmInfoPageModule)
+  },
+  {
     path: 'wallet-select',
     loadChildren: () => import('./wallet-select/wallet-select.module').then( m => m.WalletSelectPageModule)
   },

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>เติมเงิน</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+
+  <!-- <h5 class="ion-padding-start">กรุณาเลือกวิธีการเติมเงิน</h5> -->
+  <ion-list lines="none">
+    <ion-list-header lines="none" mode="md">
+      <ion-label>ioniกรุณาเลือกวิธีการเติมเงิน</ion-label>
+    </ion-list-header>
+    <ion-item color="tertiary" button (click)="onSelectTopupByMTM()">
+      <ion-label>
+        <b>เติมเงินผ่าน mana</b>
+      </ion-label>
+    </ion-item>
+    <ion-item color="tertiary" button class="ion-margin-top" (click)="onSelectTopupByPromptpay()">
+      <ion-label>
+        <b>เติมเงินผ่าน PromptPay</b>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
