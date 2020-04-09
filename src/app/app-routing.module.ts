@@ -135,6 +135,14 @@ const routes: Routes = [
   {
     path: 'wallet-select',
     loadChildren: () => import('./wallet-select/wallet-select.module').then( m => m.WalletSelectPageModule)
+  },
+  {
+    path: 'reminder-form',
+    loadChildren: () => import('./reminder-form/reminder-form.module').then( m => m.ReminderFormPageModule)
+  },
+  {
+    path: 'reminder-message',
+    loadChildren: () => import('./reminder-message/reminder-message.module').then( m => m.ReminderMessagePageModule)
   }
 ];
 
