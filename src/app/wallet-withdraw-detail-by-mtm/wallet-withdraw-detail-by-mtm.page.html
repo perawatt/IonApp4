@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ถอนเงินผ่าน mana</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios" class="ion-padding-top">
+
+  <form>
+    <ion-list lines="none">
+      <ion-item color="tertiary">
+        <ion-label>
+          <h2>จำนวนเงินที่ต้องการถอน</h2>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label position="fixed">THB</ion-label>
+        <ion-input type="number" placeholder="ระบุจำนวนเงิน"></ion-input>
+      </ion-item>
+      <ion-item color="tertiary" *ngIf="true">
+        <ion-label color="danger">
+          <p>จำนวนเงินที่ต้องการถอนขั้นต่ำ 50 บาท</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item color="tertiary" class="ion-margin-top">
+        <ion-label>
+          <h2>ระบุบัญชีปลายทางของคุณ</h2>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label>เลือกประเภท</ion-label>
+        <ion-select okText="ตกลง" cancelText="ยกเลิก" interface="action-sheet">
+          <ion-select-option value="bankaccount" text-left>บัญชีธนาคาร</ion-select-option>
+          <ion-select-option value="pid" text-left>PromptPay เลขบัตรประชาชน</ion-select-option>
+          <ion-select-option value="mobile" text-left>PromptPay เบอร์โทรศัพท์</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item color="tertiary" *ngIf="true">
+        <ion-label>ธนาคาร</ion-label>
+        <ion-select text-left okText="ตกลง" cancelText="ยกเลิก" interface="action-sheet">
+          <ion-select-option value="กรุงเทพ" text-left>กรุงเทพ</ion-select-option>
+          <ion-select-option value="กสิกรไทย" text-left>กสิกรไทย</ion-select-option>
+          <ion-select-option value="กรุงไทย" text-left>กรุงไทย</ion-select-option>
+          <ion-select-option value="ทหารไทย" text-left>ทหารไทย</ion-select-option>
+          <ion-select-option value="ไทยพาณิชย์" text-left>ไทยพาณิชย์</ion-select-option>
+          <ion-select-option value="กรุงศรีอยุธยา" text-left>กรุงศรีอยุธยา</ion-select-option>
+          <ion-select-option value="เกียรตินาคิน" text-left>เกียรตินาคิน</ion-select-option>
+          <ion-select-option value="ซีไอเอ็มบี" text-left>ซีไอเอ็มบี</ion-select-option>
+          <ion-select-option value="ทิสโก้" text-left>ทิสโก้</ion-select-option>
+          <ion-select-option value="ธนชาต" text-left>ธนชาต</ion-select-option>
+          <ion-select-option value="ยูโอบี" text-left>ยูโอบี</ion-select-option>
+          <ion-select-option value="สแตนดาร์ดชาร์เตอร์ด (ไทย)" text-left>สแตนดาร์ดชาร์เตอร์ด (ไทย)</ion-select-option>
+          <ion-select-option value="ไทยเครดิต" text-left>ไทยเครดิต</ion-select-option>
+          <ion-select-option value="แลนด์ แอนด์ เฮาส์" text-left>แลนด์ แอนด์ เฮาส์</ion-select-option>
+          <ion-select-option value="ไอซีบีซี (ไทย)" text-left>ไอซีบีซี (ไทย)</ion-select-option>
+          <ion-select-option value="ธ.ก.ส" text-left>ธ.ก.ส</ion-select-option>
+          <ion-select-option value="ออมสิน" text-left>ออมสิน</ion-select-option>
+          <ion-select-option value="อาคารสงเคราะห์" text-left>อาคารสงเคราะห์</ion-select-option>
+          <ion-select-option value="อิสลามแห่งประเทศไทย" text-left>อิสลามแห่งประเทศไทย</ion-select-option>
+          <ion-select-option value="ซิตี้แบงก์" text-left>ซิตี้แบงก์</ion-select-option>
+          <ion-select-option value="มิซูโฮ" text-left>มิซูโฮ</ion-select-option>
+          <ion-select-option value="ซูมิโตโม มิตซุย" text-left>ซูมิโตโม มิตซุย</ion-select-option>
+          <ion-select-option value="เอชเอสบีซี" text-left>เอชเอสบีซี</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label>
+          <span *ngIf="false">หมายเลข</span>
+          <span *ngIf="true">เลขบัตรประชาชน</span>
+          <span *ngIf="false">เบอร์โทรศัพท์</span>
+        </ion-label>
+        <ion-input type="number" placeholder="ระบุหมายเลข"></ion-input>
+      </ion-item>
+
+      <ion-item color="tertiary" class="ion-margin-top">
+        <ion-label>
+          <h2>เจ้าของบัญชี</h2>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label position="fixed">ชื่อ</ion-label>
+        <ion-input type="text" placeholder="ระบุชื่อ"></ion-input>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label position="fixed">เบอร์โทรศัพท์</ion-label>
+        <ion-input type="number" placeholder="ระบุเบอร์โทรศัพท์"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ยืนยัน
+    </ion-button>
+  </form>
+
+</ion-content>

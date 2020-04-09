@@ -51,8 +51,7 @@ const routes: Routes = [
   {
     path: 'shopping-cart-into',
     loadChildren: () => import('./shopping-cart-into/shopping-cart-into.module').then( m => m.ShoppingCartIntoPageModule)
-  },
-  {
+  },  {
     path: 'user-profile-address',
     loadChildren: () => import('./user-profile-address/user-profile-address.module').then( m => m.UserProfileAddressPageModule)
   },
@@ -132,6 +131,25 @@ const routes: Routes = [
     path: 'wallet-topup-detail-by-mtm-info',
     loadChildren: () => import('./wallet-topup-detail-by-mtm-info/wallet-topup-detail-by-mtm-info.module').then( m => m.WalletTopupDetailByMtmInfoPageModule)
   },
+  {
+    path: 'wallet-withdraw-select',
+    loadChildren: () => import('./wallet-withdraw-select/wallet-withdraw-select.module').then( m => m.WalletWithdrawSelectPageModule)
+  },
+  {
+    path: 'wallet-withdraw-detail-by-mtm',
+    loadChildren: () => import('./wallet-withdraw-detail-by-mtm/wallet-withdraw-detail-by-mtm.module').then( m => m.WalletWithdrawDetailByMtmPageModule)
+  },
+  {
+    path: 'wallet-withdraw-detail',
+    loadChildren: () => import('./wallet-withdraw-detail/wallet-withdraw-detail.module').then( m => m.WalletWithdrawDetailPageModule)
+  },
+  {
+    path: 'wallet-withdraw-confirm',
+    loadChildren: () => import('./wallet-withdraw-confirm/wallet-withdraw-confirm.module').then( m => m.WalletWithdrawConfirmPageModule)
+  },
+
+
+
   {
     path: 'wallet-select',
     loadChildren: () => import('./wallet-select/wallet-select.module').then( m => m.WalletSelectPageModule)
