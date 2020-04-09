@@ -95,6 +95,14 @@ const routes: Routes = [
     path: 'eslip-wait-approve',
     loadChildren: () => import('./eslip-wait-approve/eslip-wait-approve.module').then( m => m.EslipWaitApprovePageModule)
   },
+  {
+    path: 'wallet-select',
+    loadChildren: () => import('./wallet-select/wallet-select.module').then( m => m.WalletSelectPageModule)
+  },
+  {
+    path: 'wallet-setting',
+    loadChildren: () => import('./wallet-setting/wallet-setting.module').then( m => m.WalletSettingPageModule)
+  },
 
 
 
