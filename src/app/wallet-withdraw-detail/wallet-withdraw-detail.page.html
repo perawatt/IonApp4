@@ -1,9 +1,56 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>wallet-withdraw-detail</ion-title>
+    <ion-title>ถอนเงิน</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content mode="ios" class="ion-padding-top">
+
+  <ion-card color="tertiary" class="ion-text-center">
+    <ion-card-content>
+      <ion-label>
+        <h2>กำลังถอนเงินจากกระเป๋า</h2>
+        <img class="icon center ion-no-margin" width="30" height="30" src="assets/imgs/changewallet.png"/>
+        <p no-margin><b>Mana Wallet</b></p>
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+
+  <form>
+    <ion-list lines="none">
+      <ion-item color="tertiary" class=" ion-margin-top">
+        <ion-label>
+          <h2>ระบุพร้อมเพย์ที่ใช้ถอนเงิน</h2>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" lines="inset">
+        <ion-label>เลือกประเภท</ion-label>
+        <ion-select text-left okText="ตกลง" cancelText="ยกเลิก" interface="action-sheet">
+          <ion-select-option value="pid">เลขบัตรประชาชน</ion-select-option>
+          <ion-select-option value="mobile">เบอร์โทรศัพท์</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item color="tertiary" class=" ion-margin-bottom" *ngIf="true">
+        <ion-label>
+          <span *ngIf="true">เลขบัตรประชาชน</span>
+          <span *ngIf="false">เบอร์โทรศัพท์</span>
+        </ion-label>
+        <ion-input type="number" placeholder="ระบุเลขพร้อมเพย์"></ion-input>
+      </ion-item>
+
+      <ion-item color="tertiary">
+        <ion-label>
+          <h2>จำนวนเงินที่ต้องการถอน</h2>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label position="fixed">THB</ion-label>
+        <ion-input type="number" placeholder="ระบุจำนวนเงิน"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ยืนยัน
+    </ion-button>
+  </form>
 
 </ion-content>

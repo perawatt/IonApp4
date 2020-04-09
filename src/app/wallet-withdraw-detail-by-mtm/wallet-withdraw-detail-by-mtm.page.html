@@ -30,7 +30,7 @@
       </ion-item>
       <ion-item color="tertiary">
         <ion-label>เลือกประเภท</ion-label>
-        <ion-select text-left okText="ตกลง" cancelText="ยกเลิก" interface="action-sheet">
+        <ion-select okText="ตกลง" cancelText="ยกเลิก" interface="action-sheet">
           <ion-select-option value="bankaccount" text-left>บัญชีธนาคาร</ion-select-option>
           <ion-select-option value="pid" text-left>PromptPay เลขบัตรประชาชน</ion-select-option>
           <ion-select-option value="mobile" text-left>PromptPay เบอร์โทรศัพท์</ion-select-option>
@@ -65,9 +65,9 @@
         </ion-select>
       </ion-item>
       <ion-item color="tertiary">
-        <ion-label position="fixed">
-          <span *ngIf="true">หมายเลข</span>
-          <span *ngIf="false">เลขบัตรประชาชน</span>
+        <ion-label>
+          <span *ngIf="false">หมายเลข</span>
+          <span *ngIf="true">เลขบัตรประชาชน</span>
           <span *ngIf="false">เบอร์โทรศัพท์</span>
         </ion-label>
         <ion-input type="number" placeholder="ระบุหมายเลข"></ion-input>
