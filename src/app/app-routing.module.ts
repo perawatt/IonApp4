@@ -51,7 +51,8 @@ const routes: Routes = [
   {
     path: 'shopping-cart-into',
     loadChildren: () => import('./shopping-cart-into/shopping-cart-into.module').then( m => m.ShoppingCartIntoPageModule)
-  },  {
+  },
+  {
     path: 'user-profile-address',
     loadChildren: () => import('./user-profile-address/user-profile-address.module').then( m => m.UserProfileAddressPageModule)
   },
@@ -134,14 +135,7 @@ const routes: Routes = [
   {
     path: 'wallet-select',
     loadChildren: () => import('./wallet-select/wallet-select.module').then( m => m.WalletSelectPageModule)
-  },
-  {
-    path: 'wallet-setting',
-    loadChildren: () => import('./wallet-setting/wallet-setting.module').then( m => m.WalletSettingPageModule)
-  },
-
-
-
+  }
 ];
 
 @NgModule({
