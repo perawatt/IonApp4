@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonManaLib } from 'ion-m-lib';
+import { ParseDataProvider } from '../providers/parse-data';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { IonManaLib } from 'ion-m-lib';
     StatusBar,
     SplashScreen,
     IonManaLib,
+    ParseDataProvider,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

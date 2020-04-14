@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IonManaLib } from 'ion-m-lib';
+import { ParseDataProvider } from 'src/providers/parse-data';
 
 @Component({
   selector: 'app-wallet-detail',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WalletDetailPage implements OnInit {
 
-  constructor() { }
+  public hasLoaded: string;
+  public data$ = Promise.resolve<{}>({});
+  private mcontentid = "wallet-detail";
+
+  constructor(private svc: IonManaLib, private parse: ParseDataProvider) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.refreshCallBack();
+  }
+
+  private loadData$() {
+    return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
+      .then(_ => {
+        return this.svc.getApiData(this.mcontentid);
+      })
+  }
+
+  private refreshCallBack() {
+    this.hasLoaded = null;
+    let load$ = this.loadData$();
+    this.data$ = load$;
+    load$.then(it => {
+      this.hasLoaded = (it && it.walletTransactionInfos.length > 0) ? "y" : "n";
+    });
   }
 
   getActionDisplay(txType: string) {
@@ -37,4 +63,10 @@ export class WalletDetailPage implements OnInit {
       default: return "";
     }
   }
+
+  public showDetail(endpoint: string) {
+    this.svc.visitEndpoint(this.mcontentid, endpoint);
+  }
+
+  public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
 }

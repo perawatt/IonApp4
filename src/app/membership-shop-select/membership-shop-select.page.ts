@@ -18,13 +18,7 @@ export class MembershipShopSelectPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.hasLoaded = null;
-    let load$ = this.loadData$();
-    this.data$ = load$;
-    load$.then(it => {
-      this.hasLoaded = (it && it.length > 0) ? "y" : "n";
-      console.log(this.hasLoaded)
-    });
+    this.refreshCallBack();
   }
 
   private loadData$() {
@@ -40,7 +34,6 @@ export class MembershipShopSelectPage implements OnInit {
     this.data$ = load$;
     load$.then(it => {
       this.hasLoaded = (it && it.length > 0) ? "y" : "n";
-      console.log(this.hasLoaded)
     });
   }
 
