@@ -6,38 +6,39 @@
 
 <ion-content mode="ios">
   <ion-list class="ion-margin-top">
-    <form>
+    <form [formGroup]="fg" (ngSubmit)="onSave()">
       <div>
-        <ion-item  lines="none" color="tertiary">
+        <ion-item lines="none" color="tertiary">
           <ion-label position="fixed">ชื่อหัวข้อ</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" formControlName="title"></ion-input>
         </ion-item>
         <ion-item class="ion-margin-top" color="tertiary">
           <ion-label position="fixed">เลขที่</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" formControlName="streetAddress"></ion-input>
         </ion-item>
         <ion-item color="tertiary">
           <ion-label position="fixed">ตำบล</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" formControlName="district"></ion-input>
         </ion-item>
         <ion-item color="tertiary">
           <ion-label position="fixed">อำเภอ</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" formControlName="city"></ion-input>
         </ion-item>
         <ion-item color="tertiary">
           <ion-label position="fixed">จังหวัด</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" formControlName="province"></ion-input>
         </ion-item>
         <ion-item color="tertiary">
           <ion-label position="fixed">รหัสไปรษณีย์</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" formControlName="postalCode"></ion-input>
         </ion-item>
         <ion-item color="tertiary">
           <ion-label position="fixed">เบอร์โทร</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" formControlName="mobileNumber"></ion-input>
         </ion-item>
       </div>
-      <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ตกลง
+      <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
+        [disabled]="fg.invalid">ตกลง
       </ion-button>
     </form>
   </ion-list>
