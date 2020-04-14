@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IonManaLib } from 'ion-m-lib';
 
 @Component({
   selector: 'app-user-account',
@@ -8,16 +9,22 @@ import { Router } from '@angular/router';
 })
 export class UserAccountPage implements OnInit {
 
-  constructor(private router: Router) { }
+  private mcontentid: string = "user-account";
+  constructor(private router: Router, private svc: IonManaLib) { }
 
   ngOnInit() {
   }
 
+  ionViewDidEnter() {
+    this.svc.initPageApi(this.mcontentid);
+  }
+
   public onSelectProfile() {
-    this.router.navigate(['/user-profile'])  
+    this.router.navigate(['/user-profile'])
   }
 
   public onSelectSecurity() {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/msg/underconstruction");
   }
 
 }

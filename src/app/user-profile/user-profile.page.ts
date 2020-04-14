@@ -15,15 +15,10 @@ export class UserProfilePage implements OnInit {
 
   constructor(private router: Router, private svc: IonManaLib) { }
 
-  ngOnInit(){}
+  ngOnInit() { }
 
   ionViewDidEnter() {
-    this.hasLoaded = null;
-    let load$ = this.loadData$();
-    this.data$ = load$;
-    load$.then(it => {
-      this.hasLoaded = (it && it.length > 0) ? "y" : "n";
-    });
+    this.refreshCallBack()
   }
 
   private loadData$() {
