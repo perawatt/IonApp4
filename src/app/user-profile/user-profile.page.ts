@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IonManaLib } from 'ion-m-lib';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,17 +9,45 @@ import { Router } from '@angular/router';
 })
 export class UserProfilePage implements OnInit {
 
-  constructor(private router: Router) { }
+  public hasLoaded: string;
+  public data$ = Promise.resolve<{}>({});
+  private mcontentid = "user-profile";
 
-  ngOnInit() {
+  constructor(private router: Router, private svc: IonManaLib) { }
+
+  ngOnInit(){}
+
+  ionViewDidEnter() {
+    this.hasLoaded = null;
+    let load$ = this.loadData$();
+    this.data$ = load$;
+    load$.then(it => {
+      this.hasLoaded = (it && it.length > 0) ? "y" : "n";
+    });
+  }
+
+  private loadData$() {
+    return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
+      .then(_ => {
+        return this.svc.getApiData(this.mcontentid);
+      })
+  }
+
+  private refreshCallBack() {
+    this.hasLoaded = null;
+    let load$ = this.loadData$();
+    this.data$ = load$;
+    load$.then(it => {
+      this.hasLoaded = (it && it.length > 0) ? "y" : "n";
+    });
   }
 
   public onSelectEditName() {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/profile/name")
   }
 
   public onSelectViewAddress() {
-    this.router.navigate(['/user-profile-address'])  
+    this.router.navigate(['/user-profile-address'])
   }
-
 
 }
