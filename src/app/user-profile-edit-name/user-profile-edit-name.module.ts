@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
 import { UserProfileEditNamePageRoutingModule } from './user-profile-edit-name-routing.module';
 
 import { UserProfileEditNamePage } from './user-profile-edit-name.page';
+import { DirectivesModule } from '../../directives/directives.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
+    IonicModule,    
+    ReactiveFormsModule,
+    DirectivesModule,
     UserProfileEditNamePageRoutingModule
   ],
   declarations: [UserProfileEditNamePage]
