@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IonManaLib } from 'ion-m-lib';
 
 @Component({
   selector: 'app-wallet-topup-select',
@@ -8,9 +9,14 @@ import { Router } from '@angular/router';
 })
 export class WalletTopupSelectPage implements OnInit {
 
-  constructor(private router: Router) { }
+  private mcontentid: string = "wallet-topup-select";
+  constructor(private router: Router, private svc: IonManaLib) { }
 
   ngOnInit() {
+  }
+  
+  ionViewDidEnter() {
+    this.svc.initPageApi(this.mcontentid);
   }
 
   public onSelectTopupByMTM() {
@@ -18,7 +24,7 @@ export class WalletTopupSelectPage implements OnInit {
   }
 
   public onSelectTopupByPromptpay() {
-    this.router.navigate(['/wallet-topup-detail'])
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/msg/underconstruction");
   }
 
 }

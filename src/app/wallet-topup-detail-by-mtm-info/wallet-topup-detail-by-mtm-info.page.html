@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content mode="ios" class="ion-padding-top">
-  <form>
+  <form (ngSubmit)="onNext()">
     <ion-card color="tertiary" class="ion-text-center">
       <ion-card-content>
         <img class="center qr" src="assets/imgs/topup.png" width="75" height="100">
@@ -19,9 +19,9 @@
           </ion-row>
           <ion-row class="ion-align-items-center ion-justify-content-center">
             <ion-label>
-              <p>เลขบัญชี XXXXX</p>
+              <p>เลขบัญชี {{ accountId }}</p>
             </ion-label>
-            <ion-button size="small" shape="round" color="dark" type="button">คัดลอก</ion-button>
+            <ion-button size="small" shape="round" color="dark" type="button" (click)="clipboard()">คัดลอก</ion-button>
           </ion-row>
           <ion-row class="ion-align-items-center ion-justify-content-center">
             <ion-label>

@@ -6,7 +6,7 @@
 
 <ion-content mode="ios">
 
-  <form>
+  <form [formGroup]="fg" (ngSubmit)="onSave()">
     <ion-grid class="ion-padding">
       <ion-row class="ion-align-items-center">
         <ion-col size="auto" class="ion-no-padding">
@@ -14,7 +14,8 @@
         </ion-col>
         <ion-col size="auto" class="ion-no-padding">
           <ion-label>
-            <h3>&nbsp; เลขบัญชี XXXXXXXX <ion-button size="small" shape="round" color="dark" type="button">คัดลอก
+            <h3>&nbsp; เลขบัญชี {{ accountId }} <ion-button size="small" shape="round" color="dark" type="button"
+                (click)="clipboard()">คัดลอก
               </ion-button>
             </h3>
           </ion-label>
@@ -39,23 +40,25 @@
       </ion-item>
       <ion-item lines="none" color="tertiary">
         <ion-label position="fixed">THB</ion-label>
-        <ion-input type="number" placeholder="ระบุจำนวนเงิน"></ion-input>
+        <ion-input type="number" placeholder="ระบุจำนวนเงิน" formControlName="amount" (ionChange)="AmountChanged()">
+        </ion-input>
       </ion-item>
-      <ion-item lines="none" color="tertiary">
+      <ion-item lines="none" color="tertiary" *ngIf="fg.get('amount').value != null && fg.get('amount').invalid">
         <ion-label color="danger">
           <p>จำนวนเงินที่ต้องการเติมขั้นต่ำ 20 บาท</p>
         </ion-label>
       </ion-item>
 
       <ion-card class="ion-text-center ion-padding-bottom" color="tertiary">
-        <ion-button *ngIf="true" shape="round" color="danger">แนบสลิปธนาคาร</ion-button>
-        <ng-container>
-          <img src="assets/imgs/promtpayicon.png" class="center qr">
+        <ion-button *ngIf="!hasImage || hasImage == 'n'" shape="round" color="danger"
+          (click)="insertBankTransferSlip()">แนบสลิปธนาคาร</ion-button>
+        <ng-container *ngIf="imageResponse$ | async as imageResponse">
+          <img [src]="imageResponse.base64Image" class="center qr">
           <ion-label color="medium">
-            <p class="ion-padding-top">เปลี่ยนรูป</p>
+            <p class="ion-padding-top" (click)="insertBankTransferSlip()">เปลี่ยนรูป</p>
           </ion-label>
         </ng-container>
-      </ion-card>      
+      </ion-card>
       <ion-label color="medium">
         <p class="ion-padding">*แนบรูปสลิปธนาคารทุกครั้งที่ทำการโอน</p>
       </ion-label>
@@ -67,10 +70,10 @@
       </ion-item>
       <ion-item lines="none" color="tertiary">
         <ion-label position="fixed">เบอร์โทรศัพท์</ion-label>
-        <ion-input type="number" placeholder="ระบุเบอร์โทรศัพท์"></ion-input>
+        <ion-input type="number" placeholder="ระบุเบอร์โทรศัพท์" formControlName="contactNumber"></ion-input>
       </ion-item>
     </ion-list>
-    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ยืนยัน
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit" [disabled]="fg.invalid">ยืนยัน
     </ion-button>
   </form>
 
