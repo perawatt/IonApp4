@@ -1,53 +1,77 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>e-Slip => Coupon Name</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content mode="ios">
-  <ion-list lines="none">
-    <ion-item color="tertiary" class="ion-margin-top">
-      <ion-avatar slot="start">
-        <img [src]="'assets/imgs/couponred.png'">
-      </ion-avatar>
-      <ion-label color="medium">
-        <ion-text color="dark"><b>Coupon Name</b></ion-text>
+  <ng-container *ngIf="hasLoaded">
+    <ion-list lines="none" *ngIf="data$ | async as data" class="ion-text-center">
+      <ion-item color="tertiary" class="ion-margin-top">
+        <ion-avatar slot="start">
+          <img [src]="'assets/imgs/couponred.png'">
+        </ion-avatar>
+        <ion-label color="medium">
+          <ion-text color="dark"><b>{{data.eslipStub.name}}</b></ion-text>
+          <p><img width="12" height="12" class="qr" src="assets/imgs/shop.png" />
+            {{data.distributerMerchant.name}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-card *ngIf="data.eslipStub?.bannerImageUrl" color="tertiary">
+        <img [ngClass]="{'eslip-dim': data.activatedDate != null}" [src]="data.eslipStub.bannerImageUrl">
+        <img [ngClass]="{'eslip-aproved-logo': data.activatedDate != null}" [hidden]="data.activatedDate == null"
+          width="75" height="75" src="assets/imgs/usedcoupon.png">
+      </ion-card>
+      <ion-item color="tertiary">
+        <ion-label color="dark">
+          <b>วัยหมดอายุ : {{data.eslipStub.expiredDate | date:'d MMMM y H:mm'}}</b>
+          <ion-text color="medium">
+            <p>
+              <img height="12" src="assets/imgs/shoplocation.png" />
+              {{data.distributerMerchant.fullAddress}}
+            </p>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+      <ion-item class="ion-text-center" *ngIf="data.requestedUseDate || data.activatedDate">
+        <ion-label color="dark">
+          <ion-text color="danger" *ngIf="data.requestedUseDate"><b>รอการยืนยันจากร้าน...</b></ion-text>
+          <ion-text *ngIf="data.activatedDate"><b>คูปองถูกใช้งานแล้ว...</b></ion-text>
+          <h1>{{data.refId}}</h1>
+        </ion-label>
+      </ion-item>
+      <ion-button color="danger" size="small" (click)="ToggleShowQR()"
+        *ngIf="data.requestedUseDate || data.activatedDate">{{ToggleShowQRButtonText}}</ion-button>
+      <div *ngIf="isShowQR" class="ion-margin-top imageCenter">
+        <img width="200" height="200"
+          src="https://chart.googleapis.com/chart?cht=qr&chl={{ data.endpointId }}&chs=400x400&choe=UTF-8&chld=L%7C2%27%20rel=%27nofollow" />
+      </div>
+      <ion-item class="ion-text-center" *ngIf="data.requestedUseDate || data.activatedDate">
+        <ion-label color="medium">
+          <p>ใช้เมื่อ : <span *ngIf="data.requestedUseDate">{{data.requestedUseDate | date:'d MMMM y H:mm'}}</span>
+            <span *ngIf="data.activatedDate">{{data.activatedDate | date:'d MMMM y H:mm'}}</span></p>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" class="ion-margin-top">
+        <ion-label>
+          <b>รายละเอียดคูปอง</b>
+          <ion-text class="ion-text-wrap">
+            <p>{{ data.eslipStub.description }}</p>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label>
+          <b>เงื่อนไขคูปอง</b>
+          <ion-text class="ion-text-wrap">
+            <p>{{ data.eslipStub.condition }}</p>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
 
-        <p><img width="12" height="12" class="qr" src="assets/imgs/shop.png" />
-          Shop Name</p>
-      </ion-label>
-    </ion-item>
-    <ion-card color="tertiary">
-      <img src="assets/imgs/Coupontest.png">
-    </ion-card>
-    <ion-item color="tertiary">
-      <ion-label color="dark">
-        <b>วัยหมดอายุ : d MMMM y H:mm</b>
-        <ion-text color="medium">
-          <p>
-            <img height="12" src="assets/imgs/shoplocation.png" />
-            Full Address
-          </p>
-        </ion-text>
-      </ion-label>
-    </ion-item>
-    <ion-item color="tertiary" class="ion-margin-top">
-      <ion-label>
-        <b>รายละเอียดคูปอง</b>
-        <ion-text class="ion-text-wrap">
-          <p>Reiciendis debitis aliqua aliquam cursus curae veritatis conubia est! Adipisicing nisl adipiscing? Aperiam,
-            ut donec. </p>
-        </ion-text>
-      </ion-label>
-    </ion-item>
-    <ion-item color="tertiary">
-      <ion-label>
-        <b>เงื่อนไขคูปอง</b>
-        <ion-text class="ion-text-wrap">
-          <p>Reiciendis debitis aliqua aliquam cursus curae veritatis conubia est! Adipisicing nisl adipiscing? Aperiam,
-            ut donec. </p>
-        </ion-text>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ng-container *ngIf="!hasLoaded">
+    <!--TODO: loading page here -->
+  </ng-container>
 </ion-content>
