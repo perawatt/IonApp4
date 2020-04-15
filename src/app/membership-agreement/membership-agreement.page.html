@@ -5,43 +5,24 @@
 </ion-header>
 
 <ion-content color="tertiary" mode="ios">
-  <ng-container>
-    <ion-card detail="false" color="tertiary">
-      <ion-card-content>        
-        <img class="icon logo-center" src="assets/imgs/promtpayicon.png" />
+  <ng-container *ngIf="data$ | async as data">
+    <ion-card detail="false" color="tertiary" *ngIf="hasLoaded">
+      <ion-card-content>
+        <div class="ion-text-center">
+          <img class="circle" height="100" [src]="data.logoUrl" />
+        </div>
         <br>
         <ion-label color="dark">
-            <h1 class="ion-margin-top ion-text-center"><b>Promome</b></h1>
+          <h1 class="ion-margin-top ion-text-center"><b>{{data.name}}</b></h1>
         </ion-label>
         <br>
-        <div [innerHTML]="demoHtml"></div>
-      </ion-card-content>
-    </ion-card>
-  </ng-container>
-
-  <!-- <ng-container *ngIf="data$ | async as data">
-
-    <ion-card *ngIf="hasLoaded">
-      <ion-card-content>
-        <h1 margin-top class="text-black" text-center><b>{{data.name}}</b></h1>
-        <h2 margin-top class="text-black" text-center><b>ข้อกำหนดการเป็นสมาชิก</b></h2>
-        <br>
-        <img class="icon logo-center" [src]="data.logoUrl" />
-        <br>
         <div [innerHTML]="data.content"></div>
-
       </ion-card-content>
     </ion-card>
   </ng-container>
 
   <ng-container *ngIf="!hasLoaded">
-    <ion-card>
-      <ion-card-content>
-        <ion-item text-center>
-          กำลังโหลดข้อมูล กรุณารอสักครู่...
-        </ion-item>
-      </ion-card-content>
-    </ion-card>
-  </ng-container> -->
+    <!--TODO: loading page here -->
+  </ng-container>
 
 </ion-content>

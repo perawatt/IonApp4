@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IonManaLib } from 'ion-m-lib';
 
 @Component({
   selector: 'app-membership-agreement',
@@ -7,10 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MembershipAgreementPage implements OnInit {
 
-  demoHtml : string = "<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"
-  constructor() { }
+  private hasLoaded: string;
+  private mcontentid: string = "membership-agreement";
+  public data$ = Promise.resolve<{}>({});
+  constructor(private svc: IonManaLib) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.hasLoaded = null;
+    let load$ = this.loadData$();
+    this.data$ = load$;
+    load$.then(it => {
+      this.hasLoaded = it ? "y" : "n";
+      console.log(JSON.stringify(it));      
+    });
+  }
+
+  private loadData$() {
+    return this.svc.initPageApi(this.mcontentid)
+      .then(_ => {
+        return this.svc.getApiData(this.mcontentid);
+      })
   }
 
 }
