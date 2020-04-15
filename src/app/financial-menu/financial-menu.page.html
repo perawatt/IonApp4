@@ -4,72 +4,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content mode="ios">
 
-  <!-- <ng-container *ngIf="data$ | async as data">
-    <ion-card detail-none no-lines no-padding class="content-full content-vertical-center" *ngIf="hasLoaded">
-      <ion-grid no-padding no-margin>
-        <ion-row text-center>
-          <ion-col>
-            <img class="icon" width="50" height="50" src="assets/imgs/fntransfer.png" (click)="onTransfer()" />
-            <br>
-            <span>รับ-โอน</span>
-          </ion-col>
-        </ion-row>
-        <ion-row align-items-center>
-          <ion-col>
-            <div float-right text-center>
-              <img class="icon" text-center width="50" height="50" src="assets/imgs/fndeposit.png" (click)="onDeposit()" />
-              <br>
-              <span>เติมเงิน</span>
-            </div>
-          </ion-col>
-          <ion-col margin text-center>
-            <div class="financial-circle" (click)="onCurrentWallet()">
-              <b text-nowrap>{{data.walletItem.name}}</b>
-              <br>
-              <b>THB</b>
-              <br>
-              <b class="text-red">{{ ParseToTwoDecimal(data.walletItem.balance) | number:'1.2-2' }}</b>
-              <br>
-              <img class="icon center" width="20" height="20" src="assets/imgs/walletgray.png" no-margin />
-            </div>
-          </ion-col>
-          <ion-col>
-            <div float-left text-center>
-              <img class="icon" width="50" height="50" src="assets/imgs/fnwithdraw.png" (click)="onWithdraw()" />
-              <br>
-              <span>ถอนเงิน</span>
-            </div>
-          </ion-col>
-        </ion-row>
-        <ion-row text-center>
-          <ion-col>
-            <div float-right text-center>
-              <img class="icon" width="50" height="50" src="assets/imgs/fnwallet.png" (click)="onWallets()" />
-              <br>
-              <span>กระเป๋า</span>
-            </div>
-          </ion-col>
-          <ion-col col-md-2 col-2></ion-col>
-          <ion-col>
-            <div float-left text-center>
-              <img class="icon" width="50" height="50" src="assets/imgs/fnaccount.png" (click)="onManage()" />
-              <br>
-              <span>จัดการบัญชี</span>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card>
-  </ng-container> -->
-
-  <ng-container>
-    <ion-card lines="none" class="content-full content-vertical-center ion-no-padding ion-align-items-center" color="tertiary">
+  <ng-container *ngIf="data$ | async as data">
+    <ion-card lines="none" class="content-full content-vertical-center ion-no-padding ion-align-items-center"
+      color="tertiary" *ngIf="hasLoaded">
       <ion-grid class="ion-no-margin ion-no-padding">
         <ion-row class="ion-text-center">
           <ion-col>
-            <img class="icon" width="50" height="50" src="assets/imgs/fntransfer.png" />
+            <img class="icon" width="50" height="50" src="assets/imgs/fntransfer.png" (click)="onTransfer()" />
             <br>
             <ion-label>รับ-โอน</ion-label>
           </ion-col>
@@ -77,25 +20,26 @@
         <ion-row class="ion-align-items-center">
           <ion-col>
             <div class="ion-float-right ion-text-center">
-              <img class="icon ion-text-center" width="50" height="50" src="assets/imgs/fndeposit.png" />
+              <img class="icon ion-text-center" width="50" height="50" src="assets/imgs/fndeposit.png"
+                (click)="onDeposit()" />
               <br>
               <ion-label>เติมเงิน</ion-label>
             </div>
           </ion-col>
           <ion-col class="ion-margin ion-text-center">
-            <div class="financial-circle">
-              <b class="ion-text-nowrap">Mana wallet</b>
+            <div class="financial-circle" (click)="onCurrentWallet()">
+              <b class="ion-text-nowrap">{{data.walletItem.name}}</b>
               <br>
               <b>THB</b>
               <br>
-              <b class="text-red">0.00</b>
+              <b class="text-red">{{ ParseToTwoDecimal(data.walletItem.balance) | number:'1.2-2' }}</b>
               <br>
-              <img class="icon center ion-no-margin" width="20" height="20" src="assets/imgs/walletgray.png"/>
+              <img class="icon center ion-no-margin" width="20" height="20" src="assets/imgs/walletgray.png" />
             </div>
           </ion-col>
           <ion-col>
             <div class="ion-float-left ion-text-center">
-              <img class="icon" width="50" height="50" src="assets/imgs/fnwithdraw.png" />
+              <img class="icon" width="50" height="50" src="assets/imgs/fnwithdraw.png" (click)="onWithdraw()" />
               <br>
               <ion-label>ถอนเงิน</ion-label>
             </div>
@@ -103,8 +47,8 @@
         </ion-row>
         <ion-row text-center>
           <ion-col>
-            <div class="ion-float-right ion-text-center">
-              <img class="icon" width="50" height="50" src="assets/imgs/fnwallet.png" />
+            <div class=" ion-float-right ion-text-center">
+              <img class="icon" width="50" height="50" src="assets/imgs/fnwallet.png" (click)="onWallets()" />
               <br>
               <ion-label>กระเป๋า</ion-label>
             </div>
@@ -112,7 +56,7 @@
           <ion-col size="2"></ion-col>
           <ion-col>
             <div class="ion-float-left ion-text-center">
-              <img class="icon" width="50" height="50" src="assets/imgs/fnaccount.png" />
+              <img class="icon" width="50" height="50" src="assets/imgs/fnaccount.png" (click)="onManage()" />
               <br>
               <ion-label>จัดการบัญชี</ion-label>
             </div>
@@ -120,6 +64,10 @@
         </ion-row>
       </ion-grid>
     </ion-card>
+  </ng-container>
+
+  <ng-container *ngIf="!hasLoaded">
+    <!--TODO: loading page here -->
   </ng-container>
 
 </ion-content>

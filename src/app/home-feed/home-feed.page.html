@@ -3,117 +3,54 @@
     <ion-label class="text-red ion-padding-start"><b>รายการโปรด</b></ion-label>
   </ion-item>
   <ion-slides [options]="slideOpts">
-    <ion-slide>
-      <ion-item class="ion-text-center" color="light" lines="none">
+    <ion-slide *ngFor="let shortcut of shortcuts$ | async">
+      <ion-item class="ion-text-center" color="light" lines="none" (click)="visitEndpoint(shortcut.endpointUrl)">
         <ion-label class="ion-no-padding ion-no-margin ion-text-center">
           <ion-text>
-            <img class="ion-text-center" src="assets/imgs/shop-default.png">
+            <img class="ion-text-center" [src]="shortcut.logoUrl">
           </ion-text>
-          <p>Shop Bbbbbb</p>
+          <p>{{shortcut.title}}</p>
         </ion-label>
       </ion-item>
     </ion-slide>
-    <ion-slide>
+    <!-- <ion-slide>
       <ion-item class="ion-text-center" color="light" lines="none">
         <ion-label class="ion-no-padding ion-no-margin ion-text-center">
           <ion-text>
-            <img class="ion-text-center" src="assets/imgs/shop-default.png">
+            <img class="ion-text-center" src="assets/imgs/addshortcut.png">
           </ion-text>
-          <p>Shop Bbbbbb</p>
+          <p>เพิ่ม</p>
         </ion-label>
       </ion-item>
-    </ion-slide>
-    <ion-slide>
-      <ion-item class="ion-text-center" color="light" lines="none">
-        <ion-label class="ion-no-padding ion-no-margin ion-text-center">
-          <ion-text>
-            <img class="ion-text-center" src="assets/imgs/shop-default.png">
-          </ion-text>
-          <p>Shop Bbbbbb</p>
-        </ion-label>
-      </ion-item>
-    </ion-slide>
-    <ion-slide>
-      <ion-item class="ion-text-center" color="light" lines="none">
-        <ion-label class="ion-no-padding ion-no-margin ion-text-center">
-          <ion-text>
-            <img class="ion-text-center" src="assets/imgs/shop-default.png">
-          </ion-text>
-          <p>Shop Bbbbbb</p>
-        </ion-label>
-      </ion-item>
-    </ion-slide>
-    <ion-slide>
-      <ion-item class="ion-text-center" color="light" lines="none">
-        <ion-label class="ion-no-padding ion-no-margin ion-text-center">
-          <ion-text>
-            <img class="ion-text-center" src="assets/imgs/shop-default.png">
-          </ion-text>
-          <p>Shop Bbbbbb</p>
-        </ion-label>
-      </ion-item>
-    </ion-slide>
+    </ion-slide> -->
   </ion-slides>
 </ion-header>
 
 <ion-content color="tertiary" mode="ios">
 
-  <ion-refresher slot="fixed">
-    <ion-refresher-content pullingIcon="chevron-down-sharp" pullingText="Pull to refresh" refreshingSpinner="circles"
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Pull to refresh"
       refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
 
   <ion-list lines="full" class="ion-no-padding">
-    <ion-item-sliding color="red">
-      <ion-item button detail="false" color="tertiary">
+    <ion-item-sliding color="danger" *ngFor="let item of feeds$ | async" color="red">
+      <ion-item button detail="false" color="tertiary" (click)="homeFeedAction(item)">
         <ion-avatar slot="start">
-          <img src="assets/imgs/menushopowner.png">
+          <img [src]="item.thumbnailImageURL">
         </ion-avatar>
 
-        <ion-label color="dark">
-          <b>Title AAAAAAAAAAAAA AAAAAAAA</b>
-          <p>aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaa</p>
+        <ion-label [color]="IsDeleteFeed(item) ? 'medium' : 'dark'">
+          <b>{{item.title}}</b>
+          <p>{{item.description}}</p>
         </ion-label>
 
-        <ion-note slot="end" *ngIf="false">
-          <img src="assets/imgs/timered.png" width="12">
-          <span> 10</span>
+        <ion-note slot="end" *ngIf="IsExpirable(item)">
+          <img width="12" [src]="IsDeleteFeed(item) ? 'assets/imgs/timegray.png':'assets/imgs/timered.png'">
+          <span> {{DisplayExpireDateTime(item)}}</span>
         </ion-note>
       </ion-item>
-
-      <ion-item button detail="false" color="tertiary">
-        <ion-avatar slot="start">
-          <img src="assets/imgs/menushopowner.png">
-        </ion-avatar>
-
-        <ion-label color="dark">
-          <b>Title Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</b>
-          <p>aaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-        </ion-label>
-
-        <ion-note slot="end" *ngIf="true">
-          <img src="assets/imgs/timered.png" width="12">
-          <span> 10</span>
-        </ion-note>
-      </ion-item>
-
-      <ion-item button detail="false" color="tertiary">
-        <ion-avatar slot="start">
-          <img src="assets/imgs/menushopowner.png">
-        </ion-avatar>
-
-        <ion-label color="medium">
-          <b>Title Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</b>
-          <p>aaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-        </ion-label>
-
-        <ion-note slot="end" *ngIf="true">
-          <img src="assets/imgs/timegray.png" width="12">
-          <span> 10</span>
-        </ion-note>
-      </ion-item>
-
     </ion-item-sliding>
   </ion-list>
 
