@@ -51,7 +51,8 @@ const routes: Routes = [
   {
     path: 'shopping-cart-into',
     loadChildren: () => import('./shopping-cart-into/shopping-cart-into.module').then( m => m.ShoppingCartIntoPageModule)
-  },  {
+  },
+  {
     path: 'user-profile-address',
     loadChildren: () => import('./user-profile-address/user-profile-address.module').then( m => m.UserProfileAddressPageModule)
   },
@@ -72,7 +73,7 @@ const routes: Routes = [
     loadChildren: () => import('./shopping-cart-creating-add-points/shopping-cart-creating-add-points.module').then( m => m.ShoppingCartCreatingAddPointsPageModule)
   },
   {
-    path: 'eslip-select',
+    path: 'eslip-select/:url',
     loadChildren: () => import('./eslip-select/eslip-select.module').then( m => m.EslipSelectPageModule)
   },
   {
