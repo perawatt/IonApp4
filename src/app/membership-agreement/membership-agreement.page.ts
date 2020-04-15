@@ -8,9 +8,9 @@ import { IonManaLib } from 'ion-m-lib';
 })
 export class MembershipAgreementPage implements OnInit {
 
-  private hasLoaded: string;
-  private mcontentid: string = "membership-agreement";
+  public hasLoaded: string;
   public data$ = Promise.resolve<{}>({});
+  private mcontentid: string = "membership-agreement";
   constructor(private svc: IonManaLib) { }
 
   ngOnInit() {
