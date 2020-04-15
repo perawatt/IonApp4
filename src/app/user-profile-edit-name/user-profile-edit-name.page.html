@@ -4,9 +4,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding-top" mode="ios">
   <form [formGroup]="fg" (ngSubmit)="onSave()" [rx-form-data]="(formData$ | async)?.profile">
-    <ion-list margin-top mode="ios">
+    <ion-list mode="ios">
       <ion-item lines="none" mode="ios" color="tertiary">
         <ion-label position="fixed" mode="ios">ชื่อเล่น</ion-label>
         <ion-input type="text" formControlName="displayName"></ion-input>
