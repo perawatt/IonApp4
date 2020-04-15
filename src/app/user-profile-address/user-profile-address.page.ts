@@ -10,8 +10,8 @@ import { IonManaLib } from 'ion-m-lib';
 export class UserProfileAddressPage implements OnInit {
 
   public hasLoaded: string;
+  public data$ = Promise.resolve<{}>({});
   private mcontentid = "user-profile-address";
-  private data$ = Promise.resolve<{}>({});
   constructor(private svc: IonManaLib) { }
 
   ngOnInit() {
