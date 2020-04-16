@@ -16,7 +16,7 @@
     </ion-card-content>
   </ion-card>
 
-  <form>
+  <form [formGroup]="fg" (ngSubmit)="onSave()">
     <ion-list class="ion-margin-top">
       <ion-item lines="none" color="tertiary">
         <ion-label>
@@ -25,18 +25,19 @@
       </ion-item>
       <ion-item class="ion-text-left" color="tertiary">
         <ion-label>เลือกประเภท</ion-label>
-        <ion-select okText="ตกลง" cancelText="ยกเลิก" interface="action-sheet">
+        <ion-select okText="ตกลง" cancelText="ยกเลิก" interface="action-sheet" formControlName="promptpayType">
           <ion-select-option value="pid">เลขบัตรประชาชน</ion-select-option>
           <ion-select-option value="mobile">เบอร์โทรศัพท์</ion-select-option>
+          <!-- <ion-select-option value="qr">สร้างคิวอาร์โค้ด</ion-select-option> -->
         </ion-select>
       </ion-item>
 
-      <ion-item lines="none" color="tertiary">
+      <ion-item lines="none" color="tertiary" *ngIf="fg.get('promptpayType').value != 'qr'">
         <ion-label>
-          <span *ngIf="false">เลขบัตรประชาชน</span>
-          <span *ngIf="true">เบอร์โทรศัพท์</span>
+          <span *ngIf="fg.get('promptpayType').value == 'pid'">เลขบัตรประชาชน</span>
+          <span *ngIf="fg.get('promptpayType').value == 'mobile'">เบอร์โทรศัพท์</span>
         </ion-label>
-        <ion-input type="number" placeholder="ระบุเลขพร้อมเพย์"></ion-input>
+        <ion-input type="number" placeholder="ระบุเลขพร้อมเพย์" formControlName="promptpayId"></ion-input>
       </ion-item>
 
       <ion-item color="tertiary" class="ion-margin-top" lines="none">
@@ -46,10 +47,12 @@
       </ion-item>
       <ion-item color="tertiary" lines="none">
         <ion-label position="fixed">THB</ion-label>
-        <ion-input type="number" placeholder="ระบุจำนวนเงิน"></ion-input>
+        <ion-input type="number" placeholder="ระบุจำนวนเงิน" formControlName="amount" (ionChange)="AmountChanged()">
+        </ion-input>
       </ion-item>
     </ion-list>
-    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ยืนยัน
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
+      [disabled]="fg.invalid">ยืนยัน
     </ion-button>
   </form>
 
