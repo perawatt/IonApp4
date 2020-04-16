@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IonManaLib } from 'ion-m-lib';
+import { ParseDataProvider } from '../../providers/parse-data';
 
 @Component({
   selector: 'app-wallet-topup-confirm',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WalletTopupConfirmPage implements OnInit {
 
-  constructor() { }
+  public hasLoaded: string;
+  public data$ = Promise.resolve<{}>({});
+  private mcontentid = "wallet-topup-confirm";
+  constructor(private svc: IonManaLib, private parse: ParseDataProvider) { }
 
   ngOnInit() {
   }
 
+  ionViewDidEnter() {
+    this.hasLoaded = null;
+    let load$ = this.loadData$();
+    this.data$ = load$;
+    load$.then(it => {
+      this.hasLoaded = it ? "y" : "n";
+    });
+  }
+
+  private loadData$() {
+    return this.svc.initPageApi(this.mcontentid)
+      .then(_ => {
+        return this.svc.getApiData(this.mcontentid);
+      })
+  }
+
+  public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
+
+  onClose() {
+    this.svc.callTrigger(this.mcontentid, "Button1");
+  }
 }

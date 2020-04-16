@@ -6,22 +6,22 @@
 
 <ion-content mode="ios" class="ion-padding-top">
 
-  <ng-container>
+  <ng-container *ngIf="(data$ | async)?.depositSession as data">
 
-    <div class="ion-margin-bottom" *ngIf="true">
+    <div class="ion-margin-bottom" *ngIf="data.promptpayType != 'qr' && hasLoaded">
       <ion-card color="tertiary">
         <ion-card-content>
           <ion-label>
             <h2>หมายเลขพร้อมเพย์</h2>
             <h2>
-              <b>1111111</b>
+              <b>{{ data.promptpayId }}</b>
             </h2>
             <h2>ชื่อบัญชี</h2>
             <h2>
-              <b>เนมเอ</b>
+              <b>{{ data.thAccountName }}</b>
             </h2>
             <h2>
-              <b>NAME A</b>
+              <b>{{ data.enAccountName }}</b>
             </h2>
           </ion-label>
         </ion-card-content>
@@ -36,7 +36,7 @@
             <h2>
               <b>THB</b>
               <ion-text color="danger">
-                <b> 20.00</b>
+                <b> {{ ParseToTwoDecimal(data.amount) | number:'1.2-2' }}</b>
               </ion-text>
             </h2>
           </ion-label>
@@ -44,17 +44,21 @@
       </ion-card>
     </div>
 
-    <ion-card *ngIf="true" color="tertiary">
+    <ion-card color="tertiary" *ngIf="data.promptpayType == 'qr' && hasLoaded">
       <ion-card-content>
         <img
-          src="https://chart.googleapis.com/chart?cht=qr&chl=QRHERE&chs=500x500&choe=UTF-8&chld=L|2%27%20rel=%27nofollow" />
+          src="https://chart.googleapis.com/chart?cht=qr&chl={{data.qrText}}}&chs=500x500&choe=UTF-8&chld=L|2%27%20rel=%27nofollow" />
       </ion-card-content>
     </ion-card>
+    
   </ng-container>
 
+  <ng-container *ngIf="!hasLoaded">
+    <!--TODO: loading page here -->
+  </ng-container>
 </ion-content>
 
-<ion-footer *ngIf="true" mode="ios">
-  <ion-button color="danger" class="ion-no-margin" expand="full" type="submit">ปิด
+<ion-footer mode="ios" *ngIf="data.promptpayType == 'qr' && hasLoaded">
+  <ion-button color="danger" class="ion-no-margin" expand="full" type="submit" (click)="onClose()">ปิด
   </ion-button>
 </ion-footer>
