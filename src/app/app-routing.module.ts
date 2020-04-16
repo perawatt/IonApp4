@@ -49,8 +49,8 @@ const routes: Routes = [
     loadChildren: () => import('./shopping-cart-creating/shopping-cart-creating.module').then( m => m.ShoppingCartCreatingPageModule)
   },
   {
-    path: 'shopping-cart-into',
-    loadChildren: () => import('./shopping-cart-into/shopping-cart-into.module').then( m => m.ShoppingCartIntoPageModule)
+    path: 'shopping-cart-info',
+    loadChildren: () => import('./shopping-cart-info/shopping-cart-info.module').then( m => m.ShoppingCartInfoPageModule)
   },
   {
     path: 'user-profile-address',
