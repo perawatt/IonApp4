@@ -81,8 +81,6 @@ export class WalletTopupDetailByMtmPage implements OnInit {
   public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
 
   public AmountChanged() {
-    if (this.fg.get('amount').value != null) {
-      this.fg.get('amount').setValue(this.parse.ParseToTwoDecimal(this.fg.get('amount').value.toString()));
-    }
+    this.fg.get('amount').setValue(this.parse.ParseToTwoDecimal(this.fg.get('amount').value));
   }
 }

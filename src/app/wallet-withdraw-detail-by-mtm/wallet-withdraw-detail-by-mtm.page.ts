@@ -65,10 +65,10 @@ export class WalletWithdrawDetailByMtmPage implements OnInit {
       }
 
       if (validLength == 1) {
-        if (accountId.length >= validLength) return null;
+        if (accountId.toString().length >= validLength) return null;
         else return { 'message': "accountId must have more than " + validLength };
       }
-      else if (accountId.length == validLength) return null;
+      else if (accountId.toString().length == validLength) return null;
       else return { 'message': "accountId must have " + validLength + " length only" };
     }
     else return { 'message': "accountId can not be empty" };
@@ -77,8 +77,6 @@ export class WalletWithdrawDetailByMtmPage implements OnInit {
   public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
 
   public AmountChanged() {
-    if (this.fg.get('amount').value != null) {
-      this.fg.get('amount').setValue(this.parse.ParseToTwoDecimal(this.fg.get('amount').value.toString()));
-    }
+    this.fg.get('amount').setValue(this.parse.ParseToTwoDecimal(this.fg.get('amount').value));
   }
 }

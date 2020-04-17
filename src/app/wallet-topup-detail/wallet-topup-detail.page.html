@@ -32,15 +32,15 @@
         </ion-select>
       </ion-item>
 
-      <ion-item lines="none" color="tertiary" *ngIf="fg.get('promptpayType').value != 'qr'">
+      <ion-item class=" ion-margin-bottom" color="tertiary" lines="none" *ngIf="fg.get('promptpayType').value != 'qr'">
         <ion-label>
           <span *ngIf="fg.get('promptpayType').value == 'pid'">เลขบัตรประชาชน</span>
           <span *ngIf="fg.get('promptpayType').value == 'mobile'">เบอร์โทรศัพท์</span>
         </ion-label>
-        <ion-input type="number" placeholder="ระบุเลขพร้อมเพย์" formControlName="promptpayId"></ion-input>
+        <ion-input type="tel" placeholder="ระบุเลขพร้อมเพย์" formControlName="promptpayId"></ion-input>
       </ion-item>
 
-      <ion-item color="tertiary" class="ion-margin-top" lines="none">
+      <ion-item color="tertiary" lines="none">
         <ion-label>
           <h2>จำนวนเงินที่ต้องการเติม</h2>
         </ion-label>
@@ -51,6 +51,7 @@
         </ion-input>
       </ion-item>
     </ion-list>
+    
     <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
       [disabled]="fg.invalid">ยืนยัน
     </ion-button>

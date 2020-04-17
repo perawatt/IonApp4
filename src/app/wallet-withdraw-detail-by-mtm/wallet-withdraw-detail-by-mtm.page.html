@@ -71,7 +71,7 @@
           <span *ngIf="fg.get('accountType').value == 'pid'">เลขบัตรประชาชน</span>
           <span *ngIf="fg.get('accountType').value == 'mobile'">เบอร์โทรศัพท์</span>
         </ion-label>
-        <ion-input type="number" placeholder="ระบุหมายเลข" formControlName="accountId"></ion-input>
+        <ion-input type="tel" placeholder="ระบุหมายเลข" formControlName="accountId"></ion-input>
       </ion-item>
 
       <ion-item color="tertiary" class="ion-margin-top">
