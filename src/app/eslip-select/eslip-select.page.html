@@ -14,7 +14,7 @@
           </ion-avatar>
           <ion-label color="medium">
             <ion-text [color]="eslip.activatedDate != null ? 'medium':'dark'"><b>{{eslip.eslipStub.name}}</b></ion-text>
-            <p>วัยหมดอายุ: {{eslip.eslipStub.expiredDate | date:'d MMMM y H:mm'}}</p>
+            <h3>วัยหมดอายุ: {{eslip.eslipStub.expiredDate | date:'d MMMM y H:mm'}}</h3>
           </ion-label>
         </ion-item>
         <ion-item color="tertiary" *ngIf="eslip.eslipStub.bannerImageUrl">

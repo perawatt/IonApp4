@@ -14,8 +14,8 @@
         <ion-label color="medium">
           <ion-text color="dark"><b>{{data.eslipStub.name}}</b></ion-text>
 
-          <p><img width="12" height="12" class="qr" src="assets/imgs/shop.png" />
-            {{data.distributerMerchant.name}}</p>
+          <h3><img width="12" height="12" class="qr" src="assets/imgs/shop.png" />
+            {{data.distributerMerchant.name}}</h3>
         </ion-label>
       </ion-item>
       <ion-card *ngIf="data.eslipStub?.bannerImageUrl" color="tertiary">
@@ -27,10 +27,10 @@
         <ion-label color="dark">
           <b>วัยหมดอายุ : {{data.eslipStub.expiredDate | date:'d MMMM y H:mm'}}</b>
           <ion-text color="medium">
-            <p>
+            <h3>
               <img height="12" src="assets/imgs/shoplocation.png" />
               {{data.distributerMerchant.fullAddress}}
-            </p>
+            </h3>
           </ion-text>
         </ion-label>
       </ion-item>
@@ -41,20 +41,20 @@
         </ion-label>
       </ion-item>
       <ion-button color="danger" size="small" (click)="ToggleShowQR()">{{ToggleShowQRButtonText}}</ion-button>
-      <div *ngIf="isShowQR" class="ion-margin-top imageCenter">
+      <div *ngIf="isShowQR" class="ion-margin-top">
         <img width="200" height="200"
           src="https://chart.googleapis.com/chart?cht=qr&chl={{ data.endpointId }}&chs=400x400&choe=UTF-8&chld=L%7C2%27%20rel=%27nofollow" />
       </div>
       <ion-item class="ion-text-center" *ngIf="data.requestedUseDate || data.activatedDate">
         <ion-label color="medium">
-          <p>ใช้เมื่อ : {{data.activatedDate | date:'d MMMM y H:mm'}}</p>
+          <h3>ใช้เมื่อ : {{data.activatedDate | date:'d MMMM y H:mm'}}</h3>
         </ion-label>
       </ion-item>
       <ion-item color="tertiary" class="ion-margin-top">
         <ion-label>
           <b>รายละเอียดคูปอง</b>
           <ion-text class="ion-text-wrap">
-            <p>{{data.eslipStub.description}}</p>
+            <h3>{{data.eslipStub.description}}</h3>
           </ion-text>
         </ion-label>
       </ion-item>
@@ -62,7 +62,7 @@
         <ion-label>
           <b>เงื่อนไขคูปอง</b>
           <ion-text class="ion-text-wrap">
-            <p>{{data.eslipStub.condition}}</p>
+            <h3>{{data.eslipStub.condition}}</h3>
           </ion-text>
         </ion-label>
       </ion-item>

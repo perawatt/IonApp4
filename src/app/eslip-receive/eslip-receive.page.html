@@ -14,8 +14,8 @@
         <ion-label color="medium">
           <ion-text color="dark"><b>{{data.eslipStub.name}}</b></ion-text>
 
-          <p><img width="12" height="12" class="qr" src="assets/imgs/shop.png" />
-            {{data.distributerMerchant.name}}</p>
+          <h3><img width="12" height="12" class="qr" src="assets/imgs/shop.png" />
+            {{data.distributerMerchant.name}}</h3>
         </ion-label>
       </ion-item>
       <ion-card *ngIf="data.eslipStub?.bannerImageUrl" color="tertiary">
@@ -25,10 +25,10 @@
         <ion-label color="dark">
           <b>วัยหมดอายุ : {{data.eslipStub.expiredDate | date:'d MMMM y H:mm'}}</b>
           <ion-text color="medium">
-            <p>
+            <h3>
               <img height="12" src="assets/imgs/shoplocation.png" />
               {{data.distributerMerchant.fullAddress}}
-            </p>
+            </h3>
           </ion-text>
         </ion-label>
       </ion-item>
@@ -36,7 +36,7 @@
         <ion-label>
           <b>รายละเอียดคูปอง</b>
           <ion-text class="ion-text-wrap">
-            <p>{{data.eslipStub.description}}</p>
+            <h3>{{data.eslipStub.description}}</h3>
           </ion-text>
         </ion-label>
       </ion-item>
@@ -44,7 +44,7 @@
         <ion-label>
           <b>เงื่อนไขคูปอง</b>
           <ion-text class="ion-text-wrap">
-            <p>{{data.eslipStub.condition}}</p>
+            <h3>{{data.eslipStub.condition}}</h3>
           </ion-text>
         </ion-label>
       </ion-item>
