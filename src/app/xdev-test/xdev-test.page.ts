@@ -17,12 +17,17 @@ export class XDevTestPage implements OnInit {
 
   constructor(private svc: IonManaLib) {
   }
-  
+
   ngOnInit() {
   }
 
   ionViewDidEnter() {
-    this.svc.initPageApi("xtest");
+    this.svc.initPageApiWithCallBack("xtest", () => this.refreshCallBack());
+  }
+
+  private refreshCallBack()
+  {
+    alert("CallBack");
   }
 
   public reloadPage() {
