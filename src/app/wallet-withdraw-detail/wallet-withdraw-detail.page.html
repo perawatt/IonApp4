@@ -10,13 +10,13 @@
     <ion-card-content>
       <ion-label>
         <h2>กำลังถอนเงินจากกระเป๋า</h2>
-        <img class="icon center ion-no-margin" width="30" height="30" src="assets/imgs/changewallet.png"/>
+        <img class="icon center ion-no-margin" width="30" height="30" src="assets/imgs/changewallet.png" />
         <p no-margin><b>Mana Wallet</b></p>
       </ion-label>
     </ion-card-content>
   </ion-card>
 
-  <form>
+  <form [formGroup]="fg" (ngSubmit)="onSave()">
     <ion-list lines="none">
       <ion-item color="tertiary" class=" ion-margin-top">
         <ion-label>
@@ -25,17 +25,18 @@
       </ion-item>
       <ion-item color="tertiary" lines="inset">
         <ion-label>เลือกประเภท</ion-label>
-        <ion-select text-left okText="ตกลง" cancelText="ยกเลิก" interface="action-sheet">
+        <ion-select text-left okText="ตกลง" cancelText="ยกเลิก" interface="action-sheet"
+          formControlName="promptpayType">
           <ion-select-option value="pid">เลขบัตรประชาชน</ion-select-option>
           <ion-select-option value="mobile">เบอร์โทรศัพท์</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-item color="tertiary" class=" ion-margin-bottom" *ngIf="true">
+      <ion-item color="tertiary" class=" ion-margin-bottom" *ngIf="fg.get('promptpayType').value != 'qr'">
         <ion-label>
-          <span *ngIf="true">เลขบัตรประชาชน</span>
-          <span *ngIf="false">เบอร์โทรศัพท์</span>
+          <span *ngIf="fg.get('promptpayType').value == 'pid'">เลขบัตรประชาชน</span>
+          <span *ngIf="fg.get('promptpayType').value == 'mobile'">เบอร์โทรศัพท์</span>
         </ion-label>
-        <ion-input type="number" placeholder="ระบุเลขพร้อมเพย์"></ion-input>
+        <ion-input type="number" placeholder="ระบุเลขพร้อมเพย์" formControlName="promptpayId"></ion-input>
       </ion-item>
 
       <ion-item color="tertiary">
@@ -45,11 +46,13 @@
       </ion-item>
       <ion-item color="tertiary">
         <ion-label position="fixed">THB</ion-label>
-        <ion-input type="number" placeholder="ระบุจำนวนเงิน"></ion-input>
+        <ion-input type="number" placeholder="ระบุจำนวนเงิน" formControlName="amount" (ionChange)="AmountChanged()">
+        </ion-input>
       </ion-item>
 
     </ion-list>
-    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ยืนยัน
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
+      [disabled]="fg.invalid">ยืนยัน
     </ion-button>
   </form>
 
