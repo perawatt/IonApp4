@@ -1,9 +1,29 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>merchant-transaction</ion-title>
+    <ion-title>บัญชีร้าน</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content mode="ios">
+  <ion-item lines="none" class="ion-text-center ion-margin-top">
+    <ion-label>
+      <h2><b>ชื่อร้าน</b></h2>
+      <ion-text color="medium">ยอดเงินปัจจุบัน</ion-text>
+      <h2><b>฿{{'4500'|number:'1.2-2'}}</b></h2>
+    </ion-label>
+  </ion-item>
+  <ion-list lines="full" class="ion-margin-top">
+    <ion-item button detail="false" color="tertiary">
+      <ion-avatar slot="start">
+        <img src="assets/imgs/logo.png" />
+      </ion-avatar>
+      <ion-label color="medium">
+        <ion-text color="dark"><b>เติมเงิน</b></ion-text><span> (wallet)</span>
+        <h3>dd/MM/yy H:mm</h3>
+      </ion-label>
+      <ion-note color="primary" slot="end">
+        +{{'4500'|number:'1.2-2'}}
+      </ion-note>
+    </ion-item>
+  </ion-list>
 </ion-content>
