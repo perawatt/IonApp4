@@ -162,7 +162,59 @@ const routes: Routes = [
   {
     path: 'reminder-message',
     loadChildren: () => import('./reminder-message/reminder-message.module').then( m => m.ReminderMessagePageModule)
+  },  {
+    path: 'merchant-business-expense',
+    loadChildren: () => import('./merchant-business-expense/merchant-business-expense.module').then( m => m.MerchantBusinessExpensePageModule)
+  },
+  {
+    path: 'merchant-co-owners',
+    loadChildren: () => import('./merchant-co-owners/merchant-co-owners.module').then( m => m.MerchantCoOwnersPageModule)
+  },
+  {
+    path: 'merchant-create',
+    loadChildren: () => import('./merchant-create/merchant-create.module').then( m => m.MerchantCreatePageModule)
+  },
+  {
+    path: 'merchant-home',
+    loadChildren: () => import('./merchant-home/merchant-home.module').then( m => m.MerchantHomePageModule)
+  },
+  {
+    path: 'merchant-profile',
+    loadChildren: () => import('./merchant-profile/merchant-profile.module').then( m => m.MerchantProfilePageModule)
+  },
+  {
+    path: 'merchant-qr-receive-money',
+    loadChildren: () => import('./merchant-qr-receive-money/merchant-qr-receive-money.module').then( m => m.MerchantQrReceiveMoneyPageModule)
+  },
+  {
+    path: 'merchant-select',
+    loadChildren: () => import('./merchant-select/merchant-select.module').then( m => m.MerchantSelectPageModule)
+  },
+  {
+    path: 'merchant-topup',
+    loadChildren: () => import('./merchant-topup/merchant-topup.module').then( m => m.MerchantTopupPageModule)
+  },
+  {
+    path: 'merchant-transaction',
+    loadChildren: () => import('./merchant-transaction/merchant-transaction.module').then( m => m.MerchantTransactionPageModule)
+  },
+  {
+    path: 'merchant-transaction-expense',
+    loadChildren: () => import('./merchant-transaction-expense/merchant-transaction-expense.module').then( m => m.MerchantTransactionExpensePageModule)
+  },
+  {
+    path: 'merchant-transaction-receive',
+    loadChildren: () => import('./merchant-transaction-receive/merchant-transaction-receive.module').then( m => m.MerchantTransactionReceivePageModule)
+  },
+  {
+    path: 'merchant-transaction-topup',
+    loadChildren: () => import('./merchant-transaction-topup/merchant-transaction-topup.module').then( m => m.MerchantTransactionTopupPageModule)
+  },
+  {
+    path: 'merchant-transaction-withdraw',
+    loadChildren: () => import('./merchant-transaction-withdraw/merchant-transaction-withdraw.module').then( m => m.MerchantTransactionWithdrawPageModule)
   }
+
 ];
 
 @NgModule({
