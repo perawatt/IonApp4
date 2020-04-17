@@ -1,9 +1,109 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>merchant-home</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content mode="ios">
+  <ion-list lines="none">
+    <ion-item color="tertiary">
+      <img src="assets/imgs/balance.png" slot="start" style="width: 36px;height: 26px;">
+      <ion-label>
+        <p>ยอดคงเหลือ</p>
+        <b>-</b>
+      </ion-label>
+    </ion-item>
+    <ion-item color="tertiary">
+      <ion-button color="dark" shape="round" fill="outline" slot="end" (click)="onSelectReceiveMoneyQR()">
+        <span><img width="15" height="15" src="assets/imgs/qrpay.png" /> QR รับเงิน</span>
+      </ion-button>
+    </ion-item>
+    <ion-list-header mode="md" color="tertiary" class="ion-margin-top">
+      <ion-label>บริการเสริม</ion-label>
+    </ion-list-header>
+    <ion-item color="tertiary">
+      <ion-label>
+        <ion-slides [options]="slideOpts">
+          <ion-slide>
+            <img src="assets/imgs/qrpay.png" style="width: 50px;height: 50px;" />
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/imgs/qrpay.png" style="width: 50px;height: 50px;" />
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/imgs/qrpay.png" style="width: 50px;height: 50px;" />
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/imgs/qrpay.png" style="width: 50px;height: 50px;" />
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/imgs/qrpay.png" style="width: 50px;height: 50px;" />
+          </ion-slide>
+          <ion-slide>
+            <img src="assets/imgs/qrpay.png" style="width: 50px;height: 50px;" />
+          </ion-slide>
+        </ion-slides>
+      </ion-label>
+      <ion-button color="dark" shape="round" fill="outline" slot="end" (click)="onSelectAddThirdParty()">
+        <span><img height="15.75" src="assets/svgs/icon-add-danger.svg"> เพิ่ม</span>
+      </ion-button>
+    </ion-item>
 
+      <img src="assets/imgs/banner3rdparty.png" />
+    <ion-fab vertical="bottom" horizontal="end">
+      <ion-button size="small" color="light" shape="round" (click)="onSelectAddThirdParty()">
+        <span><img height="15.75" src="assets/svgs/icon-add-danger.svg"> เพิ่ม</span>
+      </ion-button>
+    </ion-fab>
+  </ion-list>
+  <ion-row class="ion-padding">
+    <ion-col size="4">
+      <ion-segment (click)="onSelectProfile()">
+        <ion-segment-button color="tertiary" class="ion-padding">
+          <img width="30" height="30" src="assets/imgs/menuprofileshop.png">
+          <ion-label>โปรไฟล์ร้าน</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-col>
+    <ion-col size="4">
+      <ion-segment (click)="onSelectTopup()">
+        <ion-segment-button color="tertiary" class="ion-padding">
+          <img width="30" height="30" src="assets/imgs/menutopup.png">
+          <ion-label>เติมเงิน</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-col>
+    <ion-col size="4">
+      <ion-segment (click)="onSelectWithDraw()">
+        <ion-segment-button color="tertiary" class="ion-padding">
+          <img width="30" height="30" src="assets/imgs/menuwithdraw.png">
+          <ion-label>ถอนเงิน</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-col>
+    <ion-col size="4">
+      <ion-segment (click)="onSelectTransaction()">
+        <ion-segment-button color="tertiary" class="ion-padding">
+          <img width="30" height="30" src="assets/imgs/menuaccount.png">
+          <ion-label>บัญชี</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-col>
+    <ion-col size="4">
+      <ion-segment (click)="onSelectOwners()">
+        <ion-segment-button color="tertiary" class="ion-padding">
+          <img width="30" height="30" src="assets/imgs/menushopowner.png">
+          <ion-label>เจ้าของร้าน</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-col>
+    <ion-col size="4">
+      <ion-segment (click)="onSelectSetting()">
+        <ion-segment-button color="tertiary" class="ion-padding">
+          <img width="30" height="30" src="assets/imgs/menusetting.png">
+          <ion-label>ตั้งค่า</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-col>
+  </ion-row>
 </ion-content>
