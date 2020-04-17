@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IonManaLib } from 'ion-m-lib';
 
 declare function TheSHybridCall(methodName: string, parameter: any): void;
 declare function TheSHybridFunc(methodName: string, parameter: string, callback: any): void;
@@ -14,9 +15,18 @@ export class XDevTestPage implements OnInit {
   public value1: any;
   public value2: any;
 
-  constructor() { }
-
+  constructor(private svc: IonManaLib) {
+  }
+  
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.svc.initPageApi("xtest");
+  }
+
+  public reloadPage() {
+    window.location.reload();
   }
 
   public async getMockDataValueBtn() {

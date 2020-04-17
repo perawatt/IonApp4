@@ -6,16 +6,8 @@
 
 <ion-content>
   <div style="padding: 15px;">
-    <h1>DevXP Test v1</h1>
-    <!-- <b>Normal Param</b>
-    <p>Class : {{value1}}</p>
-    <p>Description : {{value2}}</p>
-    <ng-container *ngIf="obj$ | async as obj">
-      <b>Object value</b>
-      <p>Name : {{obj.name}}</p>
-      <p>LastName : {{obj.lastName}}</p>
-      <p>Age : {{obj.age}}</p>
-    </ng-container> -->
+    <h1>DevXP Test v2</h1>
+    <br/>
     <ion-button color="danger" (click)="getMockDataValueBtn()">get data</ion-button>
     <br>
     <ion-button color="danger" (click)="getMockDatObjectBtn()">get object</ion-button>
@@ -25,6 +17,8 @@
     <ion-button color="primary" (click)="sendNumber()">send number to C#</ion-button>
     <br>
     <ion-button color="primary" (click)="sendObject()">send Obj to C#</ion-button>
+    <br>
+    <ion-button color="success" (click)="reloadPage()">Reload</ion-button>
     <p>result from C#: {{obj$ | json}}</p>
 
   </div>
