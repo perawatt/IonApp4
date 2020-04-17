@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IonManaLib } from 'ion-m-lib';
 
 @Component({
   selector: 'app-reminder-message',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReminderMessagePage implements OnInit {
 
-  constructor() { }
+  public data$ = Promise.resolve<{}>({});
+  private mcontentid = "reminder-message";
+
+  constructor(private svc: IonManaLib) { 
+    let response = this.svc.getApiData(this.mcontentid)
+    this.data$ = response;
+  }
 
   ngOnInit() {
   }
 
+  ionViewDidLoad() {
+    this.svc.initPageApi(this.mcontentid);
+  }
 }

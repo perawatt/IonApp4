@@ -5,14 +5,14 @@
 </ion-header>
 
 <ion-content mode="ios">
-  <form>
+  <form [formGroup]="fg" (ngSubmit)="onSave()">
     <ion-list lines="none">
       <ion-item color="tertiary" class="ion-margin-top">
-        <ion-label position="fixed">เบอร์โทร</ion-label>
-        <ion-input type="tel"></ion-input>
+        <ion-label position="floating">เบอร์โทรติดต่อ</ion-label>
+        <ion-input type="tel" formControlName="mobileNumber"></ion-input>
       </ion-item>
     </ion-list>
-    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ยืนยัน
+    <ion-button [disabled]="fg.invalid" id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ยืนยัน
     </ion-button>
   </form>
 </ion-content>
