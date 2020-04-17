@@ -1,9 +1,170 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>merchant-transaction-expense</ion-title>
+    <ion-title>รายละเอียดการจ่ายเงิน</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="transaction ion-padding-top" mode="ios">
+
+  <ng-container>
+    <ion-card class="ion-margin-top ion-padding-bottom" color="tertiary">
+      <ion-item class="ion-text-center" color="tertiary" lines="none">
+        <ion-grid>
+          <ion-row class="ion-text-center ion-align-items-center">
+            <ion-col size="6" class="ion-text-center ion-padding">
+              <div class="content-center">
+                <img class="icon transaction-img" src="assets/imgs/iconsubsidie.png">
+              </div>
+              <ion-label class="ion-text-nowrap">
+                <h3><b>Merchant A</b></h3>
+              </ion-label>
+              <img class="right-arrow" height="18" src="assets/svgs/icon-forward-medium.svg">
+            </ion-col>
+            <ion-col size="6" class="ion-text-center ion-padding">
+              <div class="content-center">
+                <img class="icon circle transaction-img" src="assets/imgs/iconsubsidie.png">
+              </div>
+              <ion-label class="ion-text-nowrap">
+                <h3><b>รายการ รายการ</b></h3>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-item>
+      <ion-item class="ion-text-center" color="tertiary" lines="none">
+        <ion-label class="text-red">
+          <h1><b>฿10.00</b></h1>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+    <div size="12" class="indentation">
+    </div>
+
+    <div *ngIf="true">
+      <ion-list lines="full">
+        <ion-list-header lines="none" mode="md">
+          <ion-label>ร้านค้าที่ได้รับเงิน</ion-label>
+        </ion-list-header>
+        <ion-item color="tertiary">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/defaultshop.png">
+          </ion-avatar>
+
+          <ion-label>
+            Merchant A
+          </ion-label>
+
+          <ion-note slot="end">
+            <ion-label color="danger">
+              ฿14440.00
+            </ion-label>
+          </ion-note>
+        </ion-item>
+        <ion-item color="tertiary">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/iconsubsidie.png">
+          </ion-avatar>
+
+          <ion-label>
+            Merchant A
+          </ion-label>
+
+          <ion-note slot="end">
+            <ion-label color="danger">
+              ฿14440.00
+            </ion-label>
+          </ion-note>
+        </ion-item>
+        <ion-item color="tertiary">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/iconsubsidie.png">
+          </ion-avatar>
+
+          <ion-label>
+            Merchant A
+          </ion-label>
+
+          <ion-note slot="end">
+            <ion-label color="danger">
+              ฿14440.00
+            </ion-label>
+          </ion-note>
+        </ion-item>
+      </ion-list>
+    </div>
+    
+    <div *ngIf="true">
+      <ion-list lines="full">
+        <ion-list-header lines="none" mode="md">
+          <ion-label>ผู้ใช้งานที่ได้รับเงิน</ion-label>
+        </ion-list-header>
+        <ion-item color="tertiary">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/iconsubsidie.png">
+          </ion-avatar>
+
+          <ion-label>
+            Merchant A
+          </ion-label>
+
+          <ion-note slot="end">
+            <ion-label color="danger">
+              ฿14440.00
+            </ion-label>
+          </ion-note>
+        </ion-item>
+        <ion-item color="tertiary">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/iconsubsidie.png">
+          </ion-avatar>
+
+          <ion-label>
+            Merchant A
+          </ion-label>
+
+          <ion-note slot="end">
+            <ion-label color="danger">
+              ฿14440.00
+            </ion-label>
+          </ion-note>
+        </ion-item>
+        <ion-item color="tertiary">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/iconsubsidie.png">
+          </ion-avatar>
+
+          <ion-label>
+            Merchant A
+          </ion-label>
+
+          <ion-note slot="end">
+            <ion-label color="danger">
+              ฿14440.00
+            </ion-label>
+          </ion-note>
+        </ion-item>
+        <ion-item color="tertiary">
+          <ion-avatar slot="start">
+            <img src="assets/imgs/iconsubsidie.png">
+          </ion-avatar>
+
+          <ion-label>
+            Merchant A
+          </ion-label>
+
+          <ion-note slot="end">
+            <ion-label color="danger">
+              ฿14440.00
+            </ion-label>
+          </ion-note>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="false">
+    <!--TODO: loading page here -->
+  </ng-container>
 
 </ion-content>
