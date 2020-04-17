@@ -1,9 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>merchant-create</ion-title>
+    <ion-title>สร้างธุรกิจใหม่</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content mode="ios">
+  <form>
+    <ion-list class="ion-text-center">
+      <ion-list-header mode="md" class="ion-text-left">
+        <ion-label>ชื่อธุรกิจ</ion-label>
+      </ion-list-header>
+      <ion-item color="tertiary" lines="full">
+        <ion-input type="number" placeholder="ระบุชื่อธุรกิจ"></ion-input>
+      </ion-item>
+      <img class="ion-margin-top" src="assets/imgs/shopBackground.png" width="200" height="200" />
+    </ion-list>
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ยืนยัน
+    </ion-button>
+  </form>
 </ion-content>
