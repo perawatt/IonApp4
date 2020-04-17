@@ -58,7 +58,9 @@
   </ng-container>
 </ion-content>
 
-<ion-footer mode="ios" *ngIf="data.promptpayType == 'qr' && hasLoaded">
-  <ion-button color="danger" class="ion-no-margin" expand="full" type="submit" (click)="onClose()">ปิด
-  </ion-button>
-</ion-footer>
+<ng-container *ngIf="(data$ | async)?.depositSession as data">
+  <ion-footer mode="ios" *ngIf="hasLoaded && data.promptpayType == 'qr'">
+    <ion-button color="danger" class="ion-no-margin" expand="full" type="button" (click)="onClose()">ปิด
+    </ion-button>
+  </ion-footer>
+</ng-container>
