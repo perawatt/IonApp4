@@ -23,6 +23,9 @@ const routes: Routes = [
   {
     path: 'membership-shop-select',
     loadChildren: () => import('./membership-shop-select/membership-shop-select.module').then( m => m.MembershipShopSelectPageModule)
+  },  {
+    path: 'xdev-test',
+    loadChildren: () => import('./xdev-test/xdev-test.module').then( m => m.XDevTestPageModule)
   },
   {
     path: 'financial-menu',

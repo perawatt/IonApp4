@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>XDevTest</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding: 15px;">
+    <h1>DevXP Test v2</h1>
+    <br/>
+    <ion-button color="danger" (click)="getMockDataValueBtn()">get data</ion-button>
+    <br>
+    <ion-button color="danger" (click)="getMockDatObjectBtn()">get object</ion-button>
+    <br>
+    <ion-button color="primary" (click)="sendString()">send string to C#</ion-button>
+    <br>
+    <ion-button color="primary" (click)="sendNumber()">send number to C#</ion-button>
+    <br>
+    <ion-button color="primary" (click)="sendObject()">send Obj to C#</ion-button>
+    <br>
+    <ion-button color="success" (click)="reloadPage()">Reload</ion-button>
+    <p>result from C#: {{obj$ | json}}</p>
+
+  </div>
+
+</ion-content>

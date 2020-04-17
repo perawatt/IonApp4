@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IonManaLib } from 'ion-m-lib';
 
 @Component({
   selector: 'app-wallet-withdraw-select',
@@ -8,9 +9,14 @@ import { Router } from '@angular/router';
 })
 export class WalletWithdrawSelectPage implements OnInit {
 
-  constructor(private router: Router) { }
+  private mcontentid: string = "wallet-withdraw-select";
+  constructor(private svc: IonManaLib, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.svc.initPageApi(this.mcontentid);
   }
 
   public onSelectWithdrawByMTM() {
@@ -18,7 +24,7 @@ export class WalletWithdrawSelectPage implements OnInit {
   }
 
   public onSelectWithdrawByPromptpay() {
-    this.router.navigate(['/wallet-topup-detail-by-mtm-info'])  
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/msg/underconstruction");
   }
 
 }
