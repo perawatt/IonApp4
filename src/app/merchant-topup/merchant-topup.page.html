@@ -30,15 +30,19 @@
       </ion-grid>
     </ion-item>
   </ion-card>
-  <ion-item color="tertiary" class="ion-padding-top">
-    <ion-label position="floating">ยอดที่ต้องการเติม</ion-label>
-    <ion-input type="number" placeholder="ระบุยอดเงิน"></ion-input>
-  </ion-item>
+  <form>
+    <ion-item color="tertiary" class="ion-padding-top">
+      <ion-label position="floating">ยอดที่ต้องการเติม</ion-label>
+      <ion-input type="number" placeholder="ระบุยอดเงิน"></ion-input>
+    </ion-item>
 
-  <ion-item lines="none">
-    <img slot="start" width="22" height="22" class="qr" src="assets/imgs/walletgray.png" />
-    <ion-label>
-      <h3>ยอดเงินจากกระเป๋าของคุณจะถูกเติมเข้ามาที่ร้าน</h3>
-    </ion-label>
-  </ion-item>
+    <ion-item lines="none">
+      <img slot="start" width="22" height="22" class="qr" src="assets/imgs/walletgray.png" />
+      <ion-label>
+        <h3>ยอดเงินจากกระเป๋าของคุณจะถูกเติมเข้ามาที่ร้าน</h3>
+      </ion-label>
+    </ion-item>
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ยืนยัน
+    </ion-button>
+  </form>
 </ion-content>
