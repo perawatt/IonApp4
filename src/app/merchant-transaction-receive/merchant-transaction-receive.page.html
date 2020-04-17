@@ -1,9 +1,64 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>merchant-transaction-receive</ion-title>
+    <ion-title>รายละเอียดการรับเงิน</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="transaction ion-padding-top" mode="ios">
+
+  <ng-container *ngIf="data$ | async as data">
+    <ion-card class="ion-margin-top ion-padding-bottom" color="tertiary">
+      <ion-item class="ion-text-center" color="tertiary" lines="none">
+        <ion-grid>
+          <ion-row class="ion-text-center ion-align-items-center">
+            <ion-col size="6" class="ion-text-center ion-padding">
+              <div class="content-center">
+                <img class="icon transaction-img" src="assets/imgs/changewallet.png">
+              </div>
+              <ion-label class="ion-text-nowrap">
+                <h3><b>{{ data.fromName }}</b></h3>
+              </ion-label>
+              <img class="right-arrow" height="18" src="assets/svgs/icon-forward-medium.svg">
+
+            </ion-col>
+            <ion-col size="6" class="ion-text-center ion-padding">
+              <div class="content-center">
+                <img class="icon circle transaction-img" [src]="data.toImageUrl">
+              </div>
+              <ion-label class="ion-text-nowrap">
+                <h3><b>{{ data.toName }}</b></h3>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-item>
+      <ion-item class="ion-text-center" color="tertiary" lines="none">
+        <ion-label class="text-red">
+          <h1><b>฿{{ AbsoluteNumber(ParseToTwoDecimal(data.balance)) | number:'1.2-2' }}</b></h1>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+    <div size="12" class="indentation">
+    </div>
+
+    <ion-card color="light" class="ion-text-center">
+      <br>
+      <ion-label class="text-gray ion-margin-vertical ion-text-uppercase">
+        <h1><b>จ่ายแล้ว</b></h1>
+        <br>
+        <h1><b>รหัสอ้างอิง : {{ data.refId }}</b></h1>
+      </ion-label>
+      <ion-label class="text-gray">
+        <h3 class="text-gray">วันที่ {{ data.transactionDate | date:'dd/MM/yyyy' }} เวลา
+          {{ data.transactionDate | date:'H:mm' }}</h3>
+      </ion-label>
+      <img class="center icon ion-margin-top" width="80" height="80" src="assets/imgs/transaction-in.png" />
+    </ion-card>
+  </ng-container>
+
+  <ng-container *ngIf="!hasLoaded">
+    <!--TODO: loading page here -->
+  </ng-container>
 
 </ion-content>
