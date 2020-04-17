@@ -1,9 +1,64 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>merchant-business-expense</ion-title>
+    <ion-title>ขอทำรายการจ่ายเงิน</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="transaction ion-padding-top" mode="ios">
+  <ion-card class="ion-margin-top ion-padding-bottom" color="tertiary">
+    <ion-item class="ion-text-center" color="tertiary" lines="none">
+      <ion-grid>
+        <ion-row class="ion-text-center ion-align-items-center">
+          <ion-col size="6" class="ion-text-center ion-padding">
+            <div class="content-center">
+              <img class="icon circle transaction-img" src="data.toImageUrl">
+            </div>
+            <ion-label class="ion-text-nowrap">
+              <h3><b> data.fromName </b></h3>
+            </ion-label>
+            <img class="right-arrow" height="18" src="assets/svgs/icon-forward-medium.svg">
+          </ion-col>
+          <ion-col size="6" class="ion-text-center ion-padding">
+            <div class="content-center">
+              <img class="icon transaction-img" src="data.toImageUrl">
+            </div>
+            <ion-label class="ion-text-nowrap">
+              <h3><b>6 รายการ</b></h3>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item class="ion-text-center" color="tertiary" lines="none">
+      <ion-label class="text-red">
+        <h1><b>฿100 </b></h1>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+  <div size="12" class="indentation">
+  </div>
+  <ion-list lines="full">
+    <ion-list-header lines="none" mode="md">
+      <ion-label>ร้านค้าที่ได้รับเงิน</ion-label>
+    </ion-list-header>
+    <ion-item color="tertiary">
+      <ion-avatar slot="start">
+        <img src="item.displayUrl">
+      </ion-avatar>
+      <ion-label>item.displayName</ion-label>
+      <ion-note color="danger">{{'10'| number:'1.2-2'}}</ion-note>
+    </ion-item>
+  </ion-list>
+  <ion-list lines="full">
+    <ion-list-header lines="none" mode="md">
+      <ion-label>ผู้ใช้งานที่ได้รับเงิน</ion-label>
+    </ion-list-header>
+    <ion-item color="tertiary">
+      <ion-avatar slot="start">
+        <img src="item.displayUrl">
+      </ion-avatar>
+      <ion-label>item.displayName</ion-label>
+      <ion-note color="danger">{{'10'| number:'1.2-2'}}</ion-note>
+    </ion-item>
+  </ion-list>
 </ion-content>
