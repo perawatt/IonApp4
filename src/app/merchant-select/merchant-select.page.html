@@ -5,32 +5,30 @@
 </ion-header>
 
 <ion-content mode="ios">
-  <ion-list lines="none">
-    <ion-list-header mode="md" class="ion-text-left">
-      <ion-label>ชื่อร้าน</ion-label>
-    </ion-list-header>
-    <ion-item button detail="false" color="tertiary" class="ion-margin-bottom">
-      <ion-avatar slot="start">
-        <img src="assets/imgs/logo.png">
-      </ion-avatar>
-      <ion-label>
-        <b>Merchant Name</b>
-        <ion-text color="danger">
-          <h3>รอการอนุมัติ</h3>
-        </ion-text>
-      </ion-label>
-    </ion-item>
-    <ion-item button detail="false" color="tertiary" class="ion-margin-bottom">
-      <ion-avatar slot="start">
-        <img src="assets/imgs/logo.png">
-      </ion-avatar>
-      <ion-label>
-        <b>Full Name</b>
-        <h3>&nbsp;</h3>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-  <ion-list lines="none" class="ion-text-center">
+
+  <ng-container *ngIf="hasLoaded == 'y'">
+    <ion-list lines="none">
+      <ion-list-header mode="md" class="ion-text-left">
+        <ion-label>เลือกร้าน</ion-label>
+      </ion-list-header>
+      <ion-item button detail="false" color="tertiary" class="ion-margin-bottom"
+        *ngFor="let merchantAccount of (data$ | async)?.merchantAccounts"
+        (click)="onSelectItem(merchantAccount.endpointId,merchantAccount.approvedDateTime != null)">
+        <ion-avatar slot="start">
+          <img *ngIf="merchantAccount.logo" [src]="merchantAccount.logo" />
+          <img *ngIf="!merchantAccount.logo" src="assets/imgs/defaultshop.png" />
+        </ion-avatar>
+        <ion-label>
+          <b>Merchant Name</b>
+          <ion-text color="danger">
+            <h3 *ngIf="merchantAccount.approvedDateTime == null">รอการอนุมัติ</h3>
+            <h3 *ngIf="merchantAccount.approvedDateTime != null">nbsp</h3>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+  <ion-list lines="none" class="ion-text-center" *ngIf="hasLoaded == 'n'">
     <ion-item color="tertiary" class="ion-margin-top">
       <ion-label>
         <b>เริ่มต้นร้านของคุณ</b>
@@ -45,5 +43,12 @@
       <ion-button color="danger" expand="block">สร้างร้านใหม่</ion-button>
     </ion-card>
     <img class="ion-margin-top" src="assets/imgs/shopBackground.png" width="200" height="200" />
+  </ion-list>
+  <ion-list *ngIf="!hasLoaded" lines="none">
+    <ion-item class="ion-text-center">
+      <ion-label>
+        กำลังโหลดข้อมูล กรุณารอสักครู่...
+      </ion-label>
+    </ion-item>
   </ion-list>
 </ion-content>
