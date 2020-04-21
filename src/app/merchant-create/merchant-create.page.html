@@ -5,17 +5,17 @@
 </ion-header>
 
 <ion-content mode="ios">
-  <form>
+  <form [formGroup]="fg" (ngSubmit)="onSave()">
     <ion-list class="ion-text-center">
       <ion-list-header mode="md" class="ion-text-left">
         <ion-label>ชื่อร้าน</ion-label>
       </ion-list-header>
       <ion-item color="tertiary" lines="full">
-        <ion-input type="number" placeholder="ระบุชื่อร้าน"></ion-input>
+        <ion-input type="text"  formControlName="merchantName" placeholder="ระบุชื่อร้าน"></ion-input>
       </ion-item>
       <img class="ion-margin-top" src="assets/imgs/shopBackground.png" width="200" height="200" />
     </ion-list>
-    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ยืนยัน
+    <ion-button id="app-form-submit" color="danger" [disabled]="fg.invalid" class="ion-no-margin" expand="full" type="submit">ยืนยัน
     </ion-button>
   </form>
 </ion-content>
