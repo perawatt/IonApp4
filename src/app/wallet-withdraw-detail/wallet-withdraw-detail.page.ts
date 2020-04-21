@@ -52,15 +52,14 @@ export class WalletWithdrawDetailPage implements OnInit {
         case "mobile": validLength = 10; break;
         default: return { 'message': "promptpayType can not be empty" };
       }
-      if (promptpayId.length == validLength) return null;
+      if (promptpayId.toString().length == validLength) return null;
       else return { 'message': "PromptPayId must have " + validLength + " length only" };
     }
     else return { 'message': "PromptPayId can not be empty" };
   };
 
+
   public AmountChanged() {
-    if (this.fg.get('amount').value != null) {
-      this.fg.get('amount').setValue(this.parse.ParseToTwoDecimal(this.fg.get('amount').value.toString()));
-    }
+    this.fg.get('amount').setValue(this.parse.ParseToTwoDecimal(this.fg.get('amount').value));
   }
 }

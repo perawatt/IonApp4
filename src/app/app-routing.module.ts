@@ -23,9 +23,18 @@ const routes: Routes = [
   {
     path: 'membership-shop-select',
     loadChildren: () => import('./membership-shop-select/membership-shop-select.module').then( m => m.MembershipShopSelectPageModule)
-  },  {
+  },
+  {
     path: 'xdev-test',
     loadChildren: () => import('./xdev-test/xdev-test.module').then( m => m.XDevTestPageModule)
+  },
+  {
+    path: 'xdev-test-b',
+    loadChildren: () => import('./xdev-test-b/xdev-test-b.module').then( m => m.XdevTestBPageModule)
+  },
+  {
+    path: 'xdev-test-c',
+    loadChildren: () => import('./xdev-test-c/xdev-test-c.module').then( m => m.XdevTestCPageModule)
   },
   {
     path: 'financial-menu',
@@ -165,7 +174,8 @@ const routes: Routes = [
   {
     path: 'reminder-message',
     loadChildren: () => import('./reminder-message/reminder-message.module').then( m => m.ReminderMessagePageModule)
-  },  {
+  },
+  {
     path: 'merchant-business-expense',
     loadChildren: () => import('./merchant-business-expense/merchant-business-expense.module').then( m => m.MerchantBusinessExpensePageModule)
   },

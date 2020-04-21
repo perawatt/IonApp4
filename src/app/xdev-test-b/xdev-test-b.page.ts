@@ -5,11 +5,11 @@ declare function TheSHybridCall(methodName: string, parameter: any): void;
 declare function TheSHybridFunc(methodName: string, parameter: string, callback: any): void;
 
 @Component({
-  selector: 'app-xdev-test',
-  templateUrl: './xdev-test.page.html',
-  styleUrls: ['./xdev-test.page.scss'],
+  selector: 'app-xdev-test-b',
+  templateUrl: './xdev-test-b.page.html',
+  styleUrls: ['./xdev-test-b.page.scss'],
 })
-export class XDevTestPage implements OnInit {
+export class XdevTestBPage implements OnInit {
 
   public data$: Promise<{}> = new Promise<{}>(_ => { });
   public value1: any;
@@ -22,16 +22,19 @@ export class XDevTestPage implements OnInit {
   }
 
   ionViewDidEnter() {
+    this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack());
   }
 
   public initPage() {
     this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack());
   }
 
-  public initpageAndGetAPIData() {
+  public initpageAndGetAPIData()
+  {
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then(it => {
+      
     });
   }
 
@@ -46,7 +49,8 @@ export class XDevTestPage implements OnInit {
       })
   }
 
-  private refreshCallBack() {
+  private refreshCallBack()
+  {
     alert("CallBack");
   }
 
@@ -108,5 +112,4 @@ export class XDevTestPage implements OnInit {
       }
     });
   }
-
 }
