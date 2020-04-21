@@ -30,10 +30,10 @@
       </ion-grid>
     </ion-item>
   </ion-card>
-  <form>
+  <form [formGroup]="fg" (ngSubmit)="onSave()">
     <ion-item color="tertiary" class="ion-padding-top">
       <ion-label position="floating">ยอดที่ต้องการเติม</ion-label>
-      <ion-input type="number" placeholder="ระบุยอดเงิน"></ion-input>
+      <ion-input type="number" placeholder="ระบุยอดเงิน" formControlName="amount" (ionChange)="AmountChanged()" class="ion-text-center"></ion-input>
     </ion-item>
 
     <ion-item lines="none">
@@ -42,7 +42,7 @@
         <h3>ยอดเงินจากกระเป๋าของคุณจะถูกเติมเข้ามาที่ร้าน</h3>
       </ion-label>
     </ion-item>
-    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ยืนยัน
+    <ion-button id="app-form-submit" color="danger" [disabled]="fg.invalid" class="ion-no-margin" expand="full" type="submit">ยืนยัน
     </ion-button>
   </form>
 </ion-content>
