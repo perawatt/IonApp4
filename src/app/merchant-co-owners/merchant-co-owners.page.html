@@ -6,14 +6,14 @@
 
 <ion-content mode="ios">
   <ion-list *ngIf="!hasLoaded" lines="none">
-    <ion-item class="ion-text-center">
+    <ion-item class="ion-text-center" color="tertiary">
       <ion-label>กำลังโหลดข้อมูล กรุณารอสักครู่...</ion-label>
     </ion-item>
   </ion-list>
 
   <ng-container *ngIf="data$ | async as data">
     <ion-list *ngIf="hasLoaded == 'n'" lines="none">
-      <ion-item class="ion-text-center">
+      <ion-item class="ion-text-center" color="tertiary">
         <ion-label>ไม่มีรายการ</ion-label>
       </ion-item>
     </ion-list>
