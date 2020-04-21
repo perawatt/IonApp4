@@ -5,22 +5,31 @@
 </ion-header>
 
 <ion-content mode="ios">
-  <ion-list lines="none" class="ion-text-center">
+  <ng-container *ngIf="data$ | async as data">
+    <ion-list lines="none" class="ion-text-center" *ngIf="hasLoaded">
+      <ion-item class="ion-margin-top imageCenter">
+        <img [src]="data.merchantAccount?.logo" class="circle ion-margin-top">
+      </ion-item>
+      <ion-item class="ion-text-center">
+        <ion-label><b>{{data.merchantAccount?.name}}</b></ion-label>
+      </ion-item>
+      <ion-card color="tertiary">
+        <img class="ion-margin-top" width="200" height="200" [src]="data.manaLinkRegistry?.qrImageUrl" />
+      </ion-card>
+      <ion-item color="tertiary" class="ion-text-center">
+        <ion-label color="medium">
+          <h3>คิวอาร์โค้ดใช้เพื่อสแกนจ่ายเงิน</h3>
+          <h3>ของร้านคุณ</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+  <ion-list lines="none" class="ion-text-center" *ngIf="!hasLoaded">
     <ion-item class="ion-margin-top imageCenter">
-      <img src="assets/imgs/logo.png" class="circle ion-margin-top">
+      <img src="assets/imgs/defaultshop.png" class="circle ion-margin-top">
     </ion-item>
     <ion-item class="ion-text-center">
-      <ion-label><b>Shop Name</b></ion-label>
-    </ion-item>
-    <ion-card color="tertiary">
-      <img class="ion-margin-top" width="200" height="200"
-        src="assets/imgs/promtpayicon.png" />
-    </ion-card>
-    <ion-item color="tertiary" class="ion-text-center">
-      <ion-label color="medium">
-        <h3>คิวอาร์โค้ดใช้เพื่อสแกนจ่ายเงิน</h3>
-        <h3>ของร้านคุณ</h3>
-      </ion-label>
+      <ion-label>กำลังโหลดข้อมูล กรุณารอสักครู่...</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
