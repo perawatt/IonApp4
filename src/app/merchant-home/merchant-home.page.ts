@@ -25,6 +25,30 @@ export class MerchantHomePage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewDidEnter() {
+    this.refreshCallBack();
+  }
+  
+  private loadData$() {
+    return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
+      .then(_ => {
+        return this.svc.getApiData(this.mcontentid);
+      })
+  }
+
+  private refreshCallBack()
+  {
+    this.hasLoaded = null;
+    let load$ = this.loadData$();
+    this.data$ = load$;
+    load$.then(it => {
+      this.title = it.merchantAccount.name;
+      this.merchantId = it.merchantAccount._id
+      this.svc.initPageApi(this.mcontentid);
+      this.hasLoaded = it ? "y" : "n";
+    });
+  }
+
   public onSelectReceiveMoneyQR() {
     this.router.navigate(["/merchant-qr-receive-money"]);
   }
