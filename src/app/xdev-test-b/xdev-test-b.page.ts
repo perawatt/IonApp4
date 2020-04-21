@@ -59,11 +59,11 @@ export class XdevTestBPage implements OnInit {
   }
 
   public async getMockDataValueBtn() {
-    this.data$ = await this.getMockDataValue();
+    this.data$ = this.getMockDataValue();
   }
 
   public async getMockDatObjectBtn() {
-    this.data$ = await this.getMockDatObject();
+    this.data$ = this.getMockDatObject();
   }
 
   getMockDataValue(): Promise<any> {
