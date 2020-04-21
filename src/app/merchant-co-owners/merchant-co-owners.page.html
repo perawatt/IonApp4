@@ -5,25 +5,32 @@
 </ion-header>
 
 <ion-content mode="ios">
-  <ion-list lines="none">
-    <ion-item color="tertiary" class="ion-margin-top">
-      <ion-avatar slot="start">
-        <img src="assets/imgs/logo.png">
-      </ion-avatar>
-      <ion-label>
-        <b>Full Name</b>
-        <h3>E-mail</h3>
-      </ion-label>
-      <ion-note color="danger" slot="end"><img height="12" src="assets/svgs/icon-star-danger.svg"> บัญชีหลัก</ion-note>
-    </ion-item>
-    <ion-item color="tertiary" class="ion-margin-top">
-      <ion-avatar slot="start">
-        <img src="assets/imgs/logo.png">
-      </ion-avatar>
-      <ion-label>
-        <b>Full Name</b>
-        <h3>E-mail</h3>
-      </ion-label>
+  <ion-list *ngIf="!hasLoaded" lines="none">
+    <ion-item class="ion-text-center">
+      กำลังโหลดข้อมูล กรุณารอสักครู่...
     </ion-item>
   </ion-list>
+
+  <ng-container *ngIf="data$ | async as data">
+    <ion-list *ngIf="hasLoaded == 'n'" lines="none">
+      <ion-item class="ion-text-center">
+        ไม่มีรายการ
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="hasLoaded == 'y'" lines="none">
+      <ion-item color="tertiary" *ngFor="let item of data.coOwners" class="ion-margin-top">
+        <ion-avatar slot="start">
+          <img [src]="item.profileImageUrl">
+        </ion-avatar>
+        <ion-label>
+          <b>{{item.displayName}}</b>
+          <h3>E-mail</h3>
+        </ion-label>
+        <ion-note *ngIf="true" color="danger" slot="end">
+          <img height="12" src="assets/svgs/icon-star-danger.svg"> บัญชีหลัก
+        </ion-note>
+      </ion-item>
+    </ion-list>
+  </ng-container>
 </ion-content>
