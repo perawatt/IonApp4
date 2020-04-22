@@ -34,6 +34,7 @@ export class PpayPaymentCreatingPage implements OnInit {
     load$.then(it => {
       this.svc.initPageApi(this.mcontentid);
       this.hasLoaded = it ? "y" : "n";
+      this.fg.get('amount').setValue(it.amount);
     });
   }
 

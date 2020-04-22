@@ -13,7 +13,9 @@
           <img src="assets/imgs/promtpayicon.png" class="circle ion-margin-top">
         </ion-item>
         <ion-item color="tertiary" class="ion-text-center">
-          <ion-label>พร้อมเพย์ {{ data.refId }}</ion-label>
+          <ion-label>
+            <h2>พร้อมเพย์ {{ data.refId }}</h2>
+          </ion-label>
         </ion-item>
         <ion-item color="tertiary" lines="none">
           <ion-label>
@@ -24,6 +26,8 @@
           <ion-input type="number" class="ion-text-center" placeholder="ระบุจำนวนเงิน" formControlName="amount"
             (ionChange)="AmountChanged()">
           </ion-input>
+        </ion-item>
+        <ion-item color="tertiary">
         </ion-item>
       </ion-list>
       <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
