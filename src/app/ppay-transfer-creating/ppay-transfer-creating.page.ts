@@ -51,6 +51,13 @@ export class PpayTransferCreatingPage implements OnInit {
     }
   }
 
+  public DisplayRefId(value: string) {
+    if (value) {
+      let censor = "****";
+      return censor.concat(value.slice(4));
+    }
+  }
+
   public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
 
   public AmountChanged() {
