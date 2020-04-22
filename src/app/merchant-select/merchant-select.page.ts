@@ -10,7 +10,7 @@ export class MerchantSelectPage implements OnInit {
 
   public hasLoaded: string;
   public mcontentid = "merchant-select";
-  private data$ = Promise.resolve<{}>({});
+  public data$ = Promise.resolve<{}>({});
 
   constructor(private svc: IonManaLib) { }
 

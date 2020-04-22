@@ -34,11 +34,11 @@ export class HomeFeedPage implements OnInit {
     });
   }
 
-  doRefresh(event: { complete: () => void; }) {
+  doRefresh(event) {
     setTimeout(() => {
       this.getFeeds();
       this.getShortcuts();
-      event.complete();
+      event.target.complete();
     }, 500);
   }
 

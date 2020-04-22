@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonManaLib } from 'ion-m-lib';
 import { Router } from '@angular/router';
+import { ParseDataProvider } from 'src/providers/parse-data';
 
 @Component({
   selector: 'app-merchant-home',
@@ -20,7 +21,7 @@ export class MerchantHomePage implements OnInit {
   private mcontentid = "merchant-home";
   private merchantId: string;
 
-  constructor(private router: Router, private svc: IonManaLib) { }
+  constructor(private router: Router, private svc: IonManaLib, private parse: ParseDataProvider) { }
 
   ngOnInit() {
   }
@@ -82,4 +83,6 @@ export class MerchantHomePage implements OnInit {
   public onSelectSetting() {
     this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/msg/underconstruction");
   }
+
+  public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
 }

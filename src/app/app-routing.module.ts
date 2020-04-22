@@ -226,7 +226,23 @@ const routes: Routes = [
   {
     path: 'merchant-transaction-withdraw',
     loadChildren: () => import('./merchant-transaction-withdraw/merchant-transaction-withdraw.module').then( m => m.MerchantTransactionWithdrawPageModule)
+  },  {
+    path: 'ppay-transfer-creating',
+    loadChildren: () => import('./ppay-transfer-creating/ppay-transfer-creating.module').then( m => m.PpayTransferCreatingPageModule)
+  },
+  {
+    path: 'ppay-transfer-confirm',
+    loadChildren: () => import('./ppay-transfer-confirm/ppay-transfer-confirm.module').then( m => m.PpayTransferConfirmPageModule)
+  },
+  {
+    path: 'ppay-payment-creating',
+    loadChildren: () => import('./ppay-payment-creating/ppay-payment-creating.module').then( m => m.PpayPaymentCreatingPageModule)
+  },
+  {
+    path: 'ppay-payment-confirm',
+    loadChildren: () => import('./ppay-payment-confirm/ppay-payment-confirm.module').then( m => m.PpayPaymentConfirmPageModule)
   }
+
 
 ];
 
