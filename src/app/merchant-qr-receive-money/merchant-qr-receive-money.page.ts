@@ -8,7 +8,7 @@ import { IonManaLib } from 'ion-m-lib';
 })
 export class MerchantQrReceiveMoneyPage implements OnInit {
 
-  private hasLoaded: string;
+  public hasLoaded: string;
   private mcontentid = "merchant-qr-receive-money";
   public data$ = Promise.resolve<{}>({});
 
