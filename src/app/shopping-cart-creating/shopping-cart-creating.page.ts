@@ -11,10 +11,10 @@ import { ParseDataProvider } from 'src/providers/parse-data';
 export class ShoppingCartCreatingPage implements OnInit {
 
   private attachCoupons = [];
-  private hasLoaded: string;
-  private mcontentid: string = "shopping-cart-creating/ncrtahc-637067097535372556";
+  public hasLoaded: string;
   public data$ = Promise.resolve<{}>({});
   public fg: FormGroup;
+  private mcontentid: string = "shopping-cart-creating";
   
   constructor(private fb: FormBuilder, private svc: IonManaLib, private parse: ParseDataProvider) {
   this.fg = this.fb.group({
