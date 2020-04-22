@@ -8,8 +8,8 @@
   <ng-container *ngIf="(data$ | async)?.merchantAccount as data">
     <ion-list lines="none" *ngIf="hasLoaded">
       <ion-item class="ion-margin-top imageCenter">
-        <img *ngIf="data?.logo" [src]="data.logo" class="circle ion-margin-top">
-        <img *ngIf="!data?.logo" src="assets/imgs/defaultshop.png" class="circle ion-margin-top">
+        <img *ngIf="data?.logo" [src]="data.logo" class="circle ion-margin-top" height="90px" width="90px">
+        <img *ngIf="!data?.logo" src="assets/imgs/defaultshop.png" class="circle ion-margin-top" height="90px" width="90px">
       </ion-item>
       <ion-item class="ion-text-center">
         <ion-label><b>เปลี่ยนภาพ</b></ion-label>

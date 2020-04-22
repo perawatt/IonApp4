@@ -13,7 +13,7 @@ export class ShoppingCartCreatingPage implements OnInit {
   private attachCoupons = [];
   private hasLoaded: string;
   private mcontentid: string = "shopping-cart-creating/ncrtahc-637067097535372556";
-  public data$ = Promise.resolve<{}>({ merchantAccount: {} });
+  public data$ = Promise.resolve<{}>({});
   public fg: FormGroup;
   
   constructor(private fb: FormBuilder, private svc: IonManaLib, private parse: ParseDataProvider) {

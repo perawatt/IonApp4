@@ -8,7 +8,7 @@
   <ng-container *ngIf="data$ | async as data">
     <ion-list lines="none" class="ion-text-center" *ngIf="hasLoaded">
       <ion-item class="ion-margin-top imageCenter">
-        <img [src]="data.merchantAccount?.logo" class="circle ion-margin-top">
+        <img [src]="data.merchantAccount?.logo" class="circle ion-margin-top" height="90px" width="90px">
       </ion-item>
       <ion-item class="ion-text-center">
         <ion-label><b>{{data.merchantAccount?.name}}</b></ion-label>
@@ -26,7 +26,7 @@
   </ng-container>
   <ion-list lines="none" class="ion-text-center" *ngIf="!hasLoaded">
     <ion-item class="ion-margin-top imageCenter">
-      <img src="assets/imgs/defaultshop.png" class="circle ion-margin-top">
+      <img src="assets/imgs/defaultshop.png" class="circle ion-margin-top" height="90px" width="90px">
     </ion-item>
     <ion-item class="ion-text-center">
       <ion-label>กำลังโหลดข้อมูล กรุณารอสักครู่...</ion-label>

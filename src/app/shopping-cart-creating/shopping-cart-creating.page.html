@@ -9,8 +9,10 @@
     <form [formGroup]="fg" (ngSubmit)="onSave()">
       <ion-list lines="none">
         <ion-item color="tertiary" class="ion-margin-top imageCenter">
-          <img *ngIf="data.merchantAccount.logo" [src]="data.merchantAccount.logo" class="circle ion-margin-top">
-          <img *ngIf="!data.merchantAccount.logo" src="assets/imgs/defaultshop.png" class="circle ion-margin-top">
+          <img *ngIf="data.merchantAccount.logo" [src]="data.merchantAccount.logo" class="circle ion-margin-top"
+            height="90px" width="90px">
+          <img *ngIf="!data.merchantAccount.logo" src="assets/imgs/defaultshop.png" class="circle ion-margin-top"
+            height="90px" width="90px">
         </ion-item>
         <ion-item color="tertiary" class="ion-text-center">
           <ion-label><b>{{data.merchantAccount.name}}</b></ion-label>
@@ -44,12 +46,25 @@
           </ion-fab>
         </ion-item>
         <ion-item color="tertiary">
-          <ion-label> Coupon Name </ion-label>
+          <ion-avatar slot="start">
+            <img src="assets/imgs/couponred.png">
+          </ion-avatar>
+          <ion-label>
+            คุณมีส่วนลดที่สามารถใช้ได้
+          </ion-label>
+          <ion-button color="danger" shape="round" slot="end" fill="outline">
+            ใช้เลยตอนนี้
+          </ion-button>
         </ion-item>
-        <ion-item class="couponImage" color="tertiary">
-          <img src="assets/imgs/Coupontest.png" class="ion-margin-bottom">
-          <ion-note color="danger" slot="end">ลบ</ion-note>
-        </ion-item> -->
+        <ion-card color="tertiary">
+          <ion-card-content class="ion-no-padding">
+            <ion-label class="ion-padding">item.name</ion-label>
+            <ion-item class="couponImage" color="tertiary" lines="none">
+              <img src="assets/imgs/Coupontest.png" class="ion-margin-bottom">
+              <ion-note color="danger" slot="end">ลบ</ion-note>
+            </ion-item>
+          </ion-card-content>
+        </ion-card> -->
       </ion-list>
       <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
         [disabled]="fg.invalid">ตกลง
