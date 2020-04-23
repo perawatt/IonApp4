@@ -226,7 +226,8 @@ const routes: Routes = [
   {
     path: 'merchant-transaction-withdraw',
     loadChildren: () => import('./merchant-transaction-withdraw/merchant-transaction-withdraw.module').then( m => m.MerchantTransactionWithdrawPageModule)
-  },  {
+  },
+  {
     path: 'ppay-transfer-creating',
     loadChildren: () => import('./ppay-transfer-creating/ppay-transfer-creating.module').then( m => m.PpayTransferCreatingPageModule)
   },
@@ -242,27 +243,6 @@ const routes: Routes = [
     path: 'ppay-payment-confirm',
     loadChildren: () => import('./ppay-payment-confirm/ppay-payment-confirm.module').then( m => m.PpayPaymentConfirmPageModule)
   },
-  {
-    path: 'shopping-carts',
-    loadChildren: () => import('./shopping-carts/shopping-carts.module').then( m => m.ShoppingCartsPageModule)
-  },
-  {
-    path: 'security-agreement',
-    loadChildren: () => import('./security-agreement/security-agreement.module').then( m => m.SecurityAgreementPageModule)
-  },
-  {
-    path: 'security-ownership-check',
-    loadChildren: () => import('./security-ownership-check/security-ownership-check.module').then( m => m.SecurityOwnershipCheckPageModule)
-  },
-  {
-    path: 'security-personal-form',
-    loadChildren: () => import('./security-personal-form/security-personal-form.module').then( m => m.SecurityPersonalFormPageModule)
-  },
-  {
-    path: 'shopping-add-product',
-    loadChildren: () => import('./shopping-add-product/shopping-add-product.module').then( m => m.ShoppingAddProductPageModule)
-  }
-
 
 ];
 
