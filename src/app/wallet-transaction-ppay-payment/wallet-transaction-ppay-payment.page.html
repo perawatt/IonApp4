@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>รายละเอียดการจ่ายเงิน</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="transaction ion-padding-top" mode="ios">
+
+  <ng-container>
+    <ion-card class="ion-padding-top" color="tertiary">
+      <ion-item class="ion-text-center" color="tertiary" lines="none">
+        <ion-grid>
+          <ion-row class="ion-text-center ion-align-items-center">
+            <ion-col size="6" class="ion-text-center">
+              <div class="content-center">
+                <img class="icon transaction-img" src="assets/imgs/changewallet.png">
+              </div>
+              <img class="right-arrow" height="18" src="assets/svgs/icon-forward-medium.svg">
+            </ion-col>
+            <ion-col size="6" class="ion-text-center">
+              <div class="content-center">
+                <img class="icon circle transaction-img" src="assets/imgs/changewallet.png">
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6" class="ion-text-center">
+              <ion-label class="ion-text-nowrap">
+                <h3><b>ดหกดหกดหกด</b></h3>
+              </ion-label>
+            </ion-col>
+            <ion-col size="6" class="ion-text-center">
+              <ion-label class="ion-text-nowrap">
+                <h3 *ngIf="true"><b>อานน บางสาน</b></h3>
+                <h3><b>BillerId id: ***ฟหกฟหก</b></h3>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-card>
+    <ion-card color="tertiary">
+      <ion-card-content class="ion-no-padding">
+        <ion-grid class="ion-padding">
+          <ion-row>
+            <ion-col class="ion-no-padding">
+              <b>รายละเอียดการจ่ายเงิน</b>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-no-padding">
+              <ion-label>จำนวนเงิน</ion-label>
+            </ion-col>
+            <ion-col class="ion-no-padding ion-text-right">฿111
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-no-padding">ค่าธรรมเนียม
+            </ion-col>
+            <ion-col class="ion-no-padding ion-text-right">฿111
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-no-padding">ยอดรวม
+            </ion-col>
+            <ion-col class="ion-no-padding ion-text-right">
+              <ion-text color="danger">฿111
+              </ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-label class="ion-padding-top" color="medium">
+              <h3 *ngIf="true">Ref1 : asdasd</h3>
+              <h3 *ngIf="true">Ref2 : asdasd</h3>
+            </ion-label>
+          </ion-row>
+        </ion-grid>
+
+      </ion-card-content>
+    </ion-card>
+    <div size="12" class="indentation">
+    </div>
+
+    <ion-card color="light" class="ion-text-center">
+      <br>
+      <ion-label class="text-gray ion-margin-vertical ion-text-uppercase">
+        <h1><b>รหัสอ้างอิง : 11111</b></h1>
+      </ion-label>
+      <ion-label class="text-gray">
+        <h3 class="text-gray">วันที่ 25/2/35 เวลา
+          11.00 น</h3>
+      </ion-label>
+      <img class="center icon ion-margin-top" width="80" height="80" src="assets/imgs/transaction-shop.png" />
+    </ion-card>
+  </ng-container>
+
+  <ng-container *ngIf="false">
+    <!--TODO: loading page here -->
+  </ng-container>
+
+</ion-content>

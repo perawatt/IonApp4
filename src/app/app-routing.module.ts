@@ -243,6 +243,14 @@ const routes: Routes = [
     path: 'ppay-payment-confirm',
     loadChildren: () => import('./ppay-payment-confirm/ppay-payment-confirm.module').then( m => m.PpayPaymentConfirmPageModule)
   },
+  {
+    path: 'wallet-transaction-ppay-transfer',
+    loadChildren: () => import('./wallet-transaction-ppay-transfer/wallet-transaction-ppay-transfer.module').then( m => m.WalletTransactionPpayTransferPageModule)
+  },
+  {
+    path: 'wallet-transaction-ppay-payment',
+    loadChildren: () => import('./wallet-transaction-ppay-payment/wallet-transaction-ppay-payment.module').then( m => m.WalletTransactionPpayPaymentPageModule)
+  }
 
 ];
 
