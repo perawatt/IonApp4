@@ -5,14 +5,13 @@
 </ion-header>
 
 <ion-content mode="ios">
-
-  <ng-container *ngIf="hasLoaded == 'y'">
-    <ion-list lines="none">
+  <ng-container *ngIf="data$ | async as data">
+    <ion-list lines="none" *ngIf="hasLoaded == 'y'">
       <ion-list-header mode="md" class="ion-text-left">
         <ion-label>เลือกร้าน</ion-label>
       </ion-list-header>
       <ion-item button detail="false" color="tertiary" class="ion-margin-bottom"
-        *ngFor="let merchantAccount of (data$ | async)?.merchantAccounts"
+        *ngFor="let merchantAccount of data.merchantAccounts"
         (click)="onSelectItem(merchantAccount.endpointId,merchantAccount.approvedDateTime != null)">
         <ion-avatar slot="start">
           <img *ngIf="merchantAccount.logo" [src]="merchantAccount.logo" />
@@ -22,12 +21,11 @@
           <b>Merchant Name</b>
           <ion-text color="danger">
             <h3 *ngIf="merchantAccount.approvedDateTime == null">รอการอนุมัติ</h3>
-            <h3 *ngIf="merchantAccount.approvedDateTime != null">nbsp</h3>
+            <h3 *ngIf="merchantAccount.approvedDateTime != null">&nbsp;</h3>
           </ion-text>
         </ion-label>
       </ion-item>
     </ion-list>
-  </ng-container>
   <ion-list lines="none" class="ion-text-center" *ngIf="hasLoaded == 'n'">
     <ion-item color="tertiary" class="ion-margin-top">
       <ion-label>
@@ -40,10 +38,11 @@
       </ion-label>
     </ion-item>
     <ion-card color="tertiary">
-      <ion-button color="danger" expand="block">สร้างร้านใหม่</ion-button>
+        <ion-button color="danger" expand="block" (click)="Add()">สร้างร้านใหม่</ion-button>
     </ion-card>
     <img class="ion-margin-top" src="assets/imgs/shopBackground.png" width="200" height="200" />
   </ion-list>
+  </ng-container>
   <ion-list *ngIf="!hasLoaded" lines="none">
     <ion-item class="ion-text-center">
       <ion-label>

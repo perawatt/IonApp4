@@ -16,7 +16,7 @@
             <img *ngIf="!data || !data.profileImageUrl" class="qr center circle ion-margin-bottom"
             src="assets/imgs/user-icon.png" width="100" height="100">
           <ion-label>
-            <p>เปลี่ยนภาพ</p>
+            <h3>เปลี่ยนภาพ</h3>
             <h2 *ngIf="data.email"><b>{{ data.email }}</b></h2>
             <h2 *ngIf="!data.email"><b>-</b></h2>
           </ion-label>
@@ -42,7 +42,7 @@
 
   </ng-container>
 
-  <ng-container *ngIf="(data$ | async)?.profile as data">
+  <ng-container *ngIf="!hasLoaded">
     <!--TODO: loading page here -->
   </ng-container>
 

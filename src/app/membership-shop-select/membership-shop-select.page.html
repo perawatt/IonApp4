@@ -10,7 +10,7 @@
       <ion-list-header lines="none" mode="md">
         <ion-label>เลือกสมาชิกร้าน</ion-label>
       </ion-list-header>
-      <ion-item detail="false" button color="tertiary" class="ion-margin-bottom" *ngFor="let shop of data$ | async">
+      <ion-item detail="false" button color="tertiary" class="ion-margin-bottom" *ngFor="let shop of data$ | async" (click)="onSelectItem(shop.merchant.membershipEndpointUrl)">
         <ion-avatar slot="start">
           <img [src]="shop.merchant.logo" />
         </ion-avatar>

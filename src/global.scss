@@ -189,6 +189,16 @@ ion-item.imageCenter img {
     margin-left: auto;
     margin-right: auto;
 }
+
+ion-label ion-skeleton-text {
+    height: 17px;
+    width: 80%;
+}
+
+H3 ion-skeleton-text {
+    height: 14px;
+    width: 60%;
+}
   // Fonts
 // --------------------------------------------------
 @font-face {
