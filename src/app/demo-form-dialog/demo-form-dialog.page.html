@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>demoFormDialog</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="fg">
+    <ion-list margin-top mode="ios">
+      <ion-item margin-top no-lines>
+        <h2>จำนวนเงินที่ต้องการเติม</h2>
+      </ion-item>
+      <ion-item padding-right mode="ios" no-lines>
+        <ion-label fixed mode="ios">THB</ion-label>
+        <ion-input type="number" placeholder="ระบุจำนวนเงิน" formControlName="amount"></ion-input>
+      </ion-item>
+      <ion-button expand="full" type="button" (click)="openDialog()">Open dialog</ion-button>
+      <b>page status : {{pageStatus}}</b>
+      <div margin>
+        <h6><b>Select Option Result</b></h6>
+        <p><b>Status</b><br>{{ status? status : "-" }}</p>
+        <p><b>Object</b><br>{{ data? data : "-" }}</p>
+        <p><b>Object (JSON)</b><br>{{ data? (data | json): "-" }}</p>
+        <p><b>Message</b><br>{{ msg? msg : "-" }}</p>
+
+        <ion-button ion-button expand="full" type="button" (click)="openDialogThreeTime()" color="danger">Open dialog 3
+          times</ion-button>
+        <ion-button ion-button expand="full" type="button" (click)="openDialogMistakeMCID()" color="danger">Open dialog mistake
+          mcid</ion-button>
+      </div>
+    </ion-list>
+    <ion-footer>
+      <ion-button id="app-form-submit" type="submit" color="danger" [disabled]="fg.invalid" ion-button expand="full"
+        no-margin>ยืนยัน</ion-button>
+    </ion-footer>
+  </form>
+
+</ion-content>
