@@ -226,7 +226,8 @@ const routes: Routes = [
   {
     path: 'merchant-transaction-withdraw',
     loadChildren: () => import('./merchant-transaction-withdraw/merchant-transaction-withdraw.module').then( m => m.MerchantTransactionWithdrawPageModule)
-  },  {
+  },
+  {
     path: 'ppay-transfer-creating',
     loadChildren: () => import('./ppay-transfer-creating/ppay-transfer-creating.module').then( m => m.PpayTransferCreatingPageModule)
   },
@@ -259,7 +260,13 @@ const routes: Routes = [
     path: 'security-agreement',
     loadChildren: () => import('./security-agreement/security-agreement.module').then( m => m.SecurityAgreementPageModule)
 
-
+    path: 'demo-form-dialog',
+    loadChildren: () => import('./demo-form-dialog/demo-form-dialog.module').then( m => m.DemoFormDialogPageModule)
+  },
+  {
+    path: 'demo-form-dialog-info',
+    loadChildren: () => import('./demo-form-dialog-info/demo-form-dialog-info.module').then( m => m.DemoFormDialogInfoPageModule)
+  }
 ];
 
 @NgModule({

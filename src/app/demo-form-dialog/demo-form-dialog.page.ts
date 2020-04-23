@@ -10,9 +10,9 @@ import { IonManaLib } from 'ion-m-lib';
 export class DemoFormDialogPage implements OnInit {
 
   private mcontentid: string = "637043008202197153";
-  private status: any;
-  private data: any;
-  private msg: any;
+  public status: any;
+  public data: any;
+  public msg: any;
   public pageStatus: string = "Init";
   public fg: FormGroup;
 
