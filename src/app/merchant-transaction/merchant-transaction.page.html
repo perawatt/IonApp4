@@ -36,18 +36,80 @@
       </ion-item>
     </ion-list>
   </ng-container>
-  <ion-list *ngIf="!hasLoaded" lines="none">
-    <ion-item class="ion-text-center ion-margin-top">
+  <ng-container *ngIf="!hasLoaded">
+    <ion-item lines="none">
       <ion-label>
         <h2><b>&nbsp;</b></h2>
-        <ion-text color="medium">ยอดเงินปัจจุบัน</ion-text>
+        <ion-text color="medium">&nbsp;</ion-text>
         <h2><b>&nbsp;</b></h2>
       </ion-label>
     </ion-item>
-    <ion-item class="ion-text-center" color="tertiary">
-      <ion-label>
-        กำลังโหลดข้อมูล กรุณารอสักครู่...
-      </ion-label>
-    </ion-item>
-  </ion-list>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <b>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </b>
+          <h3>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </h3>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <b>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </b>
+          <h3>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </h3>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <b>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </b>
+          <h3>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </h3>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <b>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </b>
+          <h3>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </h3>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <b>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </b>
+          <h3>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
 </ion-content>
