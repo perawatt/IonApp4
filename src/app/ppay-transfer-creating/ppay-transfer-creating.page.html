@@ -6,7 +6,7 @@
 
 <ion-content mode="ios">
 
-  <ng-container *ngIf="data$ | async as data">
+  <ng-container *ngIf="hasLoaded && data$ | async as data">
     <form [formGroup]="fg" (ngSubmit)="onSave()">
       <ion-list lines="none">
         <ion-item color="tertiary" class="ion-margin-top imageCenter">
@@ -35,7 +35,22 @@
   </ng-container>
 
   <ng-container *ngIf="!hasLoaded">
-    <!--TODO: loading page here -->
+    <ion-card color="light" class="ion-text-center">
+      <ion-card-content>
+        <ion-skeleton-text class="center circle ion-margin-bottom" animated style="width:100px; height:100px">
+        </ion-skeleton-text>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+          </h3>
+          <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+        </ion-label>
+      </ion-card-content>
+    </ion-card>
+    <ion-item lines="none">
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-label>
+    </ion-item>
   </ng-container>
-
 </ion-content>

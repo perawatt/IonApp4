@@ -9,7 +9,7 @@ import { ParseDataProvider } from 'src/providers/parse-data';
   styleUrls: ['./ppay-transfer-creating.page.scss'],
 })
 export class PpayTransferCreatingPage implements OnInit {
-  
+
   public hasLoaded: string;
   public fg: FormGroup;
   public data$ = Promise.resolve<{}>({});
@@ -29,13 +29,24 @@ export class PpayTransferCreatingPage implements OnInit {
 
   ionViewDidEnter() {
     this.hasLoaded = null;
-    let load$ = this.loadData$();
-    this.data$ = load$;
+    this.loadData$();
+    this.svc.setStateChangedHandler((param) => this.OnStateChanged(param));
+    // this.data$ = load$;
+    // load$.then(it => {
+    //   this.svc.initPageApi(this.mcontentid);
+    //   this.hasLoaded = it ? "y" : "n";
+    //   this.fg.get('amount').setValue(it.amount);
+    // });
+  }
+
+  OnStateChanged(state) {
+    let load$ = this.svc.callApiGet(this.mcontentid, state);
     load$.then(it => {
+      this.data$ = load$;
       this.svc.initPageApi(this.mcontentid);
       this.hasLoaded = it ? "y" : "n";
       this.fg.get('amount').setValue(it.amount);
-    });
+    })
   }
 
   private loadData$() {

@@ -29,13 +29,24 @@ export class PpayPaymentCreatingPage implements OnInit {
 
   ionViewDidEnter() {
     this.hasLoaded = null;
-    let load$ = this.loadData$();
+    this.loadData$();
+    this.svc.setStateChangedHandler((param) => this.OnStateChanged(param));
+    //this.data$ = load$;
+    // load$.then(it => {
+    //   this.svc.initPageApi(this.mcontentid);
+    //   this.hasLoaded = it ? "y" : "n";
+    //   this.fg.get('amount').setValue(it.amount);
+    // });
+  }
+
+  OnStateChanged(state) {
+    let load$ = this.svc.callApiGet(this.mcontentid, state);
     this.data$ = load$;
     load$.then(it => {
       this.svc.initPageApi(this.mcontentid);
       this.hasLoaded = it ? "y" : "n";
       this.fg.get('amount').setValue(it.amount);
-    });
+    })
   }
 
   private loadData$() {
