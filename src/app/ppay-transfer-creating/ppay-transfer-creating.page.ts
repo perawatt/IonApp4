@@ -42,12 +42,11 @@ export class PpayTransferCreatingPage implements OnInit {
 
   OnStateChanged(state) {
     let load$ = this.svc.callApiGet(this.mcontentid, state);
+    this.data$ = load$;
     load$.then(it => {
-      this.data$ = load$;
-      this.svc.initPageApi(this.mcontentid);
-      this.hasLoaded = it ? "y" : "n";
       this.fg.get('amount').setValue(it.amount);
       this.fg.get('code').setValue(it.code);
+      this.hasLoaded = it ? "y" : "n";
     })
   }
 
