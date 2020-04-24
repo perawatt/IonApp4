@@ -17,6 +17,7 @@ export class PpayTransferCreatingPage implements OnInit {
   constructor(private svc: IonManaLib, private fb: FormBuilder, private parse: ParseDataProvider) {
     this.fg = this.fb.group({
       'amount': [null, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
+      'code': null
     });
 
     this.fg.valueChanges.subscribe(_ => {
@@ -46,6 +47,7 @@ export class PpayTransferCreatingPage implements OnInit {
       this.svc.initPageApi(this.mcontentid);
       this.hasLoaded = it ? "y" : "n";
       this.fg.get('amount').setValue(it.amount);
+      this.fg.get('code').setValue(it.code);
     })
   }
 
