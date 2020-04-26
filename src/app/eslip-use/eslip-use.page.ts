@@ -22,7 +22,15 @@ export class EslipUsePage implements OnInit {
 
   ionViewDidEnter() {
     this.svc.setStateChangedHandler((param) => this.OnStateChanged(param));
-    this.OnStateChanged(null);
+
+    this.hasLoaded = null;
+    let load$ = this.loadData$();
+    this.data$ = load$;
+    load$.then(it => {
+      this.title = it.eslipStub != null ? it.eslipStub.name : this.title;
+      this.svc.initPageApi(this.mcontentid);
+      this.hasLoaded = it ? "y" : "n";
+    });
   }
 
   private loadData$() {
@@ -39,15 +47,6 @@ export class EslipUsePage implements OnInit {
       case "expired": ;
       default: ;
     }
-
-    this.hasLoaded = null;
-    let load$ = this.loadData$();
-    this.data$ = load$;
-    load$.then(it => {
-      this.title = it.eslipStub != null ? it.eslipStub.name : this.title;
-      this.svc.initPageApi(this.mcontentid);
-      this.hasLoaded = it ? "y" : "n";
-    });
   }
 
   public ToggleShowQR() {
