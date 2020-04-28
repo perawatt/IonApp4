@@ -14,4 +14,20 @@
       </ion-label>
     </ion-item>
   </ng-container>
-</ion-content>
+
+  <ng-container *ngIf="!hasLoaded">
+    <!--TODO: loading page here -->
+      <ion-item lines="none">
+        <ion-label>
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <h3>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </h3>
+          <h3>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </h3>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+ </ion-content>
+
