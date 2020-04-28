@@ -23,7 +23,7 @@
             src="assets/imgs/usedcoupon.png">
         </ion-item>
         <ion-item color="tertiary">
-          <img width="12" height="12" class="qr" src="assets/imgs/shop.png" slot="start" style="margin-right: 5px;"/>
+          <img width="12" height="12" class="qr" src="assets/imgs/shop.png" slot="start" style="margin-right: 5px;" />
           <ion-label [color]="eslip.activatedDate != null ? 'medium':'dark'">
             {{eslip.distributerMerchant.name}}
           </ion-label>
@@ -43,5 +43,47 @@
 
   <ng-container *ngIf="!hasLoaded">
     <!--TODO: loading page here -->
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+    </ion-item>
   </ng-container>
 </ion-content>
