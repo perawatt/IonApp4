@@ -29,29 +29,132 @@
 <ion-content color="tertiary" mode="ios">
 
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingText="Pull to refresh"
-      refreshingText="Refreshing...">
+    <ion-refresher-content pullingText="Pull to refresh" refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-list lines="full" class="ion-no-padding">
-    <ion-item-sliding color="danger" *ngFor="let item of feeds$ | async" color="red">
-      <ion-item button detail="false" color="tertiary" (click)="homeFeedAction(item)">
-        <ion-avatar slot="start">
-          <img [src]="item.thumbnailImageURL">
-        </ion-avatar>
+  <ng-container *ngIf="hasLoaded">
+    <ion-list lines="full" class="ion-no-padding">
+      <ion-item-sliding color="danger" *ngFor="let item of feeds$ | async" color="red">
+        <ion-item button detail="false" color="tertiary" (click)="homeFeedAction(item)">
+          <ion-avatar slot="start">
+            <img [src]="item.thumbnailImageURL">
+          </ion-avatar>
 
-        <ion-label [color]="IsDeleteFeed(item) ? 'medium' : 'dark'">
-          <b>{{item.title}}</b>
-          <p>{{item.description}}</p>
-        </ion-label>
+          <ion-label [color]="IsDeleteFeed(item) ? 'medium' : 'dark'">
+            <b>{{item.title}}</b>
+            <p>{{item.description}}</p>
+          </ion-label>
 
-        <ion-note slot="end" *ngIf="IsExpirable(item)">
-          <img width="12" [src]="IsDeleteFeed(item) ? 'assets/imgs/timegray.png':'assets/imgs/timered.png'">
-          <span> {{DisplayExpireDateTime(item)}}</span>
-        </ion-note>
-      </ion-item>
-    </ion-item-sliding>
-  </ion-list>
+          <ion-note slot="end" *ngIf="IsExpirable(item)">
+            <img width="12" [src]="IsDeleteFeed(item) ? 'assets/imgs/timegray.png':'assets/imgs/timered.png'">
+            <span> {{DisplayExpireDateTime(item)}}</span>
+          </ion-note>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  </ng-container>
+
+  <ng-container *ngIf="!hasLoaded">
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+  </ng-container>
 
 </ion-content>

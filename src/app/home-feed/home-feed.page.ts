@@ -35,6 +35,7 @@ export class HomeFeedPage implements OnInit {
   }
 
   doRefresh(event) {
+    this.hasLoaded = null;
     setTimeout(() => {
       this.getFeeds();
       this.getShortcuts();
