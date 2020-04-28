@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WalletTransactionPpayTransferPage implements OnInit {
 
+  public hasLoaded: string;
+  public data$;
+  private mcontentid: string = "wallet-transaction-ppay-transfer";
   constructor() { }
 
   ngOnInit() {
