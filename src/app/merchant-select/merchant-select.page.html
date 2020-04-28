@@ -43,7 +43,8 @@
       <img class="ion-margin-top" src="assets/imgs/shopBackground.png" width="200" height="200" />
     </ion-list>
   </ng-container>
-  <ion-list *ngIf="!hasLoaded" lines="none">
+
+  <ng-container *ngIf="!hasLoaded">
     <ion-item lines="none">
       <ion-label>
         <ion-skeleton-text animated></ion-skeleton-text>
@@ -104,5 +105,16 @@
         </h3>
       </ion-label>
     </ion-item>
-  </ion-list>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+  </ng-container>
 </ion-content>
