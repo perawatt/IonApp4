@@ -26,13 +26,74 @@
 
   <ng-container *ngIf="hasLoaded == 'n'">
     <ion-list lines="none">
+      <ion-list-header lines="none" mode="md">
+        <ion-label>เลือกสมาชิกร้าน</ion-label>
+      </ion-list-header>
       <ion-item color="tertiary" class="ion-text-center">
         <ion-label>ไม่มีรายการสมาชิกร้าน</ion-label>
       </ion-item>
     </ion-list>
   </ng-container>
 
-  <ng-container *ngIf="!hasLoaded">
-    <!--TODO: loading page here -->
+  <ng-container *ngIf="!hasLoaded"><ion-item lines="none">
+    <ion-label>
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-avatar>
+    <ion-label>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <h3>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </h3>
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-avatar>
+    <ion-label>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <h3>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </h3>
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-avatar>
+    <ion-label>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <h3>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </h3>
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-avatar>
+    <ion-label>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <h3>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </h3>
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-avatar>
+    <ion-label>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <h3>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </h3>
+    </ion-label>
+  </ion-item>
   </ng-container>
 </ion-content>
