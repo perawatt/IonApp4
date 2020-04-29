@@ -7,7 +7,8 @@ import { IonManaLib } from 'ion-m-lib';
   styleUrls: ['./reminder-message.page.scss'],
 })
 export class ReminderMessagePage implements OnInit {
-
+  
+  public hasLoaded: string;
   public data$ = Promise.resolve<{}>({});
   private mcontentid = "reminder-message";
 
