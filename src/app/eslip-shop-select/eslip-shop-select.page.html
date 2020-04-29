@@ -6,11 +6,11 @@
 
 <ion-content mode="ios">
   <ng-container *ngIf="data$ | async as data">
-    <ion-list lines="full" *ngIf="hasLoaded == 'y'">
+    <ion-list lines="none" *ngIf="hasLoaded == 'y'">
       <ion-list-header lines="none" mode="md">
         <ion-label>เลือกร้าน</ion-label>
       </ion-list-header>
-      <ion-item button detail="false" color="tertiary" *ngFor="let shop of data"
+      <ion-item button detail="false" class="ion-margin-bottom" color="tertiary" *ngFor="let shop of data"
         (click)="onSelectItem(shop.merchantEslipUrl)">
         <ion-avatar slot="start">
           <img [src]="shop.merchant.logoImageUrl" />
