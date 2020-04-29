@@ -38,9 +38,8 @@
           <h2>จำนวนเงินที่ต้องการเติม</h2>
         </ion-label>
       </ion-item>
-      <ion-item lines="none" color="tertiary">
-        <ion-label position="fixed">THB</ion-label>
-        <ion-input type="number" placeholder="ระบุจำนวนเงิน" formControlName="amount" (ionChange)="AmountChanged()">
+      <ion-item lines="none" color="tertiary" lines="full">
+        <ion-input type="number" class="ion-text-center" placeholder="ระบุจำนวนเงิน" formControlName="amount" (ionChange)="AmountChanged()">
         </ion-input>
       </ion-item>
       <ion-item lines="none" color="tertiary" *ngIf="fg.get('amount').value != null && fg.get('amount').invalid">
@@ -49,7 +48,7 @@
         </ion-label>
       </ion-item>
 
-      <ion-card class="ion-text-center ion-padding-bottom" color="tertiary">
+      <ion-card class="ion-text-center ion-padding-vertical" color="tertiary">
         <ion-button *ngIf="!hasImage || hasImage == 'n'" shape="round" color="danger"
           (click)="insertBankTransferSlip()">แนบสลิปธนาคาร</ion-button>
         <ng-container *ngIf="imageResponse$ | async as imageResponse">
@@ -68,11 +67,12 @@
           <h2>กรุณากรอกข้อมูล</h2>
         </ion-label>
       </ion-item>
-      <ion-item lines="none" color="tertiary">
-        <ion-label position="fixed">เบอร์โทรศัพท์</ion-label>
+      <ion-item color="tertiary">
         <ion-input type="tel" placeholder="ระบุเบอร์โทรศัพท์" formControlName="contactNumber"></ion-input>
       </ion-item>
+      <ion-item color="tertiary" lines="none"></ion-item>
     </ion-list>
+    
     <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit" [disabled]="fg.invalid">ยืนยัน
     </ion-button>
   </form>
