@@ -35,11 +35,13 @@
           </ion-label>
         </ion-item>
       </ion-list>
+      
       <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
         [disabled]="fg.invalid">ตกลง
       </ion-button>
     </form>
   </ng-container>
+
   <ng-container *ngIf="!hasLoaded">
     <ion-card color="light" class="ion-text-center">
       <ion-card-content>
