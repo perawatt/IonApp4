@@ -29,11 +29,13 @@
           <b *ngIf="data && data.displayName">{{ data.displayName }}</b>
           <b *ngIf="!data || !data.displayName">-</b>
         </ion-label>
+        <img slot="end" height="13" src="assets/svgs/icon-forward-medium.svg">
       </ion-item>
       <ion-item color="tertiary" button (click)="onSelectViewAddress()">
         <ion-label>
           <b>จัดการที่อยู่</b>
         </ion-label>
+        <img slot="end" height="13" src="assets/svgs/icon-forward-medium.svg">
       </ion-item>
     </ion-list>
   </ng-container>
