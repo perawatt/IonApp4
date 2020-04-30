@@ -55,7 +55,7 @@
         </ion-item>
       </div>
       <div *ngIf="hasLoaded == 'y'">
-        <ion-item color="tertiary" button class="ion-margin-bottom" *ngFor="let item of data.addresses; let i = index;"
+        <ion-item color="tertiary" button detail="false" class="ion-margin-bottom" *ngFor="let item of data.addresses; let i = index;"
           (click)="onSelectEditAddress(i)">
           <ion-label>
             <h2>{{item.address.title}}</h2>

@@ -24,14 +24,14 @@
       <ion-list-header mode="md">
         <ion-label>ชื่อเล่น</ion-label>
       </ion-list-header>
-      <ion-item color="tertiary" button class="ion-margin-bottom" (click)="onSelectEditName()">
+      <ion-item color="tertiary" button detail="false" class="ion-margin-bottom" (click)="onSelectEditName()">
         <ion-label>
           <b *ngIf="data && data.displayName">{{ data.displayName }}</b>
           <b *ngIf="!data || !data.displayName">-</b>
         </ion-label>
         <img slot="end" height="13" src="assets/svgs/icon-forward-medium.svg">
       </ion-item>
-      <ion-item color="tertiary" button (click)="onSelectViewAddress()">
+      <ion-item color="tertiary" button detail="false" (click)="onSelectViewAddress()">
         <ion-label>
           <b>จัดการที่อยู่</b>
         </ion-label>

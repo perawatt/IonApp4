@@ -10,13 +10,13 @@
     <ion-list-header lines="none" mode="md">
       <ion-label>กรุณาเลือกวิธีการถอนเงิน</ion-label>
     </ion-list-header>
-    <ion-item color="tertiary" button (click)="onSelectWithdrawByMTM()">
+    <ion-item color="tertiary" button detail="false" (click)="onSelectWithdrawByMTM()">
       <ion-label>
         <b>ถอนเงินผ่าน mana</b>
       </ion-label>
       <img slot="end" height="13" src="assets/svgs/icon-forward-medium.svg">
     </ion-item>
-    <ion-item color="tertiary" button class="ion-margin-top" (click)="onSelectWithdrawByPromptpay()">
+    <ion-item color="tertiary" button detail="false" class="ion-margin-top" (click)="onSelectWithdrawByPromptpay()">
       <ion-label>
         <b>ถอนเงินผ่าน PromptPay</b>
       </ion-label>
