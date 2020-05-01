@@ -4,12 +4,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content mode="ios" class="ion-padding-top">
+<ion-content mode="ios" class="ion-padding-top" fullscreen="true">
   <ng-container *ngIf="(data$ | async)?.depositSession as data">
     <div class="ion-margin-bottom" *ngIf="data.promptpayType != 'qr' && hasLoaded">
       <ion-card color="tertiary">
         <ion-card-content>
-          <img class="center ion-margin-bottom" width="60" height="60" src="assets/imgs/icontopup.png"/>
+          <img class="center ion-margin-bottom" width="60" height="60" src="assets/imgs/icontopup.png" />
           <ion-list>
             <ion-item color="tertiary">
               <ion-label>
