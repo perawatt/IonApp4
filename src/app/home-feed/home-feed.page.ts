@@ -47,9 +47,11 @@ export class HomeFeedPage implements OnInit {
     this.hasLoaded = null;
     let load$ = this.svc.getApiData(this.mcontentid);
     // this.feeds$ = load$;
-    this.zone.run(() => { this.feeds$ = load$; });
-    load$.then(it => {
-      this.hasLoaded = (it && it.length > 0) ? "y" : "n";
+    this.zone.run(() => {
+      this.feeds$ = load$;
+      load$.then(it => {
+        this.hasLoaded = (it && it.length > 0) ? "y" : "n";
+      });
     });
   }
 
