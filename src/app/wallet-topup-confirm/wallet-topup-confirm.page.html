@@ -9,7 +9,7 @@
     <div class="ion-margin-bottom" *ngIf="data.promptpayType != 'qr' && hasLoaded">
       <ion-card color="tertiary">
         <ion-card-content>
-          <img class="center ion-margin-bottom" width="50" height="50" src="assets/imgs/icontopup.png"/>
+          <img class="center ion-margin-bottom" width="60" height="60" src="assets/imgs/icontopup.png"/>
           <ion-list>
             <ion-item color="tertiary">
               <ion-label>
@@ -45,15 +45,6 @@
       </ion-card>
     </div>
 
-    <ion-card color="tertiary">
-      <ion-card-content class="ion-text-center">
-        <img
-          src="https://chart.googleapis.com/chart?cht=qr&chl=GAY}&chs=300x300&choe=UTF-8&chld=L|2%27%20rel=%27nofollow" />
-      </ion-card-content>
-    </ion-card>
-  </ng-container>
-
-  <ng-container *ngIf="(data$ | async)?.depositSession as data">
     <ion-card color="tertiary" *ngIf="data.promptpayType == 'qr' && hasLoaded">
       <ion-card-content>
         <img
