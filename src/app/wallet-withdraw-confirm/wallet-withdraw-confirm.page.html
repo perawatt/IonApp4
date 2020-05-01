@@ -11,39 +11,51 @@
       <div class="ion-margin-bottom">
         <ion-card color="tertiary">
           <ion-card-content>
-            <ion-label>
-              <h2>หมายเลขพร้อมเพย์</h2>
-              <h2>
-                <b>{{ data.promptpayId }}</b>
-              </h2>
-              <h2>ชื่อบัญชี</h2>
-              <h2>
-                <b>{{ data.thAccountName }}</b>
-              </h2>
-              <h2>
-                <b>{{ data.enAccountName }}</b>
-              </h2>
-            </ion-label>
+            <img class="center ion-margin-bottom" width="60" height="60" src="assets/imgs/iconwithdraw.png"/>
+            <ion-list>
+              <ion-item color="tertiary">
+                <ion-label>
+                  <h2>เลขพร้อมเพย์</h2>
+                  <h2>
+                    <b>{{ data.promptpayId }}</b>
+                  </h2>
+                </ion-label>
+              </ion-item>
+              <ion-item color="tertiary">
+                <ion-label>
+                  <h2>ชื่อบัญชี</h2>
+                  <h2>
+                    <b>{{ data.thAccountName }}</b>
+                  </h2>
+                  <h2>
+                    <b>{{ data.enAccountName }}</b>
+                  </h2>
+                </ion-label>
+              </ion-item>
+              <ion-item color="tertiary" lines="none">
+                <ion-label>
+                  <h2>จำนวนเงินที่ต้องการถอน</h2>
+                  <h2>
+                    <ion-text color="danger">
+                      <b>฿{{ ParseToTwoDecimal(data.amount) | number:'1.2-2' }}</b>
+                    </ion-text>
+                  </h2>
+                </ion-label>
+              </ion-item>
+            </ion-list>
           </ion-card-content>
         </ion-card>
       </div>
-      <ion-card color="tertiary">
-        <ion-card-content>
-          <ion-label>
-            <h2>จำนวนเงินที่ต้องการถอน</h2>
-            <h2>
-              <b>THB</b>
-              <ion-text color="danger">
-                <b> {{ ParseToTwoDecimal(data.amount) | number:'1.2-2' }}</b>
-              </ion-text>
-            </h2>
-          </ion-label>
-        </ion-card-content>
-      </ion-card>
     </div>
   </ng-container>
 
   <ng-container *ngIf="!hasLoaded">
+    <ion-card color="light" class="ion-text-center">
+      <ion-card-content>
+        <ion-skeleton-text class="center circle ion-margin-bottom" animated style="width:100px; height:100px">
+        </ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
     <ion-item lines="none">
       <ion-label>
         <ion-skeleton-text animated></ion-skeleton-text>
@@ -58,6 +70,12 @@
     <ion-item lines="none">
       <ion-label>
         <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
       </ion-label>
     </ion-item>
   </ng-container>
