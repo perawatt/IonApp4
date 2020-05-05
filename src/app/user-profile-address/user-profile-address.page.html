@@ -55,7 +55,7 @@
         </ion-item>
       </div>
       <div *ngIf="hasLoaded == 'y'">
-        <ion-item color="tertiary" button detail="false" class="ion-margin-bottom" *ngFor="let item of data.addresses; let i = index;"
+        <ion-item color="tertiary" button class="ion-margin-bottom" *ngFor="let item of data.addresses; let i = index;"
           (click)="onSelectEditAddress(i)">
           <ion-label>
             <h2>{{item.address.title}}</h2>
@@ -65,7 +65,6 @@
               <span *ngIf="!item.address.mobileNumber">-</span>
             </p>
           </ion-label>
-          <img slot="end" height="13" src="assets/svgs/icon-forward-medium.svg">
         </ion-item>
       </div>
     </ion-list>

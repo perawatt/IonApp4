@@ -18,31 +18,28 @@
       <ion-list-header mode="md">
         <ion-label>ชื่อร้าน</ion-label>
       </ion-list-header>
-      <ion-item color="tertiary" button detail="false">
+      <ion-item color="tertiary" button>
         <ion-label>
           <b *ngIf="data?.name">{{data.name}}</b>
           <b *ngIf="!data?.name">-</b>
         </ion-label>
-        <img slot="end" height="13" src="assets/svgs/icon-forward-medium.svg">
       </ion-item>
       <ion-list-header mode="md">
         <ion-label>สถานที่ตั้ง</ion-label>
       </ion-list-header>
-      <ion-item color="tertiary" button detail="false">
+      <ion-item color="tertiary" button>
         <ion-label>
           <b *ngIf="data.address?.fullAddress">{{data.address?.fullAddress}}</b>
           <b *ngIf="!data?.address?.fullAddress">-</b>
         </ion-label>
-        <img slot="end" height="13" src="assets/svgs/icon-forward-medium.svg">
       </ion-item>
       <ion-list-header mode="md">
         <ion-label>ระดับของร้าน</ion-label>
       </ion-list-header>
-      <ion-item color="tertiary" button detail="false">
+      <ion-item color="tertiary" button>
         <ion-label>
           <b>Lite</b>
         </ion-label>
-        <img slot="end" height="13" src="assets/svgs/icon-forward-medium.svg">
       </ion-item>
     </ion-list>
   </ng-container>
