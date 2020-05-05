@@ -14,7 +14,7 @@
           <h3>ยอดคงเหลือ</h3>
           <b>{{ParseToTwoDecimal(data.merchantAccount.balance)| number:'1.2-2'}} บาท</b>
         </ion-label>
-        <ion-note color="dark" slot="end"><img height="12" src="assets/svgs/icon-star-danger.svg"> Lite</ion-note>
+        <ion-note color="dark" slot="end"><ion-icon name="star" color="danger"></ion-icon> Lite</ion-note>
       </ion-item>
       <ion-item color="tertiary">
         <ion-button color="dark" shape="round" fill="outline" slot="end" (click)="onSelectReceiveMoneyQR()">
@@ -33,14 +33,14 @@
           </ion-slides>
         </ion-label>
         <ion-button color="dark" shape="round" fill="outline" slot="end" (click)="onSelectAddThirdParty()">
-          <span><img height="15.75" src="assets/svgs/icon-add-danger.svg"> เพิ่ม</span>
+          <ion-icon name="add" color="danger"></ion-icon> เพิ่ม
         </ion-button>
       </ion-item>
 
       <img src="assets/imgs/banner3rdparty.png" *ngIf="data.services == null || data.services?.lengh == 0" />
       <ion-fab vertical="bottom" horizontal="end" *ngIf="data.services == null || data.services?.lengh == 0">
         <ion-button size="small" color="light" shape="round" (click)="onSelectAddThirdParty()">
-          <span><img height="15.75" src="assets/svgs/icon-add-danger.svg"> เพิ่ม</span>
+          <ion-icon name="add" color="danger"></ion-icon> เพิ่ม
         </ion-button>
       </ion-fab>
     </ion-list>
