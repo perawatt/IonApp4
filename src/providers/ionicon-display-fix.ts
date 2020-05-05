@@ -3,7 +3,6 @@ import * as allIcons from 'ionicons/icons';
 
 const currentIcons = Object.keys(allIcons).map(i => {
     const key = i.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`)
-    console.log(allIcons[i])
     if (typeof allIcons[i] === 'string') {
         return {
             [key]: allIcons[i],
@@ -14,7 +13,6 @@ const currentIcons = Object.keys(allIcons).map(i => {
         ['md-' + key]: allIcons[i].md,
     };
 });
-console.log(allIcons);
 const iconsObject = Object.assign({}, ...currentIcons);
 addIcons(iconsObject);
 
