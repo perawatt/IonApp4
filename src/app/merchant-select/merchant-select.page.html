@@ -18,7 +18,7 @@
           <img *ngIf="!merchantAccount.logo" src="assets/imgs/defaultshop.png" />
         </ion-avatar>
         <ion-label>
-          <b>Merchant Name</b>
+          <b>{{merchantAccount.name}}</b>
           <ion-text color="danger">
             <h3 *ngIf="merchantAccount.approvedDateTime == null">รอการอนุมัติ</h3>
             <h3 *ngIf="merchantAccount.approvedDateTime != null">&nbsp;</h3>
