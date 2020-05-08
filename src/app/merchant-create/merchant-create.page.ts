@@ -16,6 +16,10 @@ export class MerchantCreatePage implements OnInit {
   this.fg = this.fb.group({
     'merchantName': [null, [Validators.required, this.nullOrWhiteSpaceValidator()]],
   });
+
+  this.fg.valueChanges.subscribe(_ => {
+    this.svc.validForm(this.fg.valid)
+  });
   }
 
   ngOnInit() {
