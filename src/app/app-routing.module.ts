@@ -255,9 +255,26 @@ const routes: Routes = [
   {
     path: 'demo-form-dialog-info',
     loadChildren: () => import('./demo-form-dialog-info/demo-form-dialog-info.module').then(m => m.DemoFormDialogInfoPageModule)
-  },  {
+  },
+  {
     path: 'merchant-withdraw',
     loadChildren: () => import('./merchant-withdraw/merchant-withdraw.module').then( m => m.MerchantWithdrawPageModule)
+  },
+  {
+    path: 'earn-profile',
+    loadChildren: () => import('./earn-profile/earn-profile.module').then( m => m.EarnProfilePageModule)
+  },
+  {
+    path: 'earn-address',
+    loadChildren: () => import('./earn-address/earn-address.module').then( m => m.EarnAddressPageModule)
+  },
+  {
+    path: 'earn-edit-address',
+    loadChildren: () => import('./earn-edit-address/earn-edit-address.module').then( m => m.EarnEditAddressPageModule)
+  },
+  {
+    path: 'earn-home',
+    loadChildren: () => import('./earn-home/earn-home.module').then( m => m.EarnHomePageModule)
   }
 
 ];

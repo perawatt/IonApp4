@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-down-outline" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list lines="full" class="ion-no-padding" *ngIf="hasLoaded" id="manafeed">
+    <ion-item button detail="false" color="tertiary" *ngFor="let item of feeds.reverse()" (click)="homeFeedAction(item)"
+      [id]="item.id">
+      <ion-avatar slot="start">
+        <img [src]="item.thumbnailImageURL">
+      </ion-avatar>
+      <ion-label [color]="IsDeleteFeed(item) ? 'medium' : 'dark'">
+        <b>{{item.title}}</b>
+        <p>{{item.description}}</p>
+      </ion-label>
+
+      <ion-note slot="end" class="ion-text-end" *ngIf="IsExpirable(item)">
+        <img width="12" [src]="IsDeleteFeed(item) ? 'assets/imgs/timegray.png':'assets/imgs/timered.png'">
+        <span> {{DisplayExpireDateTime(item)}}</span>
+        <p>status</p>
+      </ion-note>
+    </ion-item>
+  </ion-list>
+
+  <ion-list lines="full" class="ion-no-padding non-feed" *ngIf="!hasLoaded">
+    <ion-item color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="danger" class="ion-padding" (click)="seeMoreFeed()">See More</ion-button>
+
+  <!-- For demo remove random feed -->
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="dark" (click)="removeRandomFeed()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

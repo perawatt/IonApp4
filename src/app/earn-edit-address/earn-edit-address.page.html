@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>แก้ไขที่อยู่</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form (ngSubmit)="onSave()">
+    <ion-list mode="ios">
+      <ion-item color="tertiary">
+        <ion-label position="stacked">
+          <ion-icon color="danger" name="navigate-outline"></ion-icon>
+          กรุณาระบุตำแหน่งที่อยู่ของคุณ
+          <ion-label class="ion-text-right">
+            <ion-icon color="danger" name="map-outline"></ion-icon>
+          </ion-label>
+        </ion-label>
+      </ion-item>
+
+      <ion-item color="tertiary">
+        <ion-label position="stacked">ชื่อหัวข้อ</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label position="stacked">ที่อยู่</ion-label>
+        <ion-input placeholder="บ้านเลขที่"></ion-input>
+        <ion-input placeholder="ตำบล"></ion-input>
+        <ion-input placeholder="อำเภอ"></ion-input>
+        <ion-input placeholder="จังหวัด"></ion-input>
+        <ion-input placeholder="รหัสไปรษณีย์" type="number"></ion-input>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label position="stacked">เบอร์โทรติดต่อ</ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-label position="stacked">หมายเหตุ</ion-label>
+        <ion-textarea></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">
+      แก้ไขเสร็จสิ้น
+    </ion-button>
+  </form>
+
+</ion-content>

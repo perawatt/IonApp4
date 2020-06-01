@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ข้อมูลส่วนตัว</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-text-center ion-padding">
+    <img class="qr center circle ion-margin-bottom" src="assets/imgs/user-icon.png" width="100" height="100">
+    <ion-label>
+      <h3>เปลี่ยนภาพ</h3>
+      <h2><b>DisplayName</b></h2>
+    </ion-label>
+  </div>
+  <ion-list >
+    <ion-item color="tertiary" button class="ion-margin-bottom">
+      <ion-label>
+        <b>เบอร์โทรและอีเมล</b>
+        <p>ใช้ผูกบัญชีของ mana</p>
+      </ion-label>
+    </ion-item>
+    <ion-item color="tertiary" button class="ion-margin-bottom">
+      <ion-label>
+        <b>การยืนยันตัวตน KYC</b>
+        <p>การระบุตัวตนเพื่อใช้ในการทำธรุะกรรม</p>
+      </ion-label>
+    </ion-item>
+    <ion-item color="tertiary" button class="ion-margin-bottom">
+      <ion-label>
+        <b>ข้อมูลส่วนตัว</b>
+        <p>การอนุญาติให้ใช้ข้อมูลของคุณ</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="ion-padding-top">
+    <ion-item color="tertiary" button class="ion-margin-bottom">
+      <ion-label>
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <b>รหัสผ่าน</b>
+      </ion-label>
+    </ion-item>
+    <ion-item color="tertiary" button class="ion-margin-bottom" (click)="onSelectShipping()">
+      <ion-label>
+        <ion-icon name="navigate-outline"></ion-icon>
+        <b>การส่งของ</b>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>

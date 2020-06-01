@@ -1,0 +1,24 @@
+ion-item {
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+    transform: translateY(-50px);
+}
+
+.non-feed ion-item {
+    opacity: 1;
+    transform: unset;
+}
+
+.feed-news {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.feed-delete {
+    opacity: 0;
+    transform: translateX(200px);
+}
+
+ion-note p {
+    margin: 0px;
+}
