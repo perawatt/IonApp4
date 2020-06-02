@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartPage implements OnInit {
 
+  public title: string = "สั่งสินค้า";
   constructor() { }
 
   ngOnInit() {

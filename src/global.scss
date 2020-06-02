@@ -182,6 +182,16 @@ ion-fab {
     }
 }
 
+ion-fab-button.fab-small{
+    width: 30px;
+    height: 30px;
+}
+
+.no-shadow{
+    --box-shadow:none !important;
+    box-shadow: none !important;
+}
+
 .ion-select-full{
     max-width: unset;
     width: 100%;
