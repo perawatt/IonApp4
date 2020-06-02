@@ -258,6 +258,10 @@ const routes: Routes = [
   },  {
     path: 'merchant-withdraw',
     loadChildren: () => import('./merchant-withdraw/merchant-withdraw.module').then( m => m.MerchantWithdrawPageModule)
+  },
+  {
+    path: 'gpsaddress-change',
+    loadChildren: () => import('./gpsaddress-change/gpsaddress-change.module').then( m => m.GpsaddressChangePageModule)
   }
 
 ];
