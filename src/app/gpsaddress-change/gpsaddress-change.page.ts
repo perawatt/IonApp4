@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { IonManaLib } from 'ion-m-lib';
 
 @Component({
   selector: 'app-gpsaddress-change',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GpsaddressChangePage implements OnInit {
 
-  constructor() { }
+  public fg: FormGroup;
+  private mcontentid = "gpsaddress-change";
+
+  constructor(private fb: FormBuilder, private svc: IonManaLib) { 
+    this.fg = this.fb.group({
+      'telephoneNumber': null,
+      'note': null,
+        // TODO : Binding ให้ถูกต้อง
+    });
+  }
 
   ngOnInit() {
   }
 
+  ionViewDidEnter() {
+    this.svc.initPageApi(this.mcontentid);
+    this.svc.validForm(this.fg.valid);
+  }
+
+  onSave() {
+    if (this.fg.valid) {
+      this.svc.submitFormData(this.mcontentid, this.fg.value);
+    }
+  }
 }
