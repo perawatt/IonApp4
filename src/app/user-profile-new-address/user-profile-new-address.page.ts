@@ -13,6 +13,7 @@ export class UserProfileNewAddressPage implements OnInit {
   public fg: FormGroup;
   private mcontentid = "user-profile-new-address";
 
+
   constructor(private fb: FormBuilder, private svc: IonManaLib) { 
     this.fg = this.fb.group({
       'title': [null, Validators.required],
@@ -23,7 +24,8 @@ export class UserProfileNewAddressPage implements OnInit {
       'postalCode': [null, Validators.required],
       'telephoneNumber': null,
       'mobileNumber': null,
-      'fullAddress': null
+      'fullAddress': null,
+        // TODO : Binding หมายเหตุ
     });
 
     this.fg.valueChanges.subscribe(_ => {
