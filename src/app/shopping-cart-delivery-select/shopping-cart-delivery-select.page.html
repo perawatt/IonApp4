@@ -4,8 +4,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content mode="ios" color="tertiary">
-  <ng-container>
+<ion-content mode="ios" [color]="hasLoaded ? tertiary : medium">
+  <ng-container *ngIf="hasLoaded">
     <ion-list lines="inset">
       <ion-item button detail="true" color="tertiary">
         <ion-avatar slot="start">
@@ -39,8 +39,42 @@
             <h3>1111</h3>
           </ion-text>
         </ion-label>
-      </ion-item>
-      
+      </ion-item>      
     </ion-list>
   </ng-container>
+
+  <ng-container *ngIf="!hasLoaded">
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+  </ng-container>
+
 </ion-content>

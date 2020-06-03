@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartDeliverySelectPage implements OnInit {
 
-  public title : string = "เลือกผู้จัดส่ง";
+  public hasLoaded: string;
+  public title: string = "เลือกผู้จัดส่ง";
   constructor() { }
 
   ngOnInit() {
