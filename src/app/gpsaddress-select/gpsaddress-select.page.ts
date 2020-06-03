@@ -31,4 +31,7 @@ export class GpsaddressSelectPage implements OnInit {
       })
   }
 
+  public onSelectProfile(){
+    // TODO : Do something
+  }
 }
