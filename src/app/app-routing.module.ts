@@ -274,6 +274,10 @@ const routes: Routes = [
   {
     path: 'shopping-cart-pay',
     loadChildren: () => import('./shopping-cart-pay/shopping-cart-pay.module').then( m => m.ShoppingCartPayPageModule)
+  },
+  {
+    path: 'shopping-cart-delivery-select',
+    loadChildren: () => import('./shopping-cart-delivery-select/shopping-cart-delivery-select.module').then( m => m.ShoppingCartDeliverySelectPageModule)
   }
 
 ];
