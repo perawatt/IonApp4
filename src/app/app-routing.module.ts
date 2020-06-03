@@ -266,6 +266,10 @@ const routes: Routes = [
   {
     path: 'gpsaddress-select',
     loadChildren: () => import('./gpsaddress-select/gpsaddress-select.module').then( m => m.GpsaddressSelectPageModule)
+  },
+  {
+    path: 'gpsaddress-select-location',
+    loadChildren: () => import('./gpsaddress-select-location/gpsaddress-select-location.module').then( m => m.GpsaddressSelectLocationPageModule)
   }
 
 ];
