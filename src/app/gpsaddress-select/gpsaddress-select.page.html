@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>gpsaddress-select</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+
+  <!-- TODO: Binding data-->
+  <ng-container *ngIf="hasLoaded">
+    <ion-card lines="none" class="content-full content-vertical-center ion-no-padding ion-align-items-center"
+      color="tertiary">
+      <ion-list>
+        <ion-list-header lines="none" mode="md" color="tertiary">
+          <ion-label>
+            <h2><b>ที่อยู่ที่สร้างไว้</b></h2>
+          </ion-label>
+        </ion-list-header>
+
+        <ion-item color="tertiary" button (click)="onSelectProfile()">
+          <ion-row class="ion-align-self-start ion-margin-top ion-margin-end">
+            <img height="30" src="assets/imgs/gpspin.png" />
+          </ion-row>
+          <ion-label class="ion-margin-start">
+            <h2><b>บ้าน</b></h2>
+            <p class="ion-text-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item color="tertiary" button (click)="onSelectProfile()">
+          <ion-row class="ion-align-self-start ion-margin-top ion-margin-end">
+            <img height="30" src="assets/imgs/gpspin.png" />
+          </ion-row>
+          <ion-label class="ion-margin-start">
+            <h2><b>ที่ทำงาน</b></h2>
+            <p class="ion-text-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </ng-container>
+
+  <ng-container *ngIf="!hasLoaded">
+    <br>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <h3>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </h3>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <ion-skeleton-text animated></ion-skeleton-text>
+          <h3>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </h3>
+        </ion-label>
+      </ion-item>
+  </ng-container>
+</ion-content>
