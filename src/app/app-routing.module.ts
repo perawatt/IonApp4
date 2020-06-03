@@ -270,6 +270,10 @@ const routes: Routes = [
   {
     path: 'gpsaddress-select-location',
     loadChildren: () => import('./gpsaddress-select-location/gpsaddress-select-location.module').then( m => m.GpsaddressSelectLocationPageModule)
+  },
+  {
+    path: 'shopping-cart-pay',
+    loadChildren: () => import('./shopping-cart-pay/shopping-cart-pay.module').then( m => m.ShoppingCartPayPageModule)
   }
 
 ];
