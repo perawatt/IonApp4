@@ -255,7 +255,8 @@ const routes: Routes = [
   {
     path: 'demo-form-dialog-info',
     loadChildren: () => import('./demo-form-dialog-info/demo-form-dialog-info.module').then(m => m.DemoFormDialogInfoPageModule)
-  },  {
+  },
+  {
     path: 'merchant-withdraw',
     loadChildren: () => import('./merchant-withdraw/merchant-withdraw.module').then( m => m.MerchantWithdrawPageModule)
   },
@@ -282,6 +283,10 @@ const routes: Routes = [
   {
     path: 'merchant-home-basic',
     loadChildren: () => import('./merchant-home-basic/merchant-home-basic.module').then( m => m.MerchantHomeBasicPageModule)
+  },
+  {  
+    path: 'merchant-address',
+    loadChildren: () => import('./merchant-address/merchant-address.module').then( m => m.MerchantAddressPageModule)
   }
 
 ];

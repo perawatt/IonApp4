@@ -6,21 +6,21 @@
 
 <ion-content mode="ios">
 
-  <ng-container *ngIf="hasLoaded && (data$ | async)?.profile as data">
+  <ng-container >
     <ion-card color="light" class="ion-text-center">
       <ion-card-content>
-        <img *ngIf="data && data.profileImageUrl" class="qr center circle ion-margin-bottom"
-          [src]="data.profileImageUrl" width="100" height="100">
-        <img *ngIf="!data || !data.profileImageUrl" class="qr center circle ion-margin-bottom"
+        <img  class="qr center circle ion-margin-bottom"
+           width="100" height="100">
+        <img  class="qr center circle ion-margin-bottom"
           src="assets/imgs/user-icon.png" width="100" height="100">
         <ion-label>
           <ion-text color="medium">
             <h3>เปลี่ยนภาพ</h3>
           </ion-text>
-          <h2 *ngIf="data.displayName"><b>{{ data.displayName }}</b></h2>
-          <h2 *ngIf="!data.displayName"><b>-</b></h2>
+          <h2 ><b></b></h2>
+          <h2 ><b>-</b></h2>
           <ion-text color="medium">
-            <h3>#{{ data.refId? data.refId : '' }}</h3>
+            <h3>#</h3>
           </ion-text>
         </ion-label>
       </ion-card-content>
