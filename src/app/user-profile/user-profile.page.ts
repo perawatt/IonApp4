@@ -34,6 +34,8 @@ export class UserProfilePage implements OnInit {
     this.data$ = load$;
     load$.then(it => {
       this.hasLoaded = (it && it.length > 0) ? "y" : "n";
+      console.log(JSON.stringify(it));
+      
     });
   }
 
