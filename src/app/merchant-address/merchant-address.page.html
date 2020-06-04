@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>สถานที่ตั้ง</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+  <!-- ตัวอย่างเหมือนหน้า user-profile-new-address -->
+  <ion-list class="ion-margin-top">
+    <form [formGroup]="fg" >
+      <div>
+        <ion-item lines="full" color="tertiary">
+          <ion-label position="stacked" color="medium">ชื่อหัวข้อ</ion-label>
+          <ion-input type="text" ></ion-input>
+        </ion-item>
+        <ion-item  lines="full" color="tertiary">
+          <ion-label position="stacked" color="medium">ที่อยู่</ion-label>
+          <ion-input type="text" color="medium" placeholder="บ้านเลขที่,หมู่,ตึก,ซอย,ถนน"></ion-input>
+          <ion-input type="text" color="medium" placeholder="ตำบล"></ion-input>
+          <ion-input type="text" color="medium" placeholder="อำเภอ"></ion-input>
+          <ion-input type="text" color="medium" placeholder="จังหวัด"></ion-input>
+          <ion-input type="number" color="medium" placeholder="รหัสไปรษณีย์"></ion-input>
+        </ion-item>
+        <ion-item lines="full" color="tertiary">
+          <ion-label position="stacked" color="medium">เบอร์ติดต่อ</ion-label>
+          <ion-input type="tel"></ion-input>
+        </ion-item>
+        <ion-item lines="none" color="tertiary">
+          <ion-label position="stacked" color="medium">หมายเหตุ</ion-label>
+          <ion-textarea type="text"></ion-textarea>
+        </ion-item>
+      </div>
+      <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
+      >ตกลง
+      </ion-button>
+    </form>
+  </ion-list>
+</ion-content>

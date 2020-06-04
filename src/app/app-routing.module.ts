@@ -278,6 +278,10 @@ const routes: Routes = [
   {
     path: 'shopping-cart-delivery-select',
     loadChildren: () => import('./shopping-cart-delivery-select/shopping-cart-delivery-select.module').then( m => m.ShoppingCartDeliverySelectPageModule)
+  },
+  {
+    path: 'merchant-address',
+    loadChildren: () => import('./merchant-address/merchant-address.module').then( m => m.MerchantAddressPageModule)
   }
 
 ];
