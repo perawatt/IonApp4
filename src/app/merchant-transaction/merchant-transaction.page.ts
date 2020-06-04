@@ -9,7 +9,7 @@ import { ParseDataProvider } from 'src/providers/parse-data';
 })
 export class MerchantTransactionPage implements OnInit {
 
-  public title = "บัญชีร้าน";
+  public title = "บัญชีธุรกิจ";
   public hasLoaded: string;
   public data$ = Promise.resolve<{}>({});
   private mcontentid = "merchant-transaction";
