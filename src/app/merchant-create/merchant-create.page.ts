@@ -9,6 +9,7 @@ import { IonManaLib } from 'ion-m-lib';
 })
 export class MerchantCreatePage implements OnInit {
 
+  public file: any;
   public fg: FormGroup;
   private mcontentid = "merchant-create";
 
@@ -38,5 +39,15 @@ export class MerchantCreatePage implements OnInit {
 
   onSave() {
     this.svc.submitFormData(this.mcontentid, this.fg.value, false);
+  }
+
+  selectPhoto(event) {
+    this.file = event.target.firstChild.files;
+    var preview = document.querySelectorAll('img');
+    var reader = new FileReader();
+    reader.onload = function (e: any) {
+      preview[preview.length - 1].src = e.target.result;
+    };
+    reader.readAsDataURL(this.file[0]);
   }
 }
