@@ -287,7 +287,15 @@ const routes: Routes = [
   {  
     path: 'merchant-address',
     loadChildren: () => import('./merchant-address/merchant-address.module').then( m => m.MerchantAddressPageModule)
+  },  {
+    path: 'merchant-employee',
+    loadChildren: () => import('./merchant-employee/merchant-employee.module').then( m => m.MerchantEmployeePageModule)
+  },
+  {
+    path: 'merchant-budget',
+    loadChildren: () => import('./merchant-budget/merchant-budget.module').then( m => m.MerchantBudgetPageModule)
   }
+
 
 ];
 
