@@ -290,6 +290,10 @@ const routes: Routes = [
   },  {
     path: 'merchant-employee',
     loadChildren: () => import('./merchant-employee/merchant-employee.module').then( m => m.MerchantEmployeePageModule)
+  },
+  {
+    path: 'merchant-budget',
+    loadChildren: () => import('./merchant-budget/merchant-budget.module').then( m => m.MerchantBudgetPageModule)
   }
 
 
