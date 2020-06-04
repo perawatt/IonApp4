@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios" class="ion-padding-top">
+
+  <ng-container *ngIf="true">
+    <ion-card class="ion-text-center" color="tertiary">
+      <ion-card-content>
+        <ion-label color="danger" *ngIf="true">
+          <h2 class="ion-padding-bottom">รอการอนุมัติเปิดธุรกิจ</h2>
+        </ion-label>
+        <ion-avatar class="center ion-margin-bottom">
+          <img src="assets/imgs/shop-default.png" />
+        </ion-avatar>
+        <ion-label>
+          <h3>ยอดเงินคงเหลือ</h3>
+          <h2><b>00.00 บาท</b></h2>
+        </ion-label>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="ion-text-end">
+              <ion-button color="dark" shape="round" size="small" fill="outline" class="ion-no-padding"
+                (click)="onSelectReceiveMoneyQR()">
+                <span><img width="15" height="15" src="assets/imgs/qrpay.png" /> คิวอาร์รับเงิน</span>
+              </ion-button>
+            </ion-col>
+            <ion-col class="ion-text-start">
+              <ion-button color="dark" shape="round" size="small" class="ion-no-padding" fill="outline"
+                (click)="onSelectReceiveMoneyQR()">
+                <span><img width="15" height="15" src="assets/imgs/txrwithdraw.png" /> ถอนเงิน</span>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <div class="ion-padding">
+      <ion-button color="danger" expand="block">
+        ปรับแต่งการใช้งาน
+      </ion-button>
+      <ion-label>
+        <ion-text color="medium">
+          <h3 class="ion-padding-top">คุณสามารถปรับแต่งรูปแบบการใช้งาน
+            ธุรกิจตามแบบแผนที่คุณต้องการเพื่อตอบสนองการใช้งานที่เพิ่มมากขึ้น</h3>
+        </ion-text>
+        <ion-text class="ion-text-center">
+          <h3 class="ion-padding-top"><a href="#">เรียนรู้เพิ่มเติม</a></h3>
+        </ion-text>
+      </ion-label>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="false">
+    <ion-card color="light" class="ion-text-center">
+      <ion-card-content>
+        <ion-skeleton-text class="center circle ion-margin-bottom" animated style="width:60px; height:60px">
+        </ion-skeleton-text>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+          </h3>
+          <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+        </ion-label>
+      </ion-card-content>
+    </ion-card>
+    <ion-card color="light" class="ion-text-center">
+      <ion-label>
+        <h3>
+          <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+        </h3>
+        <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+      </ion-label>
+    </ion-card>
+    <ion-item lines="none">
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+  </ng-container>
+</ion-content>
