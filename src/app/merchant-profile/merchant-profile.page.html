@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>โปรไฟล์ร้าน</ion-title>
+    <ion-title>ธุรกิจของคุณ</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content mode="ios">
-  <ng-container *ngIf="(data$ | async)?.merchantAccount as data">
+  <!-- <ng-container *ngIf="(data$ | async)?.merchantAccount as data">
     <ion-list lines="none" *ngIf="hasLoaded">
       <ion-item class="ion-margin-top imageCenter">
         <img *ngIf="data?.logo" [src]="data.logo" class="circle ion-margin-top" height="90px" width="90px">
@@ -42,7 +42,64 @@
         </ion-label>
       </ion-item>
     </ion-list>
+  </ng-container> -->
+
+  <ng-container *ngIf="(data$ | async)?.merchantAccount as data">
+    <ion-card color="light" class="ion-text-center">
+      <ion-card-content>
+        <img *ngIf="data?.logo" [src]="data.logo" class="qr center circle ion-margin-bottom" width="90" height="90">
+        <img *ngIf="!data?.logo" src="assets/imgs/defaultshop.png" class="qr center circle ion-margin-bottom" width="90" height="90">
+        <ion-label>
+          <ion-text color="medium">
+            <h3>เปลี่ยนภาพ</h3>
+          </ion-text>
+          <h2><b *ngIf="data?.name">{{data.name}}</b></h2>
+          <h2><b *ngIf="!data?.name">-</b></h2>
+          <ion-text color="medium">
+            <h3>#</h3>
+          </ion-text>
+        </ion-label>
+      </ion-card-content>
+    </ion-card>
+    <ion-list lines="none">
+      <ion-item color="tertiary" button class="ion-margin-bottom">
+        <ion-label>
+          <b>ระดับของร้าน</b>
+        </ion-label>
+        <ion-note>
+          <ion-label color="medium">
+            <h3>Lite</h3>
+          </ion-label>
+        </ion-note>
+      </ion-item>
+      <ion-item color="tertiary" button lines="inset">
+        <ion-label>
+          <b>เบอร์ติดต่อ</b>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" button lines="inset">
+        <ion-label>
+          <b>สถานที่ตั้ง</b>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" button class="ion-margin-bottom">
+        <ion-label>
+          <b>เวลาทำการ</b>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" button lines="inset">
+        <ion-label>
+          <b>สัญญา</b>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" button>
+        <ion-label>
+          <b>การมัดจำ</b>
+        </ion-label>
+      </ion-item>
+    </ion-list>
   </ng-container>
+
   <ng-container *ngIf="!hasLoaded">
     <ion-card color="light" class="ion-text-center">
       <ion-card-content>
