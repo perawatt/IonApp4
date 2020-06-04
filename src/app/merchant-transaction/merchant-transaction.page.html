@@ -4,8 +4,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content mode="ios">
-  <ng-container *ngIf="data$ | async as data">
+<ion-content mode="ios" color="tertiary">
+  <!-- <ng-container *ngIf="data$ | async as data">
     <ion-item lines="none" class="ion-text-center ion-margin-top">
       <ion-label>
         <h2><b>{{data.merchantAccount.name}}</b></h2>
@@ -35,7 +35,49 @@
         ไม่มีรายการ
       </ion-item>
     </ion-list>
+  </ng-container> -->
+
+  <ng-container *ngIf="data$ | async as data">
+    <ion-item lines="none" color="tertiary">
+      <img src="assets/imgs/balanceaccount@3x.png" slot="start" height="18">
+    </ion-item>
+    <ion-item lines="full" class="ion-text-center" color="tertiary">
+      <ion-label class="ion-no-margin ion-margin-bottom">
+        <h2><b>{{data.merchantAccount.name}}</b></h2>
+        <ion-text color="medium">ยอดเงินปัจจุบัน</ion-text>
+        <h1><b>฿{{ParseToTwoDecimal(data.merchantAccount.balance)|number:'1.2-2'}}</b></h1>
+      </ion-label>
+    </ion-item>
+    <ion-list *ngIf="hasLoaded == 'y'" lines="inset">
+      <ion-item button detail="false" color="tertiary" *ngFor="let item of data.transactions"
+        (click)="visitEndpoint(item.endpoint)">
+        <ion-avatar slot="start">
+          <img [src]="getActionImage(item.txType)" />
+        </ion-avatar>
+        <ion-label color="medium">
+          <ion-text color="dark"><b>{{getActionDisplay(item.txType)}}</b></ion-text>
+          <span *ngIf="item.actionDisplayName != null && item.actionDisplayName != ''">
+            ({{item.actionDisplayName}})</span>
+          <h3>{{item.transactionDateTime | date:'dd/MM/yy H:mm'}}</h3>
+        </ion-label>
+        <ion-note [color]="item.balance > 0 ? 'primary': 'danger'" slot="end">
+          <ion-label>
+            <ion-text>
+              <p>&nbsp;</p>
+            </ion-text>
+            <span *ngIf="item.balance > 0">+</span>{{ ParseToTwoDecimal(item.balance) | number:'1.2-2' }}
+          </ion-label>
+        </ion-note>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngIf="hasLoaded == 'n'" color="tertiary" lines="none" class="ion-margin-top">
+      <ion-item class="ion-text-center" color="tertiary">
+        ไม่มีรายการ
+      </ion-item>
+    </ion-list>
   </ng-container>
+
+
   <ng-container *ngIf="!hasLoaded">
     <ion-item lines="none">
       <ion-label>
