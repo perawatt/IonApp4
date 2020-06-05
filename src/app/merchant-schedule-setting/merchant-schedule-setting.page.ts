@@ -94,9 +94,8 @@ export class MerchantScheduleSettingPage implements OnInit {
   }
 
   toggleChange(ev) {
-
   }
-  
+
   setSchedule() {
     this.convertProcess();
     if (this.fg.valid) {
