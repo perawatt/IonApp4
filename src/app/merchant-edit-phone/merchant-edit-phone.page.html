@@ -1,9 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>merchant-edit-phone</ion-title>
+    <ion-title>แก้ไขเบอร์โทร</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content mode="ios" color="tertiary">
+  <ion-list>
+    <ion-item lines="inset" color="tertiary">
+      <ion-label position="stacked">ชื่อหัวข้อ</ion-label>
+      <ion-input type="text" color="medium">ติดต่อธุรกิจ</ion-input>
+    </ion-item>
+    <ion-item lines="inset" color="tertiary">
+      <ion-label position="stacked">เบอร์โทร</ion-label>
+      <ion-input type="text" color="medium">085-1234567</ion-input>
+    </ion-item>
 
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">แก้ไขเสร็จสิ้น
+    </ion-button>
+  </ion-list>
 </ion-content>
