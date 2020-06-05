@@ -294,6 +294,42 @@ const routes: Routes = [
   {
     path: 'merchant-budget',
     loadChildren: () => import('./merchant-budget/merchant-budget.module').then( m => m.MerchantBudgetPageModule)
+  },
+  {
+    path: 'merchant-edit-name',
+    loadChildren: () => import('./merchant-edit-name/merchant-edit-name.module').then( m => m.MerchantEditNamePageModule)
+  },
+  {
+    path: 'merchant-edit-code',
+    loadChildren: () => import('./merchant-edit-code/merchant-edit-code.module').then( m => m.MerchantEditCodePageModule)
+  },
+  {
+    path: 'merchant-phone',
+    loadChildren: () => import('./merchant-phone/merchant-phone.module').then( m => m.MerchantPhonePageModule)
+  },
+  {
+    path: 'merchant-edit-phone',
+    loadChildren: () => import('./merchant-edit-phone/merchant-edit-phone.module').then( m => m.MerchantEditPhonePageModule)
+  },
+  {
+    path: 'merchant-add-phone',
+    loadChildren: () => import('./merchant-add-phone/merchant-add-phone.module').then( m => m.MerchantAddPhonePageModule)
+  },
+  {
+    path: 'merchant-schedule-setting',
+    loadChildren: () => import('./merchant-schedule-setting/merchant-schedule-setting.module').then( m => m.MerchantScheduleSettingPageModule)
+  },
+  {
+    path: 'merchant-contract',
+    loadChildren: () => import('./merchant-contract/merchant-contract.module').then( m => m.MerchantContractPageModule)
+  },
+  {
+    path: 'merchant-contract-income',
+    loadChildren: () => import('./merchant-contract-income/merchant-contract-income.module').then( m => m.MerchantContractIncomePageModule)
+  },
+  {
+    path: 'merchant-deposit',
+    loadChildren: () => import('./merchant-deposit/merchant-deposit.module').then( m => m.MerchantDepositPageModule)
   }
 
 
