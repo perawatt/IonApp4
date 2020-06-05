@@ -1,0 +1,18 @@
+.file-input {
+    opacity: 0;
+    width: 100px;
+    height: 100px;
+    left:100px;
+    overflow: hidden;
+    position: absolute;
+    cursor: pointer;
+  }
+  .file-input-label{
+    color: var(--ion-color-medium);
+    width: 100px;
+    border-radius:4rem;
+    display: inline-block;
+    cursor: pointer;
+    padding: .5em 1em;
+  }
+  
