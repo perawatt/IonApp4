@@ -1,9 +1,217 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>merchant-schedule-setting</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content mode="ios" color="light">
+  <ion-item lines="none" color="tertiary" class="ion-padding-top">
+    <ion-label>
+      <h2><b>เปิดร้าน</b></h2>
+    </ion-label>
+    <ion-toggle (ionChange)="toggleChange($event)" checked="false" slot="end" color="danger">
+    </ion-toggle>
+  </ion-item>
+  <ion-list class="ion-padding-top">
+    <ion-item lines="none" color="tertiary">
+      <ion-label>
+        <h2><b>เวลาเปิด</b></h2>
+      </ion-label>
+      <ion-button color="medium" fill="clear" slot="end">
+        <ion-icon name="time-outline"></ion-icon> ตั้งเวลา
+      </ion-button>
+    </ion-item>
+    <ion-item lines="inset" color="tertiary">
+      <ion-checkbox [(ngModel)]="isSunday" color="primary">
+      </ion-checkbox>
+      <ion-label color="medium">
+        <h3><b>วันอาทิตย์</b></h3>
+      </ion-label>
+    </ion-item>
+    <div *ngIf="isSunday">
+      <ion-item lines="inset" color="tertiary">
+        <ion-label color="medium">
+          <h3><b>เวลาเปิด</b></h3>
+        </ion-label>
+        <ion-datetime [(ngModel)]="sunday[0].orderFromTime" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+      <ion-item lines="inset" color="tertiary">
+        <ion-label color="medium">
+          <h3><b>เวลาปิด</b></h3>
+        </ion-label>
+        <ion-datetime [(ngModel)]="sunday[0].orderThruTime" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+    </div>
+    <ion-item lines="inset" color="tertiary">
+      <ion-checkbox [(ngModel)]="isMonday" color="primary">
+      </ion-checkbox>
+      <ion-label color="medium">
+        <h3><b>วันจันทร์</b></h3>
+      </ion-label>
+    </ion-item>
+    <div *ngIf="isMonday">
+      <ion-item lines="inset" color="tertiary">
+        <ion-label color="medium">
+          <h3><b>เวลาเปิด</b></h3>
+        </ion-label>
+        <ion-datetime [(ngModel)]="monday[0].orderFromTime" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+      <ion-item lines="inset" color="tertiary">
+        <ion-label color="medium">
+          <h3><b>เวลาปิด</b></h3>
+        </ion-label>
+        <ion-datetime [(ngModel)]="monday[0].orderThruTime" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+    </div>
+    <ion-item lines="inset" color="tertiary">
+      <ion-checkbox [(ngModel)]="isTuesday" color="primary">
+      </ion-checkbox>
+      <ion-label color="medium">
+        <h3><b>วันอังคาร</b></h3>
+      </ion-label>
+    </ion-item>
+    <div *ngIf="isTuesday">
+      <ion-item lines="inset" color="tertiary">
+        <ion-label color="medium">
+          <h3><b>เวลาเปิด</b></h3>
+        </ion-label>
+        <ion-datetime [(ngModel)]="tuesday[0].orderFromTime" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+      <ion-item lines="inset" color="tertiary">
+        <ion-label color="medium">
+          <h3><b>เวลาปิด</b></h3>
+        </ion-label>
+        <ion-datetime [(ngModel)]="tuesday[0].orderThruTime" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+    </div>
+    <ion-item lines="inset" color="tertiary">
+      <ion-checkbox [(ngModel)]="isWednesday" color="primary">
+      </ion-checkbox>
+      <ion-label color="medium">
+        <h3><b>วันพุธ</b></h3>
+      </ion-label>
+    </ion-item>
+    <div *ngIf="isWednesday">
+      <ion-item lines="inset" color="tertiary">
+        <ion-label color="medium">
+          <h3><b>เวลาเปิด</b></h3>
+        </ion-label>
+        <ion-datetime [(ngModel)]="wednesday[0].orderFromTime" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+      <ion-item lines="inset" color="tertiary">
+        <ion-label color="medium">
+          <h3><b>เวลาปิด</b></h3>
+        </ion-label>
+        <ion-datetime [(ngModel)]="wednesday[0].orderThruTime" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+    </div>
+    <ion-item lines="inset" color="tertiary">
+      <ion-checkbox [(ngModel)]="iThursday" color="primary">
+      </ion-checkbox>
+      <ion-label color="medium">
+        <h3><b>วันพฤหัสบดี</b></h3>
+      </ion-label>
+    </ion-item>
+    <div *ngIf="iThursday">
+      <ion-item lines="inset" color="tertiary">
+        <ion-label color="medium">
+          <h3><b>เวลาเปิด</b></h3>
+        </ion-label>
+        <ion-datetime [(ngModel)]="thursday[0].orderFromTime" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+      <ion-item lines="inset" color="tertiary">
+        <ion-label color="medium">
+          <h3><b>เวลาปิด</b></h3>
+        </ion-label>
+        <ion-datetime [(ngModel)]="thursday[0].orderThruTime" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+    </div>
+    <ion-item lines="inset" color="tertiary">
+      <ion-checkbox [(ngModel)]="isFriday" color="primary">
+      </ion-checkbox>
+      <ion-label color="medium">
+        <h3><b>วันศุกร์</b></h3>
+      </ion-label>
+    </ion-item>
+    <div *ngIf="isFriday">
+      <ion-item lines="inset" color="tertiary">
+        <ion-label color="medium">
+          <h3><b>เวลาเปิด</b></h3>
+        </ion-label>
+        <ion-datetime [(ngModel)]="friday[0].orderFromTime" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+      <ion-item lines="inset" color="tertiary">
+        <ion-label color="medium">
+          <h3><b>เวลาปิด</b></h3>
+        </ion-label>
+        <ion-datetime [(ngModel)]="friday[0].orderThruTime" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+    </div>
+    <ion-item lines="inset" color="tertiary">
+      <ion-checkbox [(ngModel)]="isSaturday" color="primary">
+      </ion-checkbox>
+      <ion-label color="medium">
+        <h3><b>วันเสาร์</b></h3>
+      </ion-label>
+    </ion-item>
+    <div *ngIf="isSaturday">
+      <ion-item lines="inset" color="tertiary">
+        <ion-label color="medium">
+          <h3><b>เวลาเปิด</b></h3>
+        </ion-label>
+        <ion-datetime [(ngModel)]="saturday[0].orderFromTime" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+      <ion-item lines="inset" color="tertiary">
+        <ion-label color="medium">
+          <h3><b>เวลาปิด</b></h3>
+        </ion-label>
+        <ion-datetime [(ngModel)]="saturday[0].orderThruTime" displayFormat="HH:mm"></ion-datetime>
+      </ion-item>
+    </div>
+  </ion-list>
+  <ion-item lines="none" color="tertiary">
+    <ion-label>
+      <h2 class="ion-margin-top"><b>วันหยุด</b></h2>
+    </ion-label>
+    <ion-button color="medium" fill="clear" slot="end">
+      <ion-icon name="time-outline"></ion-icon> ตั้งเวลา
+    </ion-button>
+  </ion-item>
+  <ion-item color="tertiary" lines="none">
+    <ion-label color="">
+      <ion-label class="ion-text-wrap" color="medium">
+        <ion-row>
+          <ion-col size="3" *ngIf="!isSunday">
+            <h3>
+              อาทิตย์
+            </h3>
+          </ion-col>
+          <ion-col size="3" *ngIf="!isMonday">
+            <h3>
+              จันทร์
+            </h3>
+          </ion-col>
+          <ion-col size="3" *ngIf="!isTuesday">
+            <h3>
+              อังคาร
+            </h3>
+          </ion-col>
+          <ion-col size="3" *ngIf="!isWednesday">
+            <h3>
+              พุธ
+            </h3>
+          </ion-col>
+          <ion-col size="3" *ngIf="!isThursday">
+            <h3>
+              พฤหัสบดี
+            </h3>
+          </ion-col>
+          <ion-col size="3" *ngIf="!isFriday">
+            <h3>
+              ศุกร์
+            </h3>
+          </ion-col>
+          <ion-col size="3" *ngIf="!isSaturday">
+            <h3>
+              เสาร์
+            </h3>
+          </ion-col>
+        </ion-row>
+      </ion-label>
+    </ion-label>
+  </ion-item>
 </ion-content>
