@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
 
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-down-outline" pullingText="Pull to refresh" refreshingSpinner="circles"
@@ -13,22 +13,23 @@
   </ion-refresher>
 
   <ion-list lines="full" class="ion-no-padding" *ngIf="hasLoaded" id="manafeed">
-    <ion-item button detail="false" color="tertiary" *ngFor="let item of feeds.reverse()" (click)="homeFeedAction(item)"
-      [id]="item.id">
-      <ion-avatar slot="start">
-        <img [src]="item.thumbnailImageURL">
-      </ion-avatar>
-      <ion-label [color]="IsDeleteFeed(item) ? 'medium' : 'dark'">
-        <b>{{item.title}}</b>
-        <p>{{item.description}}</p>
-      </ion-label>
+    <ion-item-sliding color="danger" color="red" *ngFor="let item of feeds" (click)="homeFeedAction(item)" [id]="item.id">
+      <ion-item button detail="false" color="tertiary">
+        <ion-avatar slot="start">
+          <img [src]="item.thumbnailImageURL">
+        </ion-avatar>
+        <ion-label [color]="IsDeleteFeed(item) ? 'medium' : 'dark'">
+          <b>{{item.title}}</b>
+          <p>{{item.description}}</p>
+        </ion-label>
 
-      <ion-note slot="end" class="ion-text-end" *ngIf="IsExpirable(item)">
-        <img width="12" [src]="IsDeleteFeed(item) ? 'assets/imgs/timegray.png':'assets/imgs/timered.png'">
-        <span> {{DisplayExpireDateTime(item)}}</span>
-        <p>status</p>
-      </ion-note>
-    </ion-item>
+        <ion-note slot="end" class="ion-text-end" *ngIf="IsExpirable(item)">
+          <img width="12" [src]="IsDeleteFeed(item) ? 'assets/imgs/timegray.png':'assets/imgs/timered.png'">
+          <span> {{DisplayExpireDateTime(item)}}</span>
+          <p *ngIf="item.status">{{ item.status }}</p>
+        </ion-note>
+      </ion-item>
+    </ion-item-sliding>
   </ion-list>
 
   <ion-list lines="full" class="ion-no-padding non-feed" *ngIf="!hasLoaded">
@@ -67,12 +68,4 @@
     </ion-item>
   </ion-list>
 
-  <ion-button expand="block" color="danger" class="ion-padding" (click)="seeMoreFeed()">See More</ion-button>
-
-  <!-- For demo remove random feed -->
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button color="dark" (click)="removeRandomFeed()">
-      <ion-icon name="close-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-content>

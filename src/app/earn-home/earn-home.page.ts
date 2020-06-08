@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone, Renderer2 } from '@angular/core';
 import { createAnimation, Animation } from '@ionic/core';
 import { IonManaLib } from 'ion-m-lib';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-earn-home',
@@ -9,143 +10,177 @@ import { IonManaLib } from 'ion-m-lib';
 })
 export class EarnHomePage implements OnInit {
 
-  // HACK: Mock server return feed datas.
-  private serverFeedList = [];
+  private mcontentid = "earn-home";
+  private hasSeeMore: boolean = false;
+  private isLoadingSeeMore: boolean = false;
+  private totalObsoleteFeedIds: any[] = [];
 
   public hasLoaded: string;
   public feeds = [];
-  private mcontentid = "earn-home";
+
   constructor(private zone: NgZone, private renderer: Renderer2, private svc: IonManaLib) {
+    (<any>window).updateMoreFeed = () => {
+      let load$ = this.moreFeeds_FromNative();
+      this.zone.run(() => {
+        load$.then(response => {
+          this.manageFeeds(response);
+        });
+      });
+    };
   }
 
   ngOnInit() {
-    let load$ = this.loadData$();
-    load$.then(it => {
-        // this.hasLoaded = (it && it.length > 0) ? "y" : "n";
-      });
-  }
-  
-  private loadData$() {
-    return this.svc.initPageApi(this.mcontentid)
-      .then(_ => {
-        return this.svc.getApiData(this.mcontentid);
-      })
   }
 
   ionViewDidEnter() {
     setTimeout(() => {
-      this.getFeeds();
+      this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
+        .then(() => {
+
+          let load$ = this.getFeed_FromNative();
+          this.zone.run(() => {
+            load$.then(response => {
+              this.manageFeeds(response);
+              this.hasLoaded = (response && response.feeds.length > 0) ? "y" : "n";
+            });
+          });
+
+        });
     }, 1000);
   }
 
   doRefresh(event) {
     setTimeout(() => {
-      this.getFeeds();
+
+      let load$ = this.getFeed_FromNative();
+      this.zone.run(() => {
+        load$.then(response => {
+          this.manageFeeds(response, true);
+        });
+      });
+
       event.target.complete();
     }, 500);
   }
 
-  getFeeds() {
-    let load$ = this.getApiData();
+  async logScrolling($event) {
+    const scrollElement = await $event.target.getScrollElement();
+    const scrollHeight = scrollElement.scrollHeight - scrollElement.clientHeight;
+    const currentScrollDepth = $event.detail.scrollTop;
+    const targetPercent = 80;
+    let triggerDepth = ((scrollHeight / 100) * targetPercent);
+    if (currentScrollDepth > triggerDepth) {
+      let shouldLoadSeeMore = this.hasSeeMore && !this.isLoadingSeeMore;
+      if (!shouldLoadSeeMore) return;
+      this.isLoadingSeeMore = true;
+
+      let load$ = this.moreFeeds_FromNative();
+      this.zone.run(() => {
+        load$.then(response => {
+          this.isLoadingSeeMore = false;
+          this.manageFeeds(response);
+        });
+      });
+
+    }
+  }
+
+  refreshCallBack() {
+    let load$ = this.getFeed_FromNative();
     this.zone.run(() => {
-      load$.then(it => {
-        this.addManaFeeds(it);
-        this.hasLoaded = (it && it.length > 0) ? "y" : "n";
+      load$.then(response => {
+        this.manageFeeds(response, true);
       });
     });
-
   }
 
-  private feedCount: number = 1;
-  getApiData(): Promise<any> {
-    return new Promise<any>((resolve) => {
-      var randomFeeds = Math.floor(Math.random() * 10);
-      randomFeeds = 2;
-      for (let index = 0; index < randomFeeds; index++) {
-        var now = new Date();
-        now.setMinutes(now.getMinutes() + Math.floor(Math.random() * 60));
-        var currentFeedCount = this.feedCount++;
-        var data = {
-          id: currentFeedCount,
-          thumbnailImageURL: "https://cdn.iconscout.com/icon/free/png-256/love-romantic-valentine-day-message-chat-9-24049.png",
-          title: "Title: " + currentFeedCount,
-          description: "Description: " + currentFeedCount,
-          expirationDate: now,
-        };
-        this.serverFeedList.push(data);
-      }
-      resolve(this.serverFeedList);
-    })
-  }
+  manageFeeds(feeds: any, isNewFeedAnimation: boolean = false) {
+    let result = this.convertFeed(feeds, isNewFeedAnimation);
+    result = this.removeObsoleteFeeds(result);
+    this.hasSeeMore = result.HasSeeMore
+    this.totalObsoleteFeedIds = this.totalObsoleteFeedIds.concat(result.ObsoleteFeeds);
 
-  deleteFeed(feed) {
-    if (this.feeds.length <= 0) return;
-
-    this.playAnimationDeleteFeed(feed.id)
+    this.displayMoreFeeds(result.MoreFeeds);
     setTimeout(() => {
-      let index: number = this.feeds.indexOf(feed);
-      this.feeds.splice(index, 1);
-    }, 450);
+      this.displayRemoveFeeds();
+      setTimeout(() => {
+        this.displayAddNewFeeds(result.NewFeeds);
+      }, 200);
+    }, 400);
   }
 
-  addManaFeeds(feedList: []) {
-    if (!feedList || feedList.length <= 0) return;
+  convertFeed(value: any, isNewFeedAnimation: boolean = false): FeedListInfo {
+    let hasSeeMore = value.hasMorePages;
+    let newFeeds = isNewFeedAnimation ? value.feeds : [];
+    let moreFeeds = !isNewFeedAnimation ? value.feeds : [];
+    let obsoleteFeeds = value.obsoleteFeedIds;
+    return new FeedListInfo(hasSeeMore, newFeeds, moreFeeds, obsoleteFeeds);
+  }
 
-    feedList.sort(function (a: any, b: any) { return a.expirationDate - b.expirationDate })
-    let timerId = setInterval(() => {
+  removeObsoleteFeeds(value: FeedListInfo): FeedListInfo {
+    let now = new Date();
+    value.NewFeeds = value.NewFeeds.filter((it: any) => !(now >= it.expirationDate) && !this.totalObsoleteFeedIds.includes(it.id));
+    value.MoreFeeds = value.MoreFeeds.filter((it: any) => !(now >= it.expirationDate) && !this.totalObsoleteFeedIds.includes(it.id));
+    return value;
+  }
 
-      this.feeds.push(feedList.pop());
-      setTimeout(() => {
-        this.playAnimationNewFeed();
-      }, 50);
+  displayMoreFeeds(feeds: any[]) {
+    let feedIdExists = this.feeds.map(it => it.id);
+    feeds = feeds.filter((it: any) => !feedIdExists.includes(it.id));
+    if (feeds.length < 0) return;
 
-      if (feedList.length <= 0) {
-        clearInterval(timerId);
+    let feedCountBeforeAdd = this.feeds.length
+    feeds.forEach(it => this.feeds.unshift(it));
+
+    setTimeout(() => {
+      let displayFeeds = document.getElementById("manafeed").children;
+      for (let index = 0; index < displayFeeds.length - feedCountBeforeAdd; index++) {
+        let element = displayFeeds.item(index);
+        this.playAnimationNewFeed(element);
       }
+    }, 600);
+  }
+
+  displayRemoveFeeds() {
+    let obsoleteFeeds = this.totalObsoleteFeedIds;
+    if (obsoleteFeeds.length > 0) obsoleteFeeds.forEach(id => this.removeFeed(id));
+
+    let now = new Date();
+    let expiredFeeds = this.feeds.filter(it => now >= it.expirationDate);
+    if (expiredFeeds.length > 0) expiredFeeds.forEach(it => this.removeFeed(it.id));
+  }
+
+  removeFeed(id) {
+    this.playAnimationDeleteFeed(id)
+
+    setTimeout(() => {
+      let index = this.feeds.findIndex(it => it.id == id);
+      if (index < 0) return;
+      this.feeds.splice(index, 1);
     }, 300);
   }
 
-  playAnimationNewFeed() {
-    let element = document.getElementById("manafeed").firstElementChild;
+  displayAddNewFeeds(feeds: any[]) {
+    let feedIdExists = this.feeds.map(it => it.id);
+    feeds = feeds.filter((it: any) => !feedIdExists.includes(it.id));
+    if (feeds.length <= 0) return;
+
+    let timerId = setInterval(() => {
+      this.feeds.push(feeds.pop());
+      setTimeout(() => { this.playAnimationNewFeed(); }, 50);
+
+      if (feeds.length <= 0) clearInterval(timerId);
+    }, 300);
+  }
+
+  playAnimationNewFeed(element: any = null) {
+    if (!element) element = document.getElementById("manafeed").lastElementChild;
     this.renderer.addClass(element, "feed-news");
   }
 
   playAnimationDeleteFeed(id) {
-    let element = document.getElementById(id.toString());
-    this.renderer.addClass(element, "feed-delete");
-  }
-
-  // HACK: Mock remove random feed
-  removeRandomFeed() {
-    let randomIndex = Math.floor(Math.random() * this.feeds.length);
-    let feed = this.feeds[randomIndex];
-    this.deleteFeed(feed);
-  }
-
-  seeMoreFeed() {
-    let feedLengths = this.feeds.length;
-
-    // Mock: Generate feeds to see more.
-    for (let index = 0; index < 10; index++) {
-      let currentFeedCount = this.feedCount++;
-      let data = {
-        id: currentFeedCount,
-        thumbnailImageURL: "https://cdn.iconscout.com/icon/free/png-256/love-romantic-valentine-day-message-chat-9-24049.png",
-        title: "Title: see more-" + currentFeedCount,
-        description: "Description: see more-" + currentFeedCount,
-        expirationDate: new Date(),
-      };
-      this.feeds.unshift(data);
-    }
-
-    let displayFeedList = document.getElementById("manafeed").children;
-
-    setTimeout(() => {
-      for (let index = feedLengths; index < displayFeedList.length; index++) {
-        let element = displayFeedList.item(index);
-        this.renderer.addClass(displayFeedList[index], "feed-news");
-      }
-    }, 50);
+    let element = document.getElementById(id);
+    if (element) this.renderer.addClass(element, "feed-delete");
   }
 
   homeFeedAction(feed: any) {
@@ -153,7 +188,7 @@ export class EarnHomePage implements OnInit {
   }
 
   IsDeleteFeed(feed: any) {
-    return feed.isDeletable || this.DisplayExpireDateTime(feed) == "Expired";
+    return this.DisplayExpireDateTime(feed) == "Expired";
   }
 
   IsExpirable(feed: any) {
@@ -180,4 +215,46 @@ export class EarnHomePage implements OnInit {
     else if (Math.round(timeRemaining / MonthTime) == 1) return "1 mo";
     else return Math.round(timeRemaining / MonthTime) + " mo";
   }
+
+  getFeed_FromNative(): Promise<any> {
+    return this.callNativeFunc('newFeeds');
+  }
+
+  moreFeeds_FromNative(): Promise<any> {
+    return this.callNativeFunc('moreFeeds');
+  }
+
+  private callAppMethod(fName: string, fParam: any) {
+    return new Promise((resolve, reject) => {
+      try {
+        TheSHybridCall(fName, fParam);
+        resolve({});
+      } catch (error) {
+        console.log(error);
+        resolve(error);
+      }
+    });
+  }
+
+  private callNativeFunc(fName: string, fParam: string = "") {
+    return new Promise((resolve, reject) => {
+      try {
+        TheSHybridFunc(fName, fParam, rsp => resolve(rsp));
+      } catch (error) {
+        resolve(error);
+      }
+    });
+  }
+
 }
+
+export class FeedListInfo {
+  constructor(
+    public HasSeeMore: boolean = false,
+    public NewFeeds: any[] = [],
+    public MoreFeeds: any[] = [],
+    public ObsoleteFeeds: any[] = []) { }
+}
+
+declare function TheSHybridCall(methodName: string, parameter: any): void;
+declare function TheSHybridFunc(methodName: string, parameter: string, callback: any): void;
