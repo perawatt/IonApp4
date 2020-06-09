@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content mode="ios">
-  <ng-container *ngIf="hasLoaded">
+  <ng-container *ngIf="true">
     <form>
       <ion-list lines="none">
         <ion-item color="tertiary">
@@ -215,12 +215,12 @@
           </ion-grid>
         </ion-item>
       </ion-list>
-      <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">แก้ไขเสร็จสิ้น
+      <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">สั่งสินค้า
       </ion-button>
     </form>
   </ng-container>
 
-  <ng-container *ngIf="!hasLoaded">
+  <ng-container *ngIf="false">
     <ion-item lines="none">
       <ion-avatar slot="start">
         <ion-skeleton-text animated></ion-skeleton-text>
