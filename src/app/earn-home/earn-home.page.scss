@@ -27,3 +27,34 @@
     opacity: 1;
     transform: unset;
 }
+
+ion-avatar {
+    height: 40px !important;
+    width: 40px !important;
+}
+
+ion-slides {
+    height: 80px;
+    ion-slide {
+        height: 80px;
+        img {
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+        }
+    }
+}
+
+ion-note {
+    font-size: 14px;
+    align-self: flex-start;
+    margin-top: 14px;
+}
+
+.loading-shortcut {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-left:auto;
+    margin-right: auto;
+}

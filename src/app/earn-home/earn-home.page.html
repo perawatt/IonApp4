@@ -1,7 +1,85 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Home</ion-title>
-  </ion-toolbar>
+<ion-header class="home-header" mode="ios">
+  <ion-item lines="none" color="light" class="ion-no-padding">
+    <ion-label class="text-red ion-padding-start"><b>รายการโปรด</b></ion-label>
+  </ion-item>
+  <ion-slides [options]="slideOpts">
+    <ng-container *ngIf="hasLoaded">
+      <ion-slide *ngFor="let shortcut of shortcuts$ | async">
+        <ion-item class="ion-text-center" color="light" lines="none" (click)="visitEndpoint(shortcut.endpointUrl)">
+          <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+            <ion-text>
+              <img class="ion-text-center" [src]="shortcut.logoUrl">
+            </ion-text>
+            <p>{{shortcut.title}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-slide>
+    </ng-container>
+    <ng-container *ngIf="!hasLoaded">
+      <ion-slide>
+        <ion-item class="ion-text-center" color="light" lines="none">
+          <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+            <ion-text>
+              <ion-skeleton-text animated class="loading-shortcut">
+              </ion-skeleton-text>
+            </ion-text>
+            <p>
+              <ion-skeleton-text class="center" animated style="width:100px;"></ion-skeleton-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-slide>
+      <ion-slide>
+        <ion-item class="ion-text-center" color="light" lines="none">
+          <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+            <ion-text>
+              <ion-skeleton-text animated class="loading-shortcut">
+              </ion-skeleton-text>
+            </ion-text>
+            <p>
+              <ion-skeleton-text class="center" animated style="width:100px;"></ion-skeleton-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-slide>
+      <ion-slide>
+        <ion-item class="ion-text-center" color="light" lines="none">
+          <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+            <ion-text>
+              <ion-skeleton-text animated class="loading-shortcut">
+              </ion-skeleton-text>
+            </ion-text>
+            <p>
+              <ion-skeleton-text class="center" animated style="width:100px;"></ion-skeleton-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-slide>
+      <ion-slide>
+        <ion-item class="ion-text-center" color="light" lines="none">
+          <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+            <ion-text>
+              <ion-skeleton-text animated class="loading-shortcut">
+              </ion-skeleton-text>
+            </ion-text>
+            <p>
+              <ion-skeleton-text class="center" animated style="width:100px;"></ion-skeleton-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-slide>
+    </ng-container>
+    <!-- <ion-slide>
+      <ion-item class="ion-text-center" color="light" lines="none">
+        <ion-label class="ion-no-padding ion-no-margin ion-text-center">
+          <ion-text>
+            <img class="ion-text-center" src="assets/imgs/addshortcut.png">
+          </ion-text>
+          <p>เพิ่ม</p>
+        </ion-label>
+      </ion-item>
+    </ion-slide> -->
+  </ion-slides>
 </ion-header>
 
 <ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">

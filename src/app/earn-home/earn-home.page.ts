@@ -10,13 +10,16 @@ import { element } from 'protractor';
 })
 export class EarnHomePage implements OnInit {
 
-  private mcontentid = "earn-home";
+  private mcontentid: string = "home-feed";
   private hasSeeMore: boolean = false;
   private isLoadingSeeMore: boolean = false;
   private totalObsoleteFeedIds: any[] = [];
+  private getShoutCutApi: string = "https://s.manal.ink/api/home/shortcuts";
 
   public hasLoaded: string;
   public feeds = [];
+  public shortcuts$ = Promise.resolve<any[]>([]);
+  public slideOpts = { slidesPerView: 4 };
 
   constructor(private zone: NgZone, private renderer: Renderer2, private svc: IonManaLib) {
     (<any>window).updateMoreFeed = () => {
@@ -27,6 +30,8 @@ export class EarnHomePage implements OnInit {
         });
       });
     };
+
+    (<any>window).syncShortcuts = () => this.getShortcuts();
   }
 
   ngOnInit() {
@@ -45,6 +50,7 @@ export class EarnHomePage implements OnInit {
             });
           });
 
+          this.getShortcuts();
         });
     }, 1000);
   }
@@ -92,6 +98,11 @@ export class EarnHomePage implements OnInit {
         this.manageFeeds(response, true);
       });
     });
+  }
+
+  getShortcuts() {
+    let load$ = this.svc.callApiGet(this.mcontentid, this.getShoutCutApi);
+    this.zone.run(() => { this.shortcuts$ = load$; });
   }
 
   manageFeeds(feeds: any, isNewFeedAnimation: boolean = false) {
@@ -214,6 +225,10 @@ export class EarnHomePage implements OnInit {
       else return Math.round(timeRemaining / DayTime).toString() + " da";
     else if (Math.round(timeRemaining / MonthTime) == 1) return "1 mo";
     else return Math.round(timeRemaining / MonthTime) + " mo";
+  }
+
+  visitEndpoint(url: any) {
+    this.svc.visitEndpoint(this.mcontentid, url);
   }
 
   getFeed_FromNative(): Promise<any> {
