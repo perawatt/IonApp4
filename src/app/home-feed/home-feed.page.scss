@@ -28,3 +28,33 @@ ion-note {
     margin-left:auto;
     margin-right: auto;
 }
+
+#manafeed {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#manafeed ion-item-sliding {
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+    transform: translateY(-50px);
+}
+
+#manafeed .feed-news {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+#manafeed .feed-delete {
+    opacity: 0;
+    transform: translateX(200px);
+}
+
+#manafeed ion-note p {
+    margin: 0px;
+}
+
+.non-feed ion-item {
+    opacity: 1;
+    transform: unset;
+}

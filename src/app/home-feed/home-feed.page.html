@@ -4,7 +4,7 @@
   </ion-item>
   <ion-slides [options]="slideOpts">
     <ng-container *ngIf="hasLoaded">
-      <ion-slide *ngFor="let shortcut of shortcuts$ | async">
+      <ion-slide *ngFor="let shortcut of shortcuts">
         <ion-item class="ion-text-center" color="light" lines="none" (click)="visitEndpoint(shortcut.endpointUrl)">
           <ion-label class="ion-no-padding ion-no-margin ion-text-center">
             <ion-text>
@@ -82,8 +82,8 @@
   </ion-slides>
 </ion-header>
 
-<ion-content color="tertiary" mode="ios">
-  
+<ion-content color="tertiary" mode="ios" [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-down-outline" pullingText="Pull to refresh" refreshingSpinner="circles"
       refreshingText="Refreshing...">
@@ -91,8 +91,8 @@
   </ion-refresher>
 
   <ng-container *ngIf="hasLoaded">
-    <ion-list lines="full" class="ion-no-padding">
-      <ion-item-sliding color="danger" *ngFor="let item of feeds$ | async" color="red">
+    <ion-list lines="full" class="ion-no-padding" id="manafeed">
+      <ion-item-sliding color="danger" *ngFor="let item of feeds" color="red">
         <ion-item button detail="false" color="tertiary" (click)="homeFeedAction(item)">
           <ion-avatar slot="start">
             <img [src]="item.thumbnailImageURL">
@@ -106,6 +106,7 @@
           <ion-note slot="end" *ngIf="IsExpirable(item)">
             <img width="12" [src]="IsDeleteFeed(item) ? 'assets/imgs/timegray.png':'assets/imgs/timered.png'">
             <span> {{DisplayExpireDateTime(item)}}</span>
+            <p *ngIf="item.status">{{ item.status }}</p>
           </ion-note>
         </ion-item>
       </ion-item-sliding>
