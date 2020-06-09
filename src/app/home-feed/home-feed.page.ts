@@ -46,11 +46,7 @@ export class HomeFeedPage implements OnInit {
 
   ionViewDidEnter() {
     setTimeout(() => {
-      this.svc.initPageApiWithCallBack(this.mcontentid,
-        () => {
-          this.getNewFeed();
-          this.getShortcuts();
-        })
+      this.svc.initPageApiWithCallBack(this.mcontentid, () => { this.getNewFeed(); })
         .then(() => {
 
           let load$ = this.getNewFeed_Native();
