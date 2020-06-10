@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content class="transaction ion-padding-top" mode="ios">
-  <ion-card class="ion-margin-top ion-padding-bottom" color="tertiary">
+  <ion-card class="ion-padding-vertical" color="tertiary">
     <ion-item class="ion-text-center" color="tertiary" lines="none">
       <ion-grid>
         <ion-row class="ion-text-center ion-align-items-center">
@@ -31,8 +31,8 @@
     </ion-item>
   </ion-card>
   <form [formGroup]="fg" (ngSubmit)="onSave()">
-    <ion-item color="tertiary" lines="full" class="ion-padding-top">
-      <ion-label position="floating">
+    <ion-item color="tertiary" lines="full" class="ion-no-padding ion-margin-top">
+      <ion-label class="ion-padding-start ion-padding-top" position="floating">
         <h1>ยอดที่ต้องการเติม</h1>
       </ion-label>
       <ion-input type="number" placeholder="ระบุยอดเงิน" formControlName="amount" (ionChange)="AmountChanged()"
@@ -40,10 +40,10 @@
     </ion-item>
 
     <ion-item color="tertiary" lines="none">
-      <img slot="start" width="22" height="22" class="qr" src="assets/imgs/walletgray.png" />
-      <ion-label color="medium">
-        <h3>ยอดเงินจากกระเป๋าของคุณจะถูกเติมเข้ามาที่ร้าน</h3>
-      </ion-label>
+        <img slot="start" width="22" height="22" class="qr" src="assets/imgs/walletgray.png" />
+        <ion-label color="medium" class="ion-text-wrap">
+          <h3>ยอดเงินจากกระเป๋าของคุณจะถูกเติมเข้ามาที่ร้าน</h3>
+        </ion-label>
     </ion-item>
     <ion-button id="app-form-submit" color="danger" [disabled]="fg.invalid" class="ion-no-margin" expand="full"
       type="submit">ยืนยัน
