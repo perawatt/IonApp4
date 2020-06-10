@@ -13,6 +13,7 @@ export class HomeFeedPage implements OnInit {
   private isLoadingSeeMore: boolean = false;
   private totalObsoleteFeedIds: any[] = [];
   private getShoutCutApi: string = "https://s.manal.ink/api/home/shortcuts";
+  private isFeedManaging: boolean = false;
 
   public hasLoaded: string;
   public feeds = [];
@@ -42,9 +43,11 @@ export class HomeFeedPage implements OnInit {
   }
 
   ngOnInit() {
-  }
+    setInterval(() => {
+      if (this.isFeedManaging) return;
+      this.displayRemoveFeeds();
+    }, 60000);
 
-  ionViewDidEnter() {
     setTimeout(() => {
       this.svc.initPageApiWithCallBack(this.mcontentid, () => { this.getNewFeed(); })
         .then(() => {
@@ -92,6 +95,8 @@ export class HomeFeedPage implements OnInit {
   }
 
   manageFeeds(feeds: any, isNewFeedAnimation: boolean = false) {
+    this.isFeedManaging = true;
+
     let result = this.convertFeed(feeds, isNewFeedAnimation);
     result = this.removeObsoleteFeeds(result);
     this.hasSeeMore = result.HasSeeMore
@@ -99,7 +104,7 @@ export class HomeFeedPage implements OnInit {
 
     this.displayMoreFeeds(result.MoreFeeds);
     setTimeout(() => {
-      this.displayRemoveFeeds();
+      this.displayRemoveFeeds(true);
       setTimeout(() => {
         this.displayAddNewFeeds(result.NewFeeds);
       }, 200);
@@ -138,16 +143,18 @@ export class HomeFeedPage implements OnInit {
     }, 600);
   }
 
-  displayRemoveFeeds() {
+  displayRemoveFeeds(isForceRemove: boolean = false) {
     let obsoleteFeeds = this.totalObsoleteFeedIds;
-    if (obsoleteFeeds.length > 0) obsoleteFeeds.forEach(id => this.removeFeed(id));
+    if (obsoleteFeeds.length > 0) obsoleteFeeds.forEach(id => this.removeFeed(id, isForceRemove));
 
     let now = new Date();
     let expiredFeeds = this.feeds.filter(it => now >= it.expirationDate);
-    if (expiredFeeds.length > 0) expiredFeeds.forEach(it => this.removeFeed(it.id));
+    if (expiredFeeds.length > 0) expiredFeeds.forEach(it => this.removeFeed(it.id, isForceRemove));
   }
 
-  removeFeed(id) {
+  removeFeed(id, isForceRemove: boolean) {
+    let shouldSkip = this.isFeedManaging && !isForceRemove;
+    if (shouldSkip) return;
     this.playAnimationDeleteFeed(id)
 
     setTimeout(() => {
@@ -160,13 +167,19 @@ export class HomeFeedPage implements OnInit {
   displayAddNewFeeds(feeds: any[]) {
     let feedIdExists = this.feeds.map(it => it.id);
     feeds = feeds.filter((it: any) => !feedIdExists.includes(it.id));
-    if (feeds.length <= 0) return;
+    if (feeds.length <= 0) {
+      this.isFeedManaging = false;
+      return;
+    }
 
     let timerId = setInterval(() => {
       this.feeds.push(feeds.pop());
       setTimeout(() => { this.playAnimationNewFeed(); }, 50);
 
-      if (feeds.length <= 0) clearInterval(timerId);
+      if (feeds.length <= 0) {
+        clearInterval(timerId);
+        this.isFeedManaging = false;
+      }
     }, 300);
   }
 
@@ -186,8 +199,7 @@ export class HomeFeedPage implements OnInit {
 
   homeFeedAction(feed: any) {
     if (this.IsDeleteFeed(feed)) this.removeFeed(feed.id);
-
-    this.svc.visitEndpoint(this.mcontentid, feed.endpoint);
+    else this.svc.visitEndpoint(this.mcontentid, feed.endpoint);
   }
 
   IsDeleteFeed(feed: any) {
