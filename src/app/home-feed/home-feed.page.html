@@ -92,7 +92,7 @@
 
   <ng-container *ngIf="hasLoaded">
     <ion-list lines="full" class="ion-no-padding" id="manafeed">
-      <ion-item-sliding color="danger" *ngFor="let item of feeds" color="red">
+      <ion-item-sliding color="danger" *ngFor="let item of feeds" color="red" [id]="item.id">
         <ion-item button detail="false" color="tertiary" (click)="homeFeedAction(item)">
           <ion-avatar slot="start">
             <img [src]="item.thumbnailImageURL">
