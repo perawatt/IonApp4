@@ -330,6 +330,10 @@ const routes: Routes = [
   {
     path: 'merchant-deposit',
     loadChildren: () => import('./merchant-deposit/merchant-deposit.module').then( m => m.MerchantDepositPageModule)
+  },
+  {
+    path: 'contract-consent-software',
+    loadChildren: () => import('./contract-consent-software/contract-consent-software.module').then( m => m.ContractConsentSoftwarePageModule)
   }
 
 
