@@ -334,6 +334,14 @@ const routes: Routes = [
   {
     path: 'contract-consent-software',
     loadChildren: () => import('./contract-consent-software/contract-consent-software.module').then( m => m.ContractConsentSoftwarePageModule)
+  },
+  {
+    path: 'merchant-withdraw-confirm',
+    loadChildren: () => import('./merchant-withdraw-confirm/merchant-withdraw-confirm.module').then( m => m.MerchantWithdrawConfirmPageModule)
+  },
+  {
+    path: 'merchant-topup-confirm',
+    loadChildren: () => import('./merchant-topup-confirm/merchant-topup-confirm.module').then( m => m.MerchantTopupConfirmPageModule)
   }
 
 
