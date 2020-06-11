@@ -10,7 +10,7 @@ export class PrivilegeCartPage implements OnInit {
   
   public mcontentid: string = "privilege-cart";
   public hasLoaded: string;
-  private data$ = Promise.resolve<{}>({});
+  public data$ = Promise.resolve<{}>({});
   constructor(private svc: IonManaLib) { }
 
   ngOnInit() {
