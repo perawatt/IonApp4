@@ -8,10 +8,10 @@ import { IonManaLib } from 'ion-m-lib';
 })
 export class PrivilegeSelectPage implements OnInit {
 
-  private hasLoaded: string;
-  private mcontentid: string = "privilege-select";
-  private data$ = Promise.resolve<{}>({});
-  private title = "สิทธิพิเศษสำหรับสมาชิก";
+  public hasLoaded: string;
+  public mcontentid: string = "privilege-select";
+  public data$ = Promise.resolve<{}>({});
+  public title = "สิทธิพิเศษสำหรับสมาชิก";
   constructor(private svc: IonManaLib) { }
 
   ngOnInit() {
