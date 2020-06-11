@@ -9,20 +9,21 @@ import { IonManaLib } from 'ion-m-lib';
 export class PrivilegeSelectPage implements OnInit {
 
   private hasLoaded: string;
-  private mcontentid: string = "privilege-select/nafmdtl-637170799141295829";
+  private mcontentid: string = "privilege-select";
   private data$ = Promise.resolve<{}>({});
   private title = "สิทธิพิเศษสำหรับสมาชิก";
   constructor(private svc: IonManaLib) { }
 
   ngOnInit() {
   }
+
   ionViewDidEnter() {
     this.hasLoaded = null;
     //this.apiUrl = this.navParams.data;
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then((it: any) => {
-      this.svc.initPageApi(this.mcontentid);    
+      this.svc.initPageApi(this.mcontentid);
       this.hasLoaded = it ? "y" : "n";
     });
   }
