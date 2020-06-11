@@ -1,0 +1,134 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>privilege-confirm</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="hasLoaded && data$ | async as data">
+
+    <ion-card margin-top mode="ios">
+      <ion-grid padding-left padding-right>
+        <ion-row align-items-center>
+          <ion-col col-auto>
+            <h2>
+              <b>{{ data.privilege.name }}</b>
+            </h2>
+          </ion-col>
+          <ion-col text-right *ngIf="data.promotion">
+            <ion-icon class="text-yellow bold" name="ios-flash"></ion-icon>
+            <span class="text-red">
+              {{ DisplayExpireDateTime(data.promotion) }}
+            </span>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <div class="eslip">
+            <img *ngIf="!data.privilege.rewardBannerUrl" width="100%" class="eslip-banner"
+            src="https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-orange-and-yellow-gradient-banner-background-imagegradientbackground-image-image_49980.jpg" />
+            <img *ngIf="data.privilege.rewardBannerUrl && (!data.promotion || !data.promotion.promotionBanner)" width="100%" class="eslip-banner"
+            [src]="data.privilege.rewardBannerUrl" />
+            <img *ngIf="data.promotion && data.promotion.promotionBanner" width="100%" class="eslip-banner"
+            [src]="data.promotion.promotionBanner" />
+          </div>
+        </ion-row>
+        <ion-row align-items-center>
+          <ion-col col-auto>
+            <b>แต้มที่ใช้แลก</b>
+          </ion-col>
+          <ion-col col-auto>
+            <img width="18" height="18" class="qr" src="assets/imgs/privilege-point.png" />
+          </ion-col>
+          <ion-col col-auto>
+            <h3><span [ngClass]="{'text-red line-through': data.promotion}">{{ data.privilege.point | number:'1.0' }}</span>
+              <span *ngIf="data.promotion">{{ data.promotion.promotionPoint | number:'1.0' }}</span>
+            </h3>
+          </ion-col>
+          <ion-col text-right *ngIf="(data.promotion && data.memberPoint >= data.promotion.promotionPoint && data.remainAmount > 0) || (!data.promotion && data.memberPoint >= data.privilege.point && data.remainAmount > 0)">
+            <span class="text-blue">
+              <ion-icon name="ios-checkmark-circle"></ion-icon> แลกได้แล้ว
+            </span>
+          </ion-col>
+        </ion-row>
+        <ion-row padding-bottom padding-top>
+          <h2>
+            <b>จำนวนที่เหลือให้แลก {{ data.remainAmount }}</b>
+          </h2>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+    <ion-list no-lines margin-top mode="ios">
+        <ion-item no-lines padding-right mode="ios">
+            <h2>
+                <b>ข้อมูลจำเพาะ</b>
+              </h2>
+              <p text-wrap> {{ data.privilege.description ? data.privilege.description : '-' }}</p>
+        </ion-item>
+        <ion-item padding-right mode="ios">
+            <h2>
+                <b>วิธีรับของรางวัล</b>
+              </h2>
+              <p text-wrap> {{ data.privilege.condition ? data.privilege.condition : '-' }}</p>
+        </ion-item>
+        <ion-item padding-right mode="ios">
+            <h2>
+                <b>เงื่อนไขการรับของรางวัล</b>
+              </h2>
+              <p text-wrap> {{ data.privilege.additional ? data.privilege.additional : '-'  }}</p>
+        </ion-item>
+      </ion-list>
+
+  </ng-container>
+
+  <ng-container *ngIf="!hasLoaded">
+
+      <ion-card margin-top mode="ios">
+        <ion-grid padding-left padding-right>
+          <ion-row align-items-center>
+            <ion-col col-auto>
+              <h2>
+                <b>-</b>
+              </h2>
+            </ion-col>
+          </ion-row>
+          <ion-row align-items-center>
+            <ion-col col-auto>
+              <b>แต้มที่ใช้แลก</b>
+            </ion-col>
+            <ion-col col-auto>
+              <img width="18" height="18" class="qr" src="assets/imgs/privilege-point.png" />
+            </ion-col>
+            <ion-col col-auto>
+              <h3><span>-</span></h3>
+            </ion-col>
+          </ion-row>
+          <ion-row padding-bottom padding-top>
+            <h2>
+              <b>จำนวนที่เหลือให้แลก -</b>
+            </h2>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+      <ion-list no-lines margin-top mode="ios">
+          <ion-item no-lines padding-right mode="ios">
+              <h2>
+                  <b>ข้อมูลจำเพาะ</b>
+                </h2>
+                <p text-wrap></p>
+          </ion-item>
+          <ion-item padding-right mode="ios">
+              <h2>
+                  <b>วิธีรับของรางวัล</b>
+                </h2>
+                <p text-wrap></p>
+          </ion-item>
+          <ion-item padding-right mode="ios">
+              <h2>
+                  <b>เงื่อนไขการรับของรางวัล</b>
+                </h2>
+                <p text-wrap></p>
+          </ion-item>
+        </ion-list>
+  
+    </ng-container>
+</ion-content>

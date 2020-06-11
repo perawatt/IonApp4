@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>privilege-cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="hasLoaded == 'y' && data$ | async as data">
+    <ion-card color="white" text-left padding-left>
+      <ion-item no-padding>
+        <ion-avatar item-start>
+          <img *ngIf="data.merchantAccount.logoImageUrl" [src]="data.merchantAccount.logoImageUrl">
+          <img *ngIf="!data.merchantAccount.logoImageUrl" src="assets/imgs/defaultshop.png">
+        </ion-avatar>
+        <h2 no-margin>
+          <b>{{data.merchantAccount.name}}</b>
+          <p>&nbsp;</p>
+        </h2>
+      </ion-item>
+
+    </ion-card>
+    <ion-card padding margin-top>
+      <p class="text-black" text-left margin-top><b>รายละเอียดการจ่ายเงิน</b></p>
+
+      <ion-row margin-top>
+        <ion-col no-padding>
+          <p text-left>รวมค่าสินค้า</p>
+        </ion-col>
+        <ion-col col-auto no-padding>
+          <h2 item-end no-margin text-right><b>฿0</b></h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row margin-top>
+        <ion-col no-padding>
+          <p text-left>ส่วนลด</p>
+        </ion-col>
+        <ion-col col-auto no-padding>
+          <h2 item-end no-margin text-right><b>฿0</b></h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row margin-top>
+        <ion-col no-padding>
+          <p text-left>ราคารวมทั้งหมด</p>
+        </ion-col>
+        <ion-col col-auto no-padding>
+          <h2 item-end class="text-red" no-margin text-right><b>฿0</b></h2>
+        </ion-col>
+      </ion-row>
+
+      <hr margin-top margin-bottom>
+
+      <ion-row margin-top>
+        <p text-left>ใส่คูปองหรือแต้ม</p>
+      </ion-row>
+
+      <ion-row margin-top>
+        <h2 text-left><b>ใช้ {{data.totalPoint}} แต้ม</b></h2>
+      </ion-row>
+
+    </ion-card>
+
+    <ion-card color="white" text-center margin-top padding>
+      <p class="text-gray" text-left>รายการที่เลือกไว้</p>
+
+      <ion-list no-lines>
+        <div *ngFor="let item of data.productItems; let lst = last" no-padding margin-top>
+          <ion-row>
+            <img [src]="item.bannerImageUrl" class="image-square"/>
+            <div class="image-square-content">
+              <p text-left><b>{{item.name}}</b></p>
+              <p text-left>ราคา {{item.price}} คะแนน</p>
+              <p text-left>จำนวน {{item.quantity}} รายการ</p>
+            </div>
+          </ion-row>
+          <hr *ngIf="!lst">
+        </div>
+      </ion-list>
+    </ion-card>
+
+  </ng-container>
+
+  <ng-container *ngIf="!hasLoaded">
+    <ion-card color="white" text-left padding-left>
+      <ion-item no-padding>
+        <ion-avatar item-start>
+          <img src="assets/imgs/defaultshop.png">
+        </ion-avatar>
+        <h2 no-margin>
+          <b>-</b>
+          <p>&nbsp;</p>
+        </h2>
+      </ion-item>
+
+    </ion-card>
+
+
+    <ion-list mode="ios">
+      <ion-item text-center>กำลังโหลดข้อมูล กรุณารอสักครู่...</ion-item>
+    </ion-list>
+  </ng-container>
+
+  <ng-container *ngIf="hasLoaded == 'n'">
+    <ion-card color="white" text-left padding-left>
+      <ion-item no-padding>
+        <ion-avatar item-start>
+          <img src="assets/imgs/defaultshop.png">
+        </ion-avatar>
+        <h2 no-margin>
+          <b>-</b>
+          <p>&nbsp;</p>
+        </h2>
+      </ion-item>
+
+    </ion-card>
+    <ion-list mode="ios">
+      <ion-item text-center>ไม่พบข้อมูล กรุณาลองใหม่อีกครั้ง</ion-item>
+    </ion-list>
+  </ng-container>
+</ion-content>

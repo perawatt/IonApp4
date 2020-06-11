@@ -351,7 +351,19 @@ const routes: Routes = [
   {
     path: 'contract-consent-from-employee',
     loadChildren: () => import('./contract-consent-from-employee/contract-consent-from-employee.module').then( m => m.ContractConsentFromEmployeePageModule)
+  },  {
+    path: 'privilege-select',
+    loadChildren: () => import('./privilege-select/privilege-select.module').then( m => m.PrivilegeSelectPageModule)
   },
+  {
+    path: 'privilege-cart',
+    loadChildren: () => import('./privilege-cart/privilege-cart.module').then( m => m.PrivilegeCartPageModule)
+  },
+  {
+    path: 'privilege-confirm',
+    loadChildren: () => import('./privilege-confirm/privilege-confirm.module').then( m => m.PrivilegeConfirmPageModule)
+  },
+
 
 
 ];
