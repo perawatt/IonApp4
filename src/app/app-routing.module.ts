@@ -287,7 +287,8 @@ const routes: Routes = [
   {  
     path: 'merchant-address',
     loadChildren: () => import('./merchant-address/merchant-address.module').then( m => m.MerchantAddressPageModule)
-  },  {
+  },
+  {
     path: 'merchant-employee',
     loadChildren: () => import('./merchant-employee/merchant-employee.module').then( m => m.MerchantEmployeePageModule)
   },
@@ -332,17 +333,25 @@ const routes: Routes = [
     loadChildren: () => import('./merchant-deposit/merchant-deposit.module').then( m => m.MerchantDepositPageModule)
   },
   {
-    path: 'contract-consent-software',
-    loadChildren: () => import('./contract-consent-software/contract-consent-software.module').then( m => m.ContractConsentSoftwarePageModule)
-  },
-  {
     path: 'merchant-withdraw-confirm',
     loadChildren: () => import('./merchant-withdraw-confirm/merchant-withdraw-confirm.module').then( m => m.MerchantWithdrawConfirmPageModule)
   },
   {
     path: 'merchant-topup-confirm',
     loadChildren: () => import('./merchant-topup-confirm/merchant-topup-confirm.module').then( m => m.MerchantTopupConfirmPageModule)
-  }
+  },
+  {
+    path: 'contract-consent-from-delivery',
+    loadChildren: () => import('./contract-consent-from-delivery/contract-consent-from-delivery.module').then( m => m.ContractConsentFromDeliveryPageModule)
+  },
+  {
+    path: 'contract-consent-from-shop',
+    loadChildren: () => import('./contract-consent-from-shop/contract-consent-from-shop.module').then( m => m.ContractConsentFromShopPageModule)
+  },
+  {
+    path: 'contract-consent-from-employee',
+    loadChildren: () => import('./contract-consent-from-employee/contract-consent-from-employee.module').then( m => m.ContractConsentFromEmployeePageModule)
+  },
 
 
 ];

@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>การขออนุญาต</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+  <ion-list lines="none">
+    <ion-item color="tertiary" class="ion-margin-vertical">
+      <ion-avatar slot="start">
+        <img src="assets/imgs/changewallet.png">
+      </ion-avatar>
+      <ion-label class="ion-text-nowrap">
+        <b>DeliveryAAA</b>
+        <h3>ได้ทำการขออนุญาติเพื่อทำรายการ</h3>
+      </ion-label>
+      <ion-note>
+        <ion-label>
+          <b>&nbsp;</b>
+          <ion-text color="medium">
+            <h3><u>ขอข้อมูลเพิ่มเติม</u></h3>
+          </ion-text>
+        </ion-label>
+      </ion-note>
+    </ion-item>
+
+    <div class="ion-margin-bottom">
+      <ion-card color="tertiary">
+        <ion-card-content class="ion-no-padding ion-padding">
+          <ion-label>
+            <b>
+              ส่งคำขอเข้าร่วมระบบ Delivery ให้คุณ 
+            </b>
+          </ion-label>
+          <div class="ion-text-center ion-padding">
+            <ion-avatar slot="start" class="avatar-large center">
+              <img [src]="'assets/imgs/logo.png'">
+            </ion-avatar>
+            <ion-label class="ion-text-center">
+              <b>อานน บางสาน</b>
+              <h3>(ผู้ส่งของ)</h3>
+            </ion-label>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <ion-list class="ion-margin-bottom">
+      <ion-radio-group mode="md">    
+        <ion-item color="tertiary">
+          <ion-label>ยอมรับข้อตกลง</ion-label>
+          <ion-radio slot="start" value="accept"></ion-radio>
+        </ion-item>    
+        <ion-item color="tertiary">
+          <ion-label>ปฏิเสธข้อตกลง</ion-label>
+          <ion-radio slot="start" value="decline"></ion-radio>
+        </ion-item>    
+      </ion-radio-group>
+    </ion-list>
+  </ion-list>
+
+</ion-content>

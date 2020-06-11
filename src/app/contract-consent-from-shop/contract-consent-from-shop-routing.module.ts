@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ContractConsentSoftwarePage } from './contract-consent-software.page';
+import { ContractConsentFromShopPage } from './contract-consent-from-shop.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ContractConsentSoftwarePage
+    component: ContractConsentFromShopPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ContractConsentSoftwarePageRoutingModule {}
+export class ContractConsentFromShopPageRoutingModule {}
