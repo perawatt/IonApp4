@@ -9,15 +9,28 @@ import { IonManaLib } from 'ion-m-lib';
 export class PrivilegeSelectPage implements OnInit {
 
   public hasLoaded: string;
-  public mcontentid: string = "privilege-select";
+  public mcontentid: string = "privilege-select/nafmdtl-637170799141295829";
   public data$ = Promise.resolve<{}>({});
   public title = "สิทธิพิเศษสำหรับสมาชิก";
+  public apiUrl: string;
   constructor(private svc: IonManaLib) { }
 
   ngOnInit() {
   }
 
   ionViewDidEnter() {
+    this.refreshCallBack()
+  }
+
+  private loadData$() {
+    return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
+      .then(_ => {
+        return this.svc.callApiGet(this.mcontentid, this.apiUrl);
+      })
+  }
+
+  private refreshCallBack()
+  {
     this.hasLoaded = null;
     //this.apiUrl = this.navParams.data;
     let load$ = this.loadData$();
@@ -26,13 +39,6 @@ export class PrivilegeSelectPage implements OnInit {
       this.svc.initPageApi(this.mcontentid);
       this.hasLoaded = it ? "y" : "n";
     });
-  }
-
-  private loadData$() {
-    return this.svc.initPageApi(this.mcontentid)
-      .then(_ => {
-        return this.svc.getApiData(this.mcontentid);
-      })
   }
 
   // public onSearch(filter: any) {
