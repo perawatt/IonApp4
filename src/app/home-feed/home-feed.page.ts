@@ -208,7 +208,7 @@ export class HomeFeedPage implements OnInit {
 
   homeFeedAction(feed: any) {
     if (this.IsDeleteFeed(feed)) this.removeFeed(feed.id, true);
-    else this.svc.visitEndpoint(this.mcontentid, feed.endpoint);
+    else this.svc.visitEndpoint(this.mcontentid, feed.endpointUrl);
   }
 
   IsDeleteFeed(feed: any) {
