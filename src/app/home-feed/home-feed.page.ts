@@ -9,11 +9,12 @@ import { IonManaLib } from 'ion-m-lib';
 export class HomeFeedPage implements OnInit {
 
   private mcontentid: string = "home-feed";
-  private hasSeeMore: boolean = false;
+  private hasMorePages: boolean = false;
   private isLoadingSeeMore: boolean = false;
   private totalObsoleteFeedIds: any[] = [];
   private getShoutCutApi: string = "https://s.manal.ink/api/home/shortcuts";
   private isFeedManaging: boolean = false;
+  private loadingEvent: any;
 
   public hasLoaded: string;
   public feeds = [];
@@ -21,8 +22,13 @@ export class HomeFeedPage implements OnInit {
   public slideOpts = { slidesPerView: 4 };
 
   constructor(private svc: IonManaLib, private zone: NgZone, private renderer: Renderer2) {
-    (<any>window).updateMoreFeed = () => this.getMoreFeed();
     (<any>window).syncShortcuts = () => this.getShortcuts();
+    (<any>window).newFeeds = (response: any) => {
+      this.loadingEvent.target.complete();
+      this.zone.run(() => {
+        this.manageFeeds(response, true);
+      });
+    };
   }
 
   private getNewFeed() {
@@ -37,7 +43,7 @@ export class HomeFeedPage implements OnInit {
     this.zone.run(() => {
       load$.then(response => {
         this.isLoadingSeeMore = false;
-        this.manageFeeds(response);
+        this.manageFeeds(response, false, true);
       });
     });
   }
@@ -55,7 +61,7 @@ export class HomeFeedPage implements OnInit {
           let load$ = this.getNewFeed_Native();
           this.zone.run(() => {
             load$.then(response => {
-              this.manageFeeds(response);
+              this.manageFeeds(response, false, true);
               this.hasLoaded = (response && response.feeds.length > 0) ? "y" : "n";
             });
           });
@@ -65,11 +71,8 @@ export class HomeFeedPage implements OnInit {
   }
 
   doRefresh(event) {
-    setTimeout(() => {
-      this.getNewFeed();
-      this.getShortcuts();
-      event.target.complete();
-    }, 500);
+    this.loadingEvent = event;
+    this.getSyncFeed_Native();
   }
 
   async logScrolling($event) {
@@ -79,10 +82,10 @@ export class HomeFeedPage implements OnInit {
     const targetPercent = 80;
     let triggerDepth = ((scrollHeight / 100) * targetPercent);
     if (currentScrollDepth > triggerDepth) {
-      let shouldLoadSeeMore = this.hasSeeMore && !this.isLoadingSeeMore;
+      let shouldLoadSeeMore = this.hasMorePages && !this.isLoadingSeeMore;
       if (!shouldLoadSeeMore) return;
-      this.isLoadingSeeMore = true;
 
+      this.isLoadingSeeMore = true;
       this.getMoreFeed();
     }
   }
@@ -94,12 +97,18 @@ export class HomeFeedPage implements OnInit {
     });
   }
 
-  manageFeeds(feeds: any, isNewFeedAnimation: boolean = false) {
+  manageFeeds(feeds: any, isNewFeedAnimation: boolean = false, shouldUpdateHasMorePages: boolean = false) {
+
+    let isFeedValid = feeds && feeds.feeds && feeds.feeds.length > 0;
+    if (!isFeedValid) return;
+
     this.isFeedManaging = true;
 
     let result = this.convertFeed(feeds, isNewFeedAnimation);
     result = this.removeObsoleteFeeds(result);
-    this.hasSeeMore = result.HasSeeMore
+    if (shouldUpdateHasMorePages) {
+      this.hasMorePages = result.HasMorePages;
+    }
     this.totalObsoleteFeedIds = this.totalObsoleteFeedIds.concat(result.ObsoleteFeeds);
 
     this.displayMoreFeeds(result.MoreFeeds);
@@ -112,11 +121,11 @@ export class HomeFeedPage implements OnInit {
   }
 
   convertFeed(value: any, isNewFeedAnimation: boolean = false): FeedListInfo {
-    let hasSeeMore = value.hasMorePages;
+    let hasMorePages = value.hasMorePages;
     let newFeeds = isNewFeedAnimation ? value.feeds : [];
     let moreFeeds = !isNewFeedAnimation ? value.feeds : [];
     let obsoleteFeeds = value.obsoleteFeedIds;
-    return new FeedListInfo(hasSeeMore, newFeeds, moreFeeds, obsoleteFeeds);
+    return new FeedListInfo(hasMorePages, newFeeds, moreFeeds, obsoleteFeeds);
   }
 
   removeObsoleteFeeds(value: FeedListInfo): FeedListInfo {
@@ -243,6 +252,19 @@ export class HomeFeedPage implements OnInit {
   }
 
   // TODO: (earn)Remove this method.
+  private callAppMethod(fName: string, fParam: any = "") {
+    return new Promise((resolve, reject) => {
+      try {
+        TheSHybridCall(fName, fParam);
+        resolve({});
+      } catch (error) {
+        console.log(error);
+        resolve(error);
+      }
+    });
+  }
+
+  // TODO: (earn)Remove this method.
   private getNewFeed_Native(): Promise<any> {
     return this.callNativeFunc('newFeeds');
   }
@@ -252,11 +274,16 @@ export class HomeFeedPage implements OnInit {
     return this.callNativeFunc('moreFeeds');
   }
 
+  // TODO: (earn)Remove this method.
+  private getSyncFeed_Native(): Promise<any> {
+    return this.callAppMethod('syncFeeds');
+  }
+
 }
 
 export class FeedListInfo {
   constructor(
-    public HasSeeMore: boolean = false,
+    public HasMorePages: boolean = false,
     public NewFeeds: any[] = [],
     public MoreFeeds: any[] = [],
     public ObsoleteFeeds: any[] = []) { }
