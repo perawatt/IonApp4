@@ -9,7 +9,7 @@ import { IonManaLib } from 'ion-m-lib';
 export class PrivilegeSelectPage implements OnInit {
 
   public hasLoaded: string;
-  public mcontentid: string = "privilege-select/nafmdtl-637170799141295829";
+  public mcontentid: string = "privilege-select";
   public data$ = Promise.resolve<{}>({});
   public title = "สิทธิพิเศษสำหรับสมาชิก";
   public apiUrl: string;
