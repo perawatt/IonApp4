@@ -181,6 +181,7 @@ export class HomeFeedPage implements OnInit {
       return;
     }
 
+    feeds = feeds.reverse();
     let timerId = setInterval(() => {
       this.feeds.push(feeds.pop());
       setTimeout(() => { this.playAnimationNewFeed(); }, 50);
