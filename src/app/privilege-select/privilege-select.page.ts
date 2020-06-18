@@ -25,7 +25,7 @@ export class PrivilegeSelectPage implements OnInit {
   private loadData$() {
     return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
       .then(_ => {
-        return this.svc.callApiGet(this.mcontentid, this.apiUrl);
+        return this.svc.getApiData(this.mcontentid);
       })
   }
 
