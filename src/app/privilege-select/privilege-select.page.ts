@@ -35,10 +35,24 @@ export class PrivilegeSelectPage implements OnInit {
     //this.apiUrl = this.navParams.data;
     let load$ = this.loadData$();
     this.data$ = load$;
-    load$.then((it: any) => {
+    load$.then((it: any) => {      
       this.svc.initPageApi(this.mcontentid);
       this.hasLoaded = it ? "y" : "n";
     });
+  }
+
+  checkDisplayPromotion(item: any){
+    if(item){
+      var now = new Date();
+      var MinTime = 1000 * 60;
+      var HoursTime = MinTime * 60;
+      item.expiredDate = new Date(item.expiredDate);
+      var expiredDate = item.expiredDate;
+      var timeRemaining = (expiredDate.getTime() - now.getTime());
+      var isShow = (Math.round(timeRemaining / HoursTime) < 3);
+      if (isShow) return true;
+    }
+    return false;
   }
 
   // public onSearch(filter: any) {

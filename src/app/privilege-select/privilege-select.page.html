@@ -38,14 +38,6 @@
             <ion-label>
               <b>{{ item.privilege.name }}</b>
             </ion-label>
-            <ion-note *ngIf="item.promotion">
-              <ion-label color="danger">
-                <h3>
-                  <ion-icon name="flash-sharp" color="warning"></ion-icon>
-                  {{ DisplayExpireDateTime(item.promotion) }}
-                </h3>
-              </ion-label>
-            </ion-note>
           </ion-item>
           <ion-item color="tertiary" class="ion-no-padding">
             <img *ngIf="!item.privilege.rewardBannerUrl" width="100%"
@@ -55,26 +47,43 @@
             <img *ngIf="item.promotion && item.promotion.promotionBanner" width="100%"
               [src]="item.promotion.promotionBanner" />
           </ion-item>
-          <ion-item color="tertiary" class="ion-no-padding">
-            <img width="18" height="18" src="assets/imgs/privilege-point.png" />
-            <ion-label color="medium">
-              <h3>
-                &nbsp;
-                <ion-text [color]="item.promotion? 'danger' : 'medium'" [ngClass]="{'line-through': item.promotion}">
-                  {{ item.privilege.point | number:'1.0' }}</ion-text>
-                <span *ngIf="item.promotion">&nbsp;{{ item.promotion.promotionPoint | number:'1.0' }}</span>
-                <span>&nbsp;(จำนวนที่เหลือ {{ item.remainAmount | number:'1.0' }})</span>
-              </h3>
-            </ion-label>
-            <ion-note
-              *ngIf="(item.promotion && data.memberPoint >= item.promotion.promotionPoint && item.remainAmount > 0) || (!item.promotion && data.memberPoint >= item.privilege.point && item.remainAmount > 0)">
-              <ion-label color="primary">
-                <h3>
-                  <ion-icon name="checkmark-circle"></ion-icon> แลกได้แล้ว
-                </h3>
-              </ion-label>
-            </ion-note>
-          </ion-item>
+          <ion-grid class="ion-no-padding">
+            <ion-row class="ion-padding-top ion-padding-end ion-align-items-center">
+              <ion-col size="auto" class="ion-padding-end">
+                <img width="18" height="18" src="assets/imgs/privilege-point.png" />
+              </ion-col>
+              <ion-col>
+                <ion-label color="dark">
+                  <h3>
+                    <b>
+                      <ion-text [color]="item.promotion? 'danger' : 'dark'"
+                        [ngClass]="{'line-through': item.promotion}">
+                        {{ item.privilege.point | number:'1.0' }}</ion-text>
+                      <ion-text *ngIf="item.promotion">&nbsp;{{ item.promotion.promotionPoint | number:'1.0' }}
+                      </ion-text>
+                    </b>
+                  </h3>
+                </ion-label>
+              </ion-col>
+              <ion-col class="ion-text-end">
+                <ion-label color="danger" *ngIf="checkDisplayPromotion(item.promotion)">
+                  <h3>
+                    <ion-icon name="flash-sharp" color="danger"></ion-icon>
+                    {{ DisplayExpireDateTime(item.promotion) }}
+                  </h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-padding-bottom">
+              <ion-col size="auto">
+                <ion-label color="medium">
+                  <h3>
+                    <span>จำนวนที่เหลือ {{ item.remainAmount | number:'1.0' }}</span>
+                  </h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-card>
       </div>
     </ion-list>

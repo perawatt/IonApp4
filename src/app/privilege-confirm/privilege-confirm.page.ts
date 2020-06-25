@@ -25,7 +25,6 @@ export class PrivilegeConfirmPage implements OnInit {
       this.title = it.privilege.name;
       this.svc.initPageApi(this.mcontentid);
       this.hasLoaded = it ? "y" : "n";
-      console.log(it);      
     });
   }
 
@@ -34,6 +33,20 @@ export class PrivilegeConfirmPage implements OnInit {
       .then(_ => {
         return this.svc.getApiData(this.mcontentid);
       })
+  }
+
+  checkDisplayPromotion(item: any){
+    if(item){
+      var now = new Date();
+      var MinTime = 1000 * 60;
+      var HoursTime = MinTime * 60;
+      item.expiredDate = new Date(item.expiredDate);
+      var expiredDate = item.expiredDate;
+      var timeRemaining = (expiredDate.getTime() - now.getTime());
+      var isShow = (Math.round(timeRemaining / HoursTime) < 3);
+      if (isShow) return true;
+    }
+    return false;
   }
 
   DisplayExpireDateTime(item: any) {
