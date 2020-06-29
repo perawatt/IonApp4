@@ -14,7 +14,7 @@ export class GpsaddressChangePage implements OnInit {
 
   constructor(private fb: FormBuilder, private svc: IonManaLib) { 
     this.fg = this.fb.group({
-      'telephoneNumber': null,
+      'phoneNo': null,
       'note': null,
         // TODO : Binding ให้ถูกต้อง
     });
