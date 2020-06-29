@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IonManaLib } from 'ion-m-lib';
 
 @Component({
   selector: 'app-contract-consent-from-shop',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContractConsentFromShopPage implements OnInit {
 
-  constructor() { }
+  private mcontentid = "contract-consent-from-shop";
+  constructor(private svc: IonManaLib) { }
 
   ngOnInit() {
   }
 
+  ionViewDidEnter() {
+    this.svc.initPageApi(this.mcontentid);
+  }
 }

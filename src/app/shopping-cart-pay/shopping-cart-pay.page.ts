@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IonManaLib } from 'ion-m-lib';
 
 @Component({
   selector: 'app-shopping-cart-pay',
@@ -9,9 +10,14 @@ export class ShoppingCartPayPage implements OnInit {
 
   public hasLoaded: string;
   public title: string = "สั่งสินค้า";
-  constructor() { }
+  private mcontentid = "shopping-cart-pay";
+  constructor(private svc: IonManaLib) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.svc.initPageApi(this.mcontentid);
   }
 
 }

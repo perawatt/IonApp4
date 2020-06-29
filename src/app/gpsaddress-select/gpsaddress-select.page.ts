@@ -24,6 +24,10 @@ export class GpsaddressSelectPage implements OnInit {
     // });
   }
 
+  ionViewDidEnter() {
+    this.svc.initPageApi(this.mcontentid);
+  }
+
   private loadData$() {
     return this.svc.initPageApi(this.mcontentid)
       .then(_ => {

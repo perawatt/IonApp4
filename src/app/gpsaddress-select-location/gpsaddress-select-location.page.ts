@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IonManaLib } from 'ion-m-lib';
 
 @Component({
   selector: 'app-gpsaddress-select-location',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GpsaddressSelectLocationPage implements OnInit {
 
-  constructor() { }
+  private mcontentid = "gpsaddress-select-location";
+  constructor(private svc: IonManaLib) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.svc.initPageApi(this.mcontentid);
   }
 
 }
