@@ -9,7 +9,7 @@ import { IonManaLib } from 'ion-m-lib';
 export class ShoppingCartPayPage implements OnInit {
 
   public hasLoaded: string;
-  public title: string = "สั่งสินค้า";
+  public title: string = "จ่ายเงิน";
   private mcontentid = "shopping-cart-pay";
   constructor(private svc: IonManaLib) { }
 
