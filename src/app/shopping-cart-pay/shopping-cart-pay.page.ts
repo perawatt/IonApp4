@@ -18,6 +18,7 @@ export class ShoppingCartPayPage implements OnInit {
 
   ionViewDidEnter() {
     this.svc.initPageApi(this.mcontentid);
+    this.hasLoaded = 'y';
   }
 
 }
