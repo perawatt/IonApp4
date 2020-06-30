@@ -16,7 +16,10 @@ export class GpsaddressChangePage implements OnInit {
     this.fg = this.fb.group({
       'phoneNo': null,
       'note': null,
-        // TODO : Binding ให้ถูกต้อง
+    });
+
+    this.fg.valueChanges.subscribe(_ => {
+      this.svc.validForm(this.fg.valid)
     });
   }
 
