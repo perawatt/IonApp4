@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { UserProfileNewAddressPageRoutingModule } from './user-profile-new-address-routing.module';
 
 import { UserProfileNewAddressPage } from './user-profile-new-address.page';
+import { DirectivesModule } from 'src/directives/directives.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { UserProfileNewAddressPage } from './user-profile-new-address.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
+    DirectivesModule,
     UserProfileNewAddressPageRoutingModule
   ],
   declarations: [UserProfileNewAddressPage]

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { GpsaddressChangePageRoutingModule } from './gpsaddress-change-routing.module';
 
 import { GpsaddressChangePage } from './gpsaddress-change.page';
+import { DirectivesModule } from 'src/directives/directives.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { GpsaddressChangePage } from './gpsaddress-change.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
+    DirectivesModule,
     GpsaddressChangePageRoutingModule
   ],
   declarations: [GpsaddressChangePage]
