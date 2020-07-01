@@ -7,7 +7,7 @@
 <ion-content mode="ios">
   <form [formGroup]="fg" (ngSubmit)="onSubmit()" [rx-form-data]="formData$ | async">
     <ion-list>
-      <div formGroupName="gpsLocation">
+      <div>
         <ion-item color="tertiary" lines="none">
           <ion-label position="stacked">ติดต่อ</ion-label>
           <ion-input type="tel" placeholder="เบอร์โทรศัพท์ของคุณ" formControlName="phoneNumber"></ion-input>
