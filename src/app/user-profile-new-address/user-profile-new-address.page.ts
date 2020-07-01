@@ -12,8 +12,7 @@ export class UserProfileNewAddressPage implements OnInit {
   public hasLoaded: string;
   public fg: FormGroup;
   private mcontentid = "user-profile-new-address";
-
-
+  public formData$: Promise<{}> = new Promise<{}>(_ => { });
   constructor(private fb: FormBuilder, private svc: IonManaLib) { 
     this.fg = this.fb.group({
       'title': [null, Validators.required],
@@ -22,8 +21,7 @@ export class UserProfileNewAddressPage implements OnInit {
       'city': [null, Validators.required],
       'province': [null, Validators.required],
       'postalCode': [null, Validators.required],
-      'telephoneNumber': null,
-      'mobileNumber': [null, Validators.required],
+      'phoneNumber': [null, Validators.required],
       'fullAddress': null,
       'remark':null,
     });
@@ -37,8 +35,20 @@ export class UserProfileNewAddressPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.svc.initPageApi(this.mcontentid);
-    this.svc.validForm(this.fg.valid);
+    this.hasLoaded = null;
+    let load$ = this.loadData$();
+    this.formData$ = load$;
+    load$.then(it => {
+      this.svc.validForm(this.fg.valid);
+      this.hasLoaded = it ? "y" : "n";
+    });
+  }
+
+  private loadData$() {
+    return this.svc.initPageApi(this.mcontentid)
+      .then(_ => {
+        return this.svc.getApiData(this.mcontentid);
+      })
   }
 
   onSave() {

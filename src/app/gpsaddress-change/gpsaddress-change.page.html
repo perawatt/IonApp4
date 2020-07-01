@@ -5,25 +5,25 @@
 </ion-header>
 
 <ion-content mode="ios">
-  <form [formGroup]="fg" (ngSubmit)="onSubmit()">
+  <form [formGroup]="fg" (ngSubmit)="onSubmit()" [rx-form-data]="formData$ | async">
     <ion-list>
-      <ion-item color="tertiary" lines="none">
-        <ion-label position="stacked">ติดต่อ</ion-label>
-        <ion-input type="tel" placeholder="เบอร์โทรศัพท์ของคุณ" formControlName="mobileNumber"></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin-top" margin-top color="tertiary" lines="none">
-        <ion-label position="stacked">หมายเหตุ</ion-label>
-        <ion-textarea type="text" placeholder="รายละเอียดเพิ่มเติม" rows="3" formControlName="remark"></ion-textarea>
-      </ion-item>
-
-      <ion-item class="ion-margin-top" color="tertiary" lines="none">
-        <ion-label class="ion-padding-vertical">
-          <h3>
-            <img height="15" class="qr ion-margin-end" src="assets/imgs/home.png" /><b>เลือกที่อยู่ที่สร้างไว้</b>
-          </h3>
-        </ion-label>
-      </ion-item>
+      <div formGroupName="gpsLocation">
+        <ion-item color="tertiary" lines="none">
+          <ion-label position="stacked">ติดต่อ</ion-label>
+          <ion-input type="tel" placeholder="เบอร์โทรศัพท์ของคุณ" formControlName="phoneNumber"></ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-top" margin-top color="tertiary" lines="none">
+          <ion-label position="stacked">หมายเหตุ</ion-label>
+          <ion-textarea type="text" placeholder="รายละเอียดเพิ่มเติม" rows="3" formControlName="remark"></ion-textarea>
+        </ion-item>
+        <ion-item class="ion-margin-top" color="tertiary" lines="none">
+          <ion-label class="ion-padding-vertical">
+            <h3>
+              <img height="15" class="qr ion-margin-end" src="assets/imgs/home.png" /><b>เลือกที่อยู่ที่สร้างไว้</b>
+            </h3>
+          </ion-label>
+        </ion-item>
+      </div>
     </ion-list>
     <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
       [disabled]="fg.invalid">ตกลง</ion-button>

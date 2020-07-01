@@ -6,8 +6,8 @@
 
 <ion-content mode="ios">
   <ion-list class="ion-margin-top">
-    <form [formGroup]="fg" (ngSubmit)="onSave()">
-      <div>
+    <form [formGroup]="fg" (ngSubmit)="onSave()" [rx-form-data]="formData$ | async">
+      <div formGroupName="address">
         <ion-item lines="full" color="tertiary">
           <ion-label position="stacked">ชื่อหัวข้อ</ion-label>
           <ion-input type="text" formControlName="title"></ion-input>
@@ -22,7 +22,7 @@
         </ion-item>
         <ion-item lines="full" color="tertiary">
           <ion-label position="stacked">เบอร์ติดต่อ</ion-label>
-          <ion-input type="tel" formControlName="mobileNumber"></ion-input>
+          <ion-input type="tel" formControlName="phoneNumber"></ion-input>
         </ion-item>
         <ion-item lines="none" color="tertiary">
           <ion-label position="stacked">หมายเหตุ</ion-label>

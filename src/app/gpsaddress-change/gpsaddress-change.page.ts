@@ -9,12 +9,13 @@ import { IonManaLib } from 'ion-m-lib';
 })
 export class GpsaddressChangePage implements OnInit {
 
+  public hasLoaded: string;
+  public formData$: Promise<{}> = new Promise<{}>(_ => { });
   public fg: FormGroup;
   private mcontentid = "gpsaddress-change";
-
   constructor(private fb: FormBuilder, private svc: IonManaLib) { 
     this.fg = this.fb.group({
-      'mobileNumber': [null, Validators.required],
+      'phoneNumber': [null, Validators.required],
       'remark':null,
     });
 
@@ -27,8 +28,20 @@ export class GpsaddressChangePage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.svc.initPageApi(this.mcontentid);
-    this.svc.validForm(this.fg.valid);
+    this.hasLoaded = null;
+    let load$ = this.loadData$();
+    this.formData$ = load$;
+    load$.then(it => {
+      this.svc.validForm(this.fg.valid);
+      this.hasLoaded = it ? "y" : "n";
+    });
+  }
+
+  private loadData$() {
+    return this.svc.initPageApi(this.mcontentid)
+      .then(_ => {
+        return this.svc.getApiData(this.mcontentid);
+      })
   }
 
   onSubmit() {
