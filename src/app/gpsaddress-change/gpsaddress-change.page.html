@@ -5,16 +5,16 @@
 </ion-header>
 
 <ion-content mode="ios">
-  <form [formGroup]="fg" (ngSubmit)="onSave()">
+  <form [formGroup]="fg" (ngSubmit)="onSubmit()">
     <ion-list>
       <ion-item color="tertiary" lines="none">
         <ion-label position="stacked">ติดต่อ</ion-label>
-        <ion-input type="tel" placeholder="เบอร์โทรศัพท์ของคุณ" formControlName="phoneNo"></ion-input>
+        <ion-input type="tel" placeholder="เบอร์โทรศัพท์ของคุณ" formControlName="mobileNumber"></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin-top" margin-top color="tertiary" lines="none">
         <ion-label position="stacked">หมายเหตุ</ion-label>
-        <ion-textarea type="text" placeholder="รายละเอียดเพิ่มเติม" rows="3" formControlName="note"></ion-textarea>
+        <ion-textarea type="text" placeholder="รายละเอียดเพิ่มเติม" rows="3" formControlName="remark"></ion-textarea>
       </ion-item>
 
       <ion-item class="ion-margin-top" color="tertiary" lines="none">

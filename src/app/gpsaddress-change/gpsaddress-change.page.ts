@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonManaLib } from 'ion-m-lib';
 
 @Component({
@@ -14,8 +14,8 @@ export class GpsaddressChangePage implements OnInit {
 
   constructor(private fb: FormBuilder, private svc: IonManaLib) { 
     this.fg = this.fb.group({
-      'phoneNo': null,
-      'note': null,
+      'mobileNumber': [null, Validators.required],
+      'remark':null,
     });
 
     this.fg.valueChanges.subscribe(_ => {
@@ -31,7 +31,7 @@ export class GpsaddressChangePage implements OnInit {
     this.svc.validForm(this.fg.valid);
   }
 
-  onSave() {
+  onSubmit() {
     if (this.fg.valid) {
       this.svc.submitFormData(this.mcontentid, this.fg.value);
     }

@@ -23,9 +23,9 @@ export class UserProfileNewAddressPage implements OnInit {
       'province': [null, Validators.required],
       'postalCode': [null, Validators.required],
       'telephoneNumber': null,
-      'mobileNumber': null,
+      'mobileNumber': [null, Validators.required],
       'fullAddress': null,
-        // TODO : Binding หมายเหตุ
+      'remark':null,
     });
 
     this.fg.valueChanges.subscribe(_ => {

@@ -24,8 +24,9 @@ export class UserProfileEditAddressPage implements OnInit {
         'province': [null, Validators.required],
         'postalCode': [null, Validators.required],
         'telephoneNumber': null,
-        'mobileNumber': null,
+        'mobileNumber': [null, Validators.required],
         'fullAddress': null,
+        'remark':null,
       }),
       'isBillingAddress': null,
       'isShippingAddress': null
