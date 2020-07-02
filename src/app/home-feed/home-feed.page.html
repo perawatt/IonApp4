@@ -111,7 +111,7 @@
             <div *ngIf="!IsExpirable(item)">
               <br>
             </div>
-            <p *ngIf="item.status">{{ item.status }}</p>
+            <p class="text-red" *ngIf="item.status">{{ item.status }}</p>
           </ion-note>
         </ion-item>
       </ion-item-sliding>
