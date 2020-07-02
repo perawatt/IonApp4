@@ -11,7 +11,9 @@ export class UserProfileAddressPage implements OnInit {
 
   public hasLoaded: string;
   public data$ = Promise.resolve<{}>({});
-  private mcontentid = "user-profile-address";
+  public shippingAddressIndex : number;
+  public billingAddressIndex : number;  
+  private mcontentid = "user-profile-address/npflads-home";
   constructor(private svc: IonManaLib) { }
 
   ngOnInit() {
@@ -33,7 +35,9 @@ export class UserProfileAddressPage implements OnInit {
     this.hasLoaded = null;
     let load$ = this.loadData$();
     this.data$ = load$;    
-    load$.then(it => {            
+    load$.then(it => {      
+      this.shippingAddressIndex = it.addresses.findIndex(addrs => addrs.address._id == it.shippingAddressId);  
+      this.billingAddressIndex = it.addresses.findIndex(addrs => addrs.address._id == it.billingAddressId);  
       this.hasLoaded = it ? "y" : "n";   
     });
   }

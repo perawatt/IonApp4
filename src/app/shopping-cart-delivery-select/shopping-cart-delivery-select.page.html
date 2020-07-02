@@ -6,41 +6,23 @@
 
 <ion-content mode="ios" color="tertiary">
   <ng-container *ngIf="hasLoaded">
-    <ion-list lines="inset">
-      <ion-item button detail="true" color="tertiary">
-        <ion-avatar slot="start">
-          <img src="assets/imgs/changewallet.png">
-        </ion-avatar>
-        <ion-label>
-          <b>DeliveryAAA</b>
-          <ion-text color="medium">
-            <h3>1111</h3>
-          </ion-text>
-        </ion-label>
-      </ion-item>
-      <ion-item button detail="true" color="tertiary">
-        <ion-avatar slot="start">
-          <img src="assets/imgs/changewallet.png">
-        </ion-avatar>
-        <ion-label>
-          <b>DeliveryAAA</b>
-          <ion-text color="medium">
-            <h3>1111</h3>
-          </ion-text>
-        </ion-label>
-      </ion-item>
-      <ion-item button detail="true" color="tertiary">
-        <ion-avatar slot="start">
-          <img src="assets/imgs/changewallet.png">
-        </ion-avatar>
-        <ion-label>
-          <b>DeliveryAAA</b>
-          <ion-text color="medium">
-            <h3>1111</h3>
-          </ion-text>
-        </ion-label>
-      </ion-item>      
-    </ion-list>
+    <form [formGroup]="fg" (ngSubmit)="onSave()">
+      <ion-list lines="inset">
+        <ion-item *ngFor="let item of data$ | async" (click)="onSelectDelivery(item)" button detail="true" color="tertiary">
+          <ion-avatar slot="start">
+            <img [src]="item.logo">
+          </ion-avatar>
+          <ion-label>
+            <b>{{item.name}}</b>
+            <ion-text color="medium">
+              <h3>ค่าจัดส่ง {{item.shippingFees?.amountUnit}} บาท</h3>
+            </ion-text>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-button id="app-form-submit" type="submit" color="danger" [disabled]="fg.invalid" ion-button expand="full"
+        no-margin>ยืนยัน</ion-button>
+    </form>
   </ng-container>
 
   <ng-container *ngIf="!hasLoaded">
@@ -54,7 +36,8 @@
           <ion-skeleton-text animated></ion-skeleton-text>
         </h3>
       </ion-label>
-    </ion-item>    <ion-item lines="none">
+    </ion-item>
+    <ion-item lines="none">
       <ion-avatar slot="start">
         <ion-skeleton-text animated></ion-skeleton-text>
       </ion-avatar>
@@ -64,7 +47,8 @@
           <ion-skeleton-text animated></ion-skeleton-text>
         </h3>
       </ion-label>
-    </ion-item>    <ion-item lines="none">
+    </ion-item>
+    <ion-item lines="none">
       <ion-avatar slot="start">
         <ion-skeleton-text animated></ion-skeleton-text>
       </ion-avatar>
