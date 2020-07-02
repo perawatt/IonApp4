@@ -10,9 +10,9 @@ export class ShoppingCartPage implements OnInit {
 
   private mcontentid = "shopping-cart";
 
-  public hasLoaded: string;
-  public data$ = Promise.resolve<{}>({});
   public title: string = "สั่งสินค้า";
+  public data$ = Promise.resolve<{}>({});
+  public hasLoaded: string;
 
   constructor(private svc: IonManaLib) { }
 
