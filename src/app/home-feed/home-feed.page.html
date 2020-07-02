@@ -103,9 +103,14 @@
             <p>{{item.description}}</p>
           </ion-label>
 
-          <ion-note slot="end" *ngIf="IsExpirable(item)">
-            <img width="12" [src]="IsDeleteFeed(item) ? 'assets/imgs/timegray.png':'assets/imgs/timered.png'">
-            <span> {{DisplayExpireDateTime(item)}}</span>
+          <ion-note slot="end">
+            <div *ngIf="IsExpirable(item)">
+              <img width="12" [src]="IsDeleteFeed(item) ? 'assets/imgs/timegray.png':'assets/imgs/timered.png'">
+              <span> {{DisplayExpireDateTime(item)}}</span>
+            </div>
+            <div *ngIf="!IsExpirable(item)">
+              <br>
+            </div>
             <p *ngIf="item.status">{{ item.status }}</p>
           </ion-note>
         </ion-item>
