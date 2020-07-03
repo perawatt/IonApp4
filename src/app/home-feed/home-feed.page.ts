@@ -104,20 +104,26 @@ export class HomeFeedPage implements OnInit {
 
     this.isFeedManaging = true;
 
-    let result = this.convertFeed(feeds, isNewFeedAnimation);
-    result = this.removeObsoleteFeeds(result);
-    if (shouldUpdateHasMorePages) {
-      this.hasMorePages = result.HasMorePages;
-    }
-    this.totalObsoleteFeedIds = this.totalObsoleteFeedIds.concat(result.ObsoleteFeeds);
+    let feedInfos = this.convertFeed(feeds, isNewFeedAnimation);
+    let deletedFeeds = feeds.feeds.filter((it: any) => it.deletedDateTime).map((it: any) => it.id);
+    this.totalObsoleteFeedIds = this.totalObsoleteFeedIds.concat(feedInfos.ObsoleteFeeds).concat(deletedFeeds).filter(deleteDuplicated);
+    feedInfos = this.removeObsoleteFeeds(feedInfos);
 
-    this.displayMoreFeeds(result.MoreFeeds);
+    if (shouldUpdateHasMorePages) {
+      this.hasMorePages = feedInfos.HasMorePages;
+    }
+
+    this.displayMoreFeeds(feedInfos.MoreFeeds);
     setTimeout(() => {
       this.displayRemoveFeeds(true);
       setTimeout(() => {
-        this.displayAddNewFeeds(result.NewFeeds);
+        this.displayAddNewFeeds(feedInfos.NewFeeds);
       }, 200);
     }, 400);
+
+    function deleteDuplicated(element, index, array) {
+      return array.indexOf(element) == index;
+    }
   }
 
   convertFeed(value: any, isNewFeedAnimation: boolean = false): FeedListInfo {
