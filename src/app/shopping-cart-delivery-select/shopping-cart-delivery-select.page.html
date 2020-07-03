@@ -9,7 +9,7 @@
     <form [formGroup]="fg" (ngSubmit)="onSave()">
       <ion-list lines="inset">
         <ion-item *ngFor="let item of data$ | async" (click)="onSelectDelivery(item)"
-          color="tertiary" [ngClass]="{'ion-activated': isChecked(item)}">
+          color="tertiary">
           <ion-avatar slot="start">
             <img [src]="item.logo"> 
           </ion-avatar>
@@ -19,6 +19,8 @@
               <h3>ค่าจัดส่ง {{item.shippingFees?.amountUnit}} บาท</h3>
             </ion-text>
           </ion-label>
+          <img width="20" height="20" class="qr"
+          [src]="isChecked(item) ? 'assets/imgs/correctblue.png' : 'assets/imgs/correctgray.png'" />
         </ion-item>
       </ion-list>
       <ion-button id="app-form-submit" type="submit" color="danger" [disabled]="fg.invalid" ion-button expand="full"
