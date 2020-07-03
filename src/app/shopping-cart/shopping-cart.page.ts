@@ -10,9 +10,11 @@ export class ShoppingCartPage implements OnInit {
 
   private mcontentid = "shopping-cart";
 
+  private default: any;
   public title: string = "สั่งสินค้า";
   public data$ = Promise.resolve<{}>({});
   public hasLoaded: string;
+  public devlivery: any;
 
   constructor(private svc: IonManaLib) { }
 
@@ -35,10 +37,23 @@ export class ShoppingCartPage implements OnInit {
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then(it => {
+      this.default = it.shippingMethod;
+      this.devlivery = this.default;
       this.setUserLocation(it.shippingAddress.location.address, it.shippingAddress.location.latitude, it.shippingAddress.location.longitude, it.shippingAddress.location.phoneNumber, it.shippingAddress.location.remark);
       this.hasLoaded = it ? "y" : "n";
     });
   }
+
+  openDialog() {
+    let mcid_optiondialog = "shopping-cart-delivery-select";
+    this.svc.showOptionDialog(mcid_optiondialog, this.default).then((response) => {
+      let status = response.isOk ? "ok" : "cancel";
+      if (status == "ok") {
+        this.devlivery = response.data;
+      }
+    });
+  }
+
 
   private setUserLocation(address: string, latitude: string, longitude: string, phoneNumber: string, remark: string) {
     this.svc.setGpsSection(address, latitude, longitude, phoneNumber, remark);

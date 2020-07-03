@@ -8,9 +8,10 @@
   <ng-container *ngIf="hasLoaded">
     <form [formGroup]="fg" (ngSubmit)="onSave()">
       <ion-list lines="inset">
-        <ion-item *ngFor="let item of data$ | async" (click)="onSelectDelivery(item)" button detail="true" color="tertiary">
+        <ion-item *ngFor="let item of data$ | async" (click)="onSelectDelivery(item)"
+          color="tertiary" [ngClass]="{'ion-activated': isChecked(item)}">
           <ion-avatar slot="start">
-            <img [src]="item.logo">
+            <img [src]="item.logo"> 
           </ion-avatar>
           <ion-label>
             <b>{{item.name}}</b>
