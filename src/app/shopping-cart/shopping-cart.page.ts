@@ -10,15 +10,11 @@ export class ShoppingCartPage implements OnInit {
 
   private mcontentid = "shopping-cart";
 
+  private default: any;
   public title: string = "สั่งสินค้า";
   public data$ = Promise.resolve<{}>({});
   public hasLoaded: string;
-
-  private status: any;
-  private callBackData: any;
-  private msg: any;
-
-  private default :any;
+  public devlivery: any;
 
   constructor(private svc: IonManaLib) { }
 
@@ -42,6 +38,7 @@ export class ShoppingCartPage implements OnInit {
     this.data$ = load$;
     load$.then(it => {
       this.default = it.shippingMethod;
+      this.devlivery = this.default;
       this.setUserLocation(it.shippingAddress.location.address, it.shippingAddress.location.latitude, it.shippingAddress.location.longitude, it.shippingAddress.location.phoneNumber, it.shippingAddress.location.remark);
       this.hasLoaded = it ? "y" : "n";
     });
@@ -50,11 +47,10 @@ export class ShoppingCartPage implements OnInit {
   openDialog() {
     let mcid_optiondialog = "shopping-cart-delivery-select";
     this.svc.showOptionDialog(mcid_optiondialog, this.default).then((response) => {
-      this.status = response.isOk ? "ok" : "cancel";
-      console.log("OPtion Select : "+JSON.stringify(response.data));
-      
-      this.callBackData = response.data;
-      this.msg = this.callBackData.name;
+      let status = response.isOk ? "ok" : "cancel";
+      if (status == "ok") {
+        this.devlivery = response.data;
+      }
     });
   }
 

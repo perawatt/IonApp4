@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonManaLib } from 'ion-m-lib';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { promise } from 'protractor';
 
 @Component({
   selector: 'app-shopping-cart-delivery-select',
@@ -15,7 +16,7 @@ export class ShoppingCartDeliverySelectPage implements OnInit {
   public title: string = "เลือกผู้จัดส่ง";
   public fg: FormGroup;
 
-  private defaultValue: any = { name: "" };
+  private defaultValue: any;
 
   constructor(private fb: FormBuilder, private svc: IonManaLib) {
     this.fg = this.fb.group({
@@ -35,11 +36,13 @@ export class ShoppingCartDeliverySelectPage implements OnInit {
     let default$ = this.loadDefault$();
     default$.then((it: any) => {
       this.defaultValue = it;
-      console.log("D Com");
-      
       let load$ = this.loadDaa$();
       this.data$ = load$;
-      load$.then(it => {
+      load$.then((it:any[]) => {
+        var selected = it.filter((item)=>{
+          return item._id == this.defaultValue._id;
+        })[0];
+        this.fg.get("delivery").setValue(selected);
         this.hasLoaded = it ? "y" : "n";
       });
     });
@@ -48,7 +51,7 @@ export class ShoppingCartDeliverySelectPage implements OnInit {
   private loadDaa$() {
     return this.svc.initPageApi(this.mcontentid)
     .then(_ => {
-      return this.svc.getApiData(this.mcontentid).then();
+      return this.svc.getApiData(this.mcontentid);
     })
   }
 
@@ -57,6 +60,18 @@ export class ShoppingCartDeliverySelectPage implements OnInit {
       .then(_ => {
         return this.initOptionDialog$();
       })
+  }
+
+  private initOptionDialog$() {
+    return this.svc.initOptionDialog(this.mcontentid, (response) => {
+      if (response == "ok") {
+        return this.fg.get("delivery").value;
+      }
+      else {
+        console.log("Default");
+        return this.defaultValue;
+      }
+    });
   }
 
   onSelectDelivery(item) {
@@ -70,18 +85,7 @@ export class ShoppingCartDeliverySelectPage implements OnInit {
     }
   }
 
-  private initOptionDialog$() {
-    // console.log("D");
-    // return new Promise((res,rej)=>{res()});
-    return this.svc.initOptionDialog(this.mcontentid, (response) => {
-      if (response == "ok") {
-        console.log("Set OK");
-        return this.fg.get("couponType").value;
-      }
-      else {
-        console.log("Default");
-        return this.defaultValue;
-      }
-    });
+  public isChecked(value): boolean {
+    return this.fg.get("delivery").value == value;
   }
 }
