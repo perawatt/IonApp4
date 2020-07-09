@@ -17,15 +17,21 @@ export class UserProfileEditAddressPage implements OnInit {
   constructor(private fb: FormBuilder, private svc: IonManaLib) {
     this.fg = this.fb.group({
       'address': this.fb.group({
+        '_id': null,
         'title': [null, Validators.required],
         'streetAddress': [null, Validators.required],
         'district': [null, Validators.required],
         'city': [null, Validators.required],
         'province': [null, Validators.required],
         'postalCode': [null, Validators.required],
-        'phoneNumber': [null, Validators.required],
         'fullAddress': null,
-        'remark':null,
+        'location': this.fb.group({
+          'address': null,
+          'latitude': null,
+          'longitude': null,
+          'phoneNumber': [null, Validators.required],
+          'remark': null
+        }),
       }),
       'isBillingAddress': null,
       'isShippingAddress': null
@@ -45,6 +51,9 @@ export class UserProfileEditAddressPage implements OnInit {
     this.formData$ = load$;
     load$.then(it => {
       this.svc.validForm(this.fg.valid);
+
+      let location = it.address.location;
+      this.svc.setGpsSection(location.address, location.latitude, location.longitude, location.phoneNumber, location.remark);
       this.hasLoaded = it ? "y" : "n";
     });
   }

@@ -13,7 +13,7 @@ export class UserProfileAddressPage implements OnInit {
   public data$ = Promise.resolve<{}>({});
   public shippingAddressIndex : number;
   public billingAddressIndex : number;  
-  private mcontentid = "user-profile-address/npflads-home";
+  private mcontentid = "user-profile-address";
   constructor(private svc: IonManaLib) { }
 
   ngOnInit() {

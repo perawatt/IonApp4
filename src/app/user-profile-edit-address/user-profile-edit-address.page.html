@@ -12,7 +12,7 @@
           <ion-label position="stacked">ชื่อหัวข้อ</ion-label>
           <ion-input type="text" formControlName="title"></ion-input>
         </ion-item>
-        <ion-item  lines="full" color="tertiary">
+        <ion-item lines="full" color="tertiary">
           <ion-label position="stacked">ที่อยู่</ion-label>
           <ion-input type="text" placeholder="บ้านเลขที่,หมู่,ตึก,ซอย,ถนน" formControlName="streetAddress"></ion-input>
           <ion-input type="text" placeholder="ตำบล" formControlName="district"></ion-input>
@@ -20,18 +20,20 @@
           <ion-input type="text" placeholder="จังหวัด" formControlName="province"></ion-input>
           <ion-input type="number" placeholder="รหัสไปรษณีย์" formControlName="postalCode"></ion-input>
         </ion-item>
-        <ion-item lines="full" color="tertiary">
-          <ion-label position="stacked">เบอร์ติดต่อ</ion-label>
-          <ion-input type="tel" formControlName="phoneNumber"></ion-input>
-        </ion-item>
-        <ion-item lines="full" color="tertiary">
-          <ion-label position="stacked">หมายเหตุ</ion-label>
-          <ion-textarea type="text" formControlName="remark"></ion-textarea>
-        </ion-item>
+        <div formGroupName="location">
+          <ion-item lines="full" color="tertiary">
+            <ion-label position="stacked">เบอร์ติดต่อ</ion-label>
+            <ion-input type="tel" formControlName="phoneNumber"></ion-input>
+          </ion-item>
+          <ion-item lines="full" color="tertiary">
+            <ion-label position="stacked">หมายเหตุ</ion-label>
+            <ion-textarea type="text" formControlName="remark"></ion-textarea>
+          </ion-item>
+        </div>
       </div>
       <ion-item color="tertiary">
         <ion-label>ตั้งค่าเป็นที่่อยู่ส่งของ</ion-label>
-          <ion-toggle formControlName="isShippingAddress" color="danger"
+        <ion-toggle formControlName="isShippingAddress" color="danger"
           [disabled]="(formData$ | async)?.isShippingAddress">
         </ion-toggle>
       </ion-item>
@@ -41,8 +43,8 @@
           [disabled]="(formData$ | async)?.isBillingAddress">
         </ion-toggle>
       </ion-item>
-        <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
-          [disabled]="fg.invalid">แก้ไขเสร็จสิ้น
+      <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
+        [disabled]="fg.invalid">แก้ไขเสร็จสิ้น
       </ion-button>
     </form>
   </ion-list>
