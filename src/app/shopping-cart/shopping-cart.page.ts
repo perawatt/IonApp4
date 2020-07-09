@@ -26,7 +26,7 @@ export class ShoppingCartPage implements OnInit {
   }
 
   private loadData$() {
-    return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
+    return this.svc.initPageApi(this.mcontentid)
       .then(_ => {
         return this.svc.getApiData(this.mcontentid);
       })
