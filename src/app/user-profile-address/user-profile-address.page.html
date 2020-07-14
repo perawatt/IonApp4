@@ -17,8 +17,8 @@
         <ion-label class="ion-margin-start">
           <h2 class="text-red">ที่อยู่ส่งของ<small class="text-black"> ({{shipping.address.title}})</small></h2>
           <p>{{shipping.address.fullAddress}}</p>
-          <p *ngIf="shipping.address.location.phoneNumber">{{shipping.address.location.phoneNumber}}</p>
-          <p *ngIf="!shipping.address.location.phoneNumber">-</p>
+          <p *ngIf="shipping.address.phoneNumber">{{shipping.address.phoneNumber}}</p>
+          <p *ngIf="!shipping.address.phoneNumber">-</p>
         </ion-label>
       </ion-item>
       <ion-item color="tertiary" class="ion-margin-bottom" *ngIf="!data.addresses[shippingAddressIndex]">
@@ -33,8 +33,8 @@
         <ion-label class="ion-margin-start">
           <h2 class="text-red">ที่อยู่ส่งบิล<small class="text-black"> ({{billing.address.title}})</small></h2>
           <p>{{billing.address.fullAddress}}</p>
-          <p *ngIf="billing.address.location.phoneNumber">{{billing.address.location.phoneNumber}}</p>
-          <p *ngIf="!billing.address.location.phoneNumber">-</p>
+          <p *ngIf="billing.address.phoneNumber">{{billing.address.phoneNumber}}</p>
+          <p *ngIf="!billing.address.phoneNumber">-</p>
         </ion-label>
       </ion-item>
       <ion-item color="tertiary" *ngIf="!data.addresses[billingAddressIndex]">
@@ -61,8 +61,8 @@
             <h2>{{item.address.title}}</h2>
             <p>{{item.address.fullAddress}}</p>
             <p class="text-black">
-              <span *ngIf="item.address.location.phoneNumber">{{item.address.location.phoneNumber}}</span>
-              <span *ngIf="!item.address.location.phoneNumber">-</span>
+              <span *ngIf="item.address.phoneNumber">{{item.address.phoneNumber}}</span>
+              <span *ngIf="!item.address.phoneNumber">-</span>
             </p>
           </ion-label>
         </ion-item>

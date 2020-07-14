@@ -24,14 +24,9 @@ export class UserProfileEditAddressPage implements OnInit {
         'city': [null, Validators.required],
         'province': [null, Validators.required],
         'postalCode': [null, Validators.required],
-        'fullAddress': null,
-        'location': this.fb.group({
-          'address': null,
-          'latitude': null,
-          'longitude': null,
-          'phoneNumber': [null, Validators.required],
-          'remark': null
-        }),
+        'phoneNumber': [null, Validators.required],
+        'remark': null,
+        'fullAddress': null
       }),
       'isBillingAddress': null,
       'isShippingAddress': null
