@@ -13,10 +13,10 @@ export class GpsaddressChangePage implements OnInit {
   public formData$: Promise<{}> = new Promise<{}>(_ => { });
   public fg: FormGroup;
   private mcontentid = "gpsaddress-change";
-  constructor(private fb: FormBuilder, private svc: IonManaLib) { 
+  constructor(private fb: FormBuilder, private svc: IonManaLib) {
     this.fg = this.fb.group({
       'phoneNumber': [null, Validators.required],
-      'remark':null,
+      'remark': null,
     });
 
     this.fg.valueChanges.subscribe(_ => {
@@ -48,5 +48,20 @@ export class GpsaddressChangePage implements OnInit {
     if (this.fg.valid) {
       this.svc.submitFormData(this.mcontentid, this.fg.value);
     }
+  }
+
+  onSelectAddressCreated() {
+    let mcid_optiondialog = "gpsaddress-select";
+    this.svc.showOptionDialog(mcid_optiondialog, {}).then((response) => {
+      let status = response.isOk ? "ok" : "cancel";
+      if (status == "ok") {
+        let address = response.data.address;
+        this.fg.get("phoneNumber").setValue(address.phoneNumber);
+        this.fg.get("remark").setValue(address.remark);
+
+        let location = address.location;
+        this.svc.setGpsSection(location.address, location.latitude, location.longitude, location.phoneNumber, location.remark);
+      }
+    });
   }
 }
