@@ -133,10 +133,10 @@
       <ion-item *ngFor="let product of data.products" color="tertiary" class="ion-no-padding">
         <ion-grid class="ion-padding-start text-hidden">
 
-          <ion-row >
+          <ion-row class="ion-padding-start">
             <ion-col class="ion-no-padding text-hidden">
               <ion-label>
-                <h3>X {{product.quantity}} {{product.name}}</h3>
+                <h3>X{{product.quantity}} {{product.name}}</h3>
               </ion-label>
             </ion-col>
             <ion-col class="ion-no-padding ion-text-end" size="auto">
@@ -144,7 +144,7 @@
                 <h3>
                   <ion-text [color]="product.promotionPrice?.amountUnit? 'danger' : 'dark'"
                     [ngClass]="{'line-through': product.promotionPrice?.amountUnit}">
-                    ฿{{( product.unitPrice?.amountUnit)*(product?.quantity) | number:'1.0' }}</ion-text>
+                    ฿{{( product.price?.amountUnit)*(product?.quantity) | number:'1.0' }}</ion-text>
                   <ion-text *ngIf="product.promotionPrice"> ฿{{(product.promotionPrice?.amountUnit)*(product?.quantity) | number:'1.0' }}
                   </ion-text>
                 </h3>
@@ -152,7 +152,7 @@
             </ion-col>
           </ion-row>
 
-          <ion-row>
+          <ion-row class="ion-padding-start">
             <ion-col class="ion-no-padding text-hidden">
               <ion-label color="danger">
                   <h3><span *ngFor="let option of product.options; let i = index"><span
