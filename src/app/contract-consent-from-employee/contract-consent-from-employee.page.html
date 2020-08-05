@@ -1,62 +1,108 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>การขออนุญาต</ion-title>
+    <ion-title>{{ title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content mode="ios">
-  <ion-list lines="none">
-    <ion-item color="tertiary" class="ion-margin-vertical">
-      <ion-avatar slot="start">
-        <img src="assets/imgs/changewallet.png">
-      </ion-avatar>
-      <ion-label class="ion-text-nowrap">
-        <b>DeliveryAAA</b>
-        <h3>ได้ทำการขออนุญาติเพื่อทำรายการ</h3>
-      </ion-label>
-      <ion-note>
-        <ion-label>
-          <b>&nbsp;</b>
-          <ion-text color="medium">
-            <h3><u>ขอข้อมูลเพิ่มเติม</u></h3>
-          </ion-text>
+
+  <ng-container *ngIf="data$ | async as data">
+    <ion-list lines="none" *ngIf="hasLoaded">
+      <ion-item color="tertiary" class="ion-margin-vertical">
+        <ion-avatar slot="start">
+          <img src="[data.bizLogo]">
+        </ion-avatar>
+        <ion-label class="ion-text-nowrap">
+          <b>{{ data.bizName }}</b>
+          <h3>ได้ทำการขออนุญาติเพื่อทำรายการ</h3>
         </ion-label>
-      </ion-note>
+        <ion-note>
+          <ion-label>
+            <b>&nbsp;</b>
+            <ion-text color="medium">
+              <!-- TODO : binding -->
+              <h3><u>ขอข้อมูลเพิ่มเติม</u></h3>
+            </ion-text>
+          </ion-label>
+        </ion-note>
+      </ion-item>
+
+      <div class="ion-margin-bottom">
+        <ion-card color="tertiary">
+          <ion-card-content class="ion-no-padding ion-padding">
+            <ion-label>
+              <b>
+                ส่งคำขอเข้าร่วมระบบ Delivery ให้คุณ
+              </b>
+            </ion-label>
+            <div class="ion-text-center ion-padding">
+              <ion-avatar slot="start" class="avatar-large center">
+                <img [src]="'assets/imgs/logo.png'">
+              </ion-avatar>
+              <ion-label class="ion-text-center">
+                <b>{{ data.employeeName }}</b>
+                <h3>{{ (data.employeeTitle) }}</h3>
+              </ion-label>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <form [formGroup]="fg" (ngSubmit)="onSave()">
+        <ion-list class="ion-margin-bottom">
+          <ion-radio-group formControlName="isAgree" mode="md">
+            <ion-item color="tertiary">
+              <ion-label>ยอมรับข้อตกลง</ion-label>
+              <ion-radio slot="start" value="true"></ion-radio>
+            </ion-item>
+            <ion-item color="tertiary">
+              <ion-label>ปฏิเสธข้อตกลง</ion-label>
+              <ion-radio slot="start" value="false"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+        <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
+        [disabled]="fg.invalid">ยืนยัน
+      </ion-button>
+      </form>
+    </ion-list>
+  </ng-container>
+
+  <ng-container *ngIf="!hasLoaded">
+    <br>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
     </ion-item>
 
-    <div class="ion-margin-bottom">
-      <ion-card color="tertiary">
-        <ion-card-content class="ion-no-padding ion-padding">
-          <ion-label>
-            <b>
-              ส่งคำขอเข้าร่วมระบบ Delivery ให้คุณ 
-            </b>
-          </ion-label>
-          <div class="ion-text-center ion-padding">
-            <ion-avatar slot="start" class="avatar-large center">
-              <img [src]="'assets/imgs/logo.png'">
-            </ion-avatar>
-            <ion-label class="ion-text-center">
-              <b>อานน บางสาน</b>
-              <h3>(ผู้ส่งของ)</h3>
-            </ion-label>
-          </div>
-        </ion-card-content>
-      </ion-card>
-    </div>
+    <ion-item lines="none">
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-label>
+    </ion-item>
 
-    <ion-list class="ion-margin-bottom">
-      <ion-radio-group mode="md">    
-        <ion-item color="tertiary">
-          <ion-label>ยอมรับข้อตกลง</ion-label>
-          <ion-radio slot="start" value="accept"></ion-radio>
-        </ion-item>    
-        <ion-item color="tertiary">
-          <ion-label>ปฏิเสธข้อตกลง</ion-label>
-          <ion-radio slot="start" value="decline"></ion-radio>
-        </ion-item>    
-      </ion-radio-group>
-    </ion-list>
-  </ion-list>
+    <ion-card color="light" class="ion-text-center">
+      <ion-card-content>
+        <ion-skeleton-text class="center circle ion-margin-bottom" animated style="width:100px; height:100px">
+        </ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-card color="light" class="ion-text-center">
+      <ion-label>
+        <h3>
+          <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+        </h3>
+        <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+      </ion-label>
+  </ion-card>
+
+  </ng-container>
 
 </ion-content>
