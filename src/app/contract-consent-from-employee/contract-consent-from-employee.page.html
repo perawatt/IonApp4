@@ -10,7 +10,7 @@
     <ion-list lines="none" *ngIf="hasLoaded">
       <ion-item color="tertiary" class="ion-margin-vertical">
         <ion-avatar slot="start">
-          <img src="[data.bizLogo]">
+          <img [src]="data.bizLogo">
         </ion-avatar>
         <ion-label class="ion-text-nowrap">
           <b>{{ data.bizName }}</b>
@@ -37,7 +37,7 @@
             </ion-label>
             <div class="ion-text-center ion-padding">
               <ion-avatar slot="start" class="avatar-large center">
-                <img [src]="'assets/imgs/logo.png'">
+                <img [src]="data.employeeLogo">
               </ion-avatar>
               <ion-label class="ion-text-center">
                 <b>{{ data.employeeName }}</b>
