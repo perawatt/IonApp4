@@ -42,7 +42,7 @@ export class ContractConsentFromShopPage implements OnInit {
   private loadData$() {
     return this.svc.initPageApi(this.mcontentid)
       .then(_ => {
-        return this.svc.callApiGet(this.mcontentid,"https://mana-facing-dev.azurewebsites.net/Contract/shipping/consent/a");
+        return this.svc.getApiData(this.mcontentid);
       })
   }
 
