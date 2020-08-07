@@ -9,7 +9,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ContractConsentFromEmployeePage implements OnInit {
 
-
   public hasLoaded: string;
   public data$ = Promise.resolve<{}>({});
   public title = "การขออนุญาต";
