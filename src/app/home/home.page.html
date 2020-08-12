@@ -4,22 +4,57 @@
   </ion-toolbar>
 </ion-header>
 <ion-header class="home-header" mode="ios">
-  <ion-searchbar #searchbar inputmode ="search" debounce="250" (ionFocus)="getItems($event)" (ionChange)="getItems($event)"></ion-searchbar>
+  <form [formGroup]="fg" (ngSubmit)="onSubmit()">
+    <ion-searchbar #searchbar inputmode="search" debounce="250" (ionFocus)="getItems($event)"
+      (ionChange)="getItems($event)" formControlName="searchInput"></ion-searchbar>
+  </form>
 </ion-header>
 
 <ion-content mode="ios">
-  <ion-list lines="full" class="searchSuggestion" *ngIf="isItemAvailable" color="tertiary">
-    <ion-item *ngFor="let item of filterdItems" color="tertiary">
-      <img height="15" slot="start" [src]="item.logo" />
+  <ion-list lines="full" class="searchSuggestion" *ngIf="isSearching" color="tertiary">
+    <ion-item *ngFor="let item of filterdItems" color="tertiary" (click)="onSelectSearch(item.name)">
+      <img height="12" [class]="item.type === 'membership' ? 'circle' : ''" slot="start" [src]="item.logo" />
       <ion-label>
-        <h2>
-          <!-- <ion-icon color="medium" [name]="item.type === 'histories' ?  'time-outline': 'search-outline'"></ion-icon> -->
+        <h3>
           {{ item.name }}
-        </h2>
+        </h3>
       </ion-label>
     </ion-item>
   </ion-list>
-  <div *ngIf="!isItemAvailable">
+  <ng-container *ngIf="!isSearching">
+    <ion-list *ngIf="filterdItems.length == 0" lines="none">
+      <ion-item class="ion-text-center">
+        <ion-label>ไม่พบสิ่งที่กำลังค้นหา</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-list lines="full" class="searchSuggestion" *ngIf="filterdItems.length > 0" color="tertiary">
+      <ion-item *ngFor="let item of filterdItems" color="tertiary">
+        <ion-avatar slot="start">
+          <img [src]="item.logo" />
+        </ion-avatar>
+        <ion-label>
+          <h2>
+            <b>
+              {{ item.name }}
+            </b>
+          </h2>
+          <h3>
+            <ion-text color="medium">
+              {{ item.description }}
+            </ion-text>
+          </h3>
+          <h3>
+            <ion-chip *ngFor="let tag of item.tags"
+              class="ion-no-margin ion-margin-end ion-no-padding ion-padding-horizontal chip-small" outline color="dark">
+              <span>{{ tag }}</span>
+            </ion-chip>
+          </h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <!-- <div>
     <ion-item lines="none">
       <ion-avatar slot="start">
         <ion-skeleton-text animated></ion-skeleton-text>
@@ -99,6 +134,6 @@
         </ion-label>
       </ion-col>
     </ion-row>
-  </div>
+  </div> -->
 
 </ion-content>
