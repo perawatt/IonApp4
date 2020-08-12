@@ -4,16 +4,17 @@
   </ion-toolbar>
 </ion-header>
 <ion-header class="home-header" mode="ios">
-  <ion-searchbar type="search" debounce="250" (ionChange)="getItems($event)" animated></ion-searchbar>
+  <ion-searchbar #searchbar inputmode ="search" debounce="250" (ionFocus)="getItems($event)" (ionChange)="getItems($event)"></ion-searchbar>
 </ion-header>
 
 <ion-content mode="ios">
   <ion-list lines="full" class="searchSuggestion" *ngIf="isItemAvailable" color="tertiary">
-    <ion-item *ngFor="let item of filterd" color="tertiary">
+    <ion-item *ngFor="let item of filterdItems" color="tertiary">
+      <img height="15" slot="start" [src]="item.logo" />
       <ion-label>
         <h2>
-          <ion-icon color="medium" [name]="item.type === 'histories' ?  'time-outline': 'search-outline'"></ion-icon>
-          &nbsp;{{ item.searchText }}
+          <!-- <ion-icon color="medium" [name]="item.type === 'histories' ?  'time-outline': 'search-outline'"></ion-icon> -->
+          {{ item.name }}
         </h2>
       </ion-label>
     </ion-item>
