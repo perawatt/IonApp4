@@ -10,6 +10,7 @@ import { IonManaLib } from 'ion-m-lib';
 })
 export class HomePage {
   public fg: FormGroup;
+  public deleyTime:number = 250;
   isSearching = false;
   items: SearchListItem[] = [];
   defaultItem: SearchListItem[] = [];
@@ -20,7 +21,7 @@ export class HomePage {
       'searchInput': [null, Validators.required],
     });
 
-    this.fg.valueChanges.subscribe(_ => {      
+    this.fg.valueChanges.subscribe(_ => {
       this.svc.validForm(this.fg.valid)
     });
 
@@ -43,12 +44,12 @@ export class HomePage {
     this.defaultItem.push({ id: "3", tags: ["membership", "promome"], type: "membership", logo: "assets/imgs/shop-default.png", description: "โปรโมมี", name: "Promome" });
     this.defaultItem.push({ id: "4", tags: ["third"], type: "histories", logo: "assets/imgs/search-clock.png", description: "ดูหนัง", name: "ดูหนัง " });
     this.defaultItem.push({ id: "5", tags: ["third"], type: "membership", logo: "assets/imgs/changewallet.png", description: "กระเป๋าเงิน", name: "กระเป๋าเงิน" });
-    this.defaultItem.push({ id: "6", tags: ["iStudio","Coupon"], type: "coupon", logo: "assets/imgs/privilege-info.png", description: "คูปองร้าน iStudio", name: "iStudio" });
+    this.defaultItem.push({ id: "6", tags: ["iStudio", "Coupon"], type: "coupon", logo: "assets/imgs/privilege-info.png", description: "คูปองร้าน iStudio", name: "iStudio" });
 
-    this.collectionItem.push({ id: "1", tags: ["Promome","Membership"], type: "membership", logo: "assets/imgs/shop-default.png", description: "สมาชิก Promome(โปรโมมี)", name: "Promome" });
-    this.collectionItem.push({ id: "2", tags: ["MTM","Membership"], type: "membership", logo: "assets/imgs/promtpayicon.png", description: "สมาชิก MTM", name: "MTM" });
-    this.collectionItem.push({ id: "3", tags: ["Play Cafe","Coupon"], type: "coupon", logo: "assets/imgs/privilege-point.png", description: "คูปองร้าน Play Cafe", name: "Play Cafe" });
-    this.collectionItem.push({ id: "4", tags: ["iStudio","Coupon"], type: "coupon", logo: "assets/imgs/privilege-info.png", description: "คูปองร้าน iStudio", name: "iStudio" });
+    this.collectionItem.push({ id: "1", tags: ["Promome", "Membership"], type: "membership", logo: "assets/imgs/shop-default.png", description: "สมาชิก Promome(โปรโมมี)", name: "Promome" });
+    this.collectionItem.push({ id: "2", tags: ["MTM", "Membership"], type: "membership", logo: "assets/imgs/promtpayicon.png", description: "สมาชิก MTM", name: "MTM" });
+    this.collectionItem.push({ id: "3", tags: ["Play Cafe", "Coupon"], type: "coupon", logo: "assets/imgs/privilege-point.png", description: "คูปองร้าน Play Cafe", name: "Play Cafe" });
+    this.collectionItem.push({ id: "4", tags: ["iStudio", "Coupon"], type: "coupon", logo: "assets/imgs/privilege-info.png", description: "คูปองร้าน iStudio", name: "iStudio" });
 
   }
 
@@ -59,36 +60,32 @@ export class HomePage {
   }
 
   getItems(ev: any) {
-    console.log(ev);
-    
-    const val = ev.target.value;
-    this.isSearching = true;
-    if (val && val.trim() !== '') {
-      this.filterdItems = this.items.filter((item) => {
-        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.description.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.tags.indexOf(val.toLowerCase()) > -1) ;
-      })
-    } else {
-      this.filterdItems = this.defaultItem;
-    }
+      const val = ev.target.value;
+      this.isSearching = true;
+      if (val && val.trim() !== '') {
+        this.filterdItems = this.items.filter((item) => {
+          return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.description.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.tags.indexOf(val.toLowerCase()) > -1);
+        })
+      } else {
+        this.filterdItems = this.defaultItem;
+      }
   }
 
-  onSelectSearch(keyword: any){
+  onSelectSearch(keyword: any) {
     this.fg.get("searchInput").setValue(keyword);
-    this.onSubmit();  
+    setTimeout(() => {
+      this.onSubmit();
+    }, this.deleyTime);
   }
 
   onSubmit() {
-    console.log("isSearching: "+this.isSearching);
-       
     let searchInput = this.fg.get("searchInput").value;
     if (this.fg.valid) {
       this.isSearching = false;
       this.filterdItems = this.collectionItem.filter((item) => {
-        return (item.name.toLowerCase().indexOf(searchInput.toLowerCase()) > -1 || item.description.toLowerCase().indexOf(searchInput.toLowerCase()) > -1 || item.tags.indexOf(searchInput.toLowerCase()) > -1) ;
+        return (item.name.toLowerCase().indexOf(searchInput.toLowerCase()) > -1 || item.description.toLowerCase().indexOf(searchInput.toLowerCase()) > -1 || item.tags.indexOf(searchInput.toLowerCase()) > -1);
       })
     }
-    console.log("isSearching: "+this.isSearching);
-
   }
 }
 

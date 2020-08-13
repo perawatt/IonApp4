@@ -5,7 +5,7 @@
 </ion-header>
 <ion-header class="home-header" mode="ios">
   <form [formGroup]="fg" (ngSubmit)="onSubmit()">
-    <ion-searchbar #searchbar inputmode="search" debounce="250" (ionFocus)="getItems($event)"
+    <ion-searchbar #searchbar inputmode="search" enterkeyhint="search" [debounce]="deleyTime" (ionFocus)="getItems($event)"
       (ionChange)="getItems($event)" formControlName="searchInput"></ion-searchbar>
   </form>
 </ion-header>
