@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSearchbar } from '@ionic/angular';
+import { IonSearchbar, Platform } from '@ionic/angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { IonManaLib } from 'ion-m-lib';
 
@@ -17,7 +17,7 @@ export class SearchMainPage implements OnInit {
   collectionItem: SearchListItem[] = [];
   filterdItems = [];
   
-  constructor(private fb: FormBuilder, private svc: IonManaLib) {
+  constructor(private fb: FormBuilder, private svc: IonManaLib, private platfrom: Platform) {
     this.fg = this.fb.group({
       'searchInput': [null, Validators.required],
     });
@@ -60,7 +60,9 @@ export class SearchMainPage implements OnInit {
   @ViewChild('searchbar', { static: false }) searchbar: IonSearchbar;
 
   ionViewDidEnter() {
-    this.searchbar.setFocus();
+    this.platfrom.ready().then(()=>{
+      this.searchbar.setFocus();
+    });
   }
 
   getItems(ev: any) {
