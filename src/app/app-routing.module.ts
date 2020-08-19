@@ -363,6 +363,10 @@ const routes: Routes = [
     path: 'privilege-confirm',
     loadChildren: () => import('./privilege-confirm/privilege-confirm.module').then( m => m.PrivilegeConfirmPageModule)
   },
+  {
+    path: 'search-main',
+    loadChildren: () => import('./search-main/search-main.module').then( m => m.SearchMainPageModule)
+  },
 
 
 
