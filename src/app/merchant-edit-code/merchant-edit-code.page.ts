@@ -28,8 +28,12 @@ export class MerchantEditCodePage implements OnInit {
   private loadData$() {
     return this.svc.initPageApi(this.mcontentid)
       .then(_ => {
-        return this.svc.callApiGet(this.mcontentid,"https://mana-facing-dev.azurewebsites.net/BizAccount/637334894267091896/code")
-        // return this.svc.getApiData(this.mcontentid);
+        // return this.svc.callApiGet(this.mcontentid,"https://mana-facing-dev.azurewebsites.net/BizAccount/637334894267091896/code")
+        return this.svc.getApiData(this.mcontentid);
       })
+  }
+
+  public onSelectItem(endpointId: string) {
+    // this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizcde-" + endpointId);
   }
 }
