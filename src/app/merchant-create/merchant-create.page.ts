@@ -41,9 +41,6 @@ export class MerchantCreatePage implements OnInit {
   ngOnInit() {
   }
 
-  ccc(){
-    console.log(this.fg);
-  }
   ionViewDidEnter() {
     this.svc.initPageApi(this.mcontentid);
   }
