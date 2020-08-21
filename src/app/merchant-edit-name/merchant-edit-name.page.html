@@ -5,10 +5,12 @@
 </ion-header>
 
 <ion-content mode="ios" color="tertiary">
+  <form [formGroup]="fg" (ngSubmit)="onSave()" [rx-form-data]="(formData$ | async)">
   <ion-item lines="full" color="tertiary">
     <ion-label position="stacked">ชื่อร้าน</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" formControlName="name"></ion-input>
   </ion-item>
-  <!-- <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">แก้ไขเสร็จสิ้น
-  </ion-button> -->
+  <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">แก้ไขเสร็จสิ้น
+  </ion-button>
+  </form>
 </ion-content>
