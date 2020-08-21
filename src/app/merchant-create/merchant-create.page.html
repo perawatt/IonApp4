@@ -9,7 +9,7 @@
     <ion-list lines="full">
       <ion-item color="tertiary" class="ion-margin-bottom" lines="none">
         <ion-label position="stacked">ตั้งชื่อธุรกิจของคุณ</ion-label>
-        <ion-input type="text" formControlName="merchantName"></ion-input>
+        <ion-input type="text" formControlName="name"></ion-input>
       </ion-item>
       <ion-item class="ion-no-margin" color="tertiary" lines="none">
         <ion-label class="ion-no-margin">
@@ -20,7 +20,7 @@
         <!-- TODO : ปรับในภายหลัง -->
         <img class="ion-margin-vertical" src="assets/imgs/defaultshop.png" height="120">
         <ion-input type="file" name="file" id="file" class="file-input" accept="photo" multiple="false"
-          (ionChange)="selectPhoto($event)"></ion-input>
+          (ionChange)="selectPhoto($event)" formControlName="logo"></ion-input>
         <ion-label for="file" class="file-input-label" color="light">
           <h3>เปลี่ยนรูป</h3>
         </ion-label>
@@ -28,14 +28,14 @@
 
       <ion-item color="tertiary">
         <ion-label position="stacked">เบอร์โทร</ion-label>
-        <ion-input type="tel"></ion-input>
+        <ion-input type="tel" formControlName="phone"></ion-input>
       </ion-item>
       <ion-item color="tertiary" button>
         <ion-label><b>สถานที่ตั้ง</b></ion-label>
       </ion-item>
     </ion-list>
     <ion-button id="app-form-submit" color="danger" [disabled]="fg.invalid" class="ion-no-margin" expand="full"
-      type="submit">ยืนยัน
+      type="submit" (click)="ccc()">ยืนยัน
     </ion-button>
   </form>
 </ion-content>
