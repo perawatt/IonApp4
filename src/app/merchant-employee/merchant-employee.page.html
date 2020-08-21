@@ -6,7 +6,13 @@
 
 <ion-content mode="ios" color="tertiary">
   <ng-container *ngIf="data$ | async as data">
-    <ion-list lines="inset" *ngIf="hasLoaded">
+    <ion-list lines="none" *ngIf="hasLoaded == 'n'">
+      <ion-item color="tertiary" class="ion-text-center">
+        <ion-label>ไม่มีรายการ</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-list lines="inset" *ngIf="hasLoaded == 'y'">
       <ion-item color="tertiary" *ngFor="let item of data.bizEmployees">
         <ion-avatar slot="start" class="avatar-large">
           <img *ngIf="item.logo" [src]="item.logo" />

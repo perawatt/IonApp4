@@ -24,6 +24,7 @@ export class MerchantHomeBasicPage implements OnInit {
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then(it => {
+      this.title = it.name != null ? it.name : this.title;
       this.hasLoaded = it ? "y" : "n";
     });
   }

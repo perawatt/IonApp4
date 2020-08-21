@@ -36,7 +36,7 @@ export class MerchantEmployeePage implements OnInit {
     this.data$ = load$;
     load$.then((it: any) => {
       console.log(it)
-      this.hasLoaded = it? "n" : "y";      
+      this.hasLoaded = (it && it.bizEmployees.length > 0) ? "y" : "n";       
     });
   }
 
