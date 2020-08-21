@@ -12,10 +12,8 @@
       </ion-list-header>
       <!-- TODO: implement onSelect -->
       <ion-item button detail="false" color="tertiary" class="ion-margin-bottom"
-        *ngFor="let bizAccount of data.bizAccounts">
-      <!-- <ion-item button detail="false" color="tertiary" class="ion-margin-bottom"
       *ngFor="let bizAccount of data.bizAccounts"
-      (click)="onSelectItem(bizAccount.endpointId,bizAccount.approvedDateTime != null)"> -->
+      (click)="onSelectItem(bizAccount._id)">
         <ion-avatar slot="start">
           <img *ngIf="bizAccount.logo" [src]="bizAccount.logo" />
           <img *ngIf="!bizAccount.logo" src="assets/imgs/defaultshop.png" />
@@ -40,9 +38,11 @@
           </ion-text>
         </ion-label>
       </ion-item>
-      <ion-card color="tertiary">
-        <ion-button color="danger" expand="block" (click)="Add()">สร้างร้านใหม่</ion-button>
+      <ion-card color="tertiary" class="ion-padding">
+        <ion-button color="danger" expand="full" (click)="Add()">สร้างร้านใหม่</ion-button>
       </ion-card>
+      <br>
+      <br>
       <img class="ion-margin-top" src="assets/imgs/shopBackground.png" width="200" height="200" />
     </ion-list>
   </ng-container>
