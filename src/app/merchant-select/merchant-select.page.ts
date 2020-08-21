@@ -25,7 +25,7 @@ export class MerchantSelectPage implements OnInit {
   private loadData$() {
     return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
       .then(_ => {
-        return this.svc.callApiGet(this.mcontentid, "http://mana-facing-dev.azurewebsites.net/BizAccount")
+        // return this.svc.callApiGet(this.mcontentid, "http://mana-facing-dev.azurewebsites.net/BizAccount")
         return this.svc.getApiData(this.mcontentid);
       })
   }
@@ -36,7 +36,7 @@ export class MerchantSelectPage implements OnInit {
     this.data$ = load$;
     load$.then((it: any) => {
       console.log(it)
-      this.hasLoaded = (it && it.bizAccounts.length > 0) ? "n" : "n";
+      this.hasLoaded = (it && it.bizAccounts.length > 0) ? "y" : "n";
     });
   }
 
