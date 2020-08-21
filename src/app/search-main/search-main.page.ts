@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { IonSearchbar, Platform } from '@ionic/angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { IonManaLib } from 'ion-m-lib';
@@ -10,14 +10,31 @@ import { IonManaLib } from 'ion-m-lib';
 })
 export class SearchMainPage implements OnInit {
   public fg: FormGroup;
-  public deleyTime:number = 250;
+  public deleyTime: number = 100;
+  private mcontentid = "search-main";
+
+  public searhHasload: string = null;
+  public resultHasload: string = null;
+
   isSearching = false;
-  items: SearchListItem[] = [];
-  defaultItem: SearchListItem[] = [];
-  collectionItem: SearchListItem[] = [];
-  filterdItems = [];
-  
-  constructor(private fb: FormBuilder, private svc: IonManaLib, private platfrom: Platform) {
+  canSearching = true;
+
+  historyItems = [];
+  searchItems = [];
+  resultItems = [];
+
+  constructor(private fb: FormBuilder, private svc: IonManaLib, private zone: NgZone) {
+    (<any>window).OnSearch = (param: any) => {
+      this.zone.run(() => {
+        this.searching(param);
+      });
+    }
+    (<any>window).OnSubmitSearch = (param: any) => {
+      this.zone.run(() => {
+        this.submitSearch(param);
+      });
+    }
+
     this.fg = this.fb.group({
       'searchInput': [null, Validators.required],
     });
@@ -25,33 +42,10 @@ export class SearchMainPage implements OnInit {
     this.fg.valueChanges.subscribe(_ => {
       this.svc.validForm(this.fg.valid)
     });
+  }
 
-    this.items.push({ id: "1", tags: ["shop"], type: "histories", logo: "assets/imgs/search-clock.png", description: "โปรโมชัน", name: "โปรโมชัน" });
-    this.items.push({ id: "2", tags: ["shop", "เครื่องดื่ม"], type: "histories", logo: "assets/imgs/search-clock.png", description: "ร้านคอฟฟี่เดอลา", name: "Coffee De La" });
-    this.items.push({ id: "3", tags: ["shop", "อาหาร"], type: "histories", logo: "assets/imgs/search-clock.png", description: "โปรโมชันอาหาร", name: "โปรโมชันอาหาร" });
-    this.items.push({ id: "4", tags: ["shop", "อาหาร"], type: "histories", logo: "assets/imgs/search-clock.png", description: "ร้านย่างเพราเห่าดง", name: "ย่างเพราเห่าดง" });
-    this.items.push({ id: "5", tags: ["shop"], type: "histories", logo: "assets/imgs/search-clock.png", description: "ร้านกรัส คาเฟ่", name: "Grus Cafe" });
-    this.items.push({ id: "6", tags: ["third"], type: "histories", logo: "assets/imgs/search-clock.png", description: "สมาชิก Promome(โปรโมมี)", name: "Promome โปรโมมี" });
-    this.items.push({ id: "12", tags: ["third"], type: "histories", logo: "assets/imgs/search-clock.png", description: "", name: "แจกคูปอง" });
-    this.items.push({ id: "13", tags: ["third"], type: "histories", logo: "assets/imgs/search-clock.png", description: "ดูหนัง", name: "ดูหนัง " });
-    this.items.push({ id: "7", tags: ["shop", "Coupon"], type: "suggestion", logo: "assets/imgs/search-magnifier.png", description: "คูปองร้าน iStudio", name: "ร้าน iStudio" });
-    this.items.push({ id: "9", tags: ["shop", "อาหาร"], type: "suggestion", logo: "assets/imgs/search-magnifier.png", description: "ก๋วยเตี๋ยวสิบสาม", name: "ก๋วยเตี๋ยวสิบสาม" });
-    this.items.push({ id: "10", tags: ["shop", "อาหาร"], type: "suggestion", logo: "assets/imgs/search-magnifier.png", description: "ร้านย่างเพรา เห่าดง", name: "ย่างเพรา เห่าดง" });
-    this.items.push({ id: "11", tags: ["third"], type: "suggestion", logo: "assets/imgs/search-magnifier.png", description: "สมาชิก Promome(โปรโมมี)", name: "Promome" });
-
-
-    this.defaultItem.push({ id: "1", tags: ["third"], type: "histories", logo: "assets/imgs/search-clock.png", description: "", name: "แจกคูปอง" });
-    this.defaultItem.push({ id: "2", tags: ["mana"], type: "membership", logo: "assets/imgs/topup.png", description: "เติมเงิน", name: "เติมเงิน" });
-    this.defaultItem.push({ id: "3", tags: ["membership", "promome"], type: "membership", logo: "assets/imgs/shop-default.png", description: "โปรโมมี", name: "Promome" });
-    this.defaultItem.push({ id: "4", tags: ["third"], type: "histories", logo: "assets/imgs/search-clock.png", description: "ดูหนัง", name: "ดูหนัง " });
-    this.defaultItem.push({ id: "5", tags: ["third"], type: "membership", logo: "assets/imgs/changewallet.png", description: "กระเป๋าเงิน", name: "กระเป๋าเงิน" });
-    this.defaultItem.push({ id: "6", tags: ["iStudio", "Coupon"], type: "coupon", logo: "assets/imgs/privilege-info.png", description: "คูปองร้าน iStudio", name: "iStudio" });
-
-    this.collectionItem.push({ id: "1", tags: ["Promome", "Membership"], type: "membership", logo: "assets/imgs/shop-default.png", description: "สมาชิก Promome(โปรโมมี)", name: "Promome" });
-    this.collectionItem.push({ id: "2", tags: ["MTM", "Membership"], type: "membership", logo: "assets/imgs/promtpayicon.png", description: "สมาชิก MTM", name: "MTM" });
-    this.collectionItem.push({ id: "3", tags: ["Play Cafe", "Coupon"], type: "coupon", logo: "assets/imgs/privilege-point.png", description: "คูปองร้าน Play Cafe", name: "Play Cafe" });
-    this.collectionItem.push({ id: "4", tags: ["iStudio", "Coupon"], type: "coupon", logo: "assets/imgs/privilege-info.png", description: "คูปองร้าน iStudio", name: "iStudio" });
-
+  visitEndpoint(endpoint: string) {
+    this.svc.visitEndpoint(this.mcontentid, endpoint);
   }
 
   ngOnInit() {
@@ -60,25 +54,126 @@ export class SearchMainPage implements OnInit {
   @ViewChild('searchbar', { static: false }) searchbar: IonSearchbar;
 
   ionViewDidEnter() {
-    this.platfrom.ready().then(()=>{
-      this.searchbar.setFocus();
+    this.svc.initPageApi(this.mcontentid).then(async () => {
+      this.searching('');
     });
   }
 
-  getItems(ev: any) {
-      const val = ev.target.value;
-      this.isSearching = true;
-      if (val && val.trim() !== '') {
-        this.filterdItems = this.items.filter((item) => {
-          return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.description.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.tags.indexOf(val.toLowerCase()) > -1);
-        })
-      } else {
-        this.filterdItems = this.defaultItem;
+  public getStatusIcon(status: string) {
+    switch (status) {
+      case "mana": return "assets/imgs/cemana.png";
+      case "Memberships": return "assets/imgs/cemem.png";
+      case "Shops": return "assets/imgs/ceshop.png";
+      case "Products": return "assets/imgs/ceprod.png";
+      case "Endpoints": return "assets/imgs/ceend.png";
+      default: return "assets/imgs/ceend.png"
+    }
+  }
+
+  submitSearch(searchText: string) {
+    this.saveHistory(searchText);
+    this.searchItems = [];
+    this.resultHasload = null;
+
+    this.isSearching = false;
+    this.svc.callApiGet(this.mcontentid, "http://mana-gateway-dev.azurewebsites.net/search/result?txt=" + searchText).then(it => {
+      this.resultHasload = it && it.length != 0 ? "y" : "n";
+      console.log("filterHasload : " + this.searhHasload);
+
+      this.resultItems = it;
+    });
+    this.canSearching = true;
+  }
+
+  searching(searchTexh: string) {
+    if (this.canSearching) {
+      setTimeout(async () => {
+
+        this.resultItems = [];
+        this.isSearching = true;
+        this.searhHasload = null;
+
+        if (searchTexh && searchTexh.trim() !== '') {
+          await this.showSearching(searchTexh)
+        } else {
+          await this.showHistories();
+        }
+      }, this.deleyTime);
+    }
+  }
+
+  async showSearching(searchTexh: string) {
+    this.searchItems = [];
+    this.historyItems.forEach(x => {
+      if (x.text.toLowerCase().includes(searchTexh.toLowerCase())) {
+        this.searchItems.push(x);
       }
+    });
+    this.svc.callApiGet(this.mcontentid, "http://mana-gateway-dev.azurewebsites.net/search/suggest?txt=" + searchTexh).then(it => {
+
+      it.forEach(element => {
+        this.searchItems.push(element);
+      });
+
+    });
+  }
+
+  async showHistories() {
+    var histories = await this.getHistory();
+    this.historyItems = [];
+    histories.forEach(element => {
+      this.historyItems.push(element);
+    });
+    this.searchItems = this.historyItems;
+    this.searhHasload = histories && histories.length != 0 ? "y" : "n";
+  }
+
+  getHistory(): Promise<any> {
+    return new Promise((res, rej) => {
+      res([{ text: "Promome", icon: "assets/imgs/serecent.png" }, { text: "prab", icon: "assets/imgs/serecent.png" }]);
+    });
+    return this.callNativeFunc("GetSearchHistories", "");
+  }
+
+  saveHistory(keyWord: string) {
+    this.callAppMethod("SaveSearchHistory", keyWord);
+  }
+
+  private callNativeFunc(fName: string, fParam: string = "") {
+    return new Promise((resolve, reject) => {
+      try {
+        TheSHybridFunc(fName, fParam, rsp => resolve(rsp));
+      } catch (error) {
+        resolve(error);
+      }
+    });
+  }
+
+  private callAppMethod(fName: string, fParam: any = "") {
+    return new Promise((resolve, reject) => {
+      try {
+        TheSHybridCall(fName, fParam);
+        resolve({});
+      } catch (error) {
+        console.log(error);
+        resolve(error);
+      }
+    });
+  }
+
+  // -------ForIonic-------
+
+  onInputChange(ev: any) {
+    const val = ev.target.value;
+    this.searching(val);
   }
 
   onSelectSearch(keyword: any) {
+    this.canSearching = false;
+
     this.fg.get("searchInput").setValue(keyword);
+    this.callAppMethod('ChangeSearchInput', keyword)
+
     setTimeout(() => {
       this.onSubmit();
     }, this.deleyTime);
@@ -86,21 +181,19 @@ export class SearchMainPage implements OnInit {
 
   onSubmit() {
     let searchInput = this.fg.get("searchInput").value;
-    if (this.fg.valid) {
-      this.isSearching = false;
-      this.filterdItems = this.collectionItem.filter((item) => {
-        return (item.name.toLowerCase().indexOf(searchInput.toLowerCase()) > -1 || item.description.toLowerCase().indexOf(searchInput.toLowerCase()) > -1 || item.tags.indexOf(searchInput.toLowerCase()) > -1);
-      })
-    }
+    this.submitSearch(searchInput)
   }
 }
 
 export class SearchListItem {
   constructor() { }
   id: string;
-  logo: string;
+  icon: string;
   type: string;
-  name: string;
+  text: string;
   description: string;
   tags: string[];
 }
+
+declare function TheSHybridCall(methodName: string, parameter: any): void;
+declare function TheSHybridFunc(methodName: string, parameter: string, callback: any): void;

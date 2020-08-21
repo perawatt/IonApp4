@@ -3,52 +3,60 @@
     <ion-title>ค้นหา</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-header class="home-header" mode="ios">
+<ion-header mode="ios">
   <form [formGroup]="fg" (ngSubmit)="onSubmit()">
-    <ion-searchbar #searchbar inputmode="search" enterkeyhint="search" [debounce]="deleyTime" (ionFocus)="getItems($event)"
-      (ionChange)="getItems($event)" formControlName="searchInput"></ion-searchbar>
+    <ion-searchbar #searchbar inputmode="search" enterkeyhint="search" (ionFocus)="onInputChange($event)"
+      (ionChange)="onInputChange($event)" formControlName="searchInput"></ion-searchbar>
   </form>
 </ion-header>
 
 <ion-content mode="ios">
   <ion-list lines="full" class="searchSuggestion" *ngIf="isSearching" color="tertiary">
-    <ion-item *ngFor="let item of filterdItems" color="tertiary" (click)="onSelectSearch(item.name)">
-      <img height="12" [class]="item.type === 'membership' ? 'circle' : ''" slot="start" [src]="item.logo" />
+    <ion-item *ngIf="searhHasload == 'n'" class="ion-text-center">
+      <ion-label>ไม่พบสิ่งที่กำลังค้นหา</ion-label>
+    </ion-item>
+    <ion-item *ngFor="let item of searchItems" color="tertiary" (click)="onSelectSearch(item.text)">
+      <img height="12" [class]="item.type === 'membership' ? 'circle' : ''" slot="start" [src]="item.icon" />
       <ion-label>
         <h3>
-          {{ item.name }}
+          {{ item.text }}
         </h3>
       </ion-label>
     </ion-item>
   </ion-list>
+  
   <ng-container *ngIf="!isSearching">
-    <ion-list *ngIf="filterdItems.length == 0" lines="none">
+    <ion-list *ngIf="resultHasload == 'n'" lines="none">
       <ion-item class="ion-text-center">
         <ion-label>ไม่พบสิ่งที่กำลังค้นหา</ion-label>
       </ion-item>
     </ion-list>
-    <ion-list lines="full" class="searchSuggestion" *ngIf="filterdItems.length > 0" color="tertiary">
-      <ion-item *ngFor="let item of filterdItems" color="tertiary">
+    <ion-list lines="full" class="searchSuggestion" *ngIf="resultItems.length > 0" color="tertiary">
+      <ion-item (click)="visitEndpoint(item.endpointUrl)" *ngFor="let item of resultItems" color="tertiary">
         <ion-avatar slot="start">
           <img [src]="item.logo" />
         </ion-avatar>
         <ion-label>
           <h2>
             <b>
-              {{ item.name }}
+              {{ item.title }}
             </b>
           </h2>
           <h3>
             <ion-text color="medium">
-              {{ item.description }}
+              {{ item.body }}
             </ion-text>
           </h3>
-          <h3>
+          <h4>
+            <img  height="12" [src]="getStatusIcon(item.category)"/>
+            &nbsp;
             <ion-chip *ngFor="let tag of item.tags"
-              class="ion-no-margin ion-margin-end ion-no-padding ion-padding-horizontal chip-small" outline color="dark">
+            size="tiny"
+              class="ion-no-margin ion-margin-end ion-no-padding ion-padding-horizontal chip-small" outline
+              color="dark">
               <span>{{ tag }}</span>
             </ion-chip>
-          </h3>
+          </h4>
         </ion-label>
       </ion-item>
     </ion-list>
