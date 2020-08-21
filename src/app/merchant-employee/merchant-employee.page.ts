@@ -8,6 +8,7 @@ import { IonManaLib } from 'ion-m-lib';
 })
 export class MerchantEmployeePage implements OnInit {
 
+  public _id: string;
   public hasLoaded: string;
   public mcontentid = "merchant-employee";
   public data$ = Promise.resolve<{}>({});
@@ -25,7 +26,7 @@ export class MerchantEmployeePage implements OnInit {
   private loadData$() {
     return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
       .then(_ => {
-        // return this.svc.callApiGet(this.mcontentid,"https://mana-facing-dev.azurewebsites.net/BizAccount/637334894267091896/employees")
+        // return this.svc.callApiGet(this.mcontentid, "https://mana-facing-dev.azurewebsites.net/BizAccount/637334894267091896/employees")
         return this.svc.getApiData(this.mcontentid);
       })
   }
@@ -35,8 +36,8 @@ export class MerchantEmployeePage implements OnInit {
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then((it: any) => {
-      console.log(it)
-      this.hasLoaded = (it && it.bizEmployees.length > 0) ? "y" : "n";       
+      this._id = it._id;
+      this.hasLoaded = (it && it.bizEmployees.length > 0) ? "y" : "n";
     });
   }
 
@@ -50,6 +51,11 @@ export class MerchantEmployeePage implements OnInit {
 
   // TODO: implement addToolbarAction (ยังไม่มี ui)
   public Add() {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizdtl-create");
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizemp-create$" + this._id);
+  }
+
+  // TODO: implement onSelect (ยังไม่มี ui)
+  public onSelectItem(endpointId: string) {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizdtl-" + endpointId);
   }
 }
