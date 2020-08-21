@@ -44,7 +44,7 @@
     </ion-list>
   </ng-container> -->
 
-  <ng-container *ngIf="(data$ | async)?.merchantAccount as data">
+  <ng-container *ngIf="data$ | async as data">
     <ion-card color="light" class="ion-text-center">
       <ion-card-content>
         <img *ngIf="data?.logo" [src]="data.logo" class="qr center circle ion-margin-bottom" width="90" height="90">
@@ -53,10 +53,10 @@
           <ion-text color="medium">
             <h3>เปลี่ยนภาพ</h3>
           </ion-text>
-          <h2><b *ngIf="data?.name">{{data.name}}</b></h2>
-          <h2><b *ngIf="!data?.name">-</b></h2>
+          <h2><b *ngIf="data.name">{{ data.name }}</b></h2>
+          <h2><b *ngIf="!data.name">-</b></h2>
           <ion-text color="medium">
-            <h3>#</h3>
+            <h3>{{ data.refCode }}</h3>
           </ion-text>
         </ion-label>
       </ion-card-content>
@@ -68,7 +68,7 @@
         </ion-label>
         <ion-note>
           <ion-label color="medium">
-            <h3>Lite</h3>
+            <h3>{{ data.tier }}</h3>
           </ion-label>
         </ion-note>
       </ion-item>
