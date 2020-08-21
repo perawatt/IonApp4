@@ -24,7 +24,7 @@ export class MerchantHomeBasicPage implements OnInit {
   private loadData$() {
     return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
       .then(_ => {
-        // return this.svc.callApiGet(this.mcontentid,"http://mana-facing-dev.azurewebsites.net/BizAccount/637334893975177162/basic")
+        // return this.svc.callApiGet(this.mcontentid, "http://mana-facing-dev.azurewebsites.net/BizAccount/637334893975177162/basic")
         return this.svc.getApiData(this.mcontentid);
       })
   }
@@ -37,6 +37,14 @@ export class MerchantHomeBasicPage implements OnInit {
       this.title = it.name != null ? it.name : this.title;
       this.hasLoaded = it ? "y" : "n";
     });
+  }
+
+  qrEndpointUrl(endpointId: string) {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizqrp-" + endpointId);
+  }
+
+  withdrawEndpointUrl(endpointId: string) {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizwit-" + endpointId);
   }
 
 }
