@@ -12,8 +12,6 @@ export class MerchantAddressPage implements OnInit {
   public hasLoaded: string;
   public fg: FormGroup;
   private mcontentid = "merchant-address";
-  // public formData$: Promise<{}> = new Promise<{}>(_ => { });
-
   constructor(private fb: FormBuilder, private svc: IonManaLib) {
     this.fg = this.fb.group({
       'title': [null, Validators.required],
@@ -34,25 +32,6 @@ export class MerchantAddressPage implements OnInit {
 
   ngOnInit() {
   }
-
-  // คิดว่าไม่ได้ใช้ เพราะไม่ได้ดึงข้อมูลอะไรมา เป็นการสร้างร้านใหม่
-  // ionViewDidEnter() {
-  //   this.hasLoaded = null;
-  //   let load$ = this.loadData$();
-  //   this.formData$ = load$;
-  //   load$.then(it => {
-  //     this.svc.validForm(this.fg.valid);
-  //     this.hasLoaded = it ? "y" : "n";
-  //   });
-  // }
-
-  // คิดว่าไม่ได้ใช้ เพราะไม่ได้ดึงข้อมูลอะไรมา เป็นการสร้างร้านใหม่
-  // private loadData$() {
-  //   return this.svc.initPageApi(this.mcontentid)
-  //     .then(_ => {
-  //       return this.svc.getApiData(this.mcontentid);
-  //     })
-  // }
 
   onSave() {
     if (this.fg.valid) {
