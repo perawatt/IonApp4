@@ -9,13 +9,14 @@
     <ion-list color="tertiary" lines="none" class="ion-text-center" *ngIf="hasLoaded">
       <ion-item color="tertiary"> </ion-item>
       <ion-item color="tertiary" class=" imageCenter">
-        <img [src]="data.merchantAccount?.logo" class="circle ion-margin-top" height="90px" width="90px">
+        <img *ngIf="data.logo" [src]="data.logo" class="circle ion-margin-top" height="90px" width="90px">
+        <img *ngIf="!data.logo" src="assets/imgs/defaultshop.png" class="circle ion-margin-top" height="90px" width="90px">
       </ion-item>
       <ion-item color="tertiary" class="ion-text-center">
-        <ion-label><b>{{data.merchantAccount?.name}}</b></ion-label>
+        <ion-label><b>{{ data.name }}</b></ion-label>
       </ion-item>
       <ion-card color="tertiary">
-        <img class="ion-margin-top" width="200" height="200" [src]="data.manaLinkRegistry?.qrImageUrl" />
+        <img *ngIf="data.qrUrl" class="ion-margin-top" width="200" height="200" [src]="data.qrUrl" />
       </ion-card>
       <ion-item color="tertiary" class="ion-text-center">
         <ion-label color="medium">
@@ -31,7 +32,9 @@
       </ion-item>
     </ion-list>
   </ng-container>
-  <ion-list lines="none" class="ion-text-center" *ngIf="!hasLoaded">
+
+  <ng-container *ngIf="!hasLoaded">
+  <ion-list lines="none" class="ion-text-center">
     <ion-card color="light" class="ion-text-center">
       <ion-card-content>
         <ion-skeleton-text class="center circle ion-margin-bottom" animated style="width:100px; height:100px">
@@ -58,4 +61,6 @@
       </ion-label>
     </ion-card>
   </ion-list>
+</ng-container>
 </ion-content>
+

@@ -5,19 +5,19 @@
 </ion-header>
 
 <ion-content mode="ios" class="ion-padding-top">
-
-  <ng-container *ngIf="true">
+  <ng-container *ngIf="data$ | async as data">
+    <ion-list color="tertiary" lines="none" class="ion-text-center" *ngIf="hasLoaded">
     <ion-card class="ion-text-center" color="tertiary">
       <ion-card-content>
         <ion-label color="danger" *ngIf="true">
-          <h2 class="ion-padding-bottom"><b>รอการอนุมัติเปิดธุรกิจ !</b></h2>
+          <h2 class="ion-padding-bottom"><b>{{ data.status }}</b></h2>
         </ion-label>
         <ion-avatar class="center ion-margin-bottom">
-          <img src="assets/imgs/shop-default.png" />
+          <img [src]="data.logo ? data.logo :'assets/imgs/shop-default.png'"/>
         </ion-avatar>
         <ion-label>
           <h3>ยอดเงินคงเหลือ</h3>
-          <h2><b>00.00 บาท</b></h2>
+          <h2><b>{{ data.balance }}</b></h2>
         </ion-label>
         <ion-grid>
           <ion-row>
@@ -49,9 +49,10 @@
         </ion-text>
       </ion-label>
     </div>
+    </ion-list>
   </ng-container>
 
-  <ng-container *ngIf="false">
+  <ion-list lines="none" class="ion-text-center" *ngIf="!hasLoaded">
     <ion-card color="light" class="ion-text-center">
       <ion-card-content>
         <ion-skeleton-text class="center circle ion-margin-bottom" animated style="width:60px; height:60px">
@@ -83,5 +84,5 @@
         </h3>
       </ion-label>
     </ion-item>
-  </ng-container>
+  </ion-list>
 </ion-content>
