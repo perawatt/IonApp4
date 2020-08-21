@@ -12,8 +12,9 @@
       </ion-item>
     </ion-list>
 
-    <ion-list  *ngIf="hasLoaded == 'y'">
-      <ion-item button color="tertiary" *ngFor="let item of data.bizBudgets">
+    <ion-list *ngIf="hasLoaded == 'y'">
+      <!-- TODO: implement onSelect ไม่มี ui-->
+      <ion-item button color="tertiary" *ngFor="let item of data.bizBudgets" (click)="onSelectItem(item._id)">
         <ion-label color="medium">
           <ion-text color="dark"><b>{{ item.title }}</b></ion-text>
           <h3>{{ item.balance }}</h3>

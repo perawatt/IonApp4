@@ -8,6 +8,7 @@ import { IonManaLib } from 'ion-m-lib';
 })
 export class MerchantBudgetPage implements OnInit {
 
+  public _id: string;
   public hasLoaded: string;
   public mcontentid = "merchant-budget";
   public data$ = Promise.resolve<{}>({});
@@ -35,8 +36,8 @@ export class MerchantBudgetPage implements OnInit {
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then((it: any) => {
-      console.log(it)
-      this.hasLoaded = (it && it.bizBudgets.length > 0) ? "y" : "n";       
+      this._id = it._id;
+      this.hasLoaded = (it && it.bizBudgets.length > 0) ? "y" : "n";
     });
   }
 
@@ -50,6 +51,11 @@ export class MerchantBudgetPage implements OnInit {
 
   // TODO: implement addToolbarAction (ยังไม่มี ui)
   public Add() {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizdtl-create");
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizbgt-create$" + this._id);
+  }
+
+  // TODO: implement onSelect (ยังไม่มี ui)
+  public onSelectItem(endpointId: string) {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizbgt-" + endpointId);
   }
 }

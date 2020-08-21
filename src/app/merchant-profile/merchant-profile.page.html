@@ -73,27 +73,27 @@
         </ion-note>
       </ion-item>
       <ion-item color="tertiary" button lines="inset">
-        <ion-label>
+        <ion-label (click)="onSelectPhone(data._id)">
           <b>เบอร์ติดต่อ</b>
         </ion-label>
       </ion-item>
       <ion-item color="tertiary" button lines="inset">
-        <ion-label>
+        <ion-label (click)="onSelectAddress(data._id)">
           <b>สถานที่ตั้ง</b>
         </ion-label>
       </ion-item>
       <ion-item color="tertiary" button class="ion-margin-bottom">
-        <ion-label>
+        <ion-label (click)="onSelectSchedule(data._id)">
           <b>เวลาทำการ</b>
         </ion-label>
       </ion-item>
       <ion-item color="tertiary" button lines="inset">
-        <ion-label>
+        <ion-label (click)="onSelectContract(data._id)">
           <b>สัญญา</b>
         </ion-label>
       </ion-item>
       <ion-item color="tertiary" button>
-        <ion-label>
+        <ion-label (click)="onSelectPledge(data._id)">
           <b>การมัดจำ</b>
         </ion-label>
       </ion-item>
