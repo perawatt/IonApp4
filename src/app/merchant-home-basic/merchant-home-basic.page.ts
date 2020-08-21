@@ -39,11 +39,11 @@ export class MerchantHomeBasicPage implements OnInit {
     });
   }
 
-  qrEndpointUrl(endpointId: string) {
+  onSelectQr(endpointId: string) {
     this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizqrp-" + endpointId);
   }
 
-  withdrawEndpointUrl(endpointId: string) {
+  onSelectWithdraw(endpointId: string) {
     this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizwit-" + endpointId);
   }
 
