@@ -103,18 +103,24 @@ export class SearchMainPage implements OnInit {
   }
 
   async showSearching(searchTexh: string) {
-    this.searchItems = [];
+    var temp = [];
     this.historyItems.forEach(x => {
       if (x.text.toLowerCase().includes(searchTexh.toLowerCase())) {
-        this.searchItems.push(x);
+        temp.push(x);
       }
     });
-    this.svc.callApiGet(this.mcontentid, "http://mana-gateway-dev.azurewebsites.net/search/suggest?txt=" + searchTexh).then(it => {
 
+    this.svc.callApiGet(this.mcontentid, "http://mana-gateway-dev.azurewebsites.net/search/suggest?txt=" + searchTexh).then(it => {
+      this.searchItems = temp;
       it.forEach(element => {
         this.searchItems.push(element);
+        this.historyItems.forEach(h => {
+          if (h.text == element.text) {
+            this.searchItems.pop();
+            return;
+          }
+        });
       });
-
     });
   }
 
@@ -130,7 +136,7 @@ export class SearchMainPage implements OnInit {
 
   getHistory(): Promise<any> {
     return new Promise((res, rej) => {
-      res([{ text: "Promome", icon: "assets/imgs/serecent.png" }, { text: "prab", icon: "assets/imgs/serecent.png" }]);
+      res([{ text: "Promome", icon: "assets/imgs/serecent.png" }, { text: "prab", icon: "assets/imgs/serecent.png" }, { text: "ส้มหยุด", icon: "assets/imgs/serecent.png" }, { text: "pi", icon: "assets/imgs/serecent.png" }]);
     });
     return this.callNativeFunc("GetSearchHistories", "");
   }
