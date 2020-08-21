@@ -21,7 +21,6 @@ export class MerchantAddressPage implements OnInit {
       'province': [null, Validators.required],
       'postalCode': [null, Validators.required],
       'phoneNumber': [null, Validators.required],
-      'fullAddress': null,
       'remark': null,
     });
 

@@ -5,18 +5,94 @@
 </ion-header>
 
 <ion-content mode="ios" color="tertiary">
-  <ion-list>
-    <ion-item button color="tertiary">
-      <ion-label color="medium">
-        <ion-text color="dark"><b>รายจ่ายประจำเดือน</b></ion-text>
-        <h3>4500 บาท</h3>
+  <ng-container *ngIf="data$ | async as data">
+    <ion-list lines="none" *ngIf="hasLoaded == 'n'">
+      <ion-item color="tertiary" class="ion-text-center">
+        <ion-label>ไม่มีรายการ</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-list  *ngIf="hasLoaded == 'y'">
+      <ion-item button color="tertiary" *ngFor="let item of data.bizBudgets">
+        <ion-label color="medium">
+          <ion-text color="dark"><b>{{ item.title }}</b></ion-text>
+          <h3>{{ item.balance }}</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <ng-container *ngIf="!hasLoaded">
+    <ion-item lines="none">
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
       </ion-label>
     </ion-item>
-    <ion-item button color="tertiary">
-      <ion-label color="medium">
-        <ion-text color="dark"><b>ค่าเดินทาง</b></ion-text>
-        <h3>500 บาท</h3>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
       </ion-label>
     </ion-item>
-  </ion-list>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+  </ng-container>
 </ion-content>
