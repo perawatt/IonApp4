@@ -24,12 +24,17 @@ export class SearchMainPage implements OnInit {
   resultItems = [];
 
   constructor(private fb: FormBuilder, private svc: IonManaLib, private zone: NgZone) {
-    (<any>window).OnSearch = (param: any) => {
+    (<any>window).TextChanged = (param: any) => {
       this.zone.run(() => {
         this.searching(param);
       });
     }
-    (<any>window).OnSubmitSearch = (param: any) => {
+    (<any>window).Focused = (param: any) => {
+      this.zone.run(() => {
+        this.searching(param);
+      });
+    }
+    (<any>window).SearchButtonPressed = (param: any) => {
       this.zone.run(() => {
         this.submitSearch(param);
       });
@@ -68,6 +73,17 @@ export class SearchMainPage implements OnInit {
       case "Endpoints": return "assets/imgs/ceend.png";
       default: return "assets/imgs/ceend.png"
     }
+  }
+
+  onSelectSearch(keyword: any) {
+    this.canSearching = false;
+
+    this.fg.get("searchInput").setValue(keyword);
+    this.callAppMethod('ChangeSearchInput', keyword)
+
+    setTimeout(() => {
+      this.onSubmit();
+    }, this.deleyTime);
   }
 
   submitSearch(searchText: string) {
@@ -109,7 +125,7 @@ export class SearchMainPage implements OnInit {
         temp.push(x);
       }
     });
-
+    this.searchItems = temp;
     this.svc.callApiGet(this.mcontentid, "http://mana-gateway-dev.azurewebsites.net/search/suggest?txt=" + searchTexh).then(it => {
       this.searchItems = temp;
       it.forEach(element => {
@@ -135,9 +151,9 @@ export class SearchMainPage implements OnInit {
   }
 
   getHistory(): Promise<any> {
-    return new Promise((res, rej) => {
-      res([{ text: "Promome", icon: "assets/imgs/serecent.png" }, { text: "prab", icon: "assets/imgs/serecent.png" }, { text: "ส้มหยุด", icon: "assets/imgs/serecent.png" }, { text: "pi", icon: "assets/imgs/serecent.png" }]);
-    });
+    // return new Promise((res, rej) => {
+    //   res([{ text: "Promome", icon: "assets/imgs/serecent.png" }, { text: "prab", icon: "assets/imgs/serecent.png" }, { text: "ส้มหยุด", icon: "assets/imgs/serecent.png" }, { text: "pi", icon: "assets/imgs/serecent.png" }]);
+    // });
     return this.callNativeFunc("GetSearchHistories", "");
   }
 
@@ -172,17 +188,6 @@ export class SearchMainPage implements OnInit {
   onInputChange(ev: any) {
     const val = ev.target.value;
     this.searching(val);
-  }
-
-  onSelectSearch(keyword: any) {
-    this.canSearching = false;
-
-    this.fg.get("searchInput").setValue(keyword);
-    this.callAppMethod('ChangeSearchInput', keyword)
-
-    setTimeout(() => {
-      this.onSubmit();
-    }, this.deleyTime);
   }
 
   onSubmit() {
