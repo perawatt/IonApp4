@@ -24,7 +24,7 @@
       </ion-label>
     </ion-item>
   </ion-list>
-  
+
   <ng-container *ngIf="!isSearching">
     <ion-list *ngIf="resultHasload == 'n'" lines="none">
       <ion-item class="ion-text-center">
@@ -32,26 +32,27 @@
       </ion-item>
     </ion-list>
     <ion-list lines="full" class="searchSuggestion" *ngIf="resultItems.length > 0" color="tertiary">
-      <ion-item (click)="visitEndpoint(item.endpointUrl)" *ngFor="let item of resultItems" color="tertiary">
-        <ion-avatar slot="start">
+      <ion-item *ngFor="let item of resultItems" color="tertiary">
+        <ion-avatar slot="start" (click)="visitEndpoint(item.endpointUrl)">
           <img [src]="item.logo" />
         </ion-avatar>
         <ion-label>
-          <h2>
-            <b>
-              {{ item.title }}
-            </b>
-          </h2>
-          <h3>
-            <ion-text color="medium">
-              {{ item.body }}
-            </ion-text>
-          </h3>
+          <div (click)="visitEndpoint(item.endpointUrl)" >
+            <h2>
+              <b>
+                {{ item.title }}
+              </b>
+            </h2>
+            <h3>
+              <ion-text color="medium">
+                {{ item.body }}
+              </ion-text>
+            </h3>
+          </div>
           <h4>
-            <img  height="12" [src]="getStatusIcon(item.category)"/>
+            <img height="12" [src]="getStatusIcon(item.category)" />
             &nbsp;
-            <ion-chip *ngFor="let tag of item.tags"
-            size="tiny"
+            <ion-chip *ngFor="let tag of item.tags" (click)="onSelectSearch(tag)" size="tiny"
               class="ion-no-margin ion-margin-end ion-no-padding ion-padding-horizontal chip-small" outline
               color="dark">
               <span>{{ tag }}</span>
