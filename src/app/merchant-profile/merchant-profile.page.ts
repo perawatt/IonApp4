@@ -33,6 +33,14 @@ export class MerchantProfilePage implements OnInit {
       })
   }
 
+  onSelectEditName(endpointId: string) {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbiznme-" + endpointId);
+  }
+
+  onSelectEditCode(endpointId: string) {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizcde-" + endpointId);
+  }
+
   onSelectPhone(endpointId: string) {
     this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbiztel-list$" + endpointId);
   }

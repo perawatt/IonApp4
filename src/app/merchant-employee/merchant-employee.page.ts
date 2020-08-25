@@ -8,7 +8,7 @@ import { IonManaLib } from 'ion-m-lib';
 })
 export class MerchantEmployeePage implements OnInit {
 
-  public _id: string;
+  public shopId: string;
   public hasLoaded: string;
   public mcontentid = "merchant-employee";
   public data$ = Promise.resolve<{}>({});
@@ -36,7 +36,7 @@ export class MerchantEmployeePage implements OnInit {
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then((it: any) => {
-      this._id = it._id;
+      this.shopId = it._id;
       this.hasLoaded = (it && it.bizEmployees.length > 0) ? "y" : "n";
     });
   }
@@ -51,7 +51,7 @@ export class MerchantEmployeePage implements OnInit {
 
   // TODO: implement addToolbarAction (ยังไม่มี ui)
   public Add() {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizemp-create$" + this._id);
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizemp-create$" + this.shopId);
   }
 
   // TODO: implement onSelect (ยังไม่มี ui)
