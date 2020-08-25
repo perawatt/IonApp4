@@ -35,8 +35,8 @@ export class MerchantHomePage implements OnInit {
   private loadData$() {
     return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
       .then(_ => {
-        return this.svc.callApiGet(this.mcontentid, "http://mana-facing-dev.azurewebsites.net/BizAccount/637334894267091896/advance")
-        // return this.svc.getApiData(this.mcontentid);
+        // return this.svc.callApiGet(this.mcontentid, "http://mana-facing-dev.azurewebsites.net/BizAccount/637334894267091896/advance")
+        return this.svc.getApiData(this.mcontentid);
       })
   }
 

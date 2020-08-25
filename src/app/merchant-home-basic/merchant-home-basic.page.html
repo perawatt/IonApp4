@@ -7,48 +7,54 @@
 <ion-content mode="ios" class="ion-padding-top">
   <ng-container *ngIf="data$ | async as data">
     <ion-list color="tertiary" lines="none" class="ion-text-center" *ngIf="hasLoaded">
-    <ion-card class="ion-text-center" color="tertiary">
-      <ion-card-content>
-        <ion-label color="danger" *ngIf="true">
-          <h2 class="ion-padding-bottom"><b>{{ data.status }}</b></h2>
-        </ion-label>
-        <ion-avatar class="center ion-margin-bottom">
-          <img [src]="data.logo ? data.logo :'assets/imgs/shop-default.png'"/>
-        </ion-avatar>
+      <ion-card class="ion-text-center" color="tertiary">
+        <ion-card-content>
+          <ion-label color="danger" *ngIf="data.status">
+            <h2 class="ion-padding-bottom"><b>{{ data.status }}</b></h2>
+          </ion-label>
+          <ion-avatar class="center ion-margin-vertical">
+            <img [src]="data.logo ? data.logo :'assets/imgs/shop-default.png'" />
+          </ion-avatar>
+          <ion-label>
+            <h3>ยอดเงินคงเหลือ</h3>
+            <h2><b>{{ data.balance }}</b></h2>
+          </ion-label>
+          <ion-grid class="ion-margin-top">
+            <ion-row>
+              <ion-col class="ion-text-end ion-no-padding">
+                <ion-chip color="medium" outline="true" (click)="onSelectQr(data._id)">
+                  <img width="15" height="15" src="assets/imgs/qrpay.png">
+                  <ion-label color="dark">
+                    <h3 class="ion-no-margin">&nbsp;คิวอาร์รับเงิน</h3>
+                  </ion-label>
+                </ion-chip>
+              </ion-col>
+              <ion-col class="ion-text-start ion-no-padding">
+                <ion-chip color="medium" outline="true" (click)="onSelectWithdraw(data._id)">
+                  <img width="15" height="15" src="assets/imgs/txrwithdraw.png">
+                  <ion-label color="dark">
+                    <h3 class="ion-no-margin">&nbsp;ถอนเงิน</h3>
+                  </ion-label>
+                </ion-chip>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+      <div class="ion-padding">
+        <ion-button color="danger" expand="block">
+          ปรับแต่งการใช้งาน
+        </ion-button>
         <ion-label>
-          <h3>ยอดเงินคงเหลือ</h3>
-          <h2><b>{{ data.balance }}</b></h2>
+          <ion-text color="medium" class="ion-text-start text-indent">
+            <h3 class="ion-padding-top">คุณสามารถปรับแต่งรูปแบบการใช้งาน
+              ธุรกิจตามแบบแผนที่คุณต้องการเพื่อตอบสนองการใช้งานที่เพิ่มมากขึ้น</h3>
+          </ion-text>
+          <ion-text class="ion-text-center">
+            <h3 class="ion-padding-top"><a href="#">เรียนรู้เพิ่มเติม</a></h3>
+          </ion-text>
         </ion-label>
-        <ion-grid>
-          <ion-row>
-            <ion-col class="ion-text-end">
-              <ion-button (click)="onSelectQr(data._id)" color="dark" shape="round" size="small" fill="outline" class="ion-no-padding">
-                <span><img width="15" height="15" src="assets/imgs/qrpay.png" /> คิวอาร์รับเงิน</span>
-              </ion-button>
-            </ion-col>
-            <ion-col class="ion-text-start">
-              <ion-button (click)="onSelectWithdraw(data._id)" color="dark" shape="round" size="small" class="ion-no-padding" fill="outline">
-                <span><img width="15" height="15" src="assets/imgs/txrwithdraw.png" /> ถอนเงิน</span>
-              </ion-button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-card-content>
-    </ion-card>
-    <div class="ion-padding">
-      <ion-button color="danger" expand="block">
-        ปรับแต่งการใช้งาน
-      </ion-button>
-      <ion-label>
-        <ion-text color="medium">
-          <h3 class="ion-padding-top">คุณสามารถปรับแต่งรูปแบบการใช้งาน
-            ธุรกิจตามแบบแผนที่คุณต้องการเพื่อตอบสนองการใช้งานที่เพิ่มมากขึ้น</h3>
-        </ion-text>
-        <ion-text class="ion-text-center">
-          <h3 class="ion-padding-top"><a href="#">เรียนรู้เพิ่มเติม</a></h3>
-        </ion-text>
-      </ion-label>
-    </div>
+      </div>
     </ion-list>
   </ng-container>
 
