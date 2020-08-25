@@ -53,9 +53,9 @@
           <ion-text color="medium">
             <h3>เปลี่ยนภาพ</h3>
           </ion-text>
-          <h2><b *ngIf="data.name">{{ data.name }}</b></h2>
+          <h2><b *ngIf="data.name" (click)="onSelectEditName(data._id)">{{ data.name }}</b></h2>
           <h2><b *ngIf="!data.name">-</b></h2>
-          <ion-text color="medium">
+          <ion-text color="medium" (click)="onSelectEditCode(data._id)">
             <h3>{{ data.refCode }}</h3>
           </ion-text>
         </ion-label>
