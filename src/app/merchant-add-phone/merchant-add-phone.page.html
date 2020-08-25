@@ -6,16 +6,18 @@
 
 <ion-content mode="ios" color="tertiary">
   <ion-list>
-    <ion-item lines="inset" color="tertiary">
-      <ion-label position="stacked">ชื่อหัวข้อ</ion-label>
-      <ion-input type="text" color="medium" placeholder="ระบุหัวข้อ"></ion-input>
-    </ion-item>
-    <ion-item lines="inset" color="tertiary">
-      <ion-label position="stacked">เบอร์โทร</ion-label>
-      <ion-input type="text" color="medium" placeholder="ระบุเบอร์โทร"></ion-input>
-    </ion-item>
+    <form [formGroup]="fg" (ngSubmit)="onSave()">
+      <ion-item lines="inset" color="tertiary">
+        <ion-label position="stacked">ชื่อหัวข้อ</ion-label>
+        <ion-input type="text" color="medium" placeholder="ระบุหัวข้อ" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item lines="inset" color="tertiary">
+        <ion-label position="stacked">เบอร์โทร</ion-label>
+        <ion-input type="tel" color="medium" placeholder="ระบุเบอร์โทร" formControlName="number"></ion-input>
+      </ion-item>
 
-    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">แก้ไขเสร็จสิ้น
-    </ion-button>
+      <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">แก้ไขเสร็จสิ้น
+      </ion-button>
+    </form>
   </ion-list>
 </ion-content>
