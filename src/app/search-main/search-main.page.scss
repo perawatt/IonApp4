@@ -2,3 +2,10 @@ ion-chip.chip-small{
     height: 20px;
     font-size: 12px;
 }
+.fixed-layout{
+    z-index: 999;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color:white;
+}

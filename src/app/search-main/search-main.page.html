@@ -5,50 +5,29 @@
 </ion-header>
 <ion-header mode="ios">
   <form [formGroup]="fg" (ngSubmit)="onSubmit()">
-    <ion-searchbar #searchbar inputmode="search" enterkeyhint="search" (ionFocus)="onInputChange($event)"
-      (ionChange)="onInputChange($event)" formControlName="searchInput"></ion-searchbar>
+    <ion-searchbar #searchbar inputmode="search" enterkeyhint="search" (ionFocus)="onInputFocus()"
+      (ionChange)="onInputChange($event)" (ionBlur)="onInputUnfocus()" formControlName="searchInput"></ion-searchbar>
   </form>
 </ion-header>
 
 <ion-content mode="ios">
-  <ng-container *ngIf="state == 'histories'">
-    <ion-label>
-      <h3 class="ion-padding">
-        <b>ผลการค้นหาล่าสุด</b>
-      </h3>
-    </ion-label>
-    <ion-list lines="full" class="searchSuggestion" color="tertiary">
-      <ion-item *ngFor="let item of historyItems" color="tertiary" (click)="onSelectSearch(item.text)">
-        <img height="12" [class]="item.type === 'membership' ? 'circle' : ''" slot="start" [src]="item.icon" />
-        <ion-label>
-          <h3>
-            {{ item.text }}
-          </h3>
-        </ion-label>
-      </ion-item>
-    </ion-list>
+  <ng-container *ngIf="isSearching">
+
+    <div class="fixed-layout">
+      <ion-list lines="full" class="searchSuggestion" color="tertiary">
+        <ion-item *ngFor="let item of searchItems" color="tertiary" (click)="onSelectSearch(item.text)">
+          <img height="12" [class]="item.type === 'membership' ? 'circle' : ''" slot="start" [src]="item.icon" />
+          <ion-label>
+            <h3>
+              {{ item.text }}
+            </h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+  </div>
   </ng-container>
 
-  <ng-container *ngIf="state == 'suggest'">
-    <!-- <ion-list *ngIf="searchHasload == 'n'" lines="none">
-      <ion-item class="ion-text-center">
-        <ion-label>ไม่พบสิ่งที่กำลังค้นหา</ion-label>
-      </ion-item>
-    </ion-list> -->
-    
-    <ion-list lines="full" class="searchSuggestion" color="tertiary">
-      <ion-item *ngFor="let item of searchItems" color="tertiary" (click)="onSelectSearch(item.text)">
-        <img height="12" [class]="item.type === 'membership' ? 'circle' : ''" slot="start" [src]="item.icon" />
-        <ion-label>
-          <h3>
-            {{ item.text }}
-          </h3>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </ng-container>
-
-  <ng-container *ngIf="state == 'result'">
+  <ng-container>
     <ion-list *ngIf="resultHasload == 'n'" lines="none">
       <ion-item class="ion-text-center">
         <ion-label>ไม่พบสิ่งที่กำลังค้นหา</ion-label>
