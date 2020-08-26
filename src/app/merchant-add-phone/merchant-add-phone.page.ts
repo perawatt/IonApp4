@@ -25,6 +25,11 @@ export class MerchantAddPhonePage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewDidEnter() {
+    this.svc.validForm(this.fg.valid);
+    this.svc.initPageApi(this.mcontentid);
+  }
+
   onSave() {
     if (this.fg.valid) {
       this.svc.submitFormData(this.mcontentid, this.fg.value);

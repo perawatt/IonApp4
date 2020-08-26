@@ -34,6 +34,7 @@ export class MerchantAddressPage implements OnInit {
 
   ionViewDidEnter() {
     this.svc.validForm(this.fg.valid);
+    this.svc.initPageApi(this.mcontentid);
   }
 
   onSave() {

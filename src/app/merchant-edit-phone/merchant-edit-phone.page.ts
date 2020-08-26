@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IonManaLib } from 'ion-m-lib';
 
 @Component({
@@ -15,9 +15,8 @@ export class MerchantEditPhonePage implements OnInit {
 
   constructor(private fb: FormBuilder, private svc: IonManaLib) { 
     this.fg = this.fb.group({     
-      '_id': null,    
-      'tittle': null,    
-      'number': null,    
+      'title': [null, Validators.required],    
+      'number': [null, Validators.required],    
     });
     this.fg.valueChanges.subscribe(_ => {
       this.svc.validForm(this.fg.valid)
