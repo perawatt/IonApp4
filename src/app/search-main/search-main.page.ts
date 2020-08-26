@@ -37,7 +37,7 @@ export class SearchMainPage implements OnInit {
       this.zone.run(() => {
         this.isfocus = true;
         this.isSearching = true;
-        this.inputChanged(param);
+        // this.inputChanged(param);
       });
     }
     (<any>window).Unfocused = (param: any) => {
