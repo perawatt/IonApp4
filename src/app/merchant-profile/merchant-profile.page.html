@@ -47,8 +47,10 @@
   <ng-container *ngIf="data$ | async as data">
     <ion-card color="light" class="ion-text-center">
       <ion-card-content>
-        <img *ngIf="data?.logo" [src]="data.logo" class="qr center circle ion-margin-bottom" width="90" height="90">
-        <img *ngIf="!data?.logo" src="assets/imgs/defaultshop.png" class="qr center circle ion-margin-bottom" width="90" height="90">
+        <ion-avatar color="tertiary" class="avatar-large center ion-margin-bottom">
+          <img *ngIf="data.logo" [src]="data.logo">
+          <img *ngIf="!data.logo" src="assets/imgs/defaultshop.png">
+        </ion-avatar>
         <ion-label>
           <ion-text color="medium">
             <h3>เปลี่ยนภาพ</h3>
@@ -56,7 +58,7 @@
           <h2><b *ngIf="data.name" (click)="onSelectEditName(data._id)">{{ data.name }}</b></h2>
           <h2><b *ngIf="!data.name">-</b></h2>
           <ion-text color="medium" (click)="onSelectEditCode(data._id)">
-            <h3>{{ data.refCode }}</h3>
+            <h3>#{{ data.refCode }}</h3>
           </ion-text>
         </ion-label>
       </ion-card-content>

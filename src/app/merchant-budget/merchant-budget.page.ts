@@ -26,7 +26,7 @@ export class MerchantBudgetPage implements OnInit {
   private loadData$() {
     return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
       .then(_ => {
-        // return this.svc.callApiGet(this.mcontentid,"https://mana-facing-dev.azurewebsites.net/BizAccount/637334894267091896/budgets")
+        // return this.svc.callApiGet(this.mcontentid, "https://mana-facing-dev.azurewebsites.net/BizAccount/637334894267091896/budgets")
         return this.svc.getApiData(this.mcontentid);
       })
   }
@@ -51,7 +51,7 @@ export class MerchantBudgetPage implements OnInit {
 
   // TODO: implement addToolbarAction (ยังไม่มี ui)
   public Add() {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizbgt-create$" + this.shopId);
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizbgt-" + this.shopId + "$create");
   }
 
   // TODO: implement onSelect (ยังไม่มี ui)

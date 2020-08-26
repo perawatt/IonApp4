@@ -42,6 +42,7 @@ export class MerchantCreatePage implements OnInit {
   }
 
   ionViewDidEnter() {
+    this.svc.validForm(this.fg.valid);
     this.svc.initPageApi(this.mcontentid);
   }
 

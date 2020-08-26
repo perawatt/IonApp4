@@ -32,6 +32,10 @@ export class MerchantAddressPage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewDidEnter() {
+    this.svc.validForm(this.fg.valid);
+  }
+
   onSave() {
     if (this.fg.valid) {
       this.svc.submitFormData(this.mcontentid, this.fg.value);

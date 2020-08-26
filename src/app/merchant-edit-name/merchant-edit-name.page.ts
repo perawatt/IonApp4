@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonManaLib } from 'ion-m-lib';
 
 @Component({
@@ -15,7 +15,7 @@ export class MerchantEditNamePage implements OnInit {
 
   constructor(private fb: FormBuilder, private svc: IonManaLib) { 
     this.fg = this.fb.group({     
-      'name': null,    
+      'name': [null, Validators.required],    
     });
     this.fg.valueChanges.subscribe(_ => {
       this.svc.validForm(this.fg.valid)
@@ -27,6 +27,7 @@ export class MerchantEditNamePage implements OnInit {
 
   ionViewDidEnter() {
     this.hasLoaded = null;
+    this.svc.validForm(this.fg.valid);
     let load$ = this.loadData$();
     this.formData$ = load$;
     load$.then(it => {

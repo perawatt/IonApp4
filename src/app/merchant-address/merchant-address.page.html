@@ -30,7 +30,7 @@
           <ion-textarea type="text" formControlName="remark"></ion-textarea>
         </ion-item>
       </div>
-      <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
+      <ion-button id="app-form-submit" color="danger" [disabled]="fg.invalid" class="ion-no-margin" expand="full" type="submit"
       >ตกลง
       </ion-button>
     </form>

@@ -51,7 +51,7 @@ export class MerchantPhonePage implements OnInit {
   }
 
   public Add() {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizphn-create$" + this.merchantId);
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizphn-" + this.merchantId + "$create");
   }
 
 }

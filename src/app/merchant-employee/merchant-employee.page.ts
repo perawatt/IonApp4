@@ -51,7 +51,7 @@ export class MerchantEmployeePage implements OnInit {
 
   // TODO: implement addToolbarAction (ยังไม่มี ui)
   public Add() {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizemp-create$" + this.shopId);
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizemp-" + this.shopId + "$create");
   }
 
   // TODO: implement onSelect (ยังไม่มี ui)

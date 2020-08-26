@@ -29,7 +29,7 @@ export class MerchantProfilePage implements OnInit {
     return this.svc.initPageApi(this.mcontentid)
       .then(_ => {
         // return this.svc.callApiGet(this.mcontentid, "https://mana-facing-dev.azurewebsites.net/BizAccount/637334893975177162/profile")
-        return this.svc.getApiData(this.mcontentid); 
+        return this.svc.getApiData(this.mcontentid);
       })
   }
 
@@ -42,7 +42,7 @@ export class MerchantProfilePage implements OnInit {
   }
 
   onSelectPhone(endpointId: string) {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbiztel-list$" + endpointId);
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbiztel-" + endpointId + "$list");
   }
 
   onSelectAddress(endpointId: string) {
@@ -54,10 +54,10 @@ export class MerchantProfilePage implements OnInit {
   }
 
   onSelectContract(endpointId: string) {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizctt-list$" + endpointId);
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizctt-" + endpointId + "$list");
   }
 
   onSelectPledge(endpointId: string) {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizplg-list$" + endpointId);
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizplg-" + endpointId + "$list");
   }
 }

@@ -55,7 +55,7 @@ export class MerchantHomePage implements OnInit {
     this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizpfl-" + endpointId);
   }
   onSelectTransaction(endpointId: string) {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbiztxl-list$" + endpointId);
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbiztxl-" + endpointId + "$list");
   }
   onSelectReceiveMoneyQR(endpointId: string) {
     this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizqrp-" + endpointId);
@@ -67,10 +67,10 @@ export class MerchantHomePage implements OnInit {
     this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizwit-" + endpointId);
   }
   onSelectEmployee(endpointId: string) {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizemp-list$" + endpointId);
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizemp-" + endpointId + "$list");
   }
   onSelectBudget(endpointId: string) {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizbgt-list$" + endpointId);
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizbgt-" + endpointId + "$list");
   }
 
 

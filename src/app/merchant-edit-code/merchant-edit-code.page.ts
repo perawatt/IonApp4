@@ -22,6 +22,7 @@ export class MerchantEditCodePage implements OnInit {
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then(it => {
+      this.hasLoaded = it ? "y" : "n";
     });
   }
 

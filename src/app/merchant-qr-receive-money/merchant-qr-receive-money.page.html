@@ -6,61 +6,64 @@
 
 <ion-content mode="ios">
   <ng-container *ngIf="data$ | async as data">
-    <ion-list color="tertiary" lines="none" class="ion-text-center" *ngIf="hasLoaded">
-      <ion-item color="tertiary"> </ion-item>
-      <ion-item color="tertiary" class=" imageCenter">
-        <img *ngIf="data.logo" [src]="data.logo" class="circle ion-margin-top" height="90px" width="90px">
-        <img *ngIf="!data.logo" src="assets/imgs/defaultshop.png" class="circle ion-margin-top" height="90px" width="90px">
-      </ion-item>
-      <ion-item color="tertiary" class="ion-text-center">
-        <ion-label><b>{{ data.name }}</b></ion-label>
-      </ion-item>
-      <ion-card color="tertiary">
-        <img *ngIf="data.qrUrl" class="ion-margin-top" width="200" height="200" [src]="data.qrUrl" />
-      </ion-card>
-      <ion-item color="tertiary" class="ion-text-center">
-        <ion-label color="medium">
-          <h3>คิวอาร์โค้ดใช้เพื่อสแกนจ่ายเงิน</h3>
-          <h3>ของธุรกิจคุณ</h3>
-        </ion-label>
-      </ion-item>
-      <ion-item color="tertiary" class="ion-text-center">
-        <ion-label>
-          <h2>เปลี่ยนคิวอาร์โค้ด</h2>
-          <h2>บันทึกรูปคิวอาร์โค้ด</h2>
-        </ion-label>
-      </ion-item>
-    </ion-list>
+    <ion-card color="tertiary" *ngIf="hasLoaded">
+      <ion-card-content>
+        <ion-avatar color="tertiary" class="avatar-large center">
+          <img *ngIf="data.logo" [src]="data.logo">
+          <img *ngIf="!data.logo" src="assets/imgs/defaultshop.png">
+        </ion-avatar>
+        <ion-list color="tertiary" lines="none" class="ion-text-center">
+          <ion-item color="tertiary" class="ion-text-center">
+            <ion-label><h2><b>{{ data.name }}</b></h2></ion-label>
+          </ion-item>
+          <ion-card color="tertiary">
+            <img *ngIf="data.qrUrl" width="200" height="200" [src]="data.qrUrl" />
+          </ion-card>
+          <ion-item color="tertiary" class="ion-text-center">
+            <ion-label color="medium">
+              <h3>คิวอาร์โค้ดใช้เพื่อสแกนจ่ายเงิน</h3>
+              <h3>ของธุรกิจคุณ</h3>
+            </ion-label>
+          </ion-item>
+          <ion-item color="tertiary" class="ion-text-center">
+            <ion-label>
+              <h2>เปลี่ยนคิวอาร์โค้ด</h2>
+              <h2>บันทึกรูปคิวอาร์โค้ด</h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
   </ng-container>
 
   <ng-container *ngIf="!hasLoaded">
-  <ion-list lines="none" class="ion-text-center">
-    <ion-card color="light" class="ion-text-center">
-      <ion-card-content>
-        <ion-skeleton-text class="center circle ion-margin-bottom" animated style="width:100px; height:100px">
-        </ion-skeleton-text>
-      </ion-card-content>
-    </ion-card>
-    <ion-card color="light" class="ion-text-center">
-      <ion-label>
-        <h3>
+    <ion-list lines="none" class="ion-text-center">
+      <ion-card color="light" class="ion-text-center">
+        <ion-card-content>
+          <ion-skeleton-text class="center circle ion-margin-bottom" animated style="width:100px; height:100px">
+          </ion-skeleton-text>
+        </ion-card-content>
+      </ion-card>
+      <ion-card color="light" class="ion-text-center">
+        <ion-label>
+          <h3>
+            <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+          </h3>
           <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
-        </h3>
-        <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
-      </ion-label>
-    </ion-card>
-    <ion-item lines="none">
-      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
-    </ion-item>
-    <ion-card color="light" class="ion-text-center">
-      <ion-label>
-        <h3>
+        </ion-label>
+      </ion-card>
+      <ion-item lines="none">
+        <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+      </ion-item>
+      <ion-card color="light" class="ion-text-center">
+        <ion-label>
+          <h3>
+            <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+          </h3>
           <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
-        </h3>
-        <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
-      </ion-label>
-    </ion-card>
-  </ion-list>
-</ng-container>
+        </ion-label>
+      </ion-card>
+    </ion-list>
+  </ng-container>
 </ion-content>
-
