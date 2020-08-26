@@ -14,35 +14,36 @@
 
     <ion-list lines="inset" *ngIf="hasLoaded == 'y'">
       <div *ngFor="let item of data.pledges">
-      <ion-item color="tertiary" class="ion-margin-top" lines="none">
-        <ion-text color="dark"><b>
-            <ion-icon name="card-outline" color="dark"></ion-icon> {{ item.title}}
-          </b></ion-text>
-      </ion-item>
-      <ion-item color="tertiary" lines="full">
-        <ion-label color="medium" class="ion-no-margin ion-margin-bottom">
-          <ion-text color="dark"><b>ผู้ถือมัดจำ</b></ion-text>
-          <h2>{{ item.holder }}</h2>
-        </ion-label>
-      </ion-item>
-      <ion-item color="tertiary" lines="full">
-        <ion-label color="medium">
-          <ion-text color="dark"><b>วันที่วางมัดจำ</b></ion-text>
-          <h2>{{ item.pledgeDate | date:'d MMMM y'}}</h2>
-        </ion-label>
-      </ion-item>
-      <ion-item color="tertiary" lines="full">
-        <ion-label color="medium">
-          <ion-text color="dark"><b>วงเงิน</b></ion-text>
-          <h2>{{ item.balance }}</h2>
-        </ion-label>
-      </ion-item>
-      <ion-item color="tertiary" lines="none" (click)="onSelectItem(item._id)">
-        <ion-label color="medium" class="ion-text-center">
-          <h2>อ่านรายละเอียดเพิ่มเติม</h2>
-        </ion-label>
-      </ion-item>
-    </div>
+        <ion-item color="tertiary" class="ion-margin-top" lines="none">
+          <img width="18" height="18" src="assets/imgs/deposit.png">
+          <ion-text color="dark" class="ion-padding-start"><b>
+              {{item.title}}
+            </b></ion-text>
+        </ion-item>
+        <ion-item color="tertiary" lines="full">
+          <ion-label color="medium" class="ion-no-margin ion-margin-bottom">
+            <ion-text color="dark"><b>ผู้ถือมัดจำ</b></ion-text>
+            <h2>{{ item.holder }}</h2>
+          </ion-label>
+        </ion-item>
+        <ion-item color="tertiary" lines="full">
+          <ion-label color="medium">
+            <ion-text color="dark"><b>วันที่วางมัดจำ</b></ion-text>
+            <h2>{{ item.pledgeDate | date:'d MMMM y'}}</h2>
+          </ion-label>
+        </ion-item>
+        <ion-item color="tertiary" lines="full">
+          <ion-label color="medium">
+            <ion-text color="dark"><b>วงเงิน</b></ion-text>
+            <h2>{{ item.balance }}</h2>
+          </ion-label>
+        </ion-item>
+        <ion-item color="tertiary" lines="none" (click)="onSelectItem(item._id)">
+          <ion-label color="medium" class="ion-text-center">
+            <h2>อ่านรายละเอียดเพิ่มเติม</h2>
+          </ion-label>
+        </ion-item>
+      </div>
     </ion-list>
   </ng-container>
 </ion-content>
