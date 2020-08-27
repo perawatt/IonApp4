@@ -9,7 +9,7 @@ import { IonManaLib } from 'ion-m-lib';
 export class MerchantDepositPage implements OnInit {
 
   public hasLoaded: string;
-  public mcontentid = "merchant-contract";
+  public mcontentid = "merchant-deposit";
   public data$ = Promise.resolve<{}>({});
   constructor(private svc: IonManaLib) { }
 
