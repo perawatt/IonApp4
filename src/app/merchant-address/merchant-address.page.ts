@@ -11,7 +11,9 @@ export class MerchantAddressPage implements OnInit {
 
   public hasLoaded: string;
   public fg: FormGroup;
+  public formData$: Promise<{}> = new Promise<{}>(_ => { });
   private mcontentid = "merchant-address";
+
   constructor(private fb: FormBuilder, private svc: IonManaLib) {
     this.fg = this.fb.group({
       'title': [null, Validators.required],
@@ -33,8 +35,20 @@ export class MerchantAddressPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.svc.validForm(this.fg.valid);
-    this.svc.initPageApi(this.mcontentid);
+    this.hasLoaded = null;
+    let load$ = this.loadData$();
+    this.formData$ = load$;
+    load$.then(it => {
+      this.svc.validForm(this.fg.valid);
+      this.hasLoaded = it ? "y" : "n";
+    });
+  }
+  
+  private loadData$() {
+    return this.svc.initPageApi(this.mcontentid)
+      .then(_ => {
+        return this.svc.getApiData(this.mcontentid);
+      })
   }
 
   onSave() {

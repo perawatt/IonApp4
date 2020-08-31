@@ -7,7 +7,7 @@
 <ion-content mode="ios">
   <!-- ตัวอย่างเหมือนหน้า user-profile-new-address -->
   <ion-list class="ion-margin-top">
-    <form [formGroup]="fg" (ngSubmit)="onSave()">
+    <form [formGroup]="fg" (ngSubmit)="onSave()" [rx-form-data]="(formData$ | async)">
       <div>
         <ion-item lines="full" color="tertiary">
           <ion-label position="stacked" color="medium">ชื่อหัวข้อ</ion-label>
