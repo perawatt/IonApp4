@@ -13,9 +13,10 @@
           <ion-label position="stacked" color="medium">ชื่อหัวข้อ</ion-label>
           <ion-input type="text" formControlName="title"></ion-input>
         </ion-item>
-        <ion-item  lines="full" color="tertiary">
+        <ion-item lines="full" color="tertiary">
           <ion-label position="stacked" color="medium">ที่อยู่</ion-label>
-          <ion-input type="text" color="medium" placeholder="บ้านเลขที่,หมู่,ตึก,ซอย,ถนน" formControlName="streetAddress"></ion-input>
+          <ion-input type="text" color="medium" placeholder="บ้านเลขที่,หมู่,ตึก,ซอย,ถนน"
+            formControlName="streetAddress"></ion-input>
           <ion-input type="text" color="medium" placeholder="ตำบล" formControlName="district"></ion-input>
           <ion-input type="text" color="medium" placeholder="อำเภอ" formControlName="city"></ion-input>
           <ion-input type="text" color="medium" placeholder="จังหวัด" formControlName="province"></ion-input>
@@ -30,8 +31,8 @@
           <ion-textarea type="text" formControlName="remark"></ion-textarea>
         </ion-item>
       </div>
-      <ion-button id="app-form-submit" color="danger" [disabled]="fg.invalid" class="ion-no-margin" expand="full" type="submit"
-      >ตกลง
+      <ion-button id="app-form-submit" color="danger" [disabled]="fg.invalid" class="ion-no-margin" expand="full"
+        type="submit">แก้ไขเสร็จสิ้น
       </ion-button>
     </form>
   </ion-list>

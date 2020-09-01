@@ -40,6 +40,8 @@ export class MerchantAddressPage implements OnInit {
     this.formData$ = load$;
     load$.then(it => {
       this.svc.validForm(this.fg.valid);
+      let location = it.address.location;
+      this.svc.setGpsSection(location.address, location.latitude, location.longitude, location.phoneNumber, location.remark);
       this.hasLoaded = it ? "y" : "n";
     });
   }
