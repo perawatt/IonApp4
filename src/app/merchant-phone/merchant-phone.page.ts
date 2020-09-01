@@ -26,7 +26,7 @@ export class MerchantPhonePage implements OnInit {
   private loadData$() {
     return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
       .then(_ => {
-        // return this.svc.callApiGet(this.mcontentid, "http://mana-facing-dev.azurewebsites.net/BizAccount/637334893975177162/phones")
+        // return this.svc.callApiGet(this.mcontentid, "http://mana-facing-dev.azurewebsites.net/BizAccount/637334894267091896/phones")
         return this.svc.getApiData(this.mcontentid);
       })
   }
@@ -54,4 +54,7 @@ export class MerchantPhonePage implements OnInit {
     this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizphn-" + this.merchantId + "$create");
   }
 
+  public onSelectItem(phoneId: string, index: number) {   
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizphn-" + phoneId + "$" + index);
+  }
 }

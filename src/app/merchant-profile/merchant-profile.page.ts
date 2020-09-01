@@ -17,16 +17,22 @@ export class MerchantProfilePage implements OnInit {
   }
 
   ionViewDidEnter() {
+    this.refreshCallBack();
+  }
+
+  private refreshCallBack()
+  {
     this.hasLoaded = null;
     let load$ = this.loadData$();
     this.data$ = load$;
-    load$.then(it => {
+    load$.then((it: any) => {
+      this.svc.initPageApi(this.mcontentid);    
       this.hasLoaded = it ? "y" : "n";
     });
   }
 
   private loadData$() {
-    return this.svc.initPageApi(this.mcontentid)
+    return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
       .then(_ => {
         // return this.svc.callApiGet(this.mcontentid, "https://mana-facing-dev.azurewebsites.net/BizAccount/637334893975177162/profile")
         return this.svc.getApiData(this.mcontentid);
@@ -42,7 +48,7 @@ export class MerchantProfilePage implements OnInit {
   }
 
   onSelectPhone(endpointId: string) {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbiztel-" + endpointId + "$list");
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizphn-" + endpointId + "$list");
   }
 
   onSelectAddress(endpointId: string) {
@@ -50,7 +56,7 @@ export class MerchantProfilePage implements OnInit {
   }
 
   onSelectSchedule(endpointId: string) {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizsch-" + endpointId);
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizsch-" + endpointId + "$list");
   }
 
   onSelectContract(endpointId: string) {

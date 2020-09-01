@@ -13,7 +13,7 @@
     </ion-list>
 
     <ion-list *ngIf="hasLoaded == 'y'">
-      <ion-item button detail="false" color="tertiary" *ngFor="let item of data.phoneNumbers">
+      <ion-item button detail="false" color="tertiary" *ngFor="let item of data.phoneNumbers; let i = index" (click)="onSelectItem(data._id,i)">
         <ion-label color="medium">
           <ion-text color="dark"><b>{{ item.title}}</b></ion-text>
           <h3>{{ item.number}}</h3>
