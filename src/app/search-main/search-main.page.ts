@@ -23,13 +23,14 @@ export class SearchMainPage implements OnInit {
   public resultHasload: string = null;
 
   public searchItems: any = [];
-  public resultItems: any = [];
+  public resultItems: any = {};
 
   private isfocus = true;
 
   constructor(private fb: FormBuilder, private svc: IonManaLib, private zone: NgZone) {
     (<any>window).TextChanged = (param: any) => {
       this.zone.run(() => {
+        this.currentSearchText = param;
         this.inputChanged(param);
       });
     }
@@ -37,7 +38,6 @@ export class SearchMainPage implements OnInit {
       this.zone.run(() => {
         this.isfocus = true;
         this.isSearching = true;
-        // this.inputChanged(param);
       });
     }
     (<any>window).Unfocused = (param: any) => {
@@ -50,6 +50,7 @@ export class SearchMainPage implements OnInit {
     }
     (<any>window).SearchButtonPressed = (param: any) => {
       this.zone.run(() => {
+        this.currentSearchText = param;
         this.showResult(param);
       });
     }
@@ -70,46 +71,52 @@ export class SearchMainPage implements OnInit {
   }
 
   onSelectSearch(keyword: any) {
-    this.fg.get("searchInput").setValue(keyword);
-    this.callAppMethod('ChangeSearchInput', keyword)
+    this.changeSearchInput(keyword)
     this.showResult(keyword);
   }
 
+  changeSearchInput(keyword: string) {
+    this.currentSearchText = keyword;
+    this.fg.get("searchInput").setValue(keyword);
+    this.callAppMethod('ChangeSearchInput', keyword)
+  }
+
   inputChanged(searchTexh: string) {
-    setTimeout(async () => {
-      if (searchTexh && searchTexh.trim() !== '') {
-        await this.showSuggest(searchTexh)
-      } else {
-        await this.showHistories();
-      }
-    }, this.deleyTime);
+    if (searchTexh && searchTexh.trim() !== '') {
+      this.showSuggest(searchTexh)
+    } else {
+      this.showHistories();
+    }
   }
 
   async showHistories() {
     var histories = await this.getHistory();
-    this.searchItems = histories && histories.length ? histories : [];
+    this.searchItems = histories && histories.length > 0 ? histories : [];
   }
 
   async showSuggest(searchTexh: string) {
     this.searchItems = [];
     var histories = await this.getHistory();
+    histories = histories && histories.length > 0 ? histories : [];
 
-      histories.forEach(x => {
-        if (x.text.toLowerCase().includes(searchTexh.toLowerCase())) {
-          this.searchItems.push(x);
-        }
-      });
+    histories.forEach(x => {
+      if (x.text.toLowerCase().includes(searchTexh.toLowerCase())) {
+        this.searchItems.push(x);
+      }
+    });
 
     this.svc.callApiGet(this.mcontentid, "http://mana-gateway-dev.azurewebsites.net/search/suggest?txt=" + searchTexh).then(it => {
-      it.forEach(element => {
-        this.searchItems.push(element);
-        histories.forEach(h => {
-          if (h.text == element.text) {
-            this.searchItems.pop();
-            return;
-          }
+      if (this.currentSearchText.trim() == it.text.trim()) {
+        it.suggestItems.forEach(element => {
+          this.searchItems.push(element);
+          histories.forEach(h => {
+            if (h.text == element.text) {
+              this.searchItems.pop();
+              return;
+            }
+          });
         });
-      });
+      }
     });
   }
 
@@ -117,8 +124,7 @@ export class SearchMainPage implements OnInit {
     this.saveHistory(searchText);
     this.hasMorePages = false;
     this.resultHasload = null;
-    this.resultItems = [];
-    this.currentSearchText = searchText;
+    this.resultItems = undefined;
     this.pagingNumber = 1;
 
     this.svc.callApiGet(this.mcontentid, "http://mana-gateway-dev.azurewebsites.net/search/result?txt=" + searchText + "&pageno=" + this.pagingNumber).then(it => {
@@ -143,7 +149,7 @@ export class SearchMainPage implements OnInit {
     //   res([{ text: "Promome", icon: "assets/imgs/serecent.png" }, { text: "prab", icon: "assets/imgs/serecent.png" }, { text: "ส้มหยุด", icon: "assets/imgs/serecent.png" }, { text: "pi", icon: "assets/imgs/serecent.png" }]);
     // });
     // return new Promise((res, rej) => {
-    //   res([]);
+    //   res();
     // });
     return this.callNativeFunc("GetSearchHistories", "");
   }
@@ -154,7 +160,8 @@ export class SearchMainPage implements OnInit {
   }
 
   saveHistory(keyWord: string) {
-    this.callAppMethod("SaveSearchHistory", keyWord);
+    var param = JSON.stringify({ text: keyWord.toLocaleLowerCase(), icon: "assets/imgs/serecent.png" });
+    this.callAppMethod("SaveSearchHistory", param);
   }
 
   public getStatusIcon(status: string) {
@@ -202,6 +209,7 @@ export class SearchMainPage implements OnInit {
 
   onInputChange(ev: any) {
     const val = ev.target.value;
+    this.currentSearchText = val;
     this.inputChanged(val);
   }
 
