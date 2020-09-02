@@ -4,7 +4,8 @@ ion-chip.chip-small{
 }
 .fixed-layout{
     z-index: 999;
-    position: absolute;
+    position: fixed;
+    overflow-y: scroll;
     width: 100%;
     height: 100%;
     background-color:white;

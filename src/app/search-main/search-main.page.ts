@@ -106,7 +106,7 @@ export class SearchMainPage implements OnInit {
     });
 
     this.svc.callApiGet(this.mcontentid, "http://mana-gateway-dev.azurewebsites.net/search/suggest?txt=" + searchTexh).then(it => {
-      if (this.currentSearchText.trim() == it.text.trim()) {
+      if (this.currentSearchText.toLowerCase().trim() == it.text.toLowerCase().trim()) {
         it.suggestItems.forEach(element => {
           this.searchItems.push(element);
           histories.forEach(h => {
