@@ -1,32 +1,98 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>merchant-contract</ion-title>
+    <ion-title>สัญญา</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content mode="ios">
-  <ion-list lines="inset">
-    <ion-item button color="tertiary" lines="none" class="ion-margin-top">
-      <ion-avatar slot="start" class="avatar-large">
-        <img src="assets/imgs/dfprofile.png">
+  <ng-container *ngIf="data$ | async as data">
+    <ion-list lines="none" *ngIf="hasLoaded == 'n'">
+      <ion-item color="tertiary" class="ion-text-center">
+        <ion-label>ไม่มีรายการ</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-list lines="inset" *ngIf="hasLoaded == 'y'">
+      <ion-item button color="tertiary" lines="none" class="ion-margin-top" *ngFor="let item of data.contracts"
+        (click)="onSelectItem(item._id)">
+        <ion-avatar slot="start" class="avatar-medium">
+          <img *ngIf="item.logo" [src]="item.logo">
+          <img *ngIf="!item.logo" src="assets/imgs/dfres.png">
+        </ion-avatar>
+        <ion-label color="medium">
+          <ion-text color="dark"><b>{{ item.name }}</b></ion-text>
+          <h3>{{ item.body }}</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <ng-container *ngIf="!hasLoaded">
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
       </ion-avatar>
-      <ion-label color="medium">
-        <ion-text color="dark"><b>บริษัท Mana</b></ion-text>
-        <h3>สัญญาส่วนแบ่งรายได้</h3>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
       </ion-label>
     </ion-item>
-    
-    <ion-item button color="tertiary" lines="none" class="ion-margin-top">
-      <ion-avatar slot="start" class="avatar-large">
-        <img src="assets/imgs/dfprofile.png">
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
       </ion-avatar>
-      <ion-label color="medium">
-        <ion-text color="dark"><b>บริษัท Mana</b></ion-text>
-        <h3>สัญญาส่วนแบ่งรายได้</h3>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
       </ion-label>
     </ion-item>
-
-  
-
-  </ion-list>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+  </ng-container>
 </ion-content>

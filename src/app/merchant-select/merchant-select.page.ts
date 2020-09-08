@@ -25,6 +25,7 @@ export class MerchantSelectPage implements OnInit {
   private loadData$() {
     return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
       .then(_ => {
+        // return this.svc.callApiGet(this.mcontentid,"http://mana-facing-dev.azurewebsites.net/BizAccount")
         return this.svc.getApiData(this.mcontentid);
       })
   }
@@ -35,7 +36,7 @@ export class MerchantSelectPage implements OnInit {
     this.data$ = load$;
     load$.then((it: any) => {
       console.log(it)
-      this.hasLoaded = (it && it.merchantAccounts.length > 0) ? "y" : "n";
+      this.hasLoaded = (it && it.bizAccounts.length > 0) ? "y" : "n";
     });
   }
 
@@ -47,12 +48,10 @@ export class MerchantSelectPage implements OnInit {
   }
 
   public Add() {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/merchant/nbizcre-merchant");
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizdtl-create");
   }
 
-  public onSelectItem(url: string, isActivate: boolean) {
-    if (isActivate) {
-      this.svc.visitEndpoint(this.mcontentid, url);
-    }
+  public onSelectItem(endpointId: string) {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizdtl-" + endpointId);
   }
 }

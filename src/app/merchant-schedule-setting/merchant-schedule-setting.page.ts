@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { IonManaLib } from 'ion-m-lib';
 
 @Component({
   selector: 'app-merchant-schedule-setting',
@@ -7,7 +8,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./merchant-schedule-setting.page.scss'],
 })
 export class MerchantScheduleSettingPage implements OnInit {
+
   public fg: FormGroup;
+  public hasLoaded: string;
+  private mcontentid = "merchant-schedule-setting";
+
   isSunday = false;
   isMonday = false;
   isTuesday = false;
@@ -43,7 +48,7 @@ export class MerchantScheduleSettingPage implements OnInit {
     'orderFromTime': 0,
     'orderThruTime': 0
   }];
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private svc: IonManaLib) {
     this.fg = this.fb.group({
       'sunday': null,
       'monday': null,
@@ -56,6 +61,10 @@ export class MerchantScheduleSettingPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.svc.initPageApi(this.mcontentid);
   }
 
   convertDateToNum(valueDate): number {
@@ -96,7 +105,7 @@ export class MerchantScheduleSettingPage implements OnInit {
   toggleChange(ev) {
 
   }
-  
+
   setSchedule() {
     this.convertProcess();
     if (this.fg.valid) {

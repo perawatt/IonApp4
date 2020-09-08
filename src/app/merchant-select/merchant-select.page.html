@@ -10,23 +10,24 @@
       <ion-list-header mode="md" class="ion-text-left">
         <ion-label>เลือกธุรกิจ</ion-label>
       </ion-list-header>
+      <!-- TODO: implement onSelect -->
       <ion-item button detail="false" color="tertiary" class="ion-margin-bottom"
-        *ngFor="let merchantAccount of data.merchantAccounts"
-        (click)="onSelectItem(merchantAccount.endpointId,merchantAccount.approvedDateTime != null)">
+      *ngFor="let bizAccount of data.bizAccounts"
+      (click)="onSelectItem(bizAccount._id)">
         <ion-avatar slot="start">
-          <img *ngIf="merchantAccount.logo" [src]="merchantAccount.logo" />
-          <img *ngIf="!merchantAccount.logo" src="assets/imgs/defaultshop.png" />
+          <img *ngIf="bizAccount.logo" [src]="bizAccount.logo" />
+          <img *ngIf="!bizAccount.logo" src="assets/imgs/defaultshop.png" />
         </ion-avatar>
         <ion-label>
-          <b>{{merchantAccount.name}}</b>
+          <b>{{bizAccount.name}}</b>
           <ion-text color="danger">
-            <h3 *ngIf="merchantAccount.approvedDateTime == null">รอการอนุมัติ</h3>
-            <h3 *ngIf="merchantAccount.approvedDateTime != null">&nbsp;</h3>
+            <h3 *ngIf="!bizAccount.status">&nbsp;</h3>
+            <h3 *ngIf="bizAccount.status">{{ bizAccount.status }}</h3>
           </ion-text>
         </ion-label>
       </ion-item>
     </ion-list>
-    <!-- <ion-list lines="none" class="ion-text-center" *ngIf="hasLoaded == 'n'">
+    <ion-list lines="none" class="ion-text-center" *ngIf="hasLoaded == 'n'">
       <ion-item color="tertiary" class="ion-margin-top">
         <ion-label>
           <b>เริ่มต้นร้านของคุณ</b>
@@ -37,11 +38,13 @@
           </ion-text>
         </ion-label>
       </ion-item>
-      <ion-card color="tertiary">
-        <ion-button color="danger" expand="block" (click)="Add()">สร้างร้านใหม่</ion-button>
+      <ion-card color="tertiary" class="ion-padding">
+        <ion-button color="danger" expand="full" (click)="Add()">สร้างร้านใหม่</ion-button>
       </ion-card>
+      <br>
+      <br>
       <img class="ion-margin-top" src="assets/imgs/shopBackground.png" width="200" height="200" />
-    </ion-list> -->
+    </ion-list>
   </ng-container>
 
   <ng-container *ngIf="!hasLoaded">

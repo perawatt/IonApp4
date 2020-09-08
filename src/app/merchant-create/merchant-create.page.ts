@@ -14,26 +14,42 @@ export class MerchantCreatePage implements OnInit {
   private mcontentid = "merchant-create";
 
   constructor(private fb: FormBuilder, private svc: IonManaLib) {
-  this.fg = this.fb.group({
-    'merchantName': [null, [Validators.required, this.nullOrWhiteSpaceValidator()]],
-  });
+    this.fg = this.fb.group({
+      'name': [null, [Validators.required, this.nullOrWhiteSpaceValidator()]],
+      'logo': [null],
+      'phone': [null],
+      //TODO Use Model?
+      'address': this.fb.group({
+        '_id': null,
+        'title': [null],
+        'streetAddress': [null],
+        'district': [null],
+        'city': [null],
+        'province': [null],
+        'postalCode': [null],
+        'phoneNumber': [null],
+        'remark': null,
+        'fullAddress': null
+      }),
+    });
 
-  this.fg.valueChanges.subscribe(_ => {
-    this.svc.validForm(this.fg.valid)
-  });
+    this.fg.valueChanges.subscribe(_ => {
+      this.svc.validForm(this.fg.valid)
+    });
   }
 
   ngOnInit() {
   }
 
   ionViewDidEnter() {
+    this.svc.validForm(this.fg.valid);
     this.svc.initPageApi(this.mcontentid);
   }
 
   nullOrWhiteSpaceValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       var isNullOrWhiteSpace = control.value === null || control.value.match(/^ *$/) !== null;
-      return isNullOrWhiteSpace ? { 'merchantName': { value: control.value } } : null;
+      return isNullOrWhiteSpace ? { 'name': { value: control.value } } : null;
     };
   }
 
