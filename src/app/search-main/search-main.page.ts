@@ -94,43 +94,49 @@ export class SearchMainPage implements OnInit {
     this.searchItems = histories && histories.length > 0 ? histories : [];
   }
 
-  async showSuggest(searchTexh: string) {
+  async showSuggest(searchText: string) {
     this.searchItems = [];
+
     var histories = await this.getHistory();
     histories = histories && histories.length > 0 ? histories : [];
 
+    var temp = [];
+
     histories.forEach(x => {
-      if (x.text.toLowerCase().includes(searchTexh.toLowerCase())) {
-        this.searchItems.push(x);
+      if (x.text.toLowerCase().includes(searchText.toLowerCase())) {
+        temp.push(x);
       }
     });
 
-    this.svc.callApiGet(this.mcontentid, "http://mana-gateway-dev.azurewebsites.net/search/suggest?txt=" + searchTexh).then(it => {
+    this.svc.callApiGet(this.mcontentid, "http://mana-gateway-dev.azurewebsites.net/search/suggest?txt=" + searchText).then(it => {
+
       if (this.currentSearchText.toLowerCase().trim() == it.text.toLowerCase().trim()) {
         it.suggestItems.forEach(element => {
-          this.searchItems.push(element);
+          temp.push(element);
           histories.forEach(h => {
             if (h.text == element.text) {
-              this.searchItems.pop();
+              temp.pop();
               return;
             }
           });
         });
       }
+      this.searchItems = temp;
     });
   }
+
 
   showResult(searchText: string) {
     this.saveHistory(searchText);
     this.hasMorePages = false;
     this.resultHasload = null;
-    this.resultItems = undefined;
+    this.resultItems = { hasMorePages: false, searchItems:[] };
     this.pagingNumber = 1;
 
     this.svc.callApiGet(this.mcontentid, "http://mana-gateway-dev.azurewebsites.net/search/result?txt=" + searchText + "&pageno=" + this.pagingNumber).then(it => {
-      this.resultItems = it;
-      this.resultHasload = it && it.searchItems && it.searchItems.length != 0 ? "y" : "n";
-      this.hasMorePages = it.hasMorePages;
+        this.resultItems = it;
+        this.resultHasload = it && it.searchItems && it.searchItems.length != 0 ? "y" : "n";
+        this.hasMorePages = it.hasMorePages;
     });
   }
 
