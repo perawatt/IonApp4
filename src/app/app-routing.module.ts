@@ -367,6 +367,10 @@ const routes: Routes = [
     path: 'search-main',
     loadChildren: () => import('./search-main/search-main.module').then( m => m.SearchMainPageModule)
   },
+  {
+    path: 'shopping-cart-creating-pay',
+    loadChildren: () => import('./shopping-cart-creating-pay/shopping-cart-creating-pay.module').then( m => m.ShoppingCartCreatingPayPageModule)
+  },
 
 
 
