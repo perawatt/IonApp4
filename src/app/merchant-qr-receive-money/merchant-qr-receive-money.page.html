@@ -8,7 +8,7 @@
   <ng-container *ngIf="data$ | async as data">
     <ion-card color="tertiary" *ngIf="hasLoaded">
       <ion-card-content>
-        <ion-avatar color="tertiary" class="avatar-large center">
+        <ion-avatar color="tertiary" class="avatar-l center">
           <img *ngIf="data.logo" [src]="data.logo">
           <img *ngIf="!data.logo" src="assets/imgs/defaultshop.png">
         </ion-avatar>

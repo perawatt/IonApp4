@@ -15,7 +15,7 @@
     <ion-list lines="inset" *ngIf="hasLoaded == 'y'">
       <ion-item button color="tertiary" lines="none" class="ion-margin-top" *ngFor="let item of data.contracts"
         (click)="onSelectItem(item._id)">
-        <ion-avatar slot="start" class="avatar-medium">
+        <ion-avatar slot="start" class="avatar-m">
           <img *ngIf="item.logo" [src]="item.logo">
           <img *ngIf="!item.logo" src="assets/imgs/dfres.png">
         </ion-avatar>

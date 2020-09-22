@@ -8,63 +8,93 @@
   <ng-container *ngIf="hasLoaded == 'y' && data$ | async as data">
     <form [formGroup]="fg" (ngSubmit)="onSave()">
       <ion-list lines="none">
-        <ion-item color="tertiary" class="ion-margin-top imageCenter">
-          <img *ngIf="data.merchantAccount.logo" [src]="data.merchantAccount.logo" class="circle ion-margin-top"
-            height="90px" width="90px">
-          <img *ngIf="!data.merchantAccount.logo" src="assets/imgs/defaultshop.png" class="circle ion-margin-top"
-            height="90px" width="90px">
+        <ion-item color="tertiary" class="ion-margin-top">
+          <img *ngIf="data.merchantAccount.logo" [src]="data.merchantAccount.logo" class="logo-l circle center ion-margin-top">
+          <img *ngIf="!data.merchantAccount.logo" src="assets/imgs/defaultshop.png" class="logo-l circle center ion-margin-top">
         </ion-item>
         <ion-item color="tertiary" class="ion-text-center">
-          <ion-label><b>{{data.merchantAccount.name}}</b></ion-label>
+          <ion-label class="ion-no-margin">
+            <h1><b>{{data.merchantAccount.name}}</b></h1>
+          </ion-label>
         </ion-item>
         <ion-item color="tertiary" lines="full">
           <ion-label position="floating">
-            จำนวนเงินที่จ่าย
+            <h1>
+              จำนวนเงินที่จ่าย
+            </h1>
           </ion-label>
           <ion-input type="number" placeholder="ระบุยอดเงิน" class="ion-text-center" formControlName="amount"
             (ionChange)="AmountChanged()"></ion-input>
         </ion-item>
         <ion-item color="tertiary">
-          <ion-note color="danger" slot="end">ใส่รหัสจ่ายเงิน</ion-note>
+          <ion-note color="dark" slot="end">
+            <ion-label>
+              <h3>ใส่รหัสจ่ายเงิน</h3>
+            </ion-label>
+          </ion-note>
         </ion-item>
-        <!-- <ion-item color="tertiary" class="ion-margin-top">
-          <ion-label class="ion-padding-top ion-padding-bottom">
-            ใส่ส่วนลด
+        <ion-item color="tertiary" class="ion-no-padding ion-margin-top">
+          <ion-label class="ion-padding-start">
+            <h3>คุณมีส่วนลดที่สามารถใช้ได้</h3>
           </ion-label>
-        <ion-fab horizontal="end">
-          <ion-fab-button size="small" color="danger">
-            <ion-icon color="light" name="add"></ion-icon>
-          </ion-fab-button>
-          <ion-fab-list side="start">
-            <ion-fab-button>
-              <ion-icon  name="point"></ion-icon>
-            </ion-fab-button>
-            <ion-fab-button>
-              <ion-icon name="coupon"></ion-icon>
-            </ion-fab-button>
-          </ion-fab-list>
-        </ion-fab>
+          <ion-note>
+            <ion-button disabled="true" color="medium" fill="outline" shape="round">
+              ใช้เลยตอนนี้
+            </ion-button>
+          </ion-note>
         </ion-item>
-        <ion-item color="tertiary">
-          <ion-avatar slot="start">
-            <img src="assets/imgs/couponred.png">
+        <!-- <ion-item color="tertiary" lines="inset">
+          <ion-avatar slot="start" class="avatar-xs">
+            <img [src]="'assets/imgs/coupon-small-red.png'" class="non-circle" />
           </ion-avatar>
           <ion-label>
-            คุณมีส่วนลดที่สามารถใช้ได้
+            <h3>Coupon A</h3>
           </ion-label>
-          <ion-button color="danger" shape="round" slot="end" fill="outline">
-            ใช้เลยตอนนี้
-          </ion-button>
+          <ion-note>
+            <ion-label>
+              <h3>ลบ</h3>
+            </ion-label>
+          </ion-note>
         </ion-item>
-        <ion-card color="tertiary">
-          <ion-card-content class="ion-no-padding">
-            <ion-label class="ion-padding">item.name</ion-label>
-            <ion-item class="couponImage" color="tertiary" lines="none">
-              <img src="assets/imgs/Coupontest.png" class="ion-margin-bottom">
-              <ion-note color="danger" slot="end">ลบ</ion-note>
-            </ion-item>
-          </ion-card-content>
-        </ion-card> -->
+        <ion-item color="tertiary" lines="inset">
+          <ion-avatar slot="start" class="avatar-xs">
+            <img [src]="'assets/imgs/coupon-small-gray.png'" class="non-circle" />
+          </ion-avatar>
+          <ion-label>
+            <h3>Coupon B</h3>
+          </ion-label>
+          <ion-note>
+            <ion-label>
+              <h3>ลบ</h3>
+            </ion-label>
+          </ion-note>
+        </ion-item>
+        <ion-item color="tertiary" lines="inset">
+          <ion-avatar slot="start" class="avatar-xs">
+            <img [src]="'assets/imgs/couponshop-small-gray.png'" class="non-circle" />
+          </ion-avatar>
+          <ion-label>
+            <h3>Coupon C</h3>
+          </ion-label>
+          <ion-note>
+            <ion-label>
+              <h3>ลบ</h3>
+            </ion-label>
+          </ion-note>
+        </ion-item>
+        <ion-item color="tertiary" lines="inset">
+          <ion-avatar slot="start" class="avatar-xs">
+            <img [src]="'assets/imgs/couponshop-small-red.png'" class="non-circle" />
+          </ion-avatar>
+          <ion-label>
+            <h3>Coupon D</h3>
+          </ion-label>
+          <ion-note>
+            <ion-label>
+              <h3>ลบ</h3>
+            </ion-label>
+          </ion-note>
+        </ion-item> -->
       </ion-list>
       <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
         [disabled]="fg.invalid">ตกลง
@@ -80,12 +110,12 @@
       </ion-card-content>
     </ion-card>
     <ion-card color="light" class="ion-text-center">
-        <ion-label>
-          <h3>
-            <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
-          </h3>
+      <ion-label>
+        <h3>
           <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
-        </ion-label>
+        </h3>
+        <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+      </ion-label>
     </ion-card>
     <ion-item lines="none">
       <ion-label>

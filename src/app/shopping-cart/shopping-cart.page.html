@@ -8,7 +8,7 @@
   <ng-container *ngIf="data$ | async as data">
     <ion-list lines="none" *ngIf="hasLoaded">
       <ion-item color="tertiary">
-        <ion-avatar class="avatar-small" slot="start">
+        <ion-avatar class="avatar-s" slot="start">
           <img *ngIf="devlivery && devlivery.logo" [src]="devlivery?.logo" />
           <img *ngIf="!(devlivery && devlivery.logo)" src="assets/imgs/dfbiker.png" />
         </ion-avatar>
@@ -21,7 +21,7 @@
       </ion-item>
 
       <ion-item color="tertiary" class="ion-padding-vertical">
-        <ion-avatar slot="start" class="avatar-medium">
+        <ion-avatar slot="start" class="avatar-m">
           <img *ngIf="data && data.bizAccount && data.bizAccount.logoUrl" [src]="data.bizAccount?.logoUrl">
           <img *ngIf="!(data && data.bizAccount && data.bizAccount.logoUrl)" src="assets/imgs/dfres.png">
         </ion-avatar>

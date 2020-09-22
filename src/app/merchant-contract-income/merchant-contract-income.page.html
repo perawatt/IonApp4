@@ -6,7 +6,7 @@
 
 <ion-content mode="ios" color="tertiary">
   <ng-container *ngIf="data$ | async as data">
-    <ion-avatar class="avatar-medium center ion-margin-top">
+    <ion-avatar class="avatar-m center ion-margin-top">
       <!-- TODO : Implement Default logo -->
       <img *ngIf="data.logo" [src]="data.logo">
       <img *ngIf="!data.logo" [src]="'assets/imgs/dfres.png'">

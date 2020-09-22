@@ -47,7 +47,7 @@
   <ng-container *ngIf="data$ | async as data">
     <ion-card color="light" class="ion-text-center">
       <ion-card-content>
-        <ion-avatar color="tertiary" class="avatar-large center ion-margin-bottom">
+        <ion-avatar color="tertiary" class="avatar-l center ion-margin-bottom">
           <img *ngIf="data.logo" [src]="data.logo">
           <img *ngIf="!data.logo" src="assets/imgs/defaultshop.png">
         </ion-avatar>

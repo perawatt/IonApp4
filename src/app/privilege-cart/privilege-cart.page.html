@@ -7,7 +7,7 @@
 <ion-content mode="ios">
   <ng-container *ngIf="hasLoaded == 'y' && data$ | async as data">
     <ion-item color="tertiary" class="ion-padding-vertical" lines="none">
-      <ion-avatar slot="start" class="avatar-medium">
+      <ion-avatar slot="start" class="avatar-m">
         <img *ngIf="data.merchantAccount.logoImageUrl" [src]="data.merchantAccount.logoImageUrl">
         <img *ngIf="!data.merchantAccount.logoImageUrl" src="assets/imgs/defaultshop.png">
       </ion-avatar>

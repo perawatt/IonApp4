@@ -15,7 +15,7 @@
     <ion-list lines="inset" *ngIf="hasLoaded == 'y'">
       <!-- TODO: implement onSelect ไม่มี ui-->
       <ion-item color="tertiary" *ngFor="let item of data.bizEmployees" (click)="onSelectItem(item._id)">
-        <ion-avatar slot="start" class="avatar-medium">
+        <ion-avatar slot="start" class="avatar-m">
           <img *ngIf="item.logo" [src]="item.logo" />
           <img *ngIf="!item.logo" src="assets/imgs/dfprofile.png" />
         </ion-avatar>

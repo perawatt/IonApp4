@@ -252,7 +252,7 @@
   <ng-container *ngIf="data$ | async as data">
     <ion-list lines="none" *ngIf="hasLoaded">
       <ion-item color="tertiary" lines="full">
-        <ion-avatar class="avatar-medium" slot="start">
+        <ion-avatar class="avatar-m" slot="start">
           <img *ngIf="data.logo" [src]="data.logo" />
           <img *ngIf="!data.logo" src="assets/imgs/defaultshop.png" />
         </ion-avatar>

@@ -9,7 +9,7 @@
     <ion-list lines="none" *ngIf="hasLoaded">
 
       <ion-item color="tertiary" class="ion-margin-bottom">
-        <ion-avatar class="avatar-small" slot="start">
+        <ion-avatar class="avatar-s" slot="start">
           <img *ngIf="data.shippingMethod && data.shippingMethod.logo" [src]="data.shippingMethod?.logo" />
           <img *ngIf="!(data.shippingMethod && data.shippingMethod.logo)" src="assets/imgs/dfbiker.png" />
         </ion-avatar>
@@ -21,7 +21,7 @@
       <ion-card color="tertiary">
         <ion-card-content class="ion-no-padding">
           <div class="ion-text-center ion-padding-top">
-            <ion-avatar slot="start" class="avatar-large center  ion-margin-bottom">
+            <ion-avatar slot="start" class="avatar-l center  ion-margin-bottom">
               <img [src]="data.bizAccount?.logoUrl">
             </ion-avatar>
             <ion-label class="ion-text-center">
