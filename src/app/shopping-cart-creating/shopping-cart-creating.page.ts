@@ -33,16 +33,17 @@ export class ShoppingCartCreatingPage implements OnInit {
 
   ionViewDidEnter() {
     this.hasLoaded = null;
+    this.svc.validForm(this.fg.valid);
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then(it => {
       this.svc.initPageApi(this.mcontentid);
-      it.aavaliableConpon.forEach(coupon => {
-        this.attachCoupons.push(coupon);
-        let couponId = [];
-        this.attachCoupons.forEach(it => { couponId.push(it.id); })
-        this.fg.get("conponId").setValue(couponId);
-      });
+      // it.aavaliableConpon.forEach(coupon => {
+      //   this.attachCoupons.push(coupon);
+      //   let couponId = [];
+      //   this.attachCoupons.forEach(it => { couponId.push(it.id); })
+      //   this.fg.get("conponId").setValue(couponId);
+      // });
       this.hasLoaded = (it) ? "y" : "n";
     });
   }

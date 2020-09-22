@@ -371,6 +371,10 @@ const routes: Routes = [
     path: 'shopping-cart-creating-pay',
     loadChildren: () => import('./shopping-cart-creating-pay/shopping-cart-creating-pay.module').then( m => m.ShoppingCartCreatingPayPageModule)
   },
+  {
+    path: 'shopping-cart-creating-completed',
+    loadChildren: () => import('./shopping-cart-creating-completed/shopping-cart-creating-completed.module').then( m => m.ShoppingCartCreatingCompletedPageModule)
+  },
 
 
 
