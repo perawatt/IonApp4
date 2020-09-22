@@ -375,6 +375,10 @@ const routes: Routes = [
     path: 'shopping-cart-creating-completed',
     loadChildren: () => import('./shopping-cart-creating-completed/shopping-cart-creating-completed.module').then( m => m.ShoppingCartCreatingCompletedPageModule)
   },
+  {
+    path: 'wallet-transaction-adhoc',
+    loadChildren: () => import('./wallet-transaction-adhoc/wallet-transaction-adhoc.module').then( m => m.WalletTransactionAdhocPageModule)
+  },
 
 
 
