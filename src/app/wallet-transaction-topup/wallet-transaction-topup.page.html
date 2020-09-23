@@ -1,13 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>รายละเอียดการเติมเงิน</ion-title>
+    <ion-title>รายละเอียดบิล</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="transaction ion-padding-top" mode="ios">
-
+<ion-content class="transaction ion-padding-top" mode="ios" color="tertiary">
   <ng-container *ngIf="data$ | async as data">
-    <ion-card class="ion-padding-vertical" color="tertiary">
+    <ion-card class="ion-padding-top" color="tertiary">
       <ion-item class="ion-text-center" color="tertiary" lines="none">
         <ion-grid>
           <ion-row class="ion-text-center ion-align-items-center">
@@ -19,7 +18,7 @@
             </ion-col>
             <ion-col size="6" class="ion-text-center">
               <div class="content-center">
-                <img class="icon transaction-img" src="assets/imgs/changewallet.png">
+                <img class="icon transaction-img" [src]="'assets/imgs/changewallet.png'">
               </div>
             </ion-col>
           </ion-row>
@@ -37,26 +36,39 @@
           </ion-row>
         </ion-grid>
       </ion-item>
-      <ion-item class="ion-text-center" color="tertiary" lines="none">
+      <ion-item class="ion-text-center" color="tertiary" lines="full">
         <ion-label class="text-red">
-          <h1><b>฿{{ AbsoluteNumber(ParseToTwoDecimal(data.balance)) | number:'1.2-2' }}</b></h1>
+          <h1><b>{{ AbsoluteNumber(ParseToTwoDecimal(data.balance)) | number:'1.2-2' }} THB</b></h1>
         </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" class="ion-padding-vertical" lines="none">
+        <ion-avatar slot="start" class="non-cirlce avatar-m">
+          <img
+            [src]="'https://chart.googleapis.com/chart?cht=qr&chl=BINDING_HERE&chs=400x400&choe=UTF-8&chld=L%7C2%27%20rel=%27nofollow'" />
+        </ion-avatar>
+        <ion-label>
+          <h2><b>รหัสอ้างอิง : ad1100</b></h2>
+          <ion-text color="medium">
+            <h3>วันที่ {{ data.transactionDate | date:'dd/MM/yyyy' }} ({{ data.transactionDate | date:'H:mm' }})</h3>
+          </ion-text>
+        </ion-label>
+        <ion-note>
+          <ion-label>
+            <h3>
+              <ion-icon name="share-outline"></ion-icon>&nbsp;แชร์
+            </h3>
+          </ion-label>
+        </ion-note>
       </ion-item>
     </ion-card>
     <div size="12" class="indentation">
     </div>
-
-    <ion-card color="light" class="ion-text-center">
-      <br>
-      <ion-label class="text-gray ion-margin-vertical ion-text-uppercase">
-        <h1><b>รหัสอ้างอิง : {{ data.refId }}</b></h1>
-      </ion-label>
-      <ion-label class="text-gray">
-        <h3 class="text-gray">วันที่ {{ data.transactionDate | date:'dd/MM/yyyy' }} เวลา
-          {{ data.transactionDate | date:'H:mm' }}</h3>
-      </ion-label>
-      <img class="center icon ion-margin-top" width="80" height="80" src="assets/imgs/transaction-deposit.png" />
-    </ion-card>
+    <br>
+    <ion-label color="medium" class="ion-text-center">
+      <h3>
+        <ion-icon name="receipt-outline"></ion-icon>&nbsp;ดูรายละเอียดบิล
+      </h3>
+    </ion-label>
   </ng-container>
 
   <ng-container *ngIf="!hasLoaded">
@@ -83,14 +95,19 @@
       <h3>
         <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
       </h3>
-      <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
     </ion-label>
-    <ion-card color="light" class="ion-text-center">
-      <ion-card-content>
-        <ion-skeleton-text class="center circle ion-margin-bottom" animated style="width:100px; height:100px">
-        </ion-skeleton-text>
-      </ion-card-content>
-    </ion-card>
+    <br>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
   </ng-container>
 
 </ion-content>
