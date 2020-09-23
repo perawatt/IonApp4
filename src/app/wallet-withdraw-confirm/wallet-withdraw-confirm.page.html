@@ -10,40 +10,41 @@
     <div *ngIf="hasLoaded">
       <div class="ion-margin-bottom">
         <ion-card color="tertiary">
-          <ion-card-content>
-            <img class="center ion-margin-vertical" width="60" height="60" src="assets/imgs/iconwithdraw.png"/>
-            <ion-list>
-              <ion-item color="tertiary">
-                <ion-label>
-                  <h2>เลขพร้อมเพย์</h2>
-                  <h2>
-                    <b>{{ data.promptpayId }}</b>
-                  </h2>
-                </ion-label>
-              </ion-item>
-              <ion-item color="tertiary">
-                <ion-label>
-                  <h2>ชื่อบัญชี</h2>
-                  <h2>
-                    <b>{{ data.thAccountName }}</b>
-                  </h2>
-                  <h2>
-                    <b>{{ data.enAccountName }}</b>
-                  </h2>
-                </ion-label>
-              </ion-item>
-              <ion-item color="tertiary" lines="none">
-                <ion-label>
-                  <h2>จำนวนเงินที่ต้องการถอน</h2>
-                  <h2>
-                    <ion-text color="danger">
-                      <b>฿{{ ParseToTwoDecimal(data.amount) | number:'1.2-2' }}</b>
-                    </ion-text>
-                  </h2>
-                </ion-label>
-              </ion-item>
-            </ion-list>
-          </ion-card-content>
+          <br>
+          <img class="center ion-margin-bottom logo-l" src="assets/imgs/iconwithdraw.png" />
+          <br>
+          <ion-list>
+            <ion-item color="tertiary">
+              <ion-label>
+                <h3>เลขพร้อมเพย์</h3>
+                <h2>
+                  <b>{{ data.promptpayId }}</b>
+                </h2>
+              </ion-label>
+            </ion-item>
+            <ion-item color="tertiary">
+              <ion-label>
+                <h3>ชื่อบัญชี</h3>
+                <h2>
+                  <b>{{ data.thAccountName }}</b>
+                </h2>
+                <h2>
+                  <b>{{ data.enAccountName }}</b>
+                </h2>
+              </ion-label>
+            </ion-item>
+            <ion-item color="tertiary" lines="none">
+              <ion-label>
+                <h3>จำนวนที่ต้องการถอน</h3>
+                <h2>
+                  <ion-text color="danger">
+                    <b>{{ ParseToTwoDecimal(data.amount) | number:'1.2-2' }} THB</b>
+                  </ion-text>
+                </h2>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+          <br>
         </ion-card>
       </div>
     </div>
