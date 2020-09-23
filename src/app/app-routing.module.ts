@@ -379,7 +379,11 @@ const routes: Routes = [
   {
     path: 'cart-adhoc-completed',
     loadChildren: () => import('./cart-adhoc-completed/cart-adhoc-completed.module').then( m => m.CartAdhocCompletedPageModule)
+  },  {
+    path: 'wallet-topup-completed',
+    loadChildren: () => import('./wallet-topup-completed/wallet-topup-completed.module').then( m => m.WalletTopupCompletedPageModule)
   },
+
 
 
 
