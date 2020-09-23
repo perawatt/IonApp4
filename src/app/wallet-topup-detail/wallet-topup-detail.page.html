@@ -10,10 +10,12 @@
     <ion-card-content>
       <ion-label>
         <h2 class="ion-margin-top">กำลังเติมเงินเข้ากระเป๋า</h2>
-        <img class="icon center ion-no-margin" width="30" height="30" src="assets/imgs/changewallet.png" />
+        <img class="icon center ion-no-margin logo-s" src="assets/imgs/changewallet.png" />
         <h2 class="ion-no-margin"><b>Mana Wallet</b></h2>
         <ion-text color="medium">
-          <h3 class="ion-padding-top"><ion-icon name="information-circle-outline"></ion-icon>&nbsp;วิธีเติมเงินแต่ละธนาคาร</h3>
+          <h3 class="ion-padding-top">
+            <ion-icon name="information-circle-outline"></ion-icon>&nbsp;วิธีเติมเงินแต่ละธนาคาร
+          </h3>
         </ion-text>
       </ion-label>
     </ion-card-content>
@@ -27,7 +29,8 @@
         </ion-label>
       </ion-item>
       <ion-item class="ion-text-left" color="tertiary">
-        <ion-select class="ion-no-padding ion-padding-end ion-select-full" okText="ตกลง" cancelText="ยกเลิก" interface="action-sheet" formControlName="promptpayType">
+        <ion-select class="ion-no-padding ion-padding-end ion-select-full" okText="ตกลง" cancelText="ยกเลิก"
+          interface="action-sheet" formControlName="promptpayType">
           <ion-select-option value="pid">เลขบัตรประชาชน</ion-select-option>
           <ion-select-option value="mobile">เบอร์โทรศัพท์</ion-select-option>
           <!-- <ion-select-option value="qr">สร้างคิวอาร์โค้ด</ion-select-option> -->
@@ -44,12 +47,13 @@
         </ion-label>
       </ion-item>
       <ion-item color="tertiary" lines="full">
-        <ion-input type="number" class="ion-text-center" placeholder="ระบุจำนวนเงิน" formControlName="amount" (ionChange)="AmountChanged()">
+        <ion-input type="number" class="ion-text-center" placeholder="ระบุจำนวนเงิน" formControlName="amount"
+          (ionChange)="AmountChanged()">
         </ion-input>
       </ion-item>
       <ion-item color="tertiary" lines="none"></ion-item>
     </ion-list>
-    
+
     <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
       [disabled]="fg.invalid">ยืนยัน
     </ion-button>
