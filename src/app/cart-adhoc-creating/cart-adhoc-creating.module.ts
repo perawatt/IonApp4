@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ShoppingCartCreatingPageRoutingModule } from './shopping-cart-creating-routing.module';
+import { CartAdhocCreatingPageRoutingModule } from './cart-adhoc-creating-routing.module';
 
-import { ShoppingCartCreatingPage } from './shopping-cart-creating.page';
+import { CartAdhocCreatingPage } from './cart-adhoc-creating.page';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { ShoppingCartCreatingPage } from './shopping-cart-creating.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    ShoppingCartCreatingPageRoutingModule
+    CartAdhocCreatingPageRoutingModule
   ],
-  declarations: [ShoppingCartCreatingPage]
+  declarations: [CartAdhocCreatingPage]
 })
-export class ShoppingCartCreatingPageModule {}
+export class CartAdhocCreatingPageModule {}

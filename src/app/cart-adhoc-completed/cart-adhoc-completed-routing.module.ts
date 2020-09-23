@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ShoppingCartCreatingCompletedPage } from './shopping-cart-creating-completed.page';
+import { CartAdhocCompletedPage } from './cart-adhoc-completed.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ShoppingCartCreatingCompletedPage
+    component: CartAdhocCompletedPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ShoppingCartCreatingCompletedPageRoutingModule {}
+export class CartAdhocCompletedPageRoutingModule {}

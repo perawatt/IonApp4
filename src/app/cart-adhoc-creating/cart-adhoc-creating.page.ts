@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonManaLib } from 'ion-m-lib';
 import { ParseDataProvider } from 'src/providers/parse-data';
 
 @Component({
-  selector: 'app-shopping-cart-creating',
-  templateUrl: './shopping-cart-creating.page.html',
-  styleUrls: ['./shopping-cart-creating.page.scss'],
+  selector: 'app-cart-adhoc-creating',
+  templateUrl: './cart-adhoc-creating.page.html',
+  styleUrls: ['./cart-adhoc-creating.page.scss'],
 })
-export class ShoppingCartCreatingPage implements OnInit {
+export class CartAdhocCreatingPage implements OnInit {
 
   private attachCoupons = [];
   public hasLoaded: string;
   public data$ = Promise.resolve<{}>({});
   public fg: FormGroup;
-  private mcontentid: string = "shopping-cart-creating";
+  private mcontentid: string = "cart-adhoc-creating";
   
   constructor(private fb: FormBuilder, private svc: IonManaLib, private parse: ParseDataProvider) {
   this.fg = this.fb.group({

@@ -57,10 +57,6 @@ const routes: Routes = [
     loadChildren: () => import('./shopping-cart/shopping-cart.module').then(m => m.ShoppingCartPageModule)
   },
   {
-    path: 'shopping-cart-creating',
-    loadChildren: () => import('./shopping-cart-creating/shopping-cart-creating.module').then(m => m.ShoppingCartCreatingPageModule)
-  },
-  {
     path: 'shopping-cart-info',
     loadChildren: () => import('./shopping-cart-info/shopping-cart-info.module').then(m => m.ShoppingCartInfoPageModule)
   },
@@ -351,7 +347,8 @@ const routes: Routes = [
   {
     path: 'contract-consent-from-employee',
     loadChildren: () => import('./contract-consent-from-employee/contract-consent-from-employee.module').then( m => m.ContractConsentFromEmployeePageModule)
-  },  {
+  },
+  {
     path: 'privilege-select',
     loadChildren: () => import('./privilege-select/privilege-select.module').then( m => m.PrivilegeSelectPageModule)
   },
@@ -368,16 +365,20 @@ const routes: Routes = [
     loadChildren: () => import('./search-main/search-main.module').then( m => m.SearchMainPageModule)
   },
   {
-    path: 'shopping-cart-creating-pay',
-    loadChildren: () => import('./shopping-cart-creating-pay/shopping-cart-creating-pay.module').then( m => m.ShoppingCartCreatingPayPageModule)
-  },
-  {
-    path: 'shopping-cart-creating-completed',
-    loadChildren: () => import('./shopping-cart-creating-completed/shopping-cart-creating-completed.module').then( m => m.ShoppingCartCreatingCompletedPageModule)
-  },
-  {
     path: 'wallet-transaction-adhoc',
     loadChildren: () => import('./wallet-transaction-adhoc/wallet-transaction-adhoc.module').then( m => m.WalletTransactionAdhocPageModule)
+  },
+  {
+    path: 'cart-adhoc-creating',
+    loadChildren: () => import('./cart-adhoc-creating/cart-adhoc-creating.module').then( m => m.CartAdhocCreatingPageModule)
+  },
+  {
+    path: 'cart-adhoc-pay',
+    loadChildren: () => import('./cart-adhoc-pay/cart-adhoc-pay.module').then( m => m.CartAdhocPayPageModule)
+  },
+  {
+    path: 'cart-adhoc-completed',
+    loadChildren: () => import('./cart-adhoc-completed/cart-adhoc-completed.module').then( m => m.CartAdhocCompletedPageModule)
   },
 
 

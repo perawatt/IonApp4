@@ -3,15 +3,15 @@ import { IonManaLib } from 'ion-m-lib';
 import { ParseDataProvider } from 'src/providers/parse-data';
 
 @Component({
-  selector: 'app-shopping-cart-creating-completed',
-  templateUrl: './shopping-cart-creating-completed.page.html',
-  styleUrls: ['./shopping-cart-creating-completed.page.scss'],
+  selector: 'app-cart-adhoc-pay',
+  templateUrl: './cart-adhoc-pay.page.html',
+  styleUrls: ['./cart-adhoc-pay.page.scss'],
 })
-export class ShoppingCartCreatingCompletedPage implements OnInit {
+export class CartAdhocPayPage implements OnInit {
 
   public hasLoaded: string;
   public data$ = Promise.resolve<{}>({});
-  private mcontentid: string = "shopping-cart-creating-completed";
+  private mcontentid: string = "cart-adhoc-pay.page";
   constructor(private svc: IonManaLib, private parse: ParseDataProvider) { }
 
   ngOnInit() {
@@ -33,8 +33,6 @@ export class ShoppingCartCreatingCompletedPage implements OnInit {
         return this.svc.getApiData(this.mcontentid);
       })
   }
-
-  public AbsoluteNumber(value: number) { return Math.abs(value); }
 
   public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
 }
