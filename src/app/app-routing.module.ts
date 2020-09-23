@@ -383,6 +383,10 @@ const routes: Routes = [
     path: 'wallet-topup-completed',
     loadChildren: () => import('./wallet-topup-completed/wallet-topup-completed.module').then( m => m.WalletTopupCompletedPageModule)
   },
+  {
+    path: 'wallet-withdraw-completed',
+    loadChildren: () => import('./wallet-withdraw-completed/wallet-withdraw-completed.module').then( m => m.WalletWithdrawCompletedPageModule)
+  },
 
 
 
