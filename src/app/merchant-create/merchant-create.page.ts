@@ -16,21 +16,6 @@ export class MerchantCreatePage implements OnInit {
   constructor(private fb: FormBuilder, private svc: IonManaLib) {
     this.fg = this.fb.group({
       'name': [null, [Validators.required, this.nullOrWhiteSpaceValidator()]],
-      'logo': [null],
-      'phone': [null],
-      //TODO Use Model?
-      'address': this.fb.group({
-        '_id': null,
-        'title': [null],
-        'streetAddress': [null],
-        'district': [null],
-        'city': [null],
-        'province': [null],
-        'postalCode': [null],
-        'phoneNumber': [null],
-        'remark': null,
-        'fullAddress': null
-      }),
     });
 
     this.fg.valueChanges.subscribe(_ => {
@@ -55,15 +40,5 @@ export class MerchantCreatePage implements OnInit {
 
   onSave() {
     this.svc.submitFormData(this.mcontentid, this.fg.value, false);
-  }
-
-  selectPhoto(event) {
-    this.file = event.target.firstChild.files;
-    var preview = document.querySelectorAll('img');
-    var reader = new FileReader();
-    reader.onload = function (e: any) {
-      preview[preview.length - 1].src = e.target.result;
-    };
-    reader.readAsDataURL(this.file[0]);
   }
 }

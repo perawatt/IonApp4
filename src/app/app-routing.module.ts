@@ -379,13 +379,18 @@ const routes: Routes = [
   {
     path: 'cart-adhoc-completed',
     loadChildren: () => import('./cart-adhoc-completed/cart-adhoc-completed.module').then( m => m.CartAdhocCompletedPageModule)
-  },  {
+  },
+  {
     path: 'wallet-topup-completed',
     loadChildren: () => import('./wallet-topup-completed/wallet-topup-completed.module').then( m => m.WalletTopupCompletedPageModule)
   },
   {
     path: 'wallet-withdraw-completed',
     loadChildren: () => import('./wallet-withdraw-completed/wallet-withdraw-completed.module').then( m => m.WalletWithdrawCompletedPageModule)
+  },
+  {
+    path: 'merchant-additional',
+    loadChildren: () => import('./merchant-additional/merchant-additional.module').then(m => m.MerchantAdditionalPageModule)
   },
 
 
