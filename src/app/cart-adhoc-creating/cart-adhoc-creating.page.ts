@@ -18,9 +18,9 @@ export class CartAdhocCreatingPage implements OnInit {
   
   constructor(private fb: FormBuilder, private svc: IonManaLib, private parse: ParseDataProvider) {
   this.fg = this.fb.group({
-    'amount': [null, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
-    'conponId': null,
-    'points': null
+    'amountUnit': [null, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
+    'currency': null,
+    'couponIds': null
   });
 
     this.fg.valueChanges.subscribe(_ => {
@@ -42,8 +42,9 @@ export class CartAdhocCreatingPage implements OnInit {
       //   this.attachCoupons.push(coupon);
       //   let couponId = [];
       //   this.attachCoupons.forEach(it => { couponId.push(it.id); })
-      //   this.fg.get("conponId").setValue(couponId);
+      //   this.fg.get("couponIds").setValue(couponId);
       // });
+      this.fg.get("currency").setValue(it.currency);
       this.hasLoaded = (it) ? "y" : "n";
     });
   }
@@ -62,6 +63,6 @@ export class CartAdhocCreatingPage implements OnInit {
   }
 
   public AmountChanged() {
-    this.fg.get('amount').setValue(this.parse.ParseToTwoDecimalForInput(this.fg.get('amount').value.toString()));
+    this.fg.get('amountUnit').setValue(this.parse.ParseToTwoDecimalForInput(this.fg.get('amountUnit').value.toString()));
   }
 }
