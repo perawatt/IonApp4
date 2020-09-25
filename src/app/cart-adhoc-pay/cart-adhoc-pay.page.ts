@@ -11,7 +11,7 @@ export class CartAdhocPayPage implements OnInit {
 
   public hasLoaded: string;
   public data$ = Promise.resolve<{}>({});
-  private mcontentid: string = "cart-adhoc-pay.page";
+  private mcontentid: string = "cart-adhoc-pay";
   constructor(private svc: IonManaLib, private parse: ParseDataProvider) { }
 
   ngOnInit() {
