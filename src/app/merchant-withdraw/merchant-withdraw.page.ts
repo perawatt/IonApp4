@@ -62,6 +62,6 @@ export class MerchantWithdrawPage implements OnInit {
   public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
 
   public AmountChanged() {
-    this.fg.get('amount').setValue(this.parse.ParseToTwoDecimalForInput(this.fg.get('amount').value.toString()));
+    this.fg.get('amount').setValue(this.parse.ParseToTwoDecimal(this.fg.get('amount').value));
   }
 }

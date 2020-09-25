@@ -58,11 +58,11 @@ export class CartAdhocCreatingPage implements OnInit {
 
   onSave() {
     if (this.fg.valid) {
-      this.svc.submitFormData(this.mcontentid, this.fg.value, true);
+      this.svc.submitFormData(this.mcontentid, this.fg.value, true);      
     }
   }
 
   public AmountChanged() {
-    this.fg.get('amountUnit').setValue(this.parse.ParseToTwoDecimalForInput(this.fg.get('amountUnit').value.toString()));
+    this.fg.get('amountUnit').setValue(this.parse.ParseToTwoDecimal(this.fg.get('amountUnit').value));
   }
 }

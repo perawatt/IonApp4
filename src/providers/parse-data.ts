@@ -10,7 +10,7 @@ export class ParseDataProvider {
         else return 0;
     }
 
-    public ParseToTwoDecimalForInput(value: string): string {
+    private ParseToTwoDecimalForInput(value: string): string {
         if (value.includes('.')) {
             let spit: string[] = value.split('.', 2);
             if (spit.length > 1) {
