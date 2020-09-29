@@ -19,8 +19,8 @@
             </ion-col>
             <ion-col size="6" class="ion-text-center">
               <div class="content-center">
-                <img *ngIf="data.bizLogo" class="icon circle transaction-img" [src]="data.bizLogo">
-                <img *ngIf="!data.bizLogo" class="icon circle transaction-img" src="assets/imgs/shop-default.png">
+                <img *ngIf="data.logo" class="icon circle transaction-img" [src]="data.logo">
+                <img *ngIf="!data.logo" class="icon circle transaction-img" src="assets/imgs/defaultshop.png">
               </div>
             </ion-col>
           </ion-row>
@@ -32,19 +32,19 @@
             </ion-col>
             <ion-col size="6" class="ion-text-center">
               <ion-label class="ion-text-nowrap">
-                <h3><b>{{ data.bizName }}</b></h3>
+                <h3><b>{{ data.name }}</b></h3>
               </ion-label>
             </ion-col>
           </ion-row>
           <ion-row class="ion-text-center ion-align-items-center">
-            <ion-col size="6" class="ion-text-center">
+            <ion-col size="6" class="ion-text-center ion-no-padding">
               <ion-label class="ion-text-nowrap">
-                <h3><b></b></h3>
+                <h3></h3>
               </ion-label>
             </ion-col>
-            <ion-col size="6" class="ion-text-center">
-              <ion-label class="ion-text-nowrap">                
-                <h3><b><!-- TODO BINDING REF --></b></h3>
+            <ion-col size="6" class="ion-text-center ion-no-padding">
+              <ion-label class="ion-text-nowrap" color="medium">
+                <h3>BillerId id: {{ data.refId }}</h3>
               </ion-label>
             </ion-col>
           </ion-row>
@@ -52,12 +52,12 @@
       </ion-item>
       <ion-item class="ion-text-center" color="tertiary" lines="full">
         <ion-label class="text-red">
-          <h1><b>{{ParseToTwoDecimal(data.totalAmount.amountUnit)| number:'1.2-2'}} {{ data.totalAmount.currency }}</b>
+          <h1><b>{{ParseToTwoDecimal(data.total.amountUnit)| number:'1.2-2'}} {{ data.total.currency }}</b>
           </h1>
         </ion-label>
       </ion-item>
-      <ion-item color="tertiary" class="ion-no-padding" lines="none">
-        <ion-label class="ion-padding-start" color="medium">
+      <ion-item color="tertiary" class="ion-no-padding ion-padding-top" lines="none">
+        <ion-label class="ion-padding-start" color="dark">
           <h3 *ngIf="data.ref1">Ref1 : {{ data.ref1 }}</h3>
           <h3 *ngIf="data.ref2">Ref2 : {{ data.ref2 }}</h3>
         </ion-label>
@@ -69,7 +69,7 @@
         <ion-label>
           <h2><b>รหัสอ้างอิง : {{ data.refCode }}</b></h2>
           <ion-text color="medium">
-            <h3>วันที่ {{ data.createdDateTime | date:'dd/MM/yyyy' }} ({{ data.createdDateTime | date:'H:mm' }})</h3>
+            <h3>วันที่ {{ data.actionDateTime | date:'dd/MM/yyyy' }} ({{ data.actionDateTime | date:'H:mm' }})</h3>
           </ion-text>
         </ion-label>
         <ion-note>
@@ -86,7 +86,7 @@
     <br>
     <ion-label color="medium" class="ion-text-center">
       <h3>
-          <ion-icon name="receipt-outline"></ion-icon>&nbsp;ดูรายละเอียดบิล
+        <ion-icon name="receipt-outline"></ion-icon>&nbsp;ดูรายละเอียดบิล
       </h3>
     </ion-label>
   </ng-container>

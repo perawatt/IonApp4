@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonManaLib } from 'ion-m-lib';
+import { ParseDataProvider } from 'src/providers/parse-data';
 
 @Component({
   selector: 'app-ppay-payment-confirm',
@@ -11,7 +12,7 @@ export class PpayPaymentConfirmPage implements OnInit {
   public hasLoaded: string;
   public data$ = Promise.resolve<{}>({});
   private mcontentid: string = "ppay-payment-confirm";
-  constructor(private svc: IonManaLib) { }
+  constructor(private svc: IonManaLib, private parse: ParseDataProvider) { }
 
   ngOnInit() {
   }
@@ -32,4 +33,6 @@ export class PpayPaymentConfirmPage implements OnInit {
         return this.svc.getApiData(this.mcontentid);
       })
   }
+
+  public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
 }
