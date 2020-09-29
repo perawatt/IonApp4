@@ -17,7 +17,7 @@
       <ion-item button color="tertiary" *ngFor="let item of data.bizBudgets" (click)="onSelectItem(item._id)">
         <ion-label color="medium">
           <ion-text color="dark"><b>{{ item.title }}</b></ion-text>
-          <h3>{{ item.balance }}</h3>
+          <h3>{{ item.balance | number:'1.2-2' }}</h3>
         </ion-label>
       </ion-item>
     </ion-list>
