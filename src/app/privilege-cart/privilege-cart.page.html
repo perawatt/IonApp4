@@ -31,7 +31,7 @@
                   <h2>รวมค่าสินค้า</h2>
                 </ion-label>
               </ion-col>
-              <ion-col class="ion-no-padding ion-text-right">฿{{data.totalPrice | number}}
+              <ion-col class="ion-no-padding ion-text-right">{{data.totalPrice | number:'1.2-2'}} THB
               </ion-col>
             </ion-row>
             <ion-row>
@@ -40,7 +40,7 @@
                   <h2>ส่วนลด</h2>
                 </ion-label>
               </ion-col>
-              <ion-col class="ion-no-padding ion-text-right">฿{{data.discount | number}}
+              <ion-col class="ion-no-padding ion-text-right">{{data.discount| number:'1.2-2'}} THB
               </ion-col>
             </ion-row>
             <ion-row>
@@ -50,7 +50,7 @@
                 </ion-label>
               </ion-col>
               <ion-col class="ion-no-padding ion-text-right">
-                <ion-text color="danger"><b>฿{{data.grandTotal | number}}</b>
+                <ion-text color="danger"><b>{{data.grandTotal | number:'1.2-2'}}</b>
                 </ion-text>
               </ion-col>
             </ion-row>

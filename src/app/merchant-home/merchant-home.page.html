@@ -12,7 +12,7 @@
         <img src="assets/imgs/balance.png" slot="start" style="width: 36px;height: 26px;">
         <ion-label>
           <h3>ยอดคงเหลือ</h3>
-          <b>{{ParseToTwoDecimal(data.merchantAccount.balance)| number:'1.2-2'}} บาท</b>
+          <b>{{ParseToTwoDecimal(data.merchantAccount.balance)| number:'1.2-2'}} THB</b>
         </ion-label>
         <ion-note color="dark" slot="end"><ion-icon name="star" color="danger"></ion-icon> Lite</ion-note>
       </ion-item>
@@ -188,7 +188,7 @@
       <ion-item button color="tertiary" lines="full" class="ion-no-padding">
         <img class="ion-padding-start" src="assets/imgs/balance.png" slot="start" style="width: 36px;height: 26px;">
         <ion-label>
-          <b>555 บาท</b>
+          <b>555 THB</b>
         </ion-label>
         <ion-label class="ion-text-right" color="medium">
           <p>ดูบัญชี</p>
@@ -310,7 +310,7 @@
       <ion-item button color="tertiary" lines="full" class="ion-no-padding">
         <img class="ion-padding-start" src="assets/imgs/balance.png" slot="start" style="width: 36px;height: 26px;">
         <ion-label>
-          <b>{{ data.balance }}</b>
+          <b>{{ data.balance | number:'1.2-2' }}</b>
         </ion-label>
         <ion-label class="ion-text-right" color="medium" (click)="onSelectTransaction(data._id)">
           <p>ดูบัญชี</p>
