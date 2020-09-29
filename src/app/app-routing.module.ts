@@ -391,7 +391,11 @@ const routes: Routes = [
   {
     path: 'merchant-additional',
     loadChildren: () => import('./merchant-additional/merchant-additional.module').then(m => m.MerchantAdditionalPageModule)
+  },  {
+    path: 'ppay-payment-completed',
+    loadChildren: () => import('./ppay-payment-completed/ppay-payment-completed.module').then( m => m.PpayPaymentCompletedPageModule)
   },
+
 
 
 
