@@ -10,7 +10,8 @@
     <form [formGroup]="fg" (ngSubmit)="onSave()">
       <ion-list lines="none">
         <ion-item color="tertiary" class="ion-margin-top">
-          <img src="assets/imgs/defaultshop.png" class="logo-l circle center ion-margin-top">
+          <img *ngIf="data.logo" class="logo-l circle center ion-margin-top" [src]="data.logo" >
+          <img *ngIf="!data.logo" class="logo-l circle center ion-margin-top" src="assets/imgs/defaultshop.png">
         </ion-item>
         <ion-item color="tertiary" class="ion-text-center">
           <ion-label>
