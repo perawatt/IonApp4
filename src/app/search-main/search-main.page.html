@@ -58,7 +58,7 @@
                 <img height="12" [src]="getStatusIcon(item.category)" />
               </ion-col>
               <ion-col  size="11">
-                <div style="overflow-x: scroll;">
+                <div class="hide-scroll-x">
                   <ion-chip *ngFor="let tag of item.tags" (click)="onSelectSearch(tag)" size="tiny"
                     class="ion-no-margin ion-margin-end ion-no-padding ion-padding-horizontal chip-small" outline
                     color="dark">
