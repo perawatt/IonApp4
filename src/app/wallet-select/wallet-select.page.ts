@@ -22,7 +22,7 @@ export class WalletSelectPage implements OnInit {
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then(it => {
-      this.hasLoaded = (it && it.length > 0) ? "y" : "n";
+      this.hasLoaded = (it && it.walletItems.length > 0) ? "y" : "n";
     });
   }
 
