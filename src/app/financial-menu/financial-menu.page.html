@@ -28,13 +28,14 @@
           </ion-col>
           <ion-col class="ion-margin ion-text-center">
             <div class="financial-circle" (click)="onCurrentWallet()">
-              <b class="ion-text-nowrap">{{data.walletItem.name}}</b>
-              <br>
-              <b>THB</b>
-              <br>
-              <b class="text-red">{{ ParseToTwoDecimal(data.walletItem.balance) | number:'1.2-2' }}</b>
-              <br>
-              <img class="icon center ion-no-margin" width="20" height="20" src="assets/imgs/walletgray.png" />
+              <ion-label>
+                <h2><b class="ion-text-nowrap">{{data.name}}</b></h2>                
+                <ion-text color="danger">
+                  <h3>{{data.currency}}</h3>
+                  <h3>{{ ParseToTwoDecimal(data.balance) | number:'1.2-2' }}</h3>
+                </ion-text>
+              </ion-label>
+              <img class="icon center ion-no-margin ion-margin-top" width="20" height="20" src="assets/imgs/changewallet.png" />
             </div>
           </ion-col>
           <ion-col>
@@ -68,62 +69,65 @@
 
   <ng-container *ngIf="!hasLoaded">
     <ion-card lines="none" class="content-full content-vertical-center ion-no-padding ion-align-items-center"
-    color="tertiary">
-    <ion-grid class="ion-no-margin ion-no-padding">
-      <ion-row class="ion-text-center">
-        <ion-col>
-          <img class="icon" width="50" height="50" src="assets/imgs/fntransfer.png" (click)="onTransfer()" />
-          <br>
-          <ion-label>รับ-โอน</ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center">
-        <ion-col>
-          <div class="ion-float-right ion-text-center">
-            <img class="icon ion-text-center" width="50" height="50" src="assets/imgs/fndeposit.png"
-              (click)="onDeposit()" />
+      color="tertiary">
+      <ion-grid class="ion-no-margin ion-no-padding">
+        <ion-row class="ion-text-center">
+          <ion-col>
+            <img class="icon" width="50" height="50" src="assets/imgs/fntransfer.png" (click)="onTransfer()" />
             <br>
-            <ion-label>เติมเงิน</ion-label>
-          </div>
-        </ion-col>
-        <ion-col class="ion-margin ion-text-center">
-          <div class="financial-circle" (click)="onCurrentWallet()">
-            <b class="ion-text-nowrap"></b>
-            <br>
-            <b>กรุณารอสักครู่</b>
-            <br>
-            <b class="text-red"></b>
-            <br>
-            <img class="icon center ion-no-margin" width="20" height="20" src="assets/imgs/walletgray.png" />
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="ion-float-left ion-text-center">
-            <img class="icon" width="50" height="50" src="assets/imgs/fnwithdraw.png" (click)="onWithdraw()" />
-            <br>
-            <ion-label>ถอนเงิน</ion-label>
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row text-center>
-        <ion-col>
-          <div class=" ion-float-right ion-text-center">
-            <img class="icon" width="50" height="50" src="assets/imgs/fnwallet.png" (click)="onWallets()" />
-            <br>
-            <ion-label>กระเป๋า</ion-label>
-          </div>
-        </ion-col>
-        <ion-col size="2"></ion-col>
-        <ion-col>
-          <div class="ion-float-left ion-text-center">
-            <img class="icon" width="50" height="50" src="assets/imgs/fnaccount.png" (click)="onManage()" />
-            <br>
-            <ion-label>จัดการบัญชี</ion-label>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
+            <ion-label>รับ-โอน</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center">
+          <ion-col>
+            <div class="ion-float-right ion-text-center">
+              <img class="icon ion-text-center" width="50" height="50" src="assets/imgs/fndeposit.png"
+                (click)="onDeposit()" />
+              <br>
+              <ion-label>เติมเงิน</ion-label>
+            </div>
+          </ion-col>
+
+          <ion-col class="ion-margin ion-text-center">
+            <div class="financial-circle" (click)="onCurrentWallet()">
+              <ion-label>
+                <h2><b class="ion-text-nowrap">กรุณารอสักครู่</b></h2>                
+                <ion-text color="danger">
+                  <h3>&nbsp;</h3>
+                  <h3>&nbsp;</h3>
+                </ion-text>
+              </ion-label>
+              <img class="icon center ion-no-margin ion-margin-top" width="20" height="20" src="assets/imgs/changewallet.png" />
+            </div>
+          </ion-col>
+
+          <ion-col>
+            <div class="ion-float-left ion-text-center">
+              <img class="icon" width="50" height="50" src="assets/imgs/fnwithdraw.png" (click)="onWithdraw()" />
+              <br>
+              <ion-label>ถอนเงิน</ion-label>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row text-center>
+          <ion-col>
+            <div class=" ion-float-right ion-text-center">
+              <img class="icon" width="50" height="50" src="assets/imgs/fnwallet.png" (click)="onWallets()" />
+              <br>
+              <ion-label>กระเป๋า</ion-label>
+            </div>
+          </ion-col>
+          <ion-col size="2"></ion-col>
+          <ion-col>
+            <div class="ion-float-left ion-text-center">
+              <img class="icon" width="50" height="50" src="assets/imgs/fnaccount.png" (click)="onManage()" />
+              <br>
+              <ion-label>จัดการบัญชี</ion-label>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
   </ng-container>
 
 </ion-content>
