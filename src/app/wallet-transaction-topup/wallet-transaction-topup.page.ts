@@ -10,7 +10,7 @@ import { ParseDataProvider } from '../../providers/parse-data';
 export class WalletTransactionTopupPage implements OnInit {
 
   public hasLoaded: string;
-  public data$;
+  public data$ = Promise.resolve<{}>({});
   private mcontentid: string = "wallet-transaction-topup";
   constructor(private svc: IonManaLib, private parse: ParseDataProvider) { }
 
@@ -22,6 +22,7 @@ export class WalletTransactionTopupPage implements OnInit {
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then(it => {
+      this.svc.initPageApi(this.mcontentid);
       this.hasLoaded = it ? "y" : "n";
     });
   }

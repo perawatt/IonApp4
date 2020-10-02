@@ -10,18 +10,19 @@ import { ParseDataProvider } from '../../providers/parse-data';
 export class WalletTransactionWithdrawPage implements OnInit {
 
   public hasLoaded: string;
-  public data$;
+  public data$ = Promise.resolve<{}>({});
   private mcontentid: string = "wallet-transaction-withdraw";
   constructor(private svc: IonManaLib, private parse: ParseDataProvider) { }
 
   ngOnInit() {
   }
-  
+
   ionViewDidEnter() {
     this.hasLoaded = null;
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then(it => {
+      this.svc.initPageApi(this.mcontentid);
       this.hasLoaded = it ? "y" : "n";
     });
   }
