@@ -395,6 +395,10 @@ const routes: Routes = [
     path: 'ppay-payment-completed',
     loadChildren: () => import('./ppay-payment-completed/ppay-payment-completed.module').then( m => m.PpayPaymentCompletedPageModule)
   },
+  {
+    path: 'wallet-transaction-receivemoney',
+    loadChildren: () => import('./wallet-transaction-receivemoney/wallet-transaction-receivemoney.module').then( m => m.WalletTransactionReceivemoneyPageModule)
+  },
 
 
 
