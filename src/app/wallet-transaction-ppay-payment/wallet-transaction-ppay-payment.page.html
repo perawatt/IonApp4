@@ -6,8 +6,7 @@
 
 <ion-content class="transaction ion-padding-top" mode="ios" color="tertiary">
 
-  <!-- <ng-container *ngIf="data$ | async as data"> -->
-  <ng-container *ngIf="true">
+  <ng-container *ngIf="data$ | async as data">
 
     <ion-card class="ion-padding-top" color="tertiary">
       <ion-item class="ion-text-center" color="tertiary" lines="none">
@@ -21,19 +20,20 @@
             </ion-col>
             <ion-col size="6" class="ion-text-center">
               <div class="content-center">
-                <img class="icon circle transaction-img" src="assets/imgs/defaultshop.png">
+                <img *ngIf="data.thruWalletIcon" class="icon circle transaction-img" [src]="data.thruWalletIcon">
+                <img *ngIf="!data.thruWalletIcon" class="icon circle transaction-img" src="assets/imgs/defaultshop.png">
               </div>
             </ion-col>
           </ion-row>
           <ion-row class="ion-text-center ion-align-items-center">
             <ion-col size="6" class="ion-text-center">
               <ion-label class="ion-text-nowrap">
-                <h3><b>wallet name</b></h3>
+                <h3><b>{{ data.fromWalletName }}</b></h3>
               </ion-label>
             </ion-col>
             <ion-col size="6" class="ion-text-center">
               <ion-label class="ion-text-nowrap">
-                <h3><b>shop name</b></h3>
+                <h3><b>{{ data.thruWalletName }}</b></h3>
               </ion-label>
             </ion-col>
           </ion-row>
@@ -45,32 +45,33 @@
             </ion-col>
             <ion-col size="6" class="ion-text-center ion-no-padding">
               <ion-label class="ion-text-nowrap" color="medium">
-                <h3>BillerId id: ฟหกหฟกฟห</h3>
+                <h3>BillerId id: {{ data.billerId }}</h3>
               </ion-label>
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-item>
       <ion-item class="ion-text-center" color="tertiary" lines="full">
-        <ion-label class="text-red">
-          <h1><b>10.00 THB</b></h1>
+        <ion-label color="danger">
+          <h1><b>{{ParseToTwoDecimal(data.total)| number:'1.2-2'}}
+              {{ data.currency }}</b>
+          </h1>
         </ion-label>
       </ion-item>
       <ion-item color="tertiary" class="ion-no-padding ion-padding-top" *ngIf="true" lines="none">
         <ion-label class="ion-padding-start" color="dark">
-          <h3 *ngIf="true">Ref1 : asdasdasdasd</h3>
-          <h3 *ngIf="true">Ref2 : asdasdas asdasd</h3>
+          <h3 *ngIf="true">Ref1 : {{ data.ref1 }}</h3>
+          <h3 *ngIf="true">Ref2 : {{ data.ref2 }}</h3>
         </ion-label>
       </ion-item>
       <ion-item color="tertiary" class="ion-padding-vertical" lines="full">
         <ion-avatar slot="start" class="avatar-m">
-          <img class="non-circle"
-            src="https://chart.googleapis.com/chart?cht=qr&chl=BINDING_HERE&chs=400x400&choe=UTF-8&chld=L%7C2%27%20rel=%27nofollow" />
+          <img class="non-circle" [src]="data.qrUrl" />
         </ion-avatar>
         <ion-label>
-          <h2><b>รหัสอ้างอิง : ad1100</b></h2>
+          <h2><b>รหัสอ้างอิง : {{ data.refCode }}</b></h2>
           <ion-text color="medium">
-            <h3>วันที่ 01/08/2020 (12.00)</h3>
+            <h3>วันที่ {{ data.actionDateTime | date:'dd/MM/yyyy (H:mm)' }}</h3>
           </ion-text>
         </ion-label>
         <ion-note>
@@ -82,7 +83,7 @@
         </ion-note>
       </ion-item>
       <ion-item class="ion-no-padding" color="tertiary" lines="none">
-        <ion-grid class="ion-padding">
+        <ion-grid class="ion-no-padding ion-padding-start">
           <ion-row>
             <ion-col class="ion-no-padding">
               <ion-label>
@@ -98,7 +99,7 @@
             </ion-col>
             <ion-col class="ion-no-padding ion-text-right">
               <ion-label>
-                <h3>0.00 THB</h3>
+                <h3>{{ParseToTwoDecimal(data.amount)| number:'1.2-2'}} {{ data.currency }}</h3>
               </ion-label>
             </ion-col>
           </ion-row>
@@ -110,7 +111,7 @@
             </ion-col>
             <ion-col class="ion-no-padding ion-text-right">
               <ion-label>
-                <h3>0.00 THB</h3>
+                <h3>{{ParseToTwoDecimal(data.fee)| number:'1.2-2'}} {{ data.currency }}</h3>
               </ion-label>
             </ion-col>
           </ion-row>
@@ -121,18 +122,19 @@
               </ion-label>
             </ion-col>
             <ion-col class="ion-no-padding ion-text-right">
-              <ion-label>
-                <h3>0.00 THB</h3>
-              </ion-label>
+              <ion-text>
+                <ion-label>
+                  <h3>{{ParseToTwoDecimal(data.total)| number:'1.2-2'}} {{ data.currency }}</h3>
+                </ion-label>
+              </ion-text>
             </ion-col>
           </ion-row>
         </ion-grid>
-      </ion-item>      
+      </ion-item>
     </ion-card>
   </ng-container>
 
-  <!-- <ng-container *ngIf="!hasLoaded"> -->
-  <ng-container *ngIf="false">
+  <ng-container *ngIf="!hasLoaded">
 
     <ion-row>
       <ion-col size="6">

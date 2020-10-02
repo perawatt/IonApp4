@@ -39,7 +39,7 @@
         </ion-grid>
       </ion-item>
       <ion-item class="ion-text-center" color="tertiary" lines="full">
-        <ion-label class="text-red">
+        <ion-label color="danger">
           <h1><b>{{ParseToTwoDecimal(data.totalAmount?.amountUnit)| number:'1.2-2'}} {{ data.totalAmount?.currency }}</b>
           </h1>
         </ion-label>
@@ -51,7 +51,7 @@
         <ion-label>
           <h2><b>รหัสอ้างอิง : {{ data.refCode }}</b></h2>
           <ion-text color="medium">
-            <h3>วันที่ {{ data.createdDateTime | date:'dd/MM/yyyy' }} ({{ data.createdDateTime | date:'H:mm' }})</h3>
+            <h3>วันที่ {{ data.actionDateTime | date:'dd/MM/yyyy (H:mm)' }}</h3>
           </ion-text>
         </ion-label>
         <ion-note>
