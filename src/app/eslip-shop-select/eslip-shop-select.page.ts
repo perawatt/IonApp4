@@ -15,6 +15,10 @@ export class EslipShopSelectPage implements OnInit {
 
   constructor(private router: Router, private svc: IonManaLib) { }
 
+  ionViewDidEnter(){
+    this.svc.initPageApi(this.mcontentid);
+  }
+
   ngOnInit() {
     this.hasLoaded = null;
     let load$ = this.loadData$();
