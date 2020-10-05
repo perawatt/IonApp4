@@ -399,6 +399,10 @@ const routes: Routes = [
     path: 'wallet-transaction-receivemoney',
     loadChildren: () => import('./wallet-transaction-receivemoney/wallet-transaction-receivemoney.module').then( m => m.WalletTransactionReceivemoneyPageModule)
   },
+  {
+    path: 'merchant-withdraw-completed',
+    loadChildren: () => import('./merchant-withdraw-completed/merchant-withdraw-completed.module').then( m => m.MerchantWithdrawCompletedPageModule)
+  },
 
 
 
