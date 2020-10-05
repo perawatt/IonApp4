@@ -45,17 +45,23 @@ export class MerchantWithdrawPage implements OnInit {
       })
   }
   
+  // onSave() {
+  //   if (this.fg.valid) {
+  //     var topupAmount = this.ParseToTwoDecimal(this.fg.get('amount').value);
+  //     let message = new confirmMessage("",
+  //       "<span style=\"color: Black; \">คุณต้องการเติมเงินเข้าร้าน</span>\r\n\r\n[status]\r\n\r\n![operation_icon](assets/imgs/menutopup.png)\r\n\r\n<span style=\"color: Black; \">ธุรกิจของคุณ</span>\r\n\r\n<span style=\"color: Black; \">จำนวน</span><span style=\"color: Red; font-weight: bold\"> ฿" + topupAmount + "</span>\r\n\r\n"
+  //     );
+  //     this.svc.confirmForm(message).then(resolve => {
+  //       if (resolve.isConfirm) {
+  //         this.svc.submitFormData(this.mcontentid, this.fg.value, true);
+  //       }
+  //     });
+  //   }
+  // }
+
   onSave() {
     if (this.fg.valid) {
-      var topupAmount = this.ParseToTwoDecimal(this.fg.get('amount').value);
-      let message = new confirmMessage("",
-        "<span style=\"color: Black; \">คุณต้องการเติมเงินเข้าร้าน</span>\r\n\r\n[status]\r\n\r\n![operation_icon](assets/imgs/menutopup.png)\r\n\r\n<span style=\"color: Black; \">ธุรกิจของคุณ</span>\r\n\r\n<span style=\"color: Black; \">จำนวน</span><span style=\"color: Red; font-weight: bold\"> ฿" + topupAmount + "</span>\r\n\r\n"
-      );
-      this.svc.confirmForm(message).then(resolve => {
-        if (resolve.isConfirm) {
-          this.svc.submitFormData(this.mcontentid, this.fg.value, true);
-        }
-      });
+      this.svc.submitFormData(this.mcontentid, this.fg.value, true);      
     }
   }
 
