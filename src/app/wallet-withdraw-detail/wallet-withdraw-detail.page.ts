@@ -15,7 +15,7 @@ export class WalletWithdrawDetailPage implements OnInit {
   private mcontentid = "wallet-withdraw-detail";
   constructor(private svc: IonManaLib, private fb: FormBuilder, private parse: ParseDataProvider) {
     this.fg = this.fb.group({
-      'promptpayType': ["pid", Validators.required],
+      'promptpayType': ["mobile", Validators.required],
       'promptpayId': null,
       'amount': [null, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
     }, { validator: this.FormValidator });
