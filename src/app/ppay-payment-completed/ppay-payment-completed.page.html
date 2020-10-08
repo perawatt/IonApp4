@@ -97,7 +97,9 @@
         <ion-note>
           <ion-label>
             <h3>
-              <ion-icon name="share-outline"></ion-icon>&nbsp;แชร์
+              <a class="link-medium" [href]="data.shareUrl">
+                <ion-icon name="share-outline"></ion-icon>&nbsp;แชร์
+              </a>
             </h3>
           </ion-label>
         </ion-note>
@@ -108,7 +110,9 @@
     <br>
     <ion-label color="medium" class="ion-text-center">
       <h3>
-        <ion-icon name="receipt-outline"></ion-icon>&nbsp;ดูรายละเอียดบิล
+        <a class="link-medium" [href]="data.historyUrl">
+          <ion-icon name="receipt-outline"></ion-icon>&nbsp;ดูรายละเอียดบิล
+        </a>
       </h3>
     </ion-label>
   </ng-container>

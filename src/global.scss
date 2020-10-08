@@ -259,6 +259,11 @@ H3 ion-skeleton-text {
 .text-hidden{
     overflow: hidden;
 }
+
+a.link-medium{
+    text-decoration: none !important;
+    color: var(--ion-color-medium) !important;
+}
 // Fonts
 // --------------------------------------------------
 @font-face {
