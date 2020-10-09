@@ -42,6 +42,8 @@ export class WalletDetailPage implements OnInit {
     switch (txType.toLowerCase()) {
       case "paycart": return "ซื้อของ";
       case "payment": return "ซื้อของ";
+      case "ppaypayment": return "ซื้อของ";
+      case "adhoc": return "ซื้อของ";
       case "payback": return "เงินเข้าบัญชี";
       case "deposit": return "เติมเงิน";
       case "withdraw": return "ถอนเงิน";
@@ -56,6 +58,8 @@ export class WalletDetailPage implements OnInit {
     switch (txType.toLowerCase()) {
       case "paycart": return "assets/imgs/txshop.png";
       case "payment": return "assets/imgs/txshop.png";
+      case "ppaypayment": return "assets/imgs/txshop.png";
+      case "adhoc": return "assets/imgs/txshop.png";
       case "payback": return "assets/imgs/txrin.png";
       case "deposit": return "assets/imgs/txdeposit.png";
       case "withdraw": return "assets/imgs/txwithdraw.png";
