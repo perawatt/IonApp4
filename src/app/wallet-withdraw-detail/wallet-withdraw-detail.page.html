@@ -26,8 +26,8 @@
       <ion-item color="tertiary" lines="inset">
         <ion-select class="ion-no-padding ion-padding-end ion-select-full" text-left okText="ตกลง" cancelText="ยกเลิก"
           interface="action-sheet" formControlName="promptpayType">
-          <ion-select-option value="pid">เลขบัตรประชาชน</ion-select-option>
           <ion-select-option value="mobile">เบอร์โทรศัพท์</ion-select-option>
+          <ion-select-option value="pid">เลขบัตรประชาชน</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item color="tertiary" lines="inset" *ngIf="fg.get('promptpayType').value != 'qr'">
