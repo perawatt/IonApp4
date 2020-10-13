@@ -18,8 +18,8 @@
                 <ion-text color="medium">
                   <p>ยอดเงินคงเหลือ</p>
                 </ion-text>
-                <h2 color="tertiary"><b>{{ParseToTwoDecimal(data.merchantAccount?.amountUnit)| number:'1.2-2'}}
-                  {{ data.merchantAccount?.currency }</b>
+                <h2 color="tertiary"><b>{{ParseToTwoDecimal(data.merchantAccount?.balance?.amountUnit)| number:'1.2-2'}}
+                  {{ data.merchantAccount?.balance?.currency }}</b>
                 </h2>
               </ion-label>
               <ion-icon class="right-arrow" name="chevron-forward-sharp"></ion-icon>
