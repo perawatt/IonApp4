@@ -51,7 +51,7 @@ export class MerchantSelectPage implements OnInit {
     this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizdtl-create");
   }
 
-  public onSelectItem(endpointId: string) {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizdtl-" + endpointId);
+  public onSelectItem(endpointId: string, menuState: string) {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizdtl-" + endpointId + "$" + menuState);
   }
 }

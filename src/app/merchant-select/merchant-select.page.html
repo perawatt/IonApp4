@@ -13,7 +13,7 @@
       <!-- TODO: implement onSelect -->
       <ion-item button detail="false" color="tertiary" class="ion-margin-bottom"
       *ngFor="let bizAccount of data.bizAccounts"
-      (click)="onSelectItem(bizAccount._id)">
+      (click)="onSelectItem(bizAccount._id,bizAccount.menuState)">
         <ion-avatar slot="start">
           <img *ngIf="bizAccount.logo" [src]="bizAccount.logo" />
           <img *ngIf="!bizAccount.logo" src="assets/imgs/defaultshop.png" />

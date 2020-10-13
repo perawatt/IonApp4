@@ -13,27 +13,35 @@ export class MerchantWithdrawPage implements OnInit {
   public hasLoaded: string;
   public data$ = Promise.resolve<{}>({});
   public fg: FormGroup;
+  public selectedWallet: number;
+  public walletDisplayName: string;
+  public walletName: string;
   private mcontentid: string = "merchant-withdraw";
-  
-  constructor(private svc: IonManaLib, private parse: ParseDataProvider, private fb: FormBuilder) {
-  this.fg = this.fb.group({
-    'amount': [null, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
-  });
 
-  this.fg.valueChanges.subscribe(_ => {
-    this.svc.validForm(this.fg.valid)
-  });
+  constructor(private svc: IonManaLib, private parse: ParseDataProvider, private fb: FormBuilder) {
+    this.fg = this.fb.group({
+      'amount': [null, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
+      'selectedWallet':[null, Validators.required],
+    });
+
+    this.fg.valueChanges.subscribe(_ => {
+      this.svc.validForm(this.fg.valid)
+    });
   }
 
   ngOnInit() {
   }
-  
+
   ionViewDidEnter() {
     this.hasLoaded = null;
     let load$ = this.loadData$();
     this.data$ = load$;
-    load$.then(it => {
+    load$.then(it => {      
       this.svc.initPageApi(this.mcontentid);
+      // TODO : Implement change wallet
+      this.fg.get("selectedWallet").setValue(it.wallets[0].walletName);      
+      this.walletDisplayName = it.wallets[0].ownerDisplayName;   
+      this.walletName = it.wallets[0].walletName;
       this.hasLoaded = it ? "y" : "n";
     });
   }
@@ -44,7 +52,7 @@ export class MerchantWithdrawPage implements OnInit {
         return this.svc.getApiData(this.mcontentid);
       })
   }
-  
+
   // onSave() {
   //   if (this.fg.valid) {
   //     var topupAmount = this.ParseToTwoDecimal(this.fg.get('amount').value);
@@ -61,7 +69,7 @@ export class MerchantWithdrawPage implements OnInit {
 
   onSave() {
     if (this.fg.valid) {
-      this.svc.submitFormData(this.mcontentid, this.fg.value, true);      
+      this.svc.submitFormData(this.mcontentid, this.fg.value, true);
     }
   }
 
