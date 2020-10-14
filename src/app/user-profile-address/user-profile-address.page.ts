@@ -38,7 +38,7 @@ export class UserProfileAddressPage implements OnInit {
     load$.then(it => {      
       this.shippingAddressIndex = it.addresses.findIndex(addrs => addrs.address._id == it.shippingAddressId);  
       this.billingAddressIndex = it.addresses.findIndex(addrs => addrs.address._id == it.billingAddressId);  
-      this.hasLoaded = it.addresses == null || it.addresses.length == 0 ? "y" : "n";   
+      this.hasLoaded = it.addresses == null || it.addresses.length == 0 ? "n" : "y";   
     });
   }
 
