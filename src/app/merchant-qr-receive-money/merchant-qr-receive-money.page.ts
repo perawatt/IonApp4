@@ -29,7 +29,7 @@ export class MerchantQrReceiveMoneyPage implements OnInit {
   private loadData$() {
     return this.svc.initPageApi(this.mcontentid)
       .then(_ => {
-        // return this.svc.callApiGet(this.mcontentid,"https://mana-facing-dev.azurewebsites.net/BizAccount/637334893975177162/qrpayment")
+        // return this.svc.callApiGet(this.mcontentid,"http://mana-facing-dev.azurewebsites.net/BizAccount/637374890335148620/qrpayment");
         return this.svc.getApiData(this.mcontentid);
       })
   }
