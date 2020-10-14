@@ -39,7 +39,7 @@ export class MerchantWithdrawPage implements OnInit {
     load$.then(it => {
       this.svc.initPageApi(this.mcontentid);
       // TODO : Implement change wallet
-      this.fg.get("selectedWallet").setValue({ "walletName": it.wallets[0].walletName });
+      this.fg.get("selectedWallet").setValue(it.wallets[0].walletName); 
       this.walletDisplayName = it.wallets[0].ownerDisplayName;
       this.walletName = it.wallets[0].walletName;
       this.hasLoaded = it ? "y" : "n";
