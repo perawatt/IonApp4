@@ -403,6 +403,10 @@ const routes: Routes = [
     path: 'merchant-withdraw-completed',
     loadChildren: () => import('./merchant-withdraw-completed/merchant-withdraw-completed.module').then( m => m.MerchantWithdrawCompletedPageModule)
   },
+  {
+    path: 'merchant-home-pending',
+    loadChildren: () => import('./merchant-home-pending/merchant-home-pending.module').then( m => m.MerchantHomePendingPageModule)
+  },
 
 
 
