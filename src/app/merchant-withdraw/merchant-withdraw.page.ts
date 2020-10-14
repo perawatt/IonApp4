@@ -21,7 +21,7 @@ export class MerchantWithdrawPage implements OnInit {
   constructor(private svc: IonManaLib, private parse: ParseDataProvider, private fb: FormBuilder) {
     this.fg = this.fb.group({
       'amount': [null, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
-      'selectedWallet':[null, Validators.required],
+      'selectedWallet': [null, Validators.required],
     });
 
     this.fg.valueChanges.subscribe(_ => {
@@ -36,11 +36,11 @@ export class MerchantWithdrawPage implements OnInit {
     this.hasLoaded = null;
     let load$ = this.loadData$();
     this.data$ = load$;
-    load$.then(it => {      
+    load$.then(it => {
       this.svc.initPageApi(this.mcontentid);
       // TODO : Implement change wallet
-      this.fg.get("selectedWallet").setValue(it.wallets[0].walletName);      
-      this.walletDisplayName = it.wallets[0].ownerDisplayName;   
+      this.fg.get("selectedWallet").setValue({ "walletName": it.wallets[0].walletName });
+      this.walletDisplayName = it.wallets[0].ownerDisplayName;
       this.walletName = it.wallets[0].walletName;
       this.hasLoaded = it ? "y" : "n";
     });
