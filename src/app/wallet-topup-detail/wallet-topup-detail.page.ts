@@ -29,7 +29,7 @@ export class WalletTopupDetailPage implements OnInit {
 
   ngOnInit() {
   }
-  
+
   ionViewDidEnter() {
     this.svc.initPageApi(this.mcontentid);
     this.hasLoaded = null;
@@ -50,6 +50,7 @@ export class WalletTopupDetailPage implements OnInit {
 
   onSave() {
     if (this.fg.valid) {
+      this.parse.ConvertFormGropuValueToNumber(this.fg, ['amount'])
       this.svc.submitFormData(this.mcontentid, this.fg.value, true);
     }
   }
