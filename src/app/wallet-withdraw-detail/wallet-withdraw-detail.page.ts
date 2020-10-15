@@ -17,7 +17,7 @@ export class WalletWithdrawDetailPage implements OnInit {
     this.fg = this.fb.group({
       'promptpayType': ["mobile", Validators.required],
       'promptpayId': null,
-      'amount': [null, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
+      'amountUnit': [null, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
     }, { validator: this.FormValidator });
 
     this.fg.valueChanges.subscribe(_ => {
@@ -36,7 +36,7 @@ export class WalletWithdrawDetailPage implements OnInit {
 
   onSave() {
     if (this.fg.valid) {
-      this.parse.ConvertFormGropuValueToTypeNumber(this.fg, ['amount']);
+      this.parse.ConvertFormGropuValueToTypeNumber(this.fg, ['amountUnit']);
       this.svc.submitFormData(this.mcontentid, this.fg.value, true);
     }
   }
@@ -61,6 +61,6 @@ export class WalletWithdrawDetailPage implements OnInit {
 
 
   public AmountChanged(event) {
-    this.fg.get('amount').setValue(this.parse.InputToDecimal(event.target.value))
+    this.fg.get('amountUnit').setValue(this.parse.InputToDecimal(event.target.value))
   }
 }

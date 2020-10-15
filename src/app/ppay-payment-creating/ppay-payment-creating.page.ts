@@ -16,7 +16,7 @@ export class PpayPaymentCreatingPage implements OnInit {
   private mcontentid: string = "ppay-payment-creating";
   constructor(private svc: IonManaLib, private fb: FormBuilder, private parse: ParseDataProvider) {
     this.fg = this.fb.group({
-      'amount': [null, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
+      'amountUnit': [null, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
       'currency': null,
       'code': null
     });
@@ -37,7 +37,7 @@ export class PpayPaymentCreatingPage implements OnInit {
     // load$.then(it => {
     //   this.svc.initPageApi(this.mcontentid);
     //   this.hasLoaded = it ? "y" : "n";
-    //   this.fg.get('amount').setValue(it.amount);
+    //   this.fg.get('amountUnit').setValue(it.amountUnit);
     // });
   }
 
@@ -45,7 +45,7 @@ export class PpayPaymentCreatingPage implements OnInit {
     let load$ = this.svc.callApiGet(this.mcontentid, state);
     this.data$ = load$;
     load$.then(it => {
-      this.fg.get('amount').setValue(it.amount);
+      this.fg.get('amountUnit').setValue(it.amountUnit);
       this.fg.get('code').setValue(it.code);
       this.fg.get("currency").setValue("THB");
       this.hasLoaded = it ? "y" : "n";
@@ -61,7 +61,7 @@ export class PpayPaymentCreatingPage implements OnInit {
 
   onSave() {
     if (this.fg.valid) {
-      this.parse.ConvertFormGropuValueToTypeNumber(this.fg, ['amount']);
+      this.parse.ConvertFormGropuValueToTypeNumber(this.fg, ['amountUnit']);
       this.svc.submitFormData(this.mcontentid, this.fg.value, true);
     }
   }
@@ -69,6 +69,6 @@ export class PpayPaymentCreatingPage implements OnInit {
   public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
 
   public AmountChanged(event) {
-    this.fg.get('amount').setValue(this.parse.InputToDecimal(event.target.value))
+    this.fg.get('amountUnit').setValue(this.parse.InputToDecimal(event.target.value))
   }
 }

@@ -20,7 +20,7 @@ export class MerchantWithdrawPage implements OnInit {
 
   constructor(private svc: IonManaLib, private parse: ParseDataProvider, private fb: FormBuilder) {
     this.fg = this.fb.group({
-      'amount': [null, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
+      'amountUnit': [null, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
       'selectedWallet': [null, Validators.required],
     });
 
@@ -69,7 +69,7 @@ export class MerchantWithdrawPage implements OnInit {
 
   onSave() {
     if (this.fg.valid) {
-      this.parse.ConvertFormGropuValueToTypeNumber(this.fg, ['amount']);
+      this.parse.ConvertFormGropuValueToTypeNumber(this.fg, ['amountUnit']);
       this.svc.submitFormData(this.mcontentid, this.fg.value, true);
     }
   }
@@ -77,6 +77,6 @@ export class MerchantWithdrawPage implements OnInit {
   public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
 
   public AmountChanged(event) {
-    this.fg.get('amount').setValue(this.parse.InputToDecimal(event.target.value))
+    this.fg.get('amountUnit').setValue(this.parse.InputToDecimal(event.target.value))
   }
 }
