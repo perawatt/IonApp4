@@ -12,6 +12,7 @@ export class WalletWithdrawDetailPage implements OnInit {
 
   public hasLoaded: string;
   public fg: FormGroup;
+  public data$ = Promise.resolve<{}>({});
   private mcontentid = "wallet-withdraw-detail";
   constructor(private svc: IonManaLib, private fb: FormBuilder, private parse: ParseDataProvider) {
     this.fg = this.fb.group({
@@ -30,8 +31,20 @@ export class WalletWithdrawDetailPage implements OnInit {
 
   ionViewDidEnter() {
     this.svc.initPageApi(this.mcontentid);
-    // TODO: Get default wallet from server
+    this.hasLoaded = null;
+    let load$ = this.loadData$();
+    this.data$ = load$;
+    load$.then(it => {
+      this.hasLoaded = it ? "y" : "n";
+    });
     this.svc.validForm(this.fg.valid);
+  }
+
+  private loadData$() {
+    return this.svc.initPageApi(this.mcontentid)
+      .then(_ => {
+        return this.svc.getApiData(this.mcontentid);
+      })
   }
 
   onSave() {
