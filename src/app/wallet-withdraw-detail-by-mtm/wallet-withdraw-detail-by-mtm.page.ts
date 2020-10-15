@@ -44,6 +44,7 @@ export class WalletWithdrawDetailByMtmPage implements OnInit {
       );
       this.svc.confirmForm(message).then(resolve => {
         if (resolve.isConfirm) {
+          this.parse.ConvertFormGropuValueToTypeNumber(this.fg, ['amount']);
           this.svc.submitFormData(this.mcontentid, this.fg.value, true);
         }
       });

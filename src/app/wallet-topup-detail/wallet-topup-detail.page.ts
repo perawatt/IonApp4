@@ -50,7 +50,7 @@ export class WalletTopupDetailPage implements OnInit {
 
   onSave() {
     if (this.fg.valid) {
-      this.parse.ConvertFormGropuValueToNumber(this.fg, ['amount'])
+      this.parse.ConvertFormGropuValueToTypeNumber(this.fg, ['amount']);
       this.svc.submitFormData(this.mcontentid, this.fg.value, true);
     }
   }

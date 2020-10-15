@@ -58,7 +58,7 @@ export class CartAdhocCreatingPage implements OnInit {
 
   onSave() {
     if (this.fg.valid) {
-      this.parse.ConvertFormGropuValueToNumber(this.fg, ['amountUnit'])
+      this.parse.ConvertFormGropuValueToTypeNumber(this.fg, ['amountUnit']);
       this.svc.submitFormData(this.mcontentid, this.fg.value, true);      
     }
   }

@@ -5,7 +5,7 @@ import { FormGroup } from '@angular/forms';
 export class ParseDataProvider {
     constructor() { }
 
-    public ConvertFormGropuValueToNumber(fg: FormGroup, names: string[]) {
+    public ConvertFormGropuValueToTypeNumber(fg: FormGroup, names: string[]) {
         names.forEach((name:string)=>{
             var convertedValue = Number.parseFloat(this.InputToDecimal(fg.get(name).value));
             fg.get(name).setValue(convertedValue);
