@@ -5,25 +5,9 @@
 </ion-header>
 
 <ion-content mode="ios" class="ion-padding-top">
-
-  <ion-card class="ion-margin-top ion-text-center" color="tertiary">
-    <ion-card-content>
-      <ion-label>
-        <h2 class="ion-margin-top">กำลังเติมเงินเข้ากระเป๋า</h2>
-        <img class="icon center ion-no-margin logo-s" src="assets/imgs/changewallet.png" />
-        <h3 class="ion-no-margin"><b>Mana Wallet</b></h3>
-        <ion-text color="medium">
-          <h3 class="ion-padding-top">
-            <ion-icon name="information-circle-outline"></ion-icon>&nbsp;วิธีเติมเงินแต่ละธนาคาร
-          </h3>
-        </ion-text>
-      </ion-label>
-    </ion-card-content>
-  </ion-card>
-
-  <form [formGroup]="fg" (ngSubmit)="onSave()">
-    <ion-list class="ion-margin-top">
-      <ion-item lines="none" color="tertiary">
+  <ng-container *ngIf="data$ | async as data">
+    <ion-card class="ion-margin-top ion-text-center" color="tertiary">
+      <ion-card-content>
         <ion-label>
           <h2 class="ion-margin-top">กำลังเติมเงินเข้ากระเป๋า</h2>
           <img class="icon center ion-no-margin logo-s" src="assets/imgs/changewallet.png" />
