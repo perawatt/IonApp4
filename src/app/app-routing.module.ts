@@ -391,7 +391,8 @@ const routes: Routes = [
   {
     path: 'merchant-additional',
     loadChildren: () => import('./merchant-additional/merchant-additional.module').then(m => m.MerchantAdditionalPageModule)
-  },  {
+  },
+  {
     path: 'ppay-payment-completed',
     loadChildren: () => import('./ppay-payment-completed/ppay-payment-completed.module').then( m => m.PpayPaymentCompletedPageModule)
   },
@@ -403,6 +404,26 @@ const routes: Routes = [
     path: 'merchant-withdraw-completed',
     loadChildren: () => import('./merchant-withdraw-completed/merchant-withdraw-completed.module').then( m => m.MerchantWithdrawCompletedPageModule)
   },
+  {
+    path: 'wallet-transaction-adhoc-html',
+    loadChildren: () => import('./wallet-transaction-adhoc-html/wallet-transaction-adhoc-html.module').then( m => m.WalletTransactionAdhocHTMLPageModule)
+  },
+  {
+    path: 'wallet-transaction-ppay-payment-html',
+    loadChildren: () => import('./wallet-transaction-ppay-payment-html/wallet-transaction-ppay-payment-html.module').then( m => m.WalletTransactionPPayPaymentHTMLPageModule)
+  },  {
+    path: 'wallet-transaction-receivemoney-html',
+    loadChildren: () => import('./wallet-transaction-receivemoney-html/wallet-transaction-receivemoney-html.module').then( m => m.WalletTransactionReceivemoneyHTMLPageModule)
+  },
+  {
+    path: 'wallet-transaction-topup-html',
+    loadChildren: () => import('./wallet-transaction-topup-html/wallet-transaction-topup-html.module').then( m => m.WalletTransactionTopupHTMLPageModule)
+  },
+  {
+    path: 'wallet-transaction-withdraw-html',
+    loadChildren: () => import('./wallet-transaction-withdraw-html/wallet-transaction-withdraw-html.module').then( m => m.WalletTransactionWithdrawHTMLPageModule)
+  },
+
 
 
 
