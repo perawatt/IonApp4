@@ -391,7 +391,8 @@ const routes: Routes = [
   {
     path: 'merchant-additional',
     loadChildren: () => import('./merchant-additional/merchant-additional.module').then(m => m.MerchantAdditionalPageModule)
-  },  {
+  },
+  {
     path: 'ppay-payment-completed',
     loadChildren: () => import('./ppay-payment-completed/ppay-payment-completed.module').then( m => m.PpayPaymentCompletedPageModule)
   },
@@ -406,6 +407,14 @@ const routes: Routes = [
   {
     path: 'merchant-home-pending',
     loadChildren: () => import('./merchant-home-pending/merchant-home-pending.module').then( m => m.MerchantHomePendingPageModule)
+  },
+  {
+    path: 'wallet-topup-howto-bank-select',
+    loadChildren: () => import('./wallet-topup-howto-bank-select/wallet-topup-howto-bank-select.module').then( m => m.WalletTopupHowtoBankSelectPageModule)
+  },
+  {
+    path: 'wallet-topup-howto-bank-detail/:url',
+    loadChildren: () => import('./wallet-topup-howto-bank-detail/wallet-topup-howto-bank-detail.module').then( m => m.WalletTopupHowtoBankDetailPageModule)
   },
 
 
