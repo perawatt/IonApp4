@@ -54,7 +54,7 @@
       <ion-item class="ion-text-center" color="tertiary" lines="full">
         <ion-label class="text-red">
           <h2><b>{{ParseToTwoDecimal(data.total)| number:'1.2-2'}}
-            {{ data.currency }}</b>
+            <small>{{ data.currency }}</small></b>
           </h2>
         </ion-label>
       </ion-item>
@@ -96,7 +96,7 @@
             </ion-col>
             <ion-col class="ion-no-padding ion-text-right">
               <ion-label>
-                <h3>{{ParseToTwoDecimal(data.amount)| number:'1.2-2'}} {{ data.currency }}</h3>
+                <h3>{{ParseToTwoDecimal(data.amount)| number:'1.2-2'}} <small>{{ data.currency }}</small></h3>
               </ion-label>
             </ion-col>
           </ion-row>
@@ -108,7 +108,7 @@
             </ion-col>
             <ion-col class="ion-no-padding ion-text-right">
               <ion-label>
-                <h3>0.00 THB</h3>
+                <h3>0.00 <small>THB</small></h3>
               </ion-label>
             </ion-col>
           </ion-row> -->
@@ -120,7 +120,7 @@
             </ion-col>
             <ion-col class="ion-no-padding ion-text-right">
               <ion-label>
-                <h3>{{ParseToTwoDecimal(data.discount)| number:'1.2-2'}} {{ data.currency }}</h3>
+                <h3>{{ParseToTwoDecimal(data.discount)| number:'1.2-2'}} <small>{{ data.currency }}</small></h3>
               </ion-label>
             </ion-col>
           </ion-row>
@@ -133,7 +133,7 @@
             <ion-col class="ion-no-padding ion-text-right">
               <ion-text>
                 <ion-label>
-                  <h3>{{ParseToTwoDecimal(data.total)| number:'1.2-2'}} {{ data.currency }}</h3>
+                  <h3>{{ParseToTwoDecimal(data.total)| number:'1.2-2'}} <small>{{ data.currency }}</small></h3>
                 </ion-label>
               </ion-text>
             </ion-col>
@@ -200,11 +200,11 @@
             <ion-label>
               <h3>
                 <ion-text color="danger" class="line-through">
-                  100000.00 THB</ion-text>
+                  100000.00 <small>THB</small></ion-text>
               </h3>
               <h3>
                 <ion-text color="dark">
-                  100000.00 THB</ion-text>
+                  100000.00 <small>THB</small></ion-text>
               </h3>
             </ion-label>
           </ion-note>
@@ -222,7 +222,7 @@
             <ion-label>
               <h3>
                 <ion-text color="dark">
-                  100000.00 THB</ion-text>
+                  100000.00 <small>THB</small></ion-text>
               </h3>
               <h3>
                 <ion-text>

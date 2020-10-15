@@ -46,7 +46,7 @@
                 </ion-col>
                 <ion-col class="ion-no-padding ion-text-right">
                   <ion-label color="medium">
-                    <h3>{{data.totalBeforeDiscount[0].amountUnit| number:'1.2-2'}} THB</h3>
+                    <h3>{{data.totalBeforeDiscount[0].amountUnit| number:'1.2-2'}} <small>THB</small></h3>
                   </ion-label>
                 </ion-col>
               </ion-row>
@@ -58,7 +58,7 @@
                 </ion-col>
                 <ion-col class="ion-no-padding ion-text-right">
                   <ion-label color="medium">
-                    <h3>{{data.shippingMethod.shippingFees.amountUnit| number:'1.2-2'}} THB</h3>
+                    <h3>{{data.shippingMethod.shippingFees.amountUnit| number:'1.2-2'}} <small>THB</small></h3>
                   </ion-label>
                 </ion-col>
               </ion-row>
@@ -70,7 +70,7 @@
                 </ion-col>
                 <ion-col class="ion-no-padding ion-text-right">
                   <ion-label color="medium">
-                    <h3>{{data.discount[0].amountUnit| number:'1.2-2'}} THB</h3>
+                    <h3>{{data.discount[0].amountUnit| number:'1.2-2'}} <small>THB</small></h3>
                   </ion-label>
                 </ion-col>
               </ion-row>
@@ -84,7 +84,7 @@
                   <ion-text color="danger">
                     <ion-label>
                       <h3>
-                        <b>{{data.totalToPay[0].amountUnit| number:'1.2-2'}} THB</b>
+                        <b>{{data.totalToPay[0].amountUnit| number:'1.2-2'}} <small>THB</small></b>
                       </h3>
                     </ion-label>
                   </ion-text>
@@ -144,8 +144,8 @@
                 <h3>
                   <ion-text [color]="product.promotionPrice?.amountUnit? 'danger' : 'dark'"
                     [ngClass]="{'line-through': product.promotionPrice?.amountUnit}">
-                    {{( product.price?.amountUnit)*(product?.quantity)| number:'1.2-2' }} THB</ion-text>
-                  <ion-text *ngIf="product.promotionPrice"> {{(product.promotionPrice?.amountUnit)*(product?.quantity)| number:'1.2-2' }} THB
+                    {{( product.price?.amountUnit)*(product?.quantity)| number:'1.2-2' }} <small>THB</small></ion-text>
+                  <ion-text *ngIf="product.promotionPrice"> {{(product.promotionPrice?.amountUnit)*(product?.quantity)| number:'1.2-2' }} <small>THB</small>
                   </ion-text>
                 </h3>
               </ion-label>

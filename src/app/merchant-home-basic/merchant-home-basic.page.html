@@ -18,7 +18,7 @@
           <ion-label>
             <h3>ยอดเงินคงเหลือ</h3>
             <h1><b>{{ ParseToTwoDecimal(data.balance?.amountUnit) | number:'1.2-2' }}
-              {{ data.balance?.currency }}</b></h1>
+              <small>{{ data.balance?.currency }}</small></b></h1>
           </ion-label>
           <ion-grid class="ion-margin-top">
             <ion-row>

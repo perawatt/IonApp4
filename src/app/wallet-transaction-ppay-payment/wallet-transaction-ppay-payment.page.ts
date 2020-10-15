@@ -30,6 +30,7 @@ export class WalletTransactionPpayPaymentPage implements OnInit {
   private loadData$() {
     return this.svc.initPageApi(this.mcontentid)
       .then(_ => {
+        return this.svc.callApiGet(this.mcontentid,"https://mana-facing-dev.azurewebsites.net/Wallet/transaction/ppaypayment/nwtxpmt-637382566505161445");
         return this.svc.getApiData(this.mcontentid);
       })
   }
