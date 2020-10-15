@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Injectable()
 export class ParseDataProvider {
@@ -22,5 +23,17 @@ export class ParseDataProvider {
             }
         }
         return value;
+    }
+
+    public InputToDecimal(val: string) {
+        if (val != null) {
+            var splited = val.split(".", 2);
+            if (splited[1] != null && splited[1].length > 1) {
+                splited[1] = splited[1].substring(0, 2);
+                let amount2Decimal = splited[0].concat('.', splited[1]);
+                return amount2Decimal;
+            }
+            return val;
+        }
     }
 }
