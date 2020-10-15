@@ -28,7 +28,7 @@
         </ion-item>
         <ion-item color="tertiary" lines="full">
           <ion-input type="number" placeholder="ระบุยอดเงิน" class="ion-text-center" formControlName="amountUnit"
-            (ionChange)="AmountChanged($event)" [disabled]="data.amountUnit > 0"></ion-input>
+            (ionChange)="AmountChanged($event)" [readonly]="data.amountUnit > 0"></ion-input>
         </ion-item>
         <ion-item color="tertiary" class="ion-no-padding" lines="none">
           <ion-grid>
