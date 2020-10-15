@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content mode="ios">
+  <ion-list lines="none" *ngFor="let detail of bankDetail?.detail">
+    <ion-list-header lines="none" mode="md" *ngIf="detail.type == sourceType.header">
+      <ion-label><b>{{ detail.source }}</b></ion-label>
+    </ion-list-header>
+    <ion-item class="ion-text-center" *ngIf="detail.type == sourceType.image">
+      <ion-label>
+        <img [src]="detail.source" height="512px" />
+      </ion-label>
+    </ion-item>
+    <ion-item *ngIf="detail.type == sourceType.step">
+      <ion-label>
+        <div *ngFor="let text of detail.source">
+          <h3 [ngStyle]="{'list-style-type':text.type == sourceType.disc ? 'disc' : '' }">
+            <li>{{ text.source }} </li>
+          </h3>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

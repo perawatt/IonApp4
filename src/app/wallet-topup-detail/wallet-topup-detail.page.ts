@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonManaLib } from 'ion-m-lib';
 import { FormBuilder, FormGroup, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { ParseDataProvider } from 'src/providers/parse-data';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wallet-topup-detail',
@@ -12,8 +13,9 @@ export class WalletTopupDetailPage implements OnInit {
 
   public hasLoaded: string;
   public fg: FormGroup;
+  public data$ = Promise.resolve<{}>({});
   private mcontentid = "wallet-topup-detail";
-  constructor(private svc: IonManaLib, private fb: FormBuilder, private parse: ParseDataProvider) {
+  constructor(private router: Router, private svc: IonManaLib, private fb: FormBuilder, private parse: ParseDataProvider) {
     this.fg = this.fb.group({
       'promptpayType': ["mobile", Validators.required],
       'promptpayId': null,
@@ -27,11 +29,23 @@ export class WalletTopupDetailPage implements OnInit {
 
   ngOnInit() {
   }
-
+  
   ionViewDidEnter() {
     this.svc.initPageApi(this.mcontentid);
-    // TODO: Get default wallet from server
+    this.hasLoaded = null;
+    let load$ = this.loadData$();
+    this.data$ = load$;
+    load$.then(it => {
+      this.hasLoaded = it ? "y" : "n";
+    });
     this.svc.validForm(this.fg.valid);
+  }
+
+  private loadData$() {
+    return this.svc.initPageApi(this.mcontentid)
+      .then(_ => {
+        return this.svc.getApiData(this.mcontentid);
+      })
   }
 
   onSave() {
@@ -62,5 +76,9 @@ export class WalletTopupDetailPage implements OnInit {
 
   public AmountChanged() {
     this.fg.get('amount').setValue(this.parse.ParseToTwoDecimal(this.fg.get('amount').value));
+  }
+
+  public onSelectTopupHowTo() {
+    this.router.navigate(['/wallet-topup-howto-bank-select'])
   }
 }
