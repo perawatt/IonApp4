@@ -49,7 +49,7 @@ export class MerchantTopupPage implements OnInit {
 
   public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
 
-  public AmountChanged() {
-    this.fg.get('amount').setValue(this.parse.ParseToTwoDecimal(this.fg.get('amount').value));
-  } 
+  public AmountChanged(event) {
+    this.fg.get('amount').setValue(this.parse.InputToDecimal(event.target.value))
+  }
 }

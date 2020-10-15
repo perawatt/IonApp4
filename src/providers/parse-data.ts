@@ -7,7 +7,7 @@ export class ParseDataProvider {
 
     public ParseToTwoDecimal(value: number): number {
         if (value != null)
-            return Number.parseFloat(this.ParseToTwoDecimalForInput(value.toString()));
+            return Number.parseFloat(this.InputToDecimal(value.toString()));
         else return 0;
     }
 

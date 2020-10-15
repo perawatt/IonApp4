@@ -74,8 +74,8 @@ export class WalletTopupDetailPage implements OnInit {
     else return { 'message': "PromptPayId can not be empty" };
   };
 
-  public AmountChanged() {
-    this.fg.get('amount').setValue(this.parse.ParseToTwoDecimal(this.fg.get('amount').value));
+  public AmountChanged(event) {
+    this.fg.get('amount').setValue(this.parse.InputToDecimal(event.target.value))
   }
 
   public onSelectTopupHowTo() {

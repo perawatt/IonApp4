@@ -62,7 +62,7 @@ export class CartAdhocCreatingPage implements OnInit {
     }
   }
 
-  public AmountChanged() {
-    this.fg.get('amountUnit').setValue(this.parse.ParseToTwoDecimal(this.fg.get('amountUnit').value));
+  public AmountChanged(event) {
+    this.fg.get('amountUnit').setValue(this.parse.InputToDecimal(event.target.value))
   }
 }
