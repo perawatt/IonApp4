@@ -31,11 +31,11 @@ export class WalletTopupDetailPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.svc.initPageApi(this.mcontentid);
     this.hasLoaded = null;
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then(it => {
+      this.svc.initPageApi(this.mcontentid);
       this.hasLoaded = it ? "y" : "n";
     });
     this.svc.validForm(this.fg.valid);

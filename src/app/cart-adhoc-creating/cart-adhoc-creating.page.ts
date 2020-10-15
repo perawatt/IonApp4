@@ -57,7 +57,10 @@ export class CartAdhocCreatingPage implements OnInit {
   }
 
   onSave() {
+    console.log("Submit cart-adhoc-creating");
+    
     if (this.fg.valid) {
+      console.log("valid cart-adhoc-creating");
       this.parse.ConvertFormGropuValueToTypeNumber(this.fg, ['amountUnit']);
       this.svc.submitFormData(this.mcontentid, this.fg.value, true);      
     }

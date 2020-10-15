@@ -7,7 +7,7 @@ export class ParseDataProvider {
 
     public ConvertFormGropuValueToTypeNumber(fg: FormGroup, names: string[]) {
         names.forEach((name:string)=>{
-            var convertedValue = Number.parseFloat(this.InputToDecimal(fg.get(name).value));
+            var convertedValue = Number.parseFloat(this.InputToDecimal(fg.get(name).value.toString()));
             fg.get(name).setValue(convertedValue);
         })
     }
