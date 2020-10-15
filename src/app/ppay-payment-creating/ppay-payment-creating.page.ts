@@ -17,6 +17,7 @@ export class PpayPaymentCreatingPage implements OnInit {
   constructor(private svc: IonManaLib, private fb: FormBuilder, private parse: ParseDataProvider) {
     this.fg = this.fb.group({
       'amount': [null, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
+      'currency': null,
       'code': null
     });
 
@@ -46,6 +47,7 @@ export class PpayPaymentCreatingPage implements OnInit {
     load$.then(it => {
       this.fg.get('amount').setValue(it.amount);
       this.fg.get('code').setValue(it.code);
+      this.fg.get("currency").setValue("THB");
       this.hasLoaded = it ? "y" : "n";
     })
   }
