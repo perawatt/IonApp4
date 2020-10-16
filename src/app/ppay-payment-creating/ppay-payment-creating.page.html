@@ -10,7 +10,7 @@
     <form [formGroup]="fg" (ngSubmit)="onSave()">
       <ion-list lines="none">
         <ion-item color="tertiary" class="ion-margin-top">
-          <img *ngIf="data.logo" class="logo-l circle center ion-margin-top" [src]="data.logo" >
+          <img *ngIf="data.logo" class="logo-l circle center ion-margin-top" [src]="data.logo">
           <img *ngIf="!data.logo" class="logo-l circle center ion-margin-top" src="assets/imgs/defaultshop.png">
         </ion-item>
         <ion-item color="tertiary" class="ion-text-center">
@@ -27,8 +27,13 @@
           </ion-label>
         </ion-item>
         <ion-item color="tertiary" lines="full">
-          <ion-input type="number" placeholder="ระบุยอดเงิน" class="ion-text-center" formControlName="amountUnit"
-            (ionChange)="AmountChanged($event)" [readonly]="data.amountUnit > 0"></ion-input>
+          <ion-input type="number" placeholder="ระบุยอดเงิน" class="ion-text-center input-money"
+            formControlName="amountUnit" (ionChange)="AmountChanged($event)" [readonly]="data.amountUnit > 0">
+          </ion-input>
+          <ion-label slot="end" class="ion-no-margin">
+            <!-- TODO: get currency -->
+            <h3>THB</h3>
+          </ion-label>
         </ion-item>
         <ion-item color="tertiary" class="ion-no-padding" lines="none">
           <ion-grid>
@@ -59,7 +64,7 @@
           </ion-grid>
         </ion-item>
       </ion-list>
-      
+
       <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
         [disabled]="fg.invalid">ตกลง
       </ion-button>
@@ -74,21 +79,18 @@
       </ion-card-content>
     </ion-card>
     <ion-card color="light" class="ion-text-center">
-        <ion-label>
-          <h3>
-            <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
-          </h3>
+      <ion-label>
+        <h3>
           <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
-        </ion-label>
+        </h3>
+        <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+      </ion-label>
     </ion-card>
     <ion-item lines="none">
       <ion-label>
         <ion-skeleton-text animated></ion-skeleton-text>
       </ion-label>
     </ion-item>
-    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
-      disabled>ตกลง
-    </ion-button>
   </ng-container>
 
 </ion-content>

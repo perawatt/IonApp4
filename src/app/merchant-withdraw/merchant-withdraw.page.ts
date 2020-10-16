@@ -16,6 +16,7 @@ export class MerchantWithdrawPage implements OnInit {
   public selectedWallet: number;
   public walletDisplayName: string;
   public walletName: string;
+  public walletCurrency: string;
   private mcontentid: string = "merchant-withdraw";
 
   constructor(private svc: IonManaLib, private parse: ParseDataProvider, private fb: FormBuilder) {
@@ -42,6 +43,7 @@ export class MerchantWithdrawPage implements OnInit {
       this.fg.get("selectedWallet").setValue(it.wallets[0].walletName); 
       this.walletDisplayName = it.wallets[0].ownerDisplayName;
       this.walletName = it.wallets[0].walletName;
+      this.walletCurrency = it.wallets[0].balance.currency;
       this.hasLoaded = it ? "y" : "n";
     });
   }
