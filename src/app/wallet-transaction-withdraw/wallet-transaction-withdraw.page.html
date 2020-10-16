@@ -50,9 +50,9 @@
         </ion-grid>
       </ion-item>
       <ion-item class="ion-text-center" color="tertiary" lines="full">
-        <ion-label class="text-red">
-          <h2><b>{{ParseToTwoDecimal(data.totalAmount?.amountUnit)| number:'1.2-2'}}
-            <small>{{ data.totalAmount?.currency }}</small></b>
+        <ion-label color="danger">
+          <h2><b>{{ParseToTwoDecimal(data.totalAmount)| number:'1.2-2'}}
+            <small>{{ data.currency }}</small></b>
           </h2>
         </ion-label>
       </ion-item>
