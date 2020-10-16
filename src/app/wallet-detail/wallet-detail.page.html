@@ -20,7 +20,7 @@
     <ion-item lines="none" color="danger" class="ion-text-center">
       <ion-label>
         <h3>ยอดเงินปัจจุบัน</h3>
-        <h1><b>{{ ParseToTwoDecimal(data.balance) | number:'1.2-2' }} {{ data.currency }}</b></h1>
+        <h1><b>{{ ParseToTwoDecimal(data.balance) | number:'1.2-2' }} <small>{{ data.currency }}</small></b></h1>
       </ion-label>
     </ion-item>
     <ion-list *ngIf="hasLoaded == 'y'" lines="full" class="ion-no-padding">
@@ -41,7 +41,7 @@
             <h2>&nbsp;</h2>
             <h3>
               <span *ngIf="item.balance > 0">+</span>{{ ParseToTwoDecimal(item.balance) | number:'1.2-2' }}
-              {{ data.currency }}
+              <small>{{ data.currency }}</small>
             </h3>
           </ion-label>
         </ion-note>

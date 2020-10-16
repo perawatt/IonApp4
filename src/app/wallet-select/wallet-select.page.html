@@ -42,7 +42,7 @@
             <h3 *ngIf="!item.isDefaultWallet">&nbsp;</h3>
           </ion-text>
           <h3>
-            {{ ParseToTwoDecimal(item.balance) | number:'1.2-2' }} {{ item.currency }}
+            {{ ParseToTwoDecimal(item.balance) | number:'1.2-2' }} <small>{{ item.currency }}</small>
           </h3>
         </ion-label>
       </ion-item>

@@ -14,12 +14,12 @@
         </ion-label>
       </ion-item>
       <ion-item color="tertiary" lines="full">
-        <ion-input type="number" class="ion-text-center" placeholder="ระบุจำนวนเงิน" formControlName="amount" (ionChange)="AmountChanged()">
+        <ion-input type="number" class="ion-text-center" placeholder="ระบุจำนวนเงิน" formControlName="amount" (ionChange)="AmountChanged($event)">
         </ion-input>
       </ion-item>
       <ion-item color="tertiary" *ngIf="fg.get('amount').value != null && fg.get('amount').invalid">
         <ion-label color="danger">
-          <p>จำนวนเงินที่ต้องการถอนขั้นต่ำ 50.00 THB</p>
+          <p>จำนวนเงินที่ต้องการถอนขั้นต่ำ 50.00 <small>THB</small></p>
         </ion-label>
       </ion-item>
 

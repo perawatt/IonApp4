@@ -57,12 +57,16 @@ export class CartAdhocCreatingPage implements OnInit {
   }
 
   onSave() {
+    console.log("Submit cart-adhoc-creating");
+    
     if (this.fg.valid) {
+      console.log("valid cart-adhoc-creating");
+      this.parse.ConvertFormGropuValueToTypeNumber(this.fg, ['amountUnit']);
       this.svc.submitFormData(this.mcontentid, this.fg.value, true);      
     }
   }
 
-  public AmountChanged() {
-    this.fg.get('amountUnit').setValue(this.parse.ParseToTwoDecimal(this.fg.get('amountUnit').value));
+  public AmountChanged(event) {
+    this.fg.get('amountUnit').setValue(this.parse.InputToDecimal(event.target.value))
   }
 }

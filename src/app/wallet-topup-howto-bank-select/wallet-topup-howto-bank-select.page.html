@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      วิธีเติมเงินผ่านธนาคาร
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-list-header lines="none" mode="md">
+      <ion-label>เลือกธนาคาร</ion-label>
+    </ion-list-header>
+    <ion-item button detail="false" color="tertiary" class="ion-margin-bottom" *ngFor="let bank of banklist" (click)="onSelectBank(bank.bankCode)">
+      <ion-avatar slot="start">
+        <img [src]="bank.logo" />
+      </ion-avatar>
+      <ion-label>
+        <b>{{ bank.name }}</b>
+        <ion-text color="medium">
+          <h3>{{ bank.bankCode }}</h3>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>ถอนเงินออกจากร้าน</ion-title>
+    <ion-title>ถอนเงิน</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,27 +8,42 @@
   <ng-container *ngIf="data$ | async as data">
     <ion-card class="ion-padding-vertical" color="tertiary">
       <ion-item class="ion-text-center" color="tertiary" lines="none">
-        <ion-grid>
+        <ion-grid class="ion-padding">
           <ion-row class="ion-text-center ion-align-items-center">
-            <ion-col size="6" class="ion-text-center ion-padding">
+            <ion-col size="6" class="ion-text-center">
               <div class="content-center">
-                <img class="icon transaction-img" src="assets/imgs/menutopup.png">
+                <img *ngIf="data.merchantAccount.logo" class="icon circle transaction-img" [src]="data.merchantAccount.logo">
+                <img *ngIf="!data.merchantAccount.logo" class="icon circle transaction-img" src="assets/imgs/defaultshop.png"> 
               </div>
-              <ion-label class="ion-text-nowrap">
-                <ion-text color="medium">
-                  <p>ยอดเงินคงเหลือ</p>
-                </ion-text>
-                <h2 color="tertiary"><b>{{ ParseToTwoDecimal(data.merchantAccount.balance) | number:'1.2-2' }} THB</b>
-                </h2>
-              </ion-label>
               <ion-icon class="right-arrow" name="chevron-forward-sharp"></ion-icon>
             </ion-col>
-            <ion-col size="6" class="ion-text-center ion-padding">
+            <ion-col size="6" class="ion-text-center">
               <div class="content-center">
                 <img class="icon transaction-img" src="assets/imgs/changewallet.png">
               </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-text-center ion-align-items-center">
+            <ion-col size="6" class="ion-text-center ion-no-padding">
               <ion-label class="ion-text-nowrap">
-                <h2><b>Wallet</b></h2>
+                <h3 color="tertiary"><b>{{ data.merchantAccount?.name }}</b></h3>
+              </ion-label>
+            </ion-col>
+            <ion-col size="6" class="ion-text-center ion-no-padding">
+              <ion-label class="ion-text-nowrap">
+                <h3><b>{{ walletDisplayName }}</b></h3>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-text-center ion-align-items-center">
+            <ion-col size="6" class="ion-text-center ion-no-padding">
+              <ion-label class="ion-text-nowrap">
+                <h2 color="tertiary"></h2>
+              </ion-label>
+            </ion-col>
+            <ion-col size="6" class="ion-text-center ion-no-padding">
+              <ion-label class="ion-text-nowrap">
+                <h3>{{ walletName }}</h3>
               </ion-label>
             </ion-col>
           </ion-row>
@@ -40,15 +55,17 @@
         <ion-label class="ion-padding-start ion-padding-top" position="floating">
           <h1>ระบุกระเป๋าที่ต้องการถอน</h1>
         </ion-label>
-        <ion-select class="ion-padding-horizontal ion-select-full" placeholder="" value="1" interface="alert">
-          <ion-select-option value="1">Anon</ion-select-option>
+        <ion-select class="ion-padding-horizontal ion-select-full" placeholder="" interface="alert"
+          formControlName="selectedWallet">
+          <ion-select-option *ngFor="let wallet of data.wallets; let i = index" [value]="wallet.walletName">
+            {{ wallet.walletName }}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item color="tertiary" lines="full" class="ion-no-padding ion-margin-top">
         <ion-label class="ion-padding-start ion-padding-top" position="floating">
           <h1>ยอดที่ต้องการถอน</h1>
         </ion-label>
-        <ion-input type="number" placeholder="ระบุยอดเงิน" formControlName="amount" (ionChange)="AmountChanged()"
+        <ion-input type="number" placeholder="ระบุยอดเงิน" formControlName="amountUnit" (ionChange)="AmountChanged($event)"
           class="ion-text-center"></ion-input>
       </ion-item>
 

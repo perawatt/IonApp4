@@ -10,7 +10,7 @@
       <ion-label>
         <h2><b>{{data.merchantAccount.name}}</b></h2>
         <ion-text color="medium">ยอดเงินปัจจุบัน</ion-text>
-        <h2><b>{{ParseToTwoDecimal(data.merchantAccount.balance)|number:'1.2-2'}} THB</b></h2>
+        <h2><b>{{ParseToTwoDecimal(data.merchantAccount.balance)|number:'1.2-2'}} <small>THB</small></b></h2>
       </ion-label>
     </ion-item>
     <ion-list *ngIf="hasLoaded == 'y'" lines="full" class="ion-margin-top">
@@ -45,7 +45,8 @@
       <ion-label class="ion-no-margin ion-margin-bottom">
         <h2><b>{{data.merchantAccount.name}}</b></h2>
         <ion-text color="medium">ยอดเงินปัจจุบัน</ion-text>
-        <h1><b>{{ParseToTwoDecimal(data.merchantAccount.balance)|number:'1.2-2'}} THB</b></h1>
+        <h1><b>{{ParseToTwoDecimal(data.merchantAccount?.balance?.amountUnit)|number:'1.2-2'}}
+          <small>{{ data.merchantAccount?.balance?.currency }}</small></b></h1>
       </ion-label>
     </ion-item>
     <ion-list *ngIf="hasLoaded == 'y'" lines="inset">
@@ -65,7 +66,8 @@
             <ion-text>
               <p>&nbsp;</p>
             </ion-text>
-            <span *ngIf="item.balance > 0">+</span>{{ ParseToTwoDecimal(item.balance) | number:'1.2-2' }}
+            <span
+              *ngIf="item.balance > 0">+</span>{{ParseToTwoDecimal(item.balance?.amountUnit)| number:'1.2-2'}} <small>{{ item.balance?.currency }}</small>
           </ion-label>
         </ion-note>
       </ion-item>

@@ -5,51 +5,92 @@
 </ion-header>
 
 <ion-content mode="ios" class="ion-padding-top">
+  <ng-container *ngIf="data$ | async as data">
+    <ion-card class="ion-margin-top ion-text-center" color="tertiary">
+      <ion-card-content>
+        <ion-label>
+          <h2 class="ion-margin-top">กำลังถอนเงินจากกระเป๋า</h2>
+          <img class="icon center ion-no-margin logo-s" src="assets/imgs/changewallet.png" />
+          <h3 class="ion-no-margin"><b>{{ data.displayName }}</b></h3>
+          <h3 class="ion-no-margin">{{ data.walletName }}</h3>
+        </ion-label>
+      </ion-card-content>
+    </ion-card>
 
-  <ion-card class="ion-margin-top ion-text-center" color="tertiary">
-    <ion-card-content>
+    <form [formGroup]="fg" (ngSubmit)="onSave()">
+      <ion-list lines="none">
+        <ion-item color="tertiary" class=" ion-margin-top">
+          <ion-label>
+            <h2>ระบุพร้อมเพย์ที่ใช้ถอนเงิน</h2>
+          </ion-label>
+        </ion-item>
+        <ion-item color="tertiary" lines="inset">
+          <ion-select class="ion-no-padding ion-padding-end ion-select-full" text-left okText="ตกลง" cancelText="ยกเลิก"
+            interface="action-sheet" formControlName="promptpayType">
+            <ion-select-option value="mobile">เบอร์โทรศัพท์</ion-select-option>
+            <ion-select-option value="pid">เลขบัตรประชาชน</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item color="tertiary" lines="inset" *ngIf="fg.get('promptpayType').value != 'qr'">
+          <ion-input type="tel" placeholder="ระบุเลขพร้อมเพย์" formControlName="promptpayId"></ion-input>
+        </ion-item>
+
+        <ion-item color="tertiary" lines="none">
+          <ion-label>
+            <h2>จำนวนเงินที่ต้องการถอน</h2>
+          </ion-label>
+        </ion-item>
+        <ion-item color="tertiary" lines="full">
+          <ion-input type="number" class="ion-text-center" placeholder="ระบุจำนวนเงิน" formControlName="amountUnit"
+            (ionChange)="AmountChanged($event)">
+          </ion-input>
+        </ion-item>
+        <ion-item color="tertiary" lines="none"></ion-item>
+      </ion-list>
+
+      <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
+        [disabled]="fg.invalid">ตกลง
+      </ion-button>
+    </form>
+  </ng-container>
+
+  <ng-container *ngIf="!hasLoaded">
+    <ion-card color="light" class="ion-text-center">
+      <ion-card-content>
+        <ion-skeleton-text class="center circle ion-margin-bottom" animated style="width:100px; height:100px">
+        </ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
+    <ion-card color="light" class="ion-text-center">
       <ion-label>
-        <h2 class="ion-margin-top">กำลังถอนเงินจากกระเป๋า</h2>
-        <img class="icon center ion-no-margin logo-s" src="assets/imgs/changewallet.png" />
-        <h2 class="ion-no-margin"><b>Mana Wallet</b></h2>
+        <h3>
+          <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+        </h3>
+        <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
       </ion-label>
-    </ion-card-content>
-  </ion-card>
+    </ion-card>
 
-  <form [formGroup]="fg" (ngSubmit)="onSave()">
-    <ion-list lines="none">
-      <ion-item color="tertiary" class=" ion-margin-top">
-        <ion-label>
-          <h2>ระบุพร้อมเพย์ที่ใช้ถอนเงิน</h2>
-        </ion-label>
-      </ion-item>
-      <ion-item color="tertiary" lines="inset">
-        <ion-select class="ion-no-padding ion-padding-end ion-select-full" text-left okText="ตกลง" cancelText="ยกเลิก"
-          interface="action-sheet" formControlName="promptpayType">
-          <ion-select-option value="mobile">เบอร์โทรศัพท์</ion-select-option>
-          <ion-select-option value="pid">เลขบัตรประชาชน</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item color="tertiary" lines="inset" *ngIf="fg.get('promptpayType').value != 'qr'">
-        <ion-input type="tel" placeholder="ระบุเลขพร้อมเพย์" formControlName="promptpayId"></ion-input>
-      </ion-item>
-
-      <ion-item color="tertiary" lines="none">
-        <ion-label>
-          <h2>จำนวนเงินที่ต้องการถอน</h2>
-        </ion-label>
-      </ion-item>
-      <ion-item color="tertiary" lines="full">
-        <ion-input type="number" class="ion-text-center" placeholder="ระบุจำนวนเงิน" formControlName="amount"
-          (ionChange)="AmountChanged()">
-        </ion-input>
-      </ion-item>
-      <ion-item color="tertiary" lines="none"></ion-item>
-    </ion-list>
-
-    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
-      [disabled]="fg.invalid">ตกลง
-    </ion-button>
-  </form>
-
+    <ion-item lines="none">
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+  </ng-container>
 </ion-content>

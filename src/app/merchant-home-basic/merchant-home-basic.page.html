@@ -8,21 +8,22 @@
   <ng-container *ngIf="data$ | async as data">
     <ion-list color="tertiary" lines="none" class="ion-text-center" *ngIf="hasLoaded">
       <ion-card class="ion-text-center" color="tertiary">
-        <ion-card-content>
-          <ion-label color="danger" *ngIf="data.status">
+        <ion-card-content class="ion-no-padding ion-padding-vertical">
+          <!-- <ion-label color="danger" *ngIf="data.status">
             <h2 class="ion-padding-bottom"><b>{{ data.status }}</b></h2>
-          </ion-label>
+          </ion-label> -->
           <ion-avatar class="center ion-margin-vertical avatar-l">
             <img [src]="data.logo ? data.logo :'assets/imgs/defaultshop.png'" />
           </ion-avatar>
           <ion-label>
             <h3>ยอดเงินคงเหลือ</h3>
-            <h2><b>{{ data.balance | number:'1.2-2' }}</b></h2>
+            <h1><b>{{ ParseToTwoDecimal(data.balance?.amountUnit) | number:'1.2-2' }}
+              <small>{{ data.balance?.currency }}</small></b></h1>
           </ion-label>
           <ion-grid class="ion-margin-top">
             <ion-row>
               <ion-col class="ion-text-end ion-no-padding">
-                <ion-chip color="medium" outline="true" (click)="onSelectQr(data._id)">
+                <ion-chip color="tertiary" outline="false" (click)="onSelectQr(data._id)">
                   <img width="15" height="15" src="assets/imgs/qrpay.png">
                   <ion-label color="dark">
                     <h3 class="ion-no-margin">&nbsp;คิวอาร์รับเงิน</h3>
@@ -30,7 +31,7 @@
                 </ion-chip>
               </ion-col>
               <ion-col class="ion-text-start ion-no-padding">
-                <ion-chip color="medium" outline="true" (click)="onSelectWithdraw(data._id)">
+                <ion-chip color="tertiary" outline="false" (click)="onSelectWithdraw(data._id)">
                   <img width="15" height="15" src="assets/imgs/txrwithdraw.png">
                   <ion-label color="dark">
                     <h3 class="ion-no-margin">&nbsp;ถอนเงิน</h3>

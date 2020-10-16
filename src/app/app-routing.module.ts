@@ -405,6 +405,18 @@ const routes: Routes = [
     loadChildren: () => import('./merchant-withdraw-completed/merchant-withdraw-completed.module').then( m => m.MerchantWithdrawCompletedPageModule)
   },
   {
+    path: 'merchant-home-pending',
+    loadChildren: () => import('./merchant-home-pending/merchant-home-pending.module').then( m => m.MerchantHomePendingPageModule)
+  },
+  {
+    path: 'wallet-topup-howto-bank-select',
+    loadChildren: () => import('./wallet-topup-howto-bank-select/wallet-topup-howto-bank-select.module').then( m => m.WalletTopupHowtoBankSelectPageModule)
+  },
+  {
+    path: 'wallet-topup-howto-bank-detail/:url',
+    loadChildren: () => import('./wallet-topup-howto-bank-detail/wallet-topup-howto-bank-detail.module').then( m => m.WalletTopupHowtoBankDetailPageModule)
+  },
+  {
     path: 'wallet-transaction-adhoc-html',
     loadChildren: () => import('./wallet-transaction-adhoc-html/wallet-transaction-adhoc-html.module').then( m => m.WalletTransactionAdhocHTMLPageModule)
   },

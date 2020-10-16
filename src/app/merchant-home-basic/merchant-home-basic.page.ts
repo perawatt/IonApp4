@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonManaLib } from 'ion-m-lib';
+import { ParseDataProvider } from 'src/providers/parse-data';
 
 @Component({
   selector: 'app-merchant-home-basic',
@@ -12,7 +13,7 @@ export class MerchantHomeBasicPage implements OnInit {
   public hasLoaded: string;
   private mcontentid = "merchant-home-basic";
   public data$ = Promise.resolve<{}>({});
-  constructor(private svc: IonManaLib) { }
+  constructor(private svc: IonManaLib, private parse: ParseDataProvider) { }
 
   ngOnInit() {
   }
@@ -24,7 +25,7 @@ export class MerchantHomeBasicPage implements OnInit {
   private loadData$() {
     return this.svc.initPageApiWithCallBack(this.mcontentid, () => this.refreshCallBack())
       .then(_ => {
-        // return this.svc.callApiGet(this.mcontentid, "http://mana-facing-dev.azurewebsites.net/BizAccount/637334893975177162/basic")
+        // return this.svc.callApiGet(this.mcontentid, "http://mana-facing-dev.azurewebsites.net/BizAccount/637374890335148620/basic");
         return this.svc.getApiData(this.mcontentid);
       })
   }
@@ -47,4 +48,5 @@ export class MerchantHomeBasicPage implements OnInit {
     this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizwit-" + endpointId);
   }
 
+  public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
 }

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios" class="ion-padding-top">
+  <ng-container *ngIf="data$ | async as data">
+    <ion-list color="tertiary" lines="none" class="ion-text-center" *ngIf="hasLoaded">
+      <ion-card class="ion-text-center" color="tertiary">
+        <ion-card-content>
+          <img class="logo-l ion-margin-vertical" src="assets/imgs/shopBackground.png" />
+          <ion-label color="danger" *ngIf="data.status">
+            <h2 class="ion-padding-vertical"><b>{{ data.status }}</b></h2>
+          </ion-label>
+          <ion-label *ngIf="data.name">
+            <h2 class="ion-padding-bottom"><b>{{ data.name }}</b></h2>
+          </ion-label>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </ng-container>
+
+  <ion-list lines="none" class="ion-text-center" *ngIf="!hasLoaded">
+    <ion-card color="light" class="ion-text-center">
+      <ion-card-content>
+        <ion-skeleton-text class="center circle ion-margin-bottom" animated style="width:60px; height:60px">
+        </ion-skeleton-text>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+          </h3>
+          <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+        </ion-label>
+      </ion-card-content>
+    </ion-card>
+    <ion-card color="light" class="ion-text-center">
+      <ion-label>
+        <h3>
+          <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+        </h3>
+        <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+      </ion-label>
+    </ion-card>
+  </ion-list>
+</ion-content>
