@@ -26,10 +26,10 @@ export class WalletTopupHowtoBankSelectPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.svc.initPageApi(this.mcontentid);
+    //this.svc.initPageApi(this.mcontentid);
   }
 
-  onSelectBank(bank: string) {
-    this.router.navigate(['/wallet-topup-howto-bank-detail', bank]);
+  onSelectBank(url: string) {
+    this.router.navigate(['/wallet-topup-howto-bank-detail', url]);
   }
 }
