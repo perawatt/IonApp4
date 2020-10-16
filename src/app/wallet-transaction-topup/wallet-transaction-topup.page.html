@@ -52,11 +52,10 @@
       <ion-item class="ion-text-center" color="tertiary" lines="full">
         <ion-label color="danger">
           <h2><b>{{ParseToTwoDecimal(data.totalAmount)| number:'1.2-2'}}
-            <small>{{ data.totalAmount?.currency }}</small></b>
+            <small>{{ data.currency }}</small></b>
           </h2>
         </ion-label>
       </ion-item>
-
 
       <ion-item color="tertiary" class="ion-padding-vertical" lines="none">
         <ion-avatar slot="start" class="avatar-m">
