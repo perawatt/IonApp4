@@ -38,6 +38,10 @@ export class MerchantProfilePage implements OnInit {
         return this.svc.getApiData(this.mcontentid);
       })
   }
+  
+  onSelectImage(endpointId: string) {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizimg-" + endpointId);
+  }
 
   onSelectEditName(endpointId: string) {
     this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbiznme-" + endpointId);

@@ -47,12 +47,12 @@
   <ng-container *ngIf="data$ | async as data">
     <ion-card color="light" class="ion-text-center">
       <ion-card-content>
-        <ion-avatar color="tertiary" class="avatar-l center ion-margin-bottom">
+        <ion-avatar color="tertiary" class="avatar-l center ion-margin-bottom" (click)="onSelectImage(data._id)">
           <img *ngIf="data.logo" [src]="data.logo">
           <img *ngIf="!data.logo" src="assets/imgs/defaultshop.png">
         </ion-avatar>
         <ion-label>
-          <ion-text color="medium">
+          <ion-text color="medium" (click)="onSelectImage(data._id)">
             <h3>เปลี่ยนภาพ</h3>
           </ion-text>
           <h2><b *ngIf="data.name" (click)="onSelectEditName(data._id)">{{ data.name }}</b></h2>

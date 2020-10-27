@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonManaLib } from 'ion-m-lib';
+import { join } from 'path';
 
 @Component({
   selector: 'app-merchant-profile-image-edit',
@@ -9,16 +10,17 @@ import { IonManaLib } from 'ion-m-lib';
 })
 export class MerchantProfileImageEditPage implements OnInit {
 
+  public previousImage: any;
+  public hasPreviousImage: string;
   public hasImage: string;
   public imageResponse$;
-  public hasLoaded: string;
   public fg: FormGroup;
   public formData$: Promise<{}> = new Promise<{}>(_ => { });
   private mcontentid = "merchant-profile-image-edit";
 
-  constructor(private fb: FormBuilder, private svc: IonManaLib) { 
-    this.fg = this.fb.group({     
-      'imageId': [null, Validators.required],    
+  constructor(private fb: FormBuilder, private svc: IonManaLib) {
+    this.fg = this.fb.group({
+      'imageId': [null, Validators.required],
     });
     this.fg.valueChanges.subscribe(_ => {
       this.svc.validForm(this.fg.valid)
@@ -30,17 +32,32 @@ export class MerchantProfileImageEditPage implements OnInit {
 
   ionViewDidEnter() {
     this.hasImage = null;
-    this.svc.initPageApi(this.mcontentid);
+
+    let load$ = this.loadData$();
+    load$.then((it: any) => {
+      this.previousImage = it.logo;
+      this.hasPreviousImage = it && it.logo;
+    });
+
     this.svc.validForm(this.fg.valid);
     this.fg.get("imageId").reset();
-    let load$ = this.svc.selectImage(this.mcontentid);
-    this.imageResponse$ = load$;
-    load$.then(it => {
-      this.hasImage = it ? "y" : "n";
-      if (it) { this.fg.get("imageId").setValue(it._id); }
+    let selectImage$ = this.svc.selectImage(this.mcontentid);
+    this.imageResponse$ = selectImage$;
+    selectImage$.then(it => {
+      this.hasImage = it && it.base64ImageRaw ? "y" : "n";
+      if (this.hasImage == "y") {
+        this.fg.get("imageId").setValue(it._id);
+      }
     });
   }
-  
+
+  private loadData$() {
+    return this.svc.initPageApi(this.mcontentid)
+      .then(_ => {
+        return this.svc.getApiData(this.mcontentid);
+      })
+  }
+
   onSave() {
     if (this.fg.valid) {
       this.svc.submitFormData(this.mcontentid, this.fg.value);

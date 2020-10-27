@@ -8,11 +8,14 @@
 
   <form [formGroup]="fg" (ngSubmit)="onSave()">
 
-    <ng-container *ngIf="!hasImage">
-      <img src="assets/imgs/user-icon.png" class="center">
-    </ng-container>
-    <ng-container *ngIf="imageResponse$ | async as imageResponse">
-      <img [src]="imageResponse.base64Image" class="center">
+    <ng-container>
+      <div *ngIf="!hasImage || hasImage == 'n'">
+        <img *ngIf="!hasPreviousImage" src="assets/imgs/defaultshop.png" class="center">
+        <img *ngIf="hasPreviousImage" [src]="previousImage" class="center">
+      </div>
+      <div *ngIf="hasImage == 'y'">
+        <img *ngIf="imageResponse$ | async as imageResponse" [src]="imageResponse.base64Image" class="center">
+      </div>
     </ng-container>
 
     <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
