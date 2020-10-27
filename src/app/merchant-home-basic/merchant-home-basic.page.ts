@@ -48,5 +48,9 @@ export class MerchantHomeBasicPage implements OnInit {
     this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizwit-" + endpointId);
   }
 
+  onSelectImage(endpointId: string) {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nbizimg-" + endpointId);
+  }
+
   public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
 }

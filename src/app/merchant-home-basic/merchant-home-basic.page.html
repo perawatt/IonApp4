@@ -9,11 +9,8 @@
     <ion-list color="tertiary" lines="none" class="ion-text-center" *ngIf="hasLoaded">
       <ion-card class="ion-text-center" color="tertiary">
         <ion-card-content class="ion-no-padding ion-padding-vertical">
-          <!-- <ion-label color="danger" *ngIf="data.status">
-            <h2 class="ion-padding-bottom"><b>{{ data.status }}</b></h2>
-          </ion-label> -->
-          <ion-avatar class="center ion-margin-vertical avatar-l">
-            <img [src]="data.logo ? data.logo :'assets/imgs/defaultshop.png'" />
+          <ion-avatar class="center ion-margin-vertical avatar-l" (click)="onSelectImage(data._id)">
+            <img [src]="data.logo ? data.logo :'assets/imgs/defaultshop.png'"/>
           </ion-avatar>
           <ion-label>
             <h3>ยอดเงินคงเหลือ</h3>
