@@ -18,13 +18,21 @@ export class GpsSelectAddressPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    let load$ = this.loadData$();
-    load$.then((it: any) => {
-      this.data$ = it;
+    let default$ = this.loadDefault$();
+    default$.then(() => {
+      let load$ = this.loadDaa$();
+      this.data$ = load$;
     });
   }
 
-  private loadData$() {
+  private loadDaa$() {
+    return this.svc.initPageApi(this.mcontentid)
+    .then(_ => {
+      return this.svc.getApiData(this.mcontentid);
+    })
+  }
+
+  private loadDefault$() {
     return this.svc.initPageApi(this.mcontentid)
       .then(_ => {
         return this.initOptionDialog$();
