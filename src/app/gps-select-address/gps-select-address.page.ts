@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { IonManaLib } from 'ion-m-lib';
 
 @Component({
@@ -10,9 +11,14 @@ export class GpsSelectAddressPage implements OnInit {
 
   private mcontentid = "gps-select-address";
   public title = "ที่อยู่ใกล้เคียง";
-  public selectedItem = null;
   public data$ = Promise.resolve<{}>({});
-  constructor(private svc: IonManaLib) { }
+  public fg: FormGroup;
+  private defaultValue: any;
+  constructor(private fb: FormBuilder, private svc: IonManaLib) {
+    this.fg = this.fb.group({
+      'address': null,
+    });
+  }
 
   ngOnInit() {
   }
@@ -27,9 +33,9 @@ export class GpsSelectAddressPage implements OnInit {
 
   private loadDaa$() {
     return this.svc.initPageApi(this.mcontentid)
-    .then(_ => {
-      return this.svc.getApiData(this.mcontentid);
-    })
+      .then(_ => {
+        return this.svc.getApiData(this.mcontentid);
+      })
   }
 
   private loadDefault$() {
@@ -42,18 +48,26 @@ export class GpsSelectAddressPage implements OnInit {
   private initOptionDialog$() {
     return this.svc.initOptionDialog(this.mcontentid, (response) => {
       if (response == "ok") {
-        console.log("Set OK");
-        return this.selectedItem;
+        return this.fg.get("address").value;
       }
       else {
-        console.log("Default");
-        return null;
+        return this.defaultValue;
       }
     });
   }
 
-  public onItemSelected(item: string)
-  {
-    this.selectedItem = item; 
+  public isSelected(item: string) {
+    return this.fg.get("address").value == item;
+  }
+
+  public onItemSelected(item: string) {
+    this.fg.get("address").setValue(item);
+    console.log(JSON.stringify(this.fg.get("address").value));
+  }
+
+  onSave() {
+    if (this.fg.valid) {
+      console.log(this.fg.value);
+    }
   }
 }

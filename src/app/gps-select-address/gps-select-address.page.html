@@ -5,11 +5,16 @@
 </ion-header>
 
 <ion-content mode="ios">
-  <ion-list>
-    <ion-item *ngFor="let item of data$ | async" [color]="selectedItem == item ? 'danger': ''" (click)="onItemSelected(item)">
-      <ion-label>
-        <h2><b>{{ item }}</b></h2>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+    <form [formGroup]="fg" (ngSubmit)="onSave()">
+      <ion-list>
+        <ion-item *ngFor="let item of data$ | async" [color]="isSelected(item) ? 'danger': ''"
+          (click)="onItemSelected(item)">
+          <ion-label>
+            <h2><b>{{ item }}</b></h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-button id="app-form-submit" type="submit" color="danger" [disabled]="fg.invalid" ion-button expand="full"
+        no-margin>ยืนยัน</ion-button>
+    </form>
 </ion-content>
