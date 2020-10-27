@@ -416,6 +416,11 @@ const routes: Routes = [
     path: 'wallet-topup-howto-bank-detail/:url',
     loadChildren: () => import('./wallet-topup-howto-bank-detail/wallet-topup-howto-bank-detail.module').then( m => m.WalletTopupHowtoBankDetailPageModule)
   },
+  {
+    path: 'gps-select-address',
+    loadChildren: () => import('./gps-select-address/gps-select-address.module').then( m => m.GpsSelectAddressPageModule)
+  },
+
 
 
 
