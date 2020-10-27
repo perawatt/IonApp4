@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ปรับแต่งรูปภาพ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios">
+
+  <form [formGroup]="fg" (ngSubmit)="onSave()">
+
+    <ng-container *ngIf="!hasImage">
+      <img src="assets/imgs/user-icon.png" class="center">
+    </ng-container>
+    <ng-container *ngIf="imageResponse$ | async as imageResponse">
+      <img [src]="imageResponse.base64Image" class="center">
+    </ng-container>
+
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
+      [disabled]="fg.invalid">ตกลง
+    </ion-button>
+  </form>
+
+</ion-content>

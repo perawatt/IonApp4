@@ -415,7 +415,11 @@ const routes: Routes = [
   {
     path: 'wallet-topup-howto-bank-detail/:url',
     loadChildren: () => import('./wallet-topup-howto-bank-detail/wallet-topup-howto-bank-detail.module').then( m => m.WalletTopupHowtoBankDetailPageModule)
+  },  {
+    path: 'merchant-profile-image-edit',
+    loadChildren: () => import('./merchant-profile-image-edit/merchant-profile-image-edit.module').then( m => m.MerchantProfileImageEditPageModule)
   },
+
 
 
 

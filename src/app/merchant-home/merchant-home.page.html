@@ -307,12 +307,12 @@
         </ion-label>
       </ion-item>
 
-      <ion-item button color="tertiary" lines="full" class="ion-no-padding">
+      <ion-item button color="tertiary" lines="full" class="ion-no-padding" (click)="onSelectTransaction(data._id)">
         <img class="ion-padding-start" src="assets/imgs/balance.png" slot="start" style="width: 36px;height: 26px;">
         <ion-label>
           <b>{{ data.balance | number:'1.2-2' }}</b>
         </ion-label>
-        <ion-label class="ion-text-right" color="medium" (click)="onSelectTransaction(data._id)">
+        <ion-label class="ion-text-right" color="medium">
           <p>ดูบัญชี</p>
         </ion-label>
       </ion-item>
