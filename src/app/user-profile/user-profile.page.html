@@ -11,9 +11,9 @@
     <ion-card color="light" class="ion-text-center">
       <ion-card-content>
         <ion-avatar color="tertiary" class="avatar-l center ion-margin-bottom" (click)="onSelectImage()">
-          <img *ngIf="data && data.profileImageUrl" class="qr center circle ion-margin-bottom"
+          <img *ngIf="data && data.profileImageUrl"
             [src]="data.profileImageUrl" />
-          <img *ngIf="!data || !data.profileImageUrl" class="qr center circle ion-margin-bottom"
+          <img *ngIf="!data || !data.profileImageUrl"
             src="assets/imgs/user-icon.png" />
         </ion-avatar>
         <ion-label>
