@@ -48,7 +48,7 @@ export class GpsSelectAddressPage implements OnInit {
   private initOptionDialog$() {
     return this.svc.initOptionDialog(this.mcontentid, (response) => {
       if (response == "ok") {
-        return this.fg.get("address").value;
+        return this.fg.value;
       }
       else {
         return this.defaultValue;
@@ -57,17 +57,28 @@ export class GpsSelectAddressPage implements OnInit {
   }
 
   public isSelected(item: string) {
-    return this.fg.get("address").value == item;
+    return     this.fg.get("address").value == item;
   }
 
   public onItemSelected(item: string) {
     this.fg.get("address").setValue(item);
-    console.log(JSON.stringify(this.fg.get("address").value));
   }
 
   onSave() {
     if (this.fg.valid) {
       console.log(this.fg.value);
     }
+  }
+
+  displayHeader(item: string) {
+    return item.split('\r\n')[0];
+  }
+
+  displayDetail(item: string) {
+    var strArray = item.split('\r\n');
+    if (strArray.length > 1)
+      return strArray[1];
+    else
+      return "";
   }
 }
