@@ -423,7 +423,11 @@ const routes: Routes = [
   {
     path: 'gps-select-address',
     loadChildren: () => import('./gps-select-address/gps-select-address.module').then( m => m.GpsSelectAddressPageModule)
+  },  {
+    path: 'user-profile-image-edit',
+    loadChildren: () => import('./user-profile-image-edit/user-profile-image-edit.module').then( m => m.UserProfileImageEditPageModule)
   },
+
 
 
 

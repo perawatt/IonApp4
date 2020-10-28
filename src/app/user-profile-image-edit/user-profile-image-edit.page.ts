@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonManaLib } from 'ion-m-lib';
 
 @Component({
-  selector: 'app-merchant-profile-image-edit',
-  templateUrl: './merchant-profile-image-edit.page.html',
-  styleUrls: ['./merchant-profile-image-edit.page.scss'],
+  selector: 'app-user-profile-image-edit',
+  templateUrl: './user-profile-image-edit.page.html',
+  styleUrls: ['./user-profile-image-edit.page.scss'],
 })
-export class MerchantProfileImageEditPage implements OnInit {
+export class UserProfileImageEditPage implements OnInit {
 
   public previousImage: any;
   public hasPreviousImage: string;
@@ -15,7 +15,7 @@ export class MerchantProfileImageEditPage implements OnInit {
   public imageResponse$;
   public fg: FormGroup;
   public formData$: Promise<{}> = new Promise<{}>(_ => { });
-  private mcontentid = "merchant-profile-image-edit";
+  private mcontentid = "user-profile-image-edit";
 
   constructor(private fb: FormBuilder, private svc: IonManaLib) {
     this.fg = this.fb.group({
@@ -34,8 +34,8 @@ export class MerchantProfileImageEditPage implements OnInit {
 
     let load$ = this.loadData$();
     load$.then((it: any) => {
-      this.previousImage = it.logo;
-      this.hasPreviousImage = it && it.logo;
+      this.previousImage = it.profileImageUrl;
+      this.hasPreviousImage = it && it.profileImageUrl;
     });
 
     this.svc.validForm(this.fg.valid);

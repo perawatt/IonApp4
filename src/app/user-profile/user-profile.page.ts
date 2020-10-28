@@ -37,6 +37,10 @@ export class UserProfilePage implements OnInit {
       console.log(JSON.stringify(it));
     });
   }
+  
+  onSelectImage() {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/npflimg-home");
+  }
 
   public onSelectEditName() {
     this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/profile/name")

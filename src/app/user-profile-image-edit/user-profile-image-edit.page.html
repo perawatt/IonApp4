@@ -10,7 +10,7 @@
 
     <div (click)="onSelectImage()">
       <div *ngIf="!hasImage || hasImage == 'n'">
-        <img *ngIf="!hasPreviousImage" src="assets/imgs/defaultshop.png" class="center upload-image-crop">
+        <img *ngIf="!hasPreviousImage" src="assets/imgs/user-icon.png" class="center upload-image-crop">
         <img *ngIf="hasPreviousImage" [src]="previousImage" class="center upload-image-crop">
       </div>
       <div *ngIf="hasImage == 'y'">

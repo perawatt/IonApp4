@@ -10,11 +10,11 @@
     <ion-card color="light" class="ion-text-center">
       <ion-card-content>
         <img *ngIf="data && data.profileImageUrl" class="qr center circle ion-margin-bottom"
-          [src]="data.profileImageUrl" width="100" height="100">
+          [src]="data.profileImageUrl" width="100" height="100" (click)="onSelectImage()">
         <img *ngIf="!data || !data.profileImageUrl" class="qr center circle ion-margin-bottom"
-          src="assets/imgs/user-icon.png" width="100" height="100">
+          src="assets/imgs/user-icon.png" width="100" height="100" (click)="onSelectImage()">
         <ion-label>
-          <ion-text color="medium">
+          <ion-text color="medium" (click)="onSelectImage()">
             <h3>เปลี่ยนภาพ</h3>
           </ion-text>
           <h2 *ngIf="data.displayName"><b>{{ data.displayName }}</b></h2>
