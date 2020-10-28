@@ -7,12 +7,15 @@
 <ion-content mode="ios">
 
   <ng-container *ngIf="hasLoaded && (data$ | async) as data">
+
     <ion-card color="light" class="ion-text-center">
       <ion-card-content>
-        <img *ngIf="data && data.profileImageUrl" class="qr center circle ion-margin-bottom"
-          [src]="data.profileImageUrl" width="100" height="100" (click)="onSelectImage()">
-        <img *ngIf="!data || !data.profileImageUrl" class="qr center circle ion-margin-bottom"
-          src="assets/imgs/user-icon.png" width="100" height="100" (click)="onSelectImage()">
+        <ion-avatar color="tertiary" class="avatar-l center ion-margin-bottom" (click)="onSelectImage()">
+          <img *ngIf="data && data.profileImageUrl" class="qr center circle ion-margin-bottom"
+            [src]="data.profileImageUrl" />
+          <img *ngIf="!data || !data.profileImageUrl" class="qr center circle ion-margin-bottom"
+            src="assets/imgs/user-icon.png" />
+        </ion-avatar>
         <ion-label>
           <ion-text color="medium" (click)="onSelectImage()">
             <h3>เปลี่ยนภาพ</h3>
@@ -25,6 +28,7 @@
         </ion-label>
       </ion-card-content>
     </ion-card>
+
     <ion-list lines="none">
       <ion-item color="tertiary" button lines="inset">
         <ion-label>
@@ -59,9 +63,9 @@
         <ion-label>
           <b>ข้อมูลส่วนตัว</b>
           <ion-text color="medium">
-          <h3>การอนุญาติให้ใช้ข้อมูลของคุณ</h3>
+            <h3>การอนุญาติให้ใช้ข้อมูลของคุณ</h3>
           </ion-text>
-      </ion-label>
+        </ion-label>
       </ion-item>
       <ion-item color="tertiary" button (click)="onSelectViewAddress()">
         <ion-label>
