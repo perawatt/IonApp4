@@ -9,7 +9,7 @@
     <ng-container *ngIf="data$ | async as data">
       <form [formGroup]="fg" (ngSubmit)="onSave()">
         <ion-item padding-right mode="ios">
-          <ion-input type="number" formControlName="zipId" placeholder="CODE" maxlength="4" text-center
+          <ion-input formControlName="zipId" placeholder="CODE" maxlength="4" text-center
             (ionChange)="DeviceIdChanged()"></ion-input>
         </ion-item>
         <ion-footer>

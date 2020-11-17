@@ -17,7 +17,7 @@ export class AddDevDevicePage implements OnInit {
 
   constructor(private fb: FormBuilder, private svc: IonManaLib) {
     this.fg = this.fb.group({
-      'zipId': [null, [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+      'zipId': [null],
     });
 
     this.fg.valueChanges.subscribe(_ => {
@@ -61,7 +61,4 @@ export class AddDevDevicePage implements OnInit {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddDevDevicePage');
   }
-
-
-
 }
