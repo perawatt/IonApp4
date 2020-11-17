@@ -427,6 +427,10 @@ const routes: Routes = [
     path: 'user-profile-image-edit',
     loadChildren: () => import('./user-profile-image-edit/user-profile-image-edit.module').then( m => m.UserProfileImageEditPageModule)
   },
+  {
+    path: 'add-dev-device',
+    loadChildren: () => import('./add-dev-device/add-dev-device.module').then( m => m.AddDevDevicePageModule)
+  },
 
 
 
