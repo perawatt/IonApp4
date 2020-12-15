@@ -1,0 +1,52 @@
+ion-slides {
+    // height: 80px;
+    ion-slide {
+        height: 80px;
+        img {
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+        }
+        p{
+            color: black;
+        }
+    }
+}
+
+#manafeed {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#manafeed ion-item-sliding {
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+    transform: translateY(-50px);
+}
+
+#manafeed .feed-news {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+#manafeed .feed-delete {
+    opacity: 0;
+    transform: translateX(200px);
+}
+
+#manafeed ion-note p {
+    margin: 0px;
+}
+
+ion-label {
+    margin: 0;
+    display: block;
+    overflow: hidden;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    font-size: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

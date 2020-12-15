@@ -1,0 +1,19 @@
+// ion-avatar {
+//     height: 40px !important;
+//     width: 40px !important;
+// }
+
+ion-slides {
+    // height: 80px;
+    ion-slide {
+        height: 80px;
+        img {
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+        }
+        p{
+            color: black;
+        }
+    }
+}
