@@ -35,13 +35,10 @@ export class ShoppingCartPayPage implements OnInit {
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then(it => {
-      this.setUserLocation(it.shippingAddress.location.address, it.shippingAddress.location.latitude, it.shippingAddress.location.longitude, it.shippingAddress.location.phoneNumber, it.shippingAddress.location.remark);
+      let location = it.address.location;
+      this.svc.setGpsSection(location.title, location.realm, location.subDistrict, location.district, location.province, location.postalCode, location.accuracy, location.geolocation.latitude, location.geolocation.longitude, location.phoneNumber, location.remark);
       this.hasLoaded = it ? "y" : "n";
     });
-  }
-
-  private setUserLocation(address: string, latitude: string, longitude: string, phoneNumber: string, remark: string) {
-    this.svc.setGpsSection(address, latitude, longitude, phoneNumber, remark);
   }
 
   public visiEndpoint(endpoint: string) {
