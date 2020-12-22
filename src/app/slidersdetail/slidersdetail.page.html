@@ -4,20 +4,133 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-grid >
-    <ion-row *ngFor="let item of dataInfo">
-      <ion-col size="3">
-        <ion-avatar>
-          <img [src]="item.image">
-        </ion-avatar>
-      </ion-col>
-      <ion-col size="7" style="align-self: center;">
-        <ion-label>{{item.name}}</ion-label>
-      </ion-col>
-      <ion-col size="2">
+<ion-content mode="ios" class="ion-padding-top">
+  <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-down-outline" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher> -->
 
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ng-container *ngIf="data$ | async as data">
+    <ion-list lines="none" *ngIf="hasLoaded == 'y'">
+      <ion-item color="tertiary" class="ion-margin-bottom" *ngFor="let shortcut of data"
+        (click)="visitEndpoint(shortcut.endpointUrl)">
+        <ion-avatar slot="start">
+          <img [src]="shortcut.logoUrl">
+          <img *ngIf="shortcut.isAlert == true" class="shortcut-noti" src="assets/imgs/pinnoti.png">
+        </ion-avatar>
+        <ion-label slot="start">
+          <h4>{{shortcut.title}}</h4>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-list lines="none" *ngIf="hasLoaded == 'n'">
+      <ion-item color="tertiary" class="ion-text-center">
+        <ion-label>ไม่มีรายการ</ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <ng-container *ngIf="!hasLoaded">
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" color="tertiary">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
+      </ion-label>
+    </ion-item>
+  </ng-container>
 </ion-content>

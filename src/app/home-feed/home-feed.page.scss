@@ -53,3 +53,13 @@ ion-note {
 #manafeed ion-note p {
     margin: 0px;
 }
+
+
+.shortcut-noti {
+    height: 10px !important;
+    width: 10px !important;
+    // position: absolute;
+    // right: 20%;
+    position: fixed;
+    margin-left: -10px;
+}

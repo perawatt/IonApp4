@@ -1,5 +1,7 @@
 import { Component, OnInit, NgZone, Renderer2 } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { IonManaLib } from 'ion-m-lib';
+import { SlidersdetailPage } from '../slidersdetail/slidersdetail.page';
 
 @Component({
   selector: 'app-home-feed',
@@ -19,10 +21,22 @@ export class HomeFeedPage implements OnInit {
   public hasLoaded: string;
   public feeds = [];
   public shortcuts = [];
-  public slideOpts = { slidesPerView: 4 };
+  public slideOpts = {
+    zoom: false,
+    slidesPerView: 4,
+    spaceBetween: 5,
+    centeredSlides: false,
+    autoplay: false,
+    loop: false,
+    freeMode: true
+  };
 
-  constructor(private svc: IonManaLib, private zone: NgZone, private renderer: Renderer2) {
-    (<any>window).syncShortcuts = () => this.getShortcuts();
+  constructor(private svc: IonManaLib, private zone: NgZone, private renderer: Renderer2, public dlg: ModalController) {
+    (<any>window).syncShortcuts = () => {
+      this.getShortcuts();
+      console.log("Home");
+
+    }
     (<any>window).newFeeds = (response: any) => {
       this.loadingEvent.target.complete();
       this.zone.run(() => {
@@ -55,7 +69,7 @@ export class HomeFeedPage implements OnInit {
     }, 60000);
 
     setTimeout(() => {
-      this.svc.initPageApiWithCallBack(this.mcontentid, () => { this.getNewFeed(); })
+      this.svc.initPageApiWithCallBack(this.mcontentid, () => { console.log("Refresh go back Home"); this.getNewFeed(); this.getShortcuts(); })
         .then(() => {
 
           let load$ = this.getNewFeed_Native();
@@ -73,7 +87,21 @@ export class HomeFeedPage implements OnInit {
   doRefresh(event) {
     this.loadingEvent = event;
     this.getSyncFeed_Native();
+    this.getShortcuts();
   }
+
+  async openModal(shotcut: any) {
+    console.log("asddasdsd");
+    var pageData = HomeFeedPage;
+    const modal = await this.dlg.create({
+      component: SlidersdetailPage,
+      componentProps: { 'pages': pageData, 'shotCut': shotcut },
+    });
+    return await modal.present().catch(it => {
+      console.log(it);
+    });
+  }
+
 
   async logScrolling($event) {
     const scrollElement = await $event.target.getScrollElement();
@@ -226,6 +254,11 @@ export class HomeFeedPage implements OnInit {
     return feed.expirationDate != undefined;
   }
 
+
+  shortcutDetails() {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nxxxyyy-889");
+  }
+
   DisplayExpireDateTime(feed: any) {
     if (!this.IsExpirable(feed)) return '';
     var now = new Date();
@@ -287,6 +320,7 @@ export class HomeFeedPage implements OnInit {
   }
 
 }
+
 
 export class FeedListInfo {
   constructor(

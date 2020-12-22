@@ -25,7 +25,7 @@ export class SlidersPage implements OnInit {
   sliderOpts4 = {
     zoom: false,
     slidesPerView: 4,
-    spaceBetween: 20,
+    spaceBetween: 5,
     centeredSlides: false,
     autoplay: false,
     loop: false,
@@ -70,10 +70,10 @@ export class SlidersPage implements OnInit {
 
   dataInfo =
     [
-      { name: "Team001", image: "https://dynamic.brandcrowd.com/asset/logo/9173af46-4ce3-460a-930b-c6486f46cc9f/logo?v=4", rating: 10 },
-      { name: "Team002", image: "https://image.freepik.com/free-vector/e-sports-team-logo-with-dragon_113398-3.jpg", rating: 20 },
+      { name: "Promptpay", image: "https://dynamic.brandcrowd.com/asset/logo/9173af46-4ce3-460a-930b-c6486f46cc9f/logo?v=4", rating: 10 },
+      { name: "Promo meeeeeee", image: "https://image.freepik.com/free-vector/e-sports-team-logo-with-dragon_113398-3.jpg", rating: 20 },
       { name: "Team003", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRpRRO0GcqBEqoBUY61nlTApEekZ5hrWfqiUg&usqp=CAU", rating: 30 },
-      { name: "Team004", image: "https://i.pinimg.com/736x/fa/70/08/fa70088d40d9ebcf29c24f19f685496c.jpg", rating: 450 },
+      { name: "T", image: "https://i.pinimg.com/736x/fa/70/08/fa70088d40d9ebcf29c24f19f685496c.jpg", rating: 450 },
       { name: "Team005", image: "https://i.pinimg.com/originals/7e/73/1f/7e731f9fcfc7bd222e14c2e6850c69db.jpg", rating: 50 },
       { name: "Team006", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQR5UlQltq5UjmCO9z2fthIH82VnTQUPgMDYQ&usqp=CAU", rating: 0 },
       { name: "Team007", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQJxzhwDiYlTv6c1xKf-2H_ToesxDgZGZPI0Q&usqp=CAU", rating: 0 },

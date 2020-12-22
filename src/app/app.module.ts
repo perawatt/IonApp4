@@ -12,7 +12,7 @@ import { IonManaLib } from 'ion-m-lib';
 import { ParseDataProvider } from '../providers/parse-data';
 import { DatadetailPipe } from './datadetail.pipe';
 import { TrackerDetail2Pipe } from './tracker-detail2.pipe';
-
+import { SlidersdetailPage } from './slidersdetail/slidersdetail.page';
 @NgModule({
   declarations: [AppComponent, DatadetailPipe, TrackerDetail2Pipe],
   entryComponents: [],
@@ -26,4 +26,4 @@ import { TrackerDetail2Pipe } from './tracker-detail2.pipe';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -11,6 +11,11 @@ ion-slides {
             color: black;
         }
     }
+    .shortcut{    
+        .item-inner{
+        padding-inline-end: 0 !important;
+    }
+}
 }
 
 #manafeed {
