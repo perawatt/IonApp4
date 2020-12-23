@@ -62,6 +62,8 @@ export class GpsaddressChangePage implements OnInit {
           this.fg.get("remark").setValue(address.remark);
 
         let location = address.location;
+        location.phoneNumber = this.fg.get("phoneNumber").value;
+        location.remark = this.fg.get("remark").value;
         this.svc.setGpsSection(location.title, location.realm, location.subDistrict, location.district, location.province, location.postalCode, location.accuracy, location.latitude, location.longitude, location.phoneNumber, location.remark);
       }
     });
