@@ -445,23 +445,9 @@ const routes: Routes = [
     loadChildren: () => import('./trackmoneys/trackmoneys.module').then(m => m.TrackmoneysPageModule)
   },
   {
-    path: 'sliders',
-    loadChildren: () => import('./sliders/sliders.module').then(m => m.SlidersPageModule)
-  },
-  {
     path: 'slidersdetail',
     loadChildren: () => import('./slidersdetail/slidersdetail.module').then(m => m.SlidersdetailPageModule)
-  },  {
-    path: 'sliders2',
-    loadChildren: () => import('./sliders2/sliders2.module').then( m => m.Sliders2PageModule)
   },
-
-
-
-
-
-
-
 
 ];
 

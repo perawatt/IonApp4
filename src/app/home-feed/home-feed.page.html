@@ -7,7 +7,7 @@
       <ion-slides [options]="slideOpts">
 
         <ng-container *ngIf="hasLoaded">
-          <ion-slide class="ion-no-margin" *ngFor="let shortcut of shortcuts">
+          <ion-slide class="ion-no-margin" *ngFor="let shortcut of shareShortcut.shortcuts">
             <ion-item class="ion-text-center ion-no-padding shortcut ion-no-margin" color="light" lines="none"
               (click)="visitEndpoint(shortcut.endpointUrl)">
               <ion-label class="ion-no-padding ion-no-margin ion-text-center">
@@ -87,8 +87,8 @@
     </ion-slide> -->
       </ion-slides>
     </ion-col>
-    <ion-col size="2" style="align-self: center;" *ngIf="hasLoaded && shortcuts.length > 0">
-      <ion-label expand="block" (click)="shortcutDetails()">ทั้งหมด</ion-label>
+    <ion-col size="2" style="align-self: center;" *ngIf="hasLoaded && shareShortcut.shortcuts.length > 0">
+      <ion-label expand="block" (click)="openModal()">ทั้งหมด</ion-label>
     </ion-col>
   </ion-row>
 </ion-header>

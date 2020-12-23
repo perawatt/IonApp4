@@ -20,7 +20,10 @@ export class HomeFeedPage implements OnInit {
 
   public hasLoaded: string;
   public feeds = [];
-  public shortcuts = [];
+  public shareShortcut = {
+    shortcuts: [],
+  };
+
   public slideOpts = {
     zoom: false,
     slidesPerView: 4,
@@ -31,11 +34,9 @@ export class HomeFeedPage implements OnInit {
     freeMode: true
   };
 
-  constructor(private svc: IonManaLib, private zone: NgZone, private renderer: Renderer2, public dlg: ModalController) {
+  constructor(private svc: IonManaLib, private zone: NgZone, private renderer: Renderer2, private dlg: ModalController) {
     (<any>window).syncShortcuts = () => {
       this.getShortcuts();
-      console.log("Home");
-
     }
     (<any>window).newFeeds = (response: any) => {
       this.loadingEvent.target.complete();
@@ -90,15 +91,12 @@ export class HomeFeedPage implements OnInit {
     this.getShortcuts();
   }
 
-  async openModal(shotcut: any) {
-    console.log("asddasdsd");
-    var pageData = HomeFeedPage;
+  async openModal() {
     const modal = await this.dlg.create({
       component: SlidersdetailPage,
-      componentProps: { 'pages': pageData, 'shotCut': shotcut },
+      componentProps: { 'param': this.shareShortcut },
     });
     return await modal.present().catch(it => {
-      console.log(it);
     });
   }
 
@@ -121,7 +119,7 @@ export class HomeFeedPage implements OnInit {
   getShortcuts() {
     let load$ = this.svc.callApiGet(this.mcontentid, this.getShoutCutApi);
     this.zone.run(() => {
-      load$.then(response => { this.shortcuts = response; })
+      load$.then(response => { this.shareShortcut.shortcuts = response; })
     });
   }
 
