@@ -70,7 +70,7 @@ export class HomeFeedPage implements OnInit {
     }, 60000);
 
     setTimeout(() => {
-      this.svc.initPageApiWithCallBack(this.mcontentid, () => { console.log("Refresh go back Home"); this.getNewFeed(); this.getShortcuts(); })
+      this.svc.initPageApiWithCallBack(this.mcontentid, () => { this.closeModal(); this.getNewFeed(); this.getShortcuts(); })
         .then(() => {
 
           let load$ = this.getNewFeed_Native();
@@ -95,11 +95,17 @@ export class HomeFeedPage implements OnInit {
     const modal = await this.dlg.create({
       component: SlidersdetailPage,
       componentProps: { 'param': this.shareShortcut },
+      animated: false,
     });
-    return await modal.present().catch(it => {
+    await modal.present().catch(it => {
     });
   }
 
+  async closeModal() {
+    this.dlg.dismiss({
+      'dismissed': true
+    });
+  }
 
   async logScrolling($event) {
     const scrollElement = await $event.target.getScrollElement();
