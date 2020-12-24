@@ -431,6 +431,10 @@ const routes: Routes = [
     path: 'add-dev-device',
     loadChildren: () => import('./add-dev-device/add-dev-device.module').then( m => m.AddDevDevicePageModule)
   },
+  {
+    path: 'shortcut-list',
+    loadChildren: () => import('./shortcut-list/shortcut-list.module').then( m => m.ShortcutListPageModule)
+  },
 
 
 
