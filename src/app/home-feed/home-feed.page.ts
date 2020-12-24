@@ -1,5 +1,7 @@
 import { Component, OnInit, NgZone, Renderer2 } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { IonManaLib } from 'ion-m-lib';
+import { ShortcutListPage } from '../shortcut-list/shortcut-list.page';
 
 @Component({
   selector: 'app-home-feed',
@@ -18,10 +20,20 @@ export class HomeFeedPage implements OnInit {
 
   public hasLoaded: string;
   public feeds = [];
-  public shortcuts = [];
-  public slideOpts = { slidesPerView: 4 };
+  public shareShortcut = {
+    shortcuts: [],
+  };
+  public slideOpts = {
+    zoom: false,
+    slidesPerView: 4,
+    spaceBetween: 5,
+    centeredSlides: false,
+    autoplay: false,
+    loop: false,
+    freeMode: true
+  };
 
-  constructor(private svc: IonManaLib, private zone: NgZone, private renderer: Renderer2) {
+  constructor(private svc: IonManaLib, private zone: NgZone, private renderer: Renderer2, private dlg: ModalController) {
     (<any>window).syncShortcuts = () => this.getShortcuts();
     (<any>window).newFeeds = (response: any) => {
       this.loadingEvent.target.complete();
@@ -55,9 +67,8 @@ export class HomeFeedPage implements OnInit {
     }, 60000);
 
     setTimeout(() => {
-      this.svc.initPageApiWithCallBack(this.mcontentid, () => { this.getNewFeed(); })
-        .then(() => {
-
+      this.svc.initPageApiWithCallBack(this.mcontentid, () => { this.closeModal(); this.getNewFeed(); this.getShortcuts(); })        
+      .then(() => {
           let load$ = this.getNewFeed_Native();
           this.zone.run(() => {
             load$.then(response => {
@@ -93,7 +104,7 @@ export class HomeFeedPage implements OnInit {
   getShortcuts() {
     let load$ = this.svc.callApiGet(this.mcontentid, this.getShoutCutApi);
     this.zone.run(() => {
-      load$.then(response => { this.shortcuts = response; })
+      load$.then(response => { this.shareShortcut.shortcuts = response; })
     });
   }
 
@@ -286,6 +297,21 @@ export class HomeFeedPage implements OnInit {
     return this.callAppMethod('syncFeeds');
   }
 
+  async openModal() {
+    const modal = await this.dlg.create({
+      component: ShortcutListPage,
+      componentProps: { 'param': this.shareShortcut },
+      animated: false,
+    });
+    await modal.present().catch(it => {
+    });
+  }
+
+  async closeModal() {
+    this.dlg.dismiss({
+      'dismissed': true
+    });
+  }
 }
 
 export class FeedListInfo {
