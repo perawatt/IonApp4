@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { IonManaLib } from 'ion-m-lib';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
@@ -13,7 +13,8 @@ export class UserProfileNewAddressPage implements OnInit {
   public fg: FormGroup;
   private mcontentid = "user-profile-new-address";
   public formData$: Promise<{}> = new Promise<{}>(_ => { });
-  constructor(private fb: FormBuilder, private svc: IonManaLib) { 
+  constructor(private fb: FormBuilder, private zone: NgZone, private svc: IonManaLib) { 
+    (<any>window).fillAddress = (params: any) => { this.fillAddress(params) };
     this.fg = this.fb.group({
       'title': [null, Validators.required],
       'streetAddress': [null, Validators.required],
@@ -49,6 +50,15 @@ export class UserProfileNewAddressPage implements OnInit {
       .then(_ => {
         return this.svc.getApiData(this.mcontentid);
       })
+  }
+
+  fillAddress(params: any) {
+    this.zone.run(() => {
+      this.fg.get('district').setValue(params.SubDistrict);
+      this.fg.get('city').setValue(params.District);
+      this.fg.get('province').setValue(params.Province);
+      this.fg.get('postalCode').setValue(params.PostalCode);
+    })
   }
 
   onSave() {
