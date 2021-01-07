@@ -1,9 +1,51 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>wallet-topup-complete-qr</ion-title>
+    <ion-title>คิวอาร์โค้ดเติมเงิน</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content mode="ios">
+  <ion-card color="tertiary" class="ion-padding-top">
+    <ion-card-content class="ion-text-center ion-no-padding ion-padding-top">
+      <ion-label>
+        <h1>สแกน QR นี้เพื่อเติมเงิน</h1>
+      </ion-label>
+      <img src="assets/imgs/qrpay.png" width="200" height="200" class="ion-padding-top">
+      <!-- <img src="assets/imgs/defaultshop.png"> -->
+      <ion-item color="tertiary" class="ion-text-center " lines="full">
+        <ion-label color="medium">
+          <h3>QR เติมเงินเข้า mana</h3>
+        </ion-label>
+      </ion-item>
+      <ion-list>
+        <ion-item color="tertiary" class="ion-no-padding" lines="inset">
+          <ion-avatar color="tertiary" slot="start" class="ion-margin-start avatar-xs">
+            <img src="assets/imgs/walletgray.png" class="non-circle">
+          </ion-avatar>
+          <ion-label color="dark">
+            <h2>กระเป๋าเติมเข้า</h2>
+          </ion-label>
+          <ion-note>
+            <ion-label color="dark">
+              <h2><b>กระเป๋าของฉัน</b></h2>
+            </ion-label>
+          </ion-note>
+        </ion-item>
 
+        <ion-item color="tertiary" class="ion-no-padding" lines="none">
+          <ion-avatar color="tertiary" slot="start" class="ion-margin-start avatar-xs">
+            <img src="assets/imgs/icontopup.png" class="non-circle">
+          </ion-avatar>
+          <ion-label color="dark">
+            <h2>จำนวนเงินที่เติม</h2>
+          </ion-label>
+          <ion-note>
+            <ion-label class="ion-text-right" color="danger">
+              <h2><b>100.00 THB</b></h2>
+            </ion-label>
+          </ion-note>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
