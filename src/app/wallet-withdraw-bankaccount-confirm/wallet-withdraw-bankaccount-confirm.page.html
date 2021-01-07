@@ -1,9 +1,74 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>wallet-withdraw-bankaccount-confirm</ion-title>
+    <ion-title>ยืนยันบัญชีนี้</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding-top" mode="ios">
+  <ng-container *ngIf="true">
 
+    <ion-item color="tertiary" class="ion-margin-bottom" lines="none">
+      <ion-label>
+        <h3>กระเป๋าที่ถอนออก</h3>
+        <h2>
+          <b>กระเป๋าของฉัน</b>
+        </h2>
+      </ion-label>
+    </ion-item>
+
+    <ion-list>
+      <ion-item color="tertiary">
+        <ion-label>
+          <h3>บัญชีที่รับเงิน</h3>
+          <h2>
+            <b>3341142279</b>
+          </h2>
+          <h2>
+            <b>พร้อมเพย์</b>
+          </h2>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" lines="none">
+        <ion-label>
+          <h3>ชื่อบัญชี</h3>
+          <h2>
+            <b>อานน  บางสาน </b>
+          </h2>
+          <h2>
+            <b>Anon  Bangsan </b>
+          </h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-item color="tertiary" lines="none" class="ion-margin-top">
+      <ion-avatar class="avatar-m non-circle" slot="start"><img class="non-circle" src="assets/imgs/icontopup.png">
+      </ion-avatar>
+      <ion-label class="ion-padding">
+        <h2>จำนวนที่ต้องการถอน</h2>
+        <ion-text color="danger">
+          <h1><b>100.00 <small>THB</small></b></h1>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ตกลง</ion-button>
+  </ng-container>
+
+  <ng-container *ngIf="false">
+    <ion-item lines="none">
+      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+    </ion-item>
+    <br>
+    <ion-item lines="none">
+      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+    </ion-item>
+    <br>
+    <ion-item lines="none">
+      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+    </ion-item>
+    <br>
+    <ion-item lines="none">
+      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+    </ion-item>
+  </ng-container>
 </ion-content>
