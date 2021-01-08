@@ -4,39 +4,45 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card class="ion-padding-top">
-    <ion-card-content class="ion-text-center ion-no-padding">
-      <ion-item color="tertiary" lines="none">
-        <ion-label>
-          <h3>กระเป๋าที่เติมเข้า</h3>
-          <h1>กระเป๋าของฉัน</h1>
-        </ion-label>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
+<ion-content class="ion-padding-top" mode="ios">
+  <ng-container *ngIf="true">
 
-  <ion-card class="ion-padding-top">
-    <ion-card-content class="ion-no-padding">
-      <ion-list lines="none">
-        <ion-item color="tertiary">
-          <img class="center ion-margin-bottom logo-m" src="assets/imgs/icontopup.png" slot="start" />
-          <ion-list>
-            <ion-item color="tertiary">
-              <ion-label>
-                <h3>จำนวนที่ต้องการเติม</h3>
-              </ion-label>
-            </ion-item>
-            <ion-label color="danger">
-              <h3>100.00 THB</h3>
-            </ion-label>
-          </ion-list>
+    <ion-item color="tertiary" class="ion-margin-bottom" lines="none">
+      <ion-label>
+        <h3>กระเป๋าที่เติมเข้า</h3>
+        <h2>
+          <b>กระเป๋าของฉัน</b>
+        </h2>
+      </ion-label>
+    </ion-item>
 
+    <ion-item color="tertiary" lines="none" class="ion-margin-top">
+      <ion-avatar class="avatar-m non-circle" slot="start"><img class="non-circle" src="assets/imgs/icontopup.png">
+      </ion-avatar>
+      <ion-label class="ion-padding">
+        <h2>จำนวนที่ต้องการเติม</h2>
+        <ion-text color="danger">
+          <h1><b>100.00 <small>THB</small></b></h1>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ng-container>
 
-
-
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
+  <ng-container *ngIf="false">
+    <ion-item lines="none">
+      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+    </ion-item>
+    <br>
+    <ion-item lines="none">
+      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+    </ion-item>
+    <br>
+    <ion-item lines="none">
+      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+    </ion-item>
+    <br>
+    <ion-item lines="none">
+      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+    </ion-item>
+  </ng-container>
 </ion-content>
