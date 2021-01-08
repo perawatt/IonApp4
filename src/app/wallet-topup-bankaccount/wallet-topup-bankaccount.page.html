@@ -1,9 +1,77 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>wallet-topup-bankaccount</ion-title>
+    <ion-title>เติมเงินบบัญชีที่ผูกไว้</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="transaction ion-padding-top" mode="ios">
+  <ion-list>
+    <ion-item color="tertiary" class="ion-no-padding" lines="inset">
+      <ion-avatar color="tertiary" slot="start" class="ion-margin-start avatar-xs">
+        <img src="assets/imgs/walletgray.png" class="non-circle">
+      </ion-avatar>
+      <ion-label color="dark">
+        <h2>กระเป๋าเติมเข้า</h2>
+      </ion-label>
+      <ion-note>
+        <ion-label color="dark">
+          <h2><b>กระเป๋าของฉัน</b></h2>
+        </ion-label>
+      </ion-note>
+    </ion-item>
 
+    <ion-item color="tertiary" class="ion-no-padding" lines="none">
+      <ion-avatar color="tertiary" slot="start" class="ion-margin-start avatar-xs">
+        <img src="assets/imgs/menuaccount.png" class="non-circle">
+      </ion-avatar>
+      <ion-label color="dark">
+        <h2>จำนวนเงินที่เติม</h2>
+      </ion-label>
+      <ion-note>
+        <ion-label class="ion-text-right" color="dark">
+          <h2><b>เงินเดือน</b></h2>
+        </ion-label>
+      </ion-note>
+    </ion-item>
+  </ion-list>
+
+  <!-- <form [formGroup]="fg" (ngSubmit)="onSave()"> -->
+  <ion-item color="tertiary" lines="full" class="ion-no-padding ion-margin-top" lines="none">
+    <ion-label class="ion-padding-start ion-padding-top" position="floating">
+      <h1>จำนวนเงินที่ต้องการเติม</h1>
+    </ion-label>
+  </ion-item>
+  <ion-item color="tertiary" lines="none">
+    <ion-input type="number" placeholder="0.00" color="danger" class="ion-text-center"></ion-input>
+    <ion-label slot="end" class="ion-no-margin">
+      <h3>THB</h3>
+    </ion-label>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-avatar>
+    <ion-label>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <h3>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </h3>
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-avatar>
+    <ion-label>
+      <ion-skeleton-text animated></ion-skeleton-text>
+      <h3>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </h3>
+    </ion-label>
+  </ion-item>
+  <br>
+  <ion-item lines="none">
+    <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+  </ion-item>
 </ion-content>
