@@ -495,6 +495,18 @@ const routes: Routes = [
     path: 'account-confirm-ppay',
     loadChildren: () => import('./account-confirm-ppay/account-confirm-ppay.module').then( m => m.AccountConfirmPpayPageModule)
   },
+  {
+    path: 'account-create-bankaccount',
+    loadChildren: () => import('./account-create-bankaccount/account-create-bankaccount.module').then( m => m.AccountCreateBankaccountPageModule)
+  },
+  {
+    path: 'account-confirm-bankaccount',
+    loadChildren: () => import('./account-confirm-bankaccount/account-confirm-bankaccount.module').then( m => m.AccountConfirmBankaccountPageModule)
+  },
+  {
+    path: 'account-bank-select',
+    loadChildren: () => import('./account-bank-select/account-bank-select.module').then( m => m.AccountBankSelectPageModule)
+  },
 
 
 
