@@ -4,15 +4,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content mode="ios">
+<ion-content mode="ios" color="tertiary">
   <ion-card color="tertiary" class="ion-padding-top">
     <ion-card-content class="ion-text-center ion-no-padding ion-padding-top">
       <ion-label>
         <h1>สแกน QR นี้เพื่อเติมเงิน</h1>
       </ion-label>
       <img src="assets/imgs/qrpay.png" width="200" height="200" class="ion-padding-top">
-      <!-- <img src="assets/imgs/defaultshop.png"> -->
-      <ion-item color="tertiary" class="ion-text-center " lines="full">
+      <ion-item color="tertiary" class="ion-text-center" lines="none">
         <ion-label color="medium">
           <h3>QR เติมเงินเข้า mana</h3>
         </ion-label>
@@ -32,7 +31,7 @@
           </ion-note>
         </ion-item>
 
-        <ion-item color="tertiary" class="ion-no-padding" lines="none">
+        <ion-item color="tertiary" class="ion-no-padding" lines="full">
           <ion-avatar color="tertiary" slot="start" class="ion-margin-start avatar-xs">
             <img src="assets/imgs/icontopup.png" class="non-circle">
           </ion-avatar>
@@ -46,6 +45,12 @@
           </ion-note>
         </ion-item>
       </ion-list>
+
+      <ion-item color="tertiary" class="ion-text-center ion-margin-top" lines="none">
+        <ion-label >
+          <h1>เลือก Mobile banking</h1>
+        </ion-label>
+      </ion-item>
     </ion-card-content>
   </ion-card>
 </ion-content>
