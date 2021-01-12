@@ -52,7 +52,7 @@
       <ion-item class="ion-text-center" color="tertiary" lines="full">
         <ion-label color="danger">
           <h2><b>{{ParseToTwoDecimal(data.totalAmount)| number:'1.2-2'}}
-            <small>{{ data.currency }}</small></b>
+              <small>{{ data.currency }}</small></b>
           </h2>
         </ion-label>
       </ion-item>
@@ -118,5 +118,18 @@
       </ion-label>
     </ion-item>
   </ng-container>
+
+  <!-- <ion-item color="tertiary" lines="none">
+    <ion-label color="medium" class="ion-padding-top">
+      <h3><b>รายละเอียดการถอนเงิน</b></h3>
+      <h3>จำนวนเงินที่ถอนทั้งหมด</h3>
+    </ion-label>
+    <ion-note slot="end">
+      <ion-label>
+        <h2>&nbsp;</h2>
+        <h3>100.00 <small>THB</small></h3>
+      </ion-label>
+    </ion-note>
+  </ion-item> -->
 
 </ion-content>

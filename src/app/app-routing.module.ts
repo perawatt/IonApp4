@@ -479,6 +479,34 @@ const routes: Routes = [
     path: 'wallet-withdraw-bankaccount-confirm',
     loadChildren: () => import('./wallet-withdraw-bankaccount-confirm/wallet-withdraw-bankaccount-confirm.module').then( m => m.WalletWithdrawBankaccountConfirmPageModule)
   },
+  {
+    path: 'account-main',
+    loadChildren: () => import('./account-main/account-main.module').then( m => m.AccountMainPageModule)
+  },
+  {
+    path: 'account-create-select',
+    loadChildren: () => import('./account-create-select/account-create-select.module').then( m => m.AccountCreateSelectPageModule)
+  },
+  {
+    path: 'account-create-ppay',
+    loadChildren: () => import('./account-create-ppay/account-create-ppay.module').then( m => m.AccountCreatePpayPageModule)
+  },
+  {
+    path: 'account-confirm-ppay',
+    loadChildren: () => import('./account-confirm-ppay/account-confirm-ppay.module').then( m => m.AccountConfirmPpayPageModule)
+  },
+  {
+    path: 'account-create-bankaccount',
+    loadChildren: () => import('./account-create-bankaccount/account-create-bankaccount.module').then( m => m.AccountCreateBankaccountPageModule)
+  },
+  {
+    path: 'account-confirm-bankaccount',
+    loadChildren: () => import('./account-confirm-bankaccount/account-confirm-bankaccount.module').then( m => m.AccountConfirmBankaccountPageModule)
+  },
+  {
+    path: 'account-bank-select',
+    loadChildren: () => import('./account-bank-select/account-bank-select.module').then( m => m.AccountBankSelectPageModule)
+  },
 
 
 
