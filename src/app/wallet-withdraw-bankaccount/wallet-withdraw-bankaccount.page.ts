@@ -19,6 +19,7 @@ export class WalletWithdrawBankaccountPage implements OnInit {
   constructor(private svc: IonManaLib, private fb: FormBuilder, private parse: ParseDataProvider) {
     this.fg = this.fb.group({
       'amountUnit': [0, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
+      'currency': null
     });
   }
 
@@ -31,7 +32,8 @@ export class WalletWithdrawBankaccountPage implements OnInit {
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then(it => {
-      this.hasLoaded = (it && it.length > 0) ? "y" : "n";
+      this.hasLoaded = it ? "y" : "n";
+      this.fg.get("currency").setValue(it.currency);
     });
   }
 
