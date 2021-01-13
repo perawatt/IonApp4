@@ -20,6 +20,10 @@ export class WalletTopupQrCreatePage implements OnInit {
       'walletId': [null, Validators.required],
       'amount': [0, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
     });
+
+    this.fg.valueChanges.subscribe(_ => {
+      this.svc.validForm(this.fg.valid)
+    });
   }
 
   ionViewDidEnter() {
@@ -50,4 +54,7 @@ export class WalletTopupQrCreatePage implements OnInit {
     }
   }
 
+  public AmountChanged(event) {
+    this.fg.get('amount').setValue(this.parse.InputToDecimal(event.target.value))
+  }
 }
