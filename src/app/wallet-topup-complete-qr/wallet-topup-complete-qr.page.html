@@ -5,85 +5,84 @@
 </ion-header>
 
 <ion-content mode="ios" color="tertiary">
-  <ion-card color="tertiary" class="ion-padding-top">
-    <ion-card-content class="ion-text-center ion-no-padding ion-padding-top">
-      <ion-label>
-        <h1>สแกน QR นี้เพื่อเติมเงิน</h1>
-      </ion-label>
-      <img src="assets/imgs/qrpay.png" width="200" height="200" class="ion-padding-top">
-      <ion-item color="tertiary" class="ion-text-center" lines="none">
-        <ion-label color="medium">
-          <h3>QR เติมเงินเข้า mana</h3>
+
+  <ng-container *ngIf="data$ | async as data">
+    <ion-card color="tertiary" class="ion-padding-top">
+      <ion-card-content class="ion-text-center ion-no-padding ion-padding-top">
+        <ion-label>
+          <h1>สแกน QR นี้เพื่อเติมเงิน</h1>
         </ion-label>
-      </ion-item>
-      <ion-list>
-        <ion-item color="tertiary" class="ion-no-padding" lines="inset">
-          <ion-avatar color="tertiary" slot="start" class="ion-margin-start avatar-xs">
-            <img src="assets/imgs/walletgray.png" class="non-circle">
-          </ion-avatar>
-          <ion-label color="dark">
-            <h2>กระเป๋าเติมเข้า</h2>
+        <img [src]="data.qrUrl" width="200" height="200" class="ion-padding-top">
+        <ion-item color="tertiary" class="ion-text-center" lines="none">
+          <ion-label color="medium">
+            <h3>QR เติมเงินเข้า mana</h3>
           </ion-label>
-          <ion-note>
+        </ion-item>
+        <ion-list>
+          <ion-item color="tertiary" class="ion-no-padding" lines="inset">
+            <ion-avatar color="tertiary" slot="start" class="ion-margin-start avatar-xs">
+              <img src="assets/imgs/walletgray.png" class="non-circle">
+            </ion-avatar>
             <ion-label color="dark">
-              <h2><b>กระเป๋าของฉัน</b></h2>
+              <h2>กระเป๋าเติมเข้า</h2>
             </ion-label>
-          </ion-note>
-        </ion-item>
+            <ion-note>
+              <ion-label color="dark">
+                <h2><b>{{data.walletName}}</b></h2>
+              </ion-label>
+            </ion-note>
+          </ion-item>
 
-        <ion-item color="tertiary" class="ion-no-padding" lines="full">
-          <ion-avatar color="tertiary" slot="start" class="ion-margin-start avatar-xs">
-            <img src="assets/imgs/icontopup.png" class="non-circle">
-          </ion-avatar>
-          <ion-label color="dark">
-            <h2>จำนวนเงินที่เติม</h2>
+          <ion-item color="tertiary" class="ion-no-padding" lines="full">
+            <ion-avatar color="tertiary" slot="start" class="ion-margin-start avatar-xs">
+              <img src="assets/imgs/icontopup.png" class="non-circle">
+            </ion-avatar>
+            <ion-label color="dark">
+              <h2>จำนวนเงินที่เติม</h2>
+            </ion-label>
+            <ion-note>
+              <ion-label class="ion-text-right" color="danger">
+                <h2><b>{{data.amount | number:'1.2-2'}} <small>THB</small></b></h2>
+              </ion-label>
+            </ion-note>
+          </ion-item>
+        </ion-list>
+
+        <ion-item color="tertiary" class="ion-text-center ion-margin-top" lines="none" (click)="onSelectOpenBankApp()">
+          <ion-label>
+            <h1>เลือก Mobile banking</h1>
           </ion-label>
-          <ion-note>
-            <ion-label class="ion-text-right" color="danger">
-              <h2><b>100.00 THB</b></h2>
-            </ion-label>
-          </ion-note>
         </ion-item>
-      </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
 
-      <ion-item color="tertiary" class="ion-text-center ion-margin-top" lines="none">
-        <ion-label >
-          <h1>เลือก Mobile banking</h1>
-        </ion-label>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
-
-
-
-  <ion-card color="light" class="ion-text-center">
-    <ion-label>
-      <h3>
+  <ng-container *ngIf="!hasLoaded">
+    <ion-card color="light" class="ion-text-center">
+      <ion-label>
+        <h3>
+          <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+        </h3>
         <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
-      </h3>
-      <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
-    </ion-label>
-  </ion-card>
-  <ion-card color="light" class="ion-text-center">
-    <ion-card-content>
-      <ion-skeleton-text class="center circle ion-margin-bottom" animated style="width:100px; height:100px">
-      </ion-skeleton-text>
-    </ion-card-content>
-  </ion-card>
-  <ion-card color="light" class="ion-text-center">
-    <ion-label>
-      <h3>
+      </ion-label>
+    </ion-card>
+    <ion-card color="light" class="ion-text-center">
+      <ion-card-content>
+        <ion-skeleton-text class="center circle ion-margin-bottom" animated style="width:100px; height:100px">
+        </ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
+    <ion-card color="light" class="ion-text-center">
+      <ion-label>
+        <h3>
+          <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
+        </h3>
         <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
-      </h3>
-      <ion-skeleton-text class="center" animated style="width:200px;"></ion-skeleton-text>
-    </ion-label>
-  </ion-card>
-  <ion-item lines="none">
-    <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
-  </ion-item>
-
-
-
-
+      </ion-label>
+    </ion-card>
+    <ion-item lines="none">
+      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+    </ion-item>
+  </ng-container>
 
 </ion-content>

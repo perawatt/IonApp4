@@ -8,16 +8,35 @@ import { IonManaLib } from 'ion-m-lib';
 })
 export class WalletTopupCompleteQrPage implements OnInit {
 
-  private mcontentid = "wallet-topup-complete-qr";
-
-  public title: string = "จ่ายเงิน";
-  public data$ = Promise.resolve<{}>({});
   public hasLoaded: string;
+  public data$ = Promise.resolve<{}>({});
+  private mcontentid = "wallet-topup-complete-qr";
 
   constructor(private svc: IonManaLib) { }
 
-  ngOnInit() {
+  ionViewDidEnter() {
     this.svc.initPageApi(this.mcontentid);
+  }
+
+  ngOnInit() {
+    this.hasLoaded = null;
+    let load$ = this.loadData$();
+    this.data$ = load$;
+    load$.then(it => {
+      this.hasLoaded = it ? "y" : "n";
+    });
+  }
+
+  private loadData$() {
+    return this.svc.initPageApi(this.mcontentid)
+      .then(_ => {
+        return this.svc.getApiData(this.mcontentid);
+      })
+  }
+
+  onSelectOpenBankApp() {
+    // let url = "<some url here>";
+    // this.svc.visitEndpoint(this.mcontentid, url);
   }
 
 }
