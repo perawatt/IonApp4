@@ -19,7 +19,11 @@ export class WalletWithdrawBankaccountPage implements OnInit {
   constructor(private svc: IonManaLib, private fb: FormBuilder, private parse: ParseDataProvider) {
     this.fg = this.fb.group({
       'amountUnit': [0, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
-      'currency': null
+      'currency': [null, Validators.required]
+    });
+
+    this.fg.valueChanges.subscribe(_ => {
+      this.svc.validForm(this.fg.valid)
     });
   }
 
@@ -51,4 +55,7 @@ export class WalletWithdrawBankaccountPage implements OnInit {
     }
   }
 
+  public AmountChanged(event) {
+    this.fg.get('amountUnit').setValue(this.parse.InputToDecimal(event.target.value))
+  }
 }
