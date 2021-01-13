@@ -106,7 +106,7 @@
       <ion-item-sliding color="danger" *ngFor="let item of feeds" color="red" [id]="item.id">
         <ion-item button detail="false" color="tertiary" (click)="homeFeedAction(item)">
           <ion-avatar slot="start">
-            <img [src]="item.thumbnailImageURL">
+            <img [src]="item.thumbnailImageUrl">
           </ion-avatar>
 
           <ion-label [color]="IsDeleteFeed(item) ? 'medium' : 'dark'">

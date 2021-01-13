@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { HomeFeedPageRoutingModule } from './home-feed-routing.module';
 
 import { HomeFeedPage } from './home-feed.page';
-
+import { ShortcutListPageModule } from '../shortcut-list/shortcut-list.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomeFeedPageRoutingModule
+    HomeFeedPageRoutingModule,
+    ShortcutListPageModule
   ],
   declarations: [HomeFeedPage]
 })

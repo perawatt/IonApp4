@@ -29,20 +29,18 @@ export class PrivilegeSelectPage implements OnInit {
       })
   }
 
-  private refreshCallBack()
-  {
+  private refreshCallBack() {
     this.hasLoaded = null;
     //this.apiUrl = this.navParams.data;
     let load$ = this.loadData$();
     this.data$ = load$;
-    load$.then((it: any) => {      
-      this.svc.initPageApi(this.mcontentid);
-      this.hasLoaded = it ? "y" : "n";
+    load$.then((it: any) => {
+      this.hasLoaded = (it && it.privileges.length > 0) ? "y" : "n";
     });
   }
 
-  checkDisplayPromotion(item: any){
-    if(item){
+  checkDisplayPromotion(item: any) {
+    if (item) {
       var now = new Date();
       var MinTime = 1000 * 60;
       var HoursTime = MinTime * 60;

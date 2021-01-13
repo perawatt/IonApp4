@@ -254,139 +254,139 @@ const routes: Routes = [
   },
   {
     path: 'merchant-withdraw',
-    loadChildren: () => import('./merchant-withdraw/merchant-withdraw.module').then( m => m.MerchantWithdrawPageModule)
+    loadChildren: () => import('./merchant-withdraw/merchant-withdraw.module').then(m => m.MerchantWithdrawPageModule)
   },
   {
     path: 'gpsaddress-change',
-    loadChildren: () => import('./gpsaddress-change/gpsaddress-change.module').then( m => m.GpsaddressChangePageModule)
+    loadChildren: () => import('./gpsaddress-change/gpsaddress-change.module').then(m => m.GpsaddressChangePageModule)
   },
   {
     path: 'gpsaddress-select',
-    loadChildren: () => import('./gpsaddress-select/gpsaddress-select.module').then( m => m.GpsaddressSelectPageModule)
+    loadChildren: () => import('./gpsaddress-select/gpsaddress-select.module').then(m => m.GpsaddressSelectPageModule)
   },
   {
     path: 'gpsaddress-select-location',
-    loadChildren: () => import('./gpsaddress-select-location/gpsaddress-select-location.module').then( m => m.GpsaddressSelectLocationPageModule)
+    loadChildren: () => import('./gpsaddress-select-location/gpsaddress-select-location.module').then(m => m.GpsaddressSelectLocationPageModule)
   },
   {
     path: 'shopping-cart-pay',
-    loadChildren: () => import('./shopping-cart-pay/shopping-cart-pay.module').then( m => m.ShoppingCartPayPageModule)
+    loadChildren: () => import('./shopping-cart-pay/shopping-cart-pay.module').then(m => m.ShoppingCartPayPageModule)
   },
   {
     path: 'shopping-cart-delivery-select',
-    loadChildren: () => import('./shopping-cart-delivery-select/shopping-cart-delivery-select.module').then( m => m.ShoppingCartDeliverySelectPageModule)
+    loadChildren: () => import('./shopping-cart-delivery-select/shopping-cart-delivery-select.module').then(m => m.ShoppingCartDeliverySelectPageModule)
   },
   {
     path: 'merchant-home-basic',
-    loadChildren: () => import('./merchant-home-basic/merchant-home-basic.module').then( m => m.MerchantHomeBasicPageModule)
+    loadChildren: () => import('./merchant-home-basic/merchant-home-basic.module').then(m => m.MerchantHomeBasicPageModule)
   },
-  {  
+  {
     path: 'merchant-address',
-    loadChildren: () => import('./merchant-address/merchant-address.module').then( m => m.MerchantAddressPageModule)
+    loadChildren: () => import('./merchant-address/merchant-address.module').then(m => m.MerchantAddressPageModule)
   },
   {
     path: 'merchant-employee',
-    loadChildren: () => import('./merchant-employee/merchant-employee.module').then( m => m.MerchantEmployeePageModule)
+    loadChildren: () => import('./merchant-employee/merchant-employee.module').then(m => m.MerchantEmployeePageModule)
   },
   {
     path: 'merchant-budget',
-    loadChildren: () => import('./merchant-budget/merchant-budget.module').then( m => m.MerchantBudgetPageModule)
+    loadChildren: () => import('./merchant-budget/merchant-budget.module').then(m => m.MerchantBudgetPageModule)
   },
   {
     path: 'merchant-edit-name',
-    loadChildren: () => import('./merchant-edit-name/merchant-edit-name.module').then( m => m.MerchantEditNamePageModule)
+    loadChildren: () => import('./merchant-edit-name/merchant-edit-name.module').then(m => m.MerchantEditNamePageModule)
   },
   {
     path: 'merchant-edit-code',
-    loadChildren: () => import('./merchant-edit-code/merchant-edit-code.module').then( m => m.MerchantEditCodePageModule)
+    loadChildren: () => import('./merchant-edit-code/merchant-edit-code.module').then(m => m.MerchantEditCodePageModule)
   },
   {
     path: 'merchant-phone',
-    loadChildren: () => import('./merchant-phone/merchant-phone.module').then( m => m.MerchantPhonePageModule)
+    loadChildren: () => import('./merchant-phone/merchant-phone.module').then(m => m.MerchantPhonePageModule)
   },
   {
     path: 'merchant-edit-phone',
-    loadChildren: () => import('./merchant-edit-phone/merchant-edit-phone.module').then( m => m.MerchantEditPhonePageModule)
+    loadChildren: () => import('./merchant-edit-phone/merchant-edit-phone.module').then(m => m.MerchantEditPhonePageModule)
   },
   {
     path: 'merchant-add-phone',
-    loadChildren: () => import('./merchant-add-phone/merchant-add-phone.module').then( m => m.MerchantAddPhonePageModule)
+    loadChildren: () => import('./merchant-add-phone/merchant-add-phone.module').then(m => m.MerchantAddPhonePageModule)
   },
   {
     path: 'merchant-schedule-setting',
-    loadChildren: () => import('./merchant-schedule-setting/merchant-schedule-setting.module').then( m => m.MerchantScheduleSettingPageModule)
+    loadChildren: () => import('./merchant-schedule-setting/merchant-schedule-setting.module').then(m => m.MerchantScheduleSettingPageModule)
   },
   {
     path: 'merchant-contract',
-    loadChildren: () => import('./merchant-contract/merchant-contract.module').then( m => m.MerchantContractPageModule)
+    loadChildren: () => import('./merchant-contract/merchant-contract.module').then(m => m.MerchantContractPageModule)
   },
   {
     path: 'merchant-contract-income',
-    loadChildren: () => import('./merchant-contract-income/merchant-contract-income.module').then( m => m.MerchantContractIncomePageModule)
+    loadChildren: () => import('./merchant-contract-income/merchant-contract-income.module').then(m => m.MerchantContractIncomePageModule)
   },
   {
     path: 'merchant-deposit',
-    loadChildren: () => import('./merchant-deposit/merchant-deposit.module').then( m => m.MerchantDepositPageModule)
+    loadChildren: () => import('./merchant-deposit/merchant-deposit.module').then(m => m.MerchantDepositPageModule)
   },
   {
     path: 'merchant-withdraw-confirm',
-    loadChildren: () => import('./merchant-withdraw-confirm/merchant-withdraw-confirm.module').then( m => m.MerchantWithdrawConfirmPageModule)
+    loadChildren: () => import('./merchant-withdraw-confirm/merchant-withdraw-confirm.module').then(m => m.MerchantWithdrawConfirmPageModule)
   },
   {
     path: 'merchant-topup-confirm',
-    loadChildren: () => import('./merchant-topup-confirm/merchant-topup-confirm.module').then( m => m.MerchantTopupConfirmPageModule)
+    loadChildren: () => import('./merchant-topup-confirm/merchant-topup-confirm.module').then(m => m.MerchantTopupConfirmPageModule)
   },
   {
     path: 'contract-consent-from-delivery',
-    loadChildren: () => import('./contract-consent-from-delivery/contract-consent-from-delivery.module').then( m => m.ContractConsentFromDeliveryPageModule)
+    loadChildren: () => import('./contract-consent-from-delivery/contract-consent-from-delivery.module').then(m => m.ContractConsentFromDeliveryPageModule)
   },
   {
     path: 'contract-consent-from-shop',
-    loadChildren: () => import('./contract-consent-from-shop/contract-consent-from-shop.module').then( m => m.ContractConsentFromShopPageModule)
+    loadChildren: () => import('./contract-consent-from-shop/contract-consent-from-shop.module').then(m => m.ContractConsentFromShopPageModule)
   },
   {
     path: 'contract-consent-from-employee',
-    loadChildren: () => import('./contract-consent-from-employee/contract-consent-from-employee.module').then( m => m.ContractConsentFromEmployeePageModule)
+    loadChildren: () => import('./contract-consent-from-employee/contract-consent-from-employee.module').then(m => m.ContractConsentFromEmployeePageModule)
   },
   {
     path: 'privilege-select',
-    loadChildren: () => import('./privilege-select/privilege-select.module').then( m => m.PrivilegeSelectPageModule)
+    loadChildren: () => import('./privilege-select/privilege-select.module').then(m => m.PrivilegeSelectPageModule)
   },
   {
     path: 'privilege-cart',
-    loadChildren: () => import('./privilege-cart/privilege-cart.module').then( m => m.PrivilegeCartPageModule)
+    loadChildren: () => import('./privilege-cart/privilege-cart.module').then(m => m.PrivilegeCartPageModule)
   },
   {
     path: 'privilege-confirm',
-    loadChildren: () => import('./privilege-confirm/privilege-confirm.module').then( m => m.PrivilegeConfirmPageModule)
+    loadChildren: () => import('./privilege-confirm/privilege-confirm.module').then(m => m.PrivilegeConfirmPageModule)
   },
   {
     path: 'search-main',
-    loadChildren: () => import('./search-main/search-main.module').then( m => m.SearchMainPageModule)
+    loadChildren: () => import('./search-main/search-main.module').then(m => m.SearchMainPageModule)
   },
   {
     path: 'wallet-transaction-adhoc',
-    loadChildren: () => import('./wallet-transaction-adhoc/wallet-transaction-adhoc.module').then( m => m.WalletTransactionAdhocPageModule)
+    loadChildren: () => import('./wallet-transaction-adhoc/wallet-transaction-adhoc.module').then(m => m.WalletTransactionAdhocPageModule)
   },
   {
     path: 'cart-adhoc-creating',
-    loadChildren: () => import('./cart-adhoc-creating/cart-adhoc-creating.module').then( m => m.CartAdhocCreatingPageModule)
+    loadChildren: () => import('./cart-adhoc-creating/cart-adhoc-creating.module').then(m => m.CartAdhocCreatingPageModule)
   },
   {
     path: 'cart-adhoc-pay',
-    loadChildren: () => import('./cart-adhoc-pay/cart-adhoc-pay.module').then( m => m.CartAdhocPayPageModule)
+    loadChildren: () => import('./cart-adhoc-pay/cart-adhoc-pay.module').then(m => m.CartAdhocPayPageModule)
   },
   {
     path: 'cart-adhoc-completed',
-    loadChildren: () => import('./cart-adhoc-completed/cart-adhoc-completed.module').then( m => m.CartAdhocCompletedPageModule)
+    loadChildren: () => import('./cart-adhoc-completed/cart-adhoc-completed.module').then(m => m.CartAdhocCompletedPageModule)
   },
   {
     path: 'wallet-topup-completed',
-    loadChildren: () => import('./wallet-topup-completed/wallet-topup-completed.module').then( m => m.WalletTopupCompletedPageModule)
+    loadChildren: () => import('./wallet-topup-completed/wallet-topup-completed.module').then(m => m.WalletTopupCompletedPageModule)
   },
   {
     path: 'wallet-withdraw-completed',
-    loadChildren: () => import('./wallet-withdraw-completed/wallet-withdraw-completed.module').then( m => m.WalletWithdrawCompletedPageModule)
+    loadChildren: () => import('./wallet-withdraw-completed/wallet-withdraw-completed.module').then(m => m.WalletWithdrawCompletedPageModule)
   },
   {
     path: 'merchant-additional',
@@ -394,42 +394,58 @@ const routes: Routes = [
   },
   {
     path: 'ppay-payment-completed',
-    loadChildren: () => import('./ppay-payment-completed/ppay-payment-completed.module').then( m => m.PpayPaymentCompletedPageModule)
+    loadChildren: () => import('./ppay-payment-completed/ppay-payment-completed.module').then(m => m.PpayPaymentCompletedPageModule)
   },
   {
     path: 'wallet-transaction-receivemoney',
-    loadChildren: () => import('./wallet-transaction-receivemoney/wallet-transaction-receivemoney.module').then( m => m.WalletTransactionReceivemoneyPageModule)
+    loadChildren: () => import('./wallet-transaction-receivemoney/wallet-transaction-receivemoney.module').then(m => m.WalletTransactionReceivemoneyPageModule)
   },
   {
     path: 'merchant-withdraw-completed',
-    loadChildren: () => import('./merchant-withdraw-completed/merchant-withdraw-completed.module').then( m => m.MerchantWithdrawCompletedPageModule)
+    loadChildren: () => import('./merchant-withdraw-completed/merchant-withdraw-completed.module').then(m => m.MerchantWithdrawCompletedPageModule)
   },
   {
     path: 'merchant-home-pending',
-    loadChildren: () => import('./merchant-home-pending/merchant-home-pending.module').then( m => m.MerchantHomePendingPageModule)
+    loadChildren: () => import('./merchant-home-pending/merchant-home-pending.module').then(m => m.MerchantHomePendingPageModule)
   },
   {
     path: 'wallet-topup-howto-bank-select',
-    loadChildren: () => import('./wallet-topup-howto-bank-select/wallet-topup-howto-bank-select.module').then( m => m.WalletTopupHowtoBankSelectPageModule)
+    loadChildren: () => import('./wallet-topup-howto-bank-select/wallet-topup-howto-bank-select.module').then(m => m.WalletTopupHowtoBankSelectPageModule)
   },
   {
     path: 'wallet-topup-howto-bank-detail/:url',
-    loadChildren: () => import('./wallet-topup-howto-bank-detail/wallet-topup-howto-bank-detail.module').then( m => m.WalletTopupHowtoBankDetailPageModule)
+    loadChildren: () => import('./wallet-topup-howto-bank-detail/wallet-topup-howto-bank-detail.module').then(m => m.WalletTopupHowtoBankDetailPageModule)
   },
   {
     path: 'merchant-profile-image-edit',
-    loadChildren: () => import('./merchant-profile-image-edit/merchant-profile-image-edit.module').then( m => m.MerchantProfileImageEditPageModule)
+    loadChildren: () => import('./merchant-profile-image-edit/merchant-profile-image-edit.module').then(m => m.MerchantProfileImageEditPageModule)
   },
   {
     path: 'gps-select-address',
-    loadChildren: () => import('./gps-select-address/gps-select-address.module').then( m => m.GpsSelectAddressPageModule)
+    loadChildren: () => import('./gps-select-address/gps-select-address.module').then(m => m.GpsSelectAddressPageModule)
   },  {
     path: 'user-profile-image-edit',
-    loadChildren: () => import('./user-profile-image-edit/user-profile-image-edit.module').then( m => m.UserProfileImageEditPageModule)
+    loadChildren: () => import('./user-profile-image-edit/user-profile-image-edit.module').then(m => m.UserProfileImageEditPageModule)
   },
   {
     path: 'add-dev-device',
-    loadChildren: () => import('./add-dev-device/add-dev-device.module').then( m => m.AddDevDevicePageModule)
+    loadChildren: () => import('./add-dev-device/add-dev-device.module').then(m => m.AddDevDevicePageModule)
+  },
+  {
+    path: 'chatlistinfo',
+    loadChildren: () => import('./chatlistinfo/chatlistinfo.module').then(m => m.ChatlistinfoPageModule)
+  },
+  {
+    path: 'trackdetail',
+    loadChildren: () => import('./trackdetail/trackdetail.module').then(m => m.TrackdetailPageModule)
+  },
+  {
+    path: 'trackmoneys',
+    loadChildren: () => import('./trackmoneys/trackmoneys.module').then(m => m.TrackmoneysPageModule)
+  },
+  {
+    path: 'slidersdetail',
+    loadChildren: () => import('./slidersdetail/slidersdetail.module').then(m => m.SlidersdetailPageModule)
   },
   {
     path: 'shortcut-list',
@@ -507,12 +523,6 @@ const routes: Routes = [
     path: 'account-bank-select',
     loadChildren: () => import('./account-bank-select/account-bank-select.module').then( m => m.AccountBankSelectPageModule)
   },
-
-
-
-
-
-
 
 ];
 

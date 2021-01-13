@@ -41,7 +41,7 @@ export class MerchantAddressPage implements OnInit {
     load$.then(it => {
       this.svc.validForm(this.fg.valid);
       let location = it.address.location;
-      this.svc.setGpsSection(location.address, location.latitude, location.longitude, location.phoneNumber, location.remark);
+      this.svc.setGpsSection(location.title, location.realm, location.subDistrict, location.district, location.province, location.postalCode, location.accuracy, location.geolocation.latitude, location.geolocation.longitude, location.phoneNumber, location.remark);
       this.hasLoaded = it ? "y" : "n";
     });
   }

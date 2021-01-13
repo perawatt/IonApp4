@@ -67,8 +67,8 @@ export class HomeFeedPage implements OnInit {
     }, 60000);
 
     setTimeout(() => {
-      this.svc.initPageApiWithCallBack(this.mcontentid, () => { this.closeModal(); this.getNewFeed(); this.getShortcuts(); })        
-      .then(() => {
+      this.svc.initPageApiWithCallBack(this.mcontentid, () => { this.closeModal(); this.getNewFeed(); this.getShortcuts(); })
+        .then(() => {
           let load$ = this.getNewFeed_Native();
           this.zone.run(() => {
             load$.then(response => {
@@ -84,6 +84,7 @@ export class HomeFeedPage implements OnInit {
   doRefresh(event) {
     this.loadingEvent = event;
     this.getSyncFeed_Native();
+    this.getShortcuts();
   }
 
   async logScrolling($event) {
@@ -237,6 +238,11 @@ export class HomeFeedPage implements OnInit {
     return feed.expirationDate != undefined;
   }
 
+
+  shortcutDetails() {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nxxxyyy-889");
+  }
+
   DisplayExpireDateTime(feed: any) {
     if (!this.IsExpirable(feed)) return '';
     var now = new Date();
@@ -313,6 +319,7 @@ export class HomeFeedPage implements OnInit {
     });
   }
 }
+
 
 export class FeedListInfo {
   constructor(

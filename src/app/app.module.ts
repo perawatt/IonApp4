@@ -10,9 +10,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonManaLib } from 'ion-m-lib';
 import { ParseDataProvider } from '../providers/parse-data';
-
+import { DatadetailPipe } from './datadetail.pipe';
+import { TrackerDetail2Pipe } from './tracker-detail2.pipe';
+import { SlidersdetailPage } from './slidersdetail/slidersdetail.page';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DatadetailPipe, TrackerDetail2Pipe],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
@@ -24,4 +26,4 @@ import { ParseDataProvider } from '../providers/parse-data';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

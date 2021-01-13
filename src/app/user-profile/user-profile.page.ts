@@ -47,7 +47,7 @@ export class UserProfilePage implements OnInit {
   }
 
   public onSelectViewAddress() {
-    this.router.navigate(['/user-profile-address'])
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/profile/addresses")
   }
 
 }

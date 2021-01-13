@@ -39,7 +39,8 @@ export class ShoppingCartPage implements OnInit {
     load$.then(it => {
       this.default = it.shippingMethod;
       this.devlivery = this.default;
-      this.setUserLocation(it.shippingAddress.location.address, it.shippingAddress.location.latitude, it.shippingAddress.location.longitude, it.shippingAddress.location.phoneNumber, it.shippingAddress.location.remark);
+      let location = it.address.location;
+      this.svc.setGpsSection(location.title, location.realm, location.subDistrict, location.district, location.province, location.postalCode, location.accuracy, location.geolocation.latitude, location.geolocation.longitude, location.phoneNumber, location.remark);
       this.hasLoaded = it ? "y" : "n";
     });
   }
@@ -52,11 +53,6 @@ export class ShoppingCartPage implements OnInit {
         this.devlivery = response.data;
       }
     });
-  }
-
-
-  private setUserLocation(address: string, latitude: string, longitude: string, phoneNumber: string, remark: string) {
-    this.svc.setGpsSection(address, latitude, longitude, phoneNumber, remark);
   }
 
   public visiEndpoint(endpoint: string) {

@@ -56,11 +56,15 @@ export class GpsaddressChangePage implements OnInit {
       let status = response.isOk ? "ok" : "cancel";
       if (status == "ok") {
         let address = response.data.address;
-        this.fg.get("phoneNumber").setValue(address.phoneNumber);
-        this.fg.get("remark").setValue(address.remark);
+        if(false == !address.phoneNumber)
+          this.fg.get("phoneNumber").setValue(address.phoneNumber);
+        if(false == !address.remark)
+          this.fg.get("remark").setValue(address.remark);
 
         let location = address.location;
-        this.svc.setGpsSection(location.address, location.latitude, location.longitude, location.phoneNumber, location.remark);
+        location.phoneNumber = this.fg.get("phoneNumber").value;
+        location.remark = this.fg.get("remark").value;
+        this.svc.setGpsSection(location.title, location.realm, location.subDistrict, location.district, location.province, location.postalCode, location.accuracy, location.latitude, location.longitude, location.phoneNumber, location.remark);
       }
     });
   }
