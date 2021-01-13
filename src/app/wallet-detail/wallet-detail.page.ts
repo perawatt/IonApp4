@@ -53,7 +53,7 @@ export class WalletDetailPage implements OnInit {
       default: return "";
     }
   }
-  
+
   getActionImage(txType: string) {
     switch (txType.toLowerCase()) {
       case "paycart": return "assets/imgs/txshop.png";
@@ -75,4 +75,8 @@ export class WalletDetailPage implements OnInit {
   }
 
   public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
+
+  gotrackmoney() {
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nxxxyyy-004");
+  }
 }
