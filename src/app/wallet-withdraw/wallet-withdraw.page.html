@@ -6,42 +6,33 @@
 
 <ion-content mode="ios">
 
-  <ion-list lines="none">
-    <ion-list-header lines="none" mode="md">
-      <ion-label>เลือกบัญชีที่ผูกไว้</ion-label>
-    </ion-list-header>
-    <ion-item button detail="false" class="ion-margin-bottom" color="tertiary">
-      <ion-avatar slot="start">
-        <img src="https://dummyimage.com/50x50/000/fff&text=PPay" />
-      </ion-avatar>
-      <ion-label>
-        <b>บัญชีของฉัน</b>
-        <ion-text color="medium">
-          <h3>*****236478</h3>
-        </ion-text>
-      </ion-label>
-    </ion-item>
-    <ion-item button detail="false" class="ion-margin-bottom" color="tertiary">
-      <ion-avatar slot="start">
-        <img src="https://dummyimage.com/50x50/6299ed/ffffff&text=K" />
-      </ion-avatar>
-      <ion-label>
-        <b>เงินเดือน</b>
-        <ion-text color="medium">
-          <h3>*****84578</h3>
-        </ion-text>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ng-container *ngIf="data$ | async as data">
+    <ion-list lines="none" *ngIf="hasLoaded == 'y'">
+      <ion-list-header lines="none" mode="md">
+        <ion-label>เลือกบัญชีที่ผูกไว้</ion-label>
+      </ion-list-header>
+      <ion-item button detail="false" class="ion-margin-bottom" color="tertiary" *ngFor="let item of data" (click)="onSelectItem(item.endpointUrl)">
+        <ion-avatar slot="start">
+          <img [src]="item.icon" />
+        </ion-avatar>
+        <ion-label>
+          <b>{{item.displayName}}</b>
+          <ion-text color="medium">
+            <h3>{{item.accountNumber}}</h3>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+    </ion-list>
 
-  <!-- <ion-list lines="none" *ngIf="hasLoaded == 'n'">
-    <ion-list-header lines="none" mode="md">
-      <ion-label>เลือกบัญชีที่ผูกไว้</ion-label>
-    </ion-list-header>
-    <ion-item color="tertiary" class="ion-text-center">
-      <ion-label>ไม่มีรายการ</ion-label>
-    </ion-item>
-  </ion-list>
+    <ion-list lines="none" *ngIf="hasLoaded == 'n'">
+      <ion-list-header lines="none" mode="md">
+        <ion-label>เลือกบัญชีที่ผูกไว้</ion-label>
+      </ion-list-header>
+      <ion-item color="tertiary" class="ion-text-center">
+        <ion-label>ไม่มีรายการ</ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
 
   <ng-container *ngIf="!hasLoaded">
     <ion-item lines="none">
@@ -115,6 +106,6 @@
         </h3>
       </ion-label>
     </ion-item>
-  </ng-container> -->
+  </ng-container>
 
 </ion-content>
