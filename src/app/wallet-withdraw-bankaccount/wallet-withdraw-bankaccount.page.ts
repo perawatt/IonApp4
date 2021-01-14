@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonManaLib } from 'ion-m-lib';
 import { ParseDataProvider } from 'src/providers/parse-data';
-import { setTimeout } from 'timers';
 
 @Component({
   selector: 'app-wallet-withdraw-bankaccount',
@@ -26,19 +25,20 @@ export class WalletWithdrawBankaccountPage implements OnInit {
       this.svc.validForm(this.fg.valid)
     });
   }
-
-  ionViewDidEnter() {
-    this.svc.initPageApi(this.mcontentid);
+  
+  ngOnInit() {
   }
 
-  ngOnInit() {
+  ionViewDidEnter() {
     this.hasLoaded = null;
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then(it => {
+      this.svc.initPageApi(this.mcontentid);
       this.hasLoaded = it ? "y" : "n";
       this.fg.get("currency").setValue(it.currency);
     });
+    this.svc.validForm(this.fg.valid);
   }
 
   private loadData$() {

@@ -14,11 +14,10 @@ export class WalletWithdrawBankaccountConfirmPage implements OnInit {
 
   constructor(private svc: IonManaLib) { }
 
-  ionViewDidEnter() {
-    this.svc.initPageApi(this.mcontentid);
+  ngOnInit() {
   }
 
-  ngOnInit() {
+  ionViewDidEnter() {
     this.hasLoaded = null;
     let load$ = this.loadData$();
     this.data$ = load$;

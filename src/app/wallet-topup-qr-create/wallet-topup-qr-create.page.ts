@@ -27,18 +27,19 @@ export class WalletTopupQrCreatePage implements OnInit {
     });
   }
 
-  ionViewDidEnter() {
-    this.svc.initPageApi(this.mcontentid);
+  ngOnInit() {
   }
 
-  ngOnInit() {
+  ionViewDidEnter() {
     this.hasLoaded = null;
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then(it => {
+      this.svc.initPageApi(this.mcontentid);
       this.hasLoaded = it ? "y" : "n";
       this.fg.get("walletId").setValue(it.walletId);
     });
+    this.svc.validForm(this.fg.valid);
   }
 
   private loadData$() {

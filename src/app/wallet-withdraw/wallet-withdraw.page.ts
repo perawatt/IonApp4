@@ -14,11 +14,10 @@ export class WalletWithdrawPage implements OnInit {
 
   constructor(private svc: IonManaLib) { }
 
-  ionViewDidEnter() {
-    this.svc.initPageApi(this.mcontentid);
-  }
-
   ngOnInit() {
+  }
+  
+  ionViewDidEnter() {
     this.hasLoaded = null;
     let load$ = this.loadData$();
     this.data$ = load$;
@@ -26,6 +25,7 @@ export class WalletWithdrawPage implements OnInit {
       this.hasLoaded = (it && it.length > 0) ? "y" : "n";
     });
   }
+  
   private loadData$() {
     return this.svc.initPageApi(this.mcontentid)
       .then(_ => {

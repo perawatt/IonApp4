@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IonManaLib } from 'ion-m-lib';
-import { resolve } from 'url';
 
 @Component({
   selector: 'app-wallet-topup',
@@ -15,11 +14,10 @@ export class WalletTopupPage implements OnInit {
 
   constructor(private svc: IonManaLib) { }
 
-  ionViewDidEnter() {
-    this.svc.initPageApi(this.mcontentid);
+  ngOnInit() {
   }
 
-  ngOnInit() {
+  ionViewDidEnter() {
     this.hasLoaded = null;
     let load$ = this.loadData$();
     this.data$ = load$;
