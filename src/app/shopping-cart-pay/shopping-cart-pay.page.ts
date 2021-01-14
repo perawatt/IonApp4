@@ -35,7 +35,7 @@ export class ShoppingCartPayPage implements OnInit {
     let load$ = this.loadData$();
     this.data$ = load$;
     load$.then(it => {
-      let location = it.address.location;
+      let location = it.shippingAddress.location;
       this.svc.setGpsSection(location.title, location.realm, location.subDistrict, location.district, location.province, location.postalCode, location.accuracy, location.geolocation.latitude, location.geolocation.longitude, location.phoneNumber, location.remark);
       this.hasLoaded = it ? "y" : "n";
     });
