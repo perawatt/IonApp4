@@ -18,7 +18,8 @@ export class WalletTopupQrCreatePage implements OnInit {
   constructor(private svc: IonManaLib, private fb: FormBuilder, private parse: ParseDataProvider) {
     this.fg = this.fb.group({
       'walletId': [null, Validators.required],
-      'amount': [0, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
+      'amountUnit': [0, [Validators.required, Validators.min(1), Validators.pattern("^[0-9]+\.?([0-9]{1,2})?$")]],
+      'currency': ["THB", Validators.required]
     });
 
     this.fg.valueChanges.subscribe(_ => {
@@ -49,12 +50,12 @@ export class WalletTopupQrCreatePage implements OnInit {
 
   onSave() {
     if (this.fg.valid) {
-      this.parse.ConvertFormGropuValueToTypeNumber(this.fg, ['amount']);
+      this.parse.ConvertFormGropuValueToTypeNumber(this.fg, ['amountUnit']);
       this.svc.submitFormData(this.mcontentid, this.fg.value, true);
     }
   }
 
   public AmountChanged(event) {
-    this.fg.get('amount').setValue(this.parse.InputToDecimal(event.target.value))
+    this.fg.get('amountUnit').setValue(this.parse.InputToDecimal(event.target.value))
   }
 }

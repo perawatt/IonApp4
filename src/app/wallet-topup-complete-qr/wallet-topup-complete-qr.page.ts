@@ -35,8 +35,8 @@ export class WalletTopupCompleteQrPage implements OnInit {
   }
 
   onSelectOpenBankApp() {
-    // let url = "<some url here>";
-    // this.svc.visitEndpoint(this.mcontentid, url);
+    let url = "https://s.manal.ink/np/nhowdqr-home";
+    this.svc.visitEndpoint(this.mcontentid, url);
   }
 
 }

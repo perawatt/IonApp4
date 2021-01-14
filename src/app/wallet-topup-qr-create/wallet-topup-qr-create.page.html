@@ -17,7 +17,7 @@
         </ion-label>
         <ion-note>
           <ion-label color="dark">
-            <h2><b>{{data.name}} </b></h2>
+            <h2><b>{{data.walletName}} </b></h2>
           </ion-label>
         </ion-note>
       </ion-item>
@@ -31,7 +31,7 @@
       </ion-item>
       <ion-item color="tertiary" lines="none">
         <ion-input type="number" placeholder="ระบุยอดเงิน" class="ion-text-center input-money" color="danger"
-          formControlName="amount" (ionChange)="AmountChanged($event)"></ion-input>
+          formControlName="amountUnit" (ionChange)="AmountChanged($event)"></ion-input>
         <ion-label slot="end" class="ion-no-margin">
           <h3>THB</h3>
         </ion-label>
