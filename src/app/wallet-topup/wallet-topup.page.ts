@@ -34,7 +34,7 @@ export class WalletTopupPage implements OnInit {
   }
 
   public onSelectGenerateQRTopup() {
-    let url = "https://s.manal.ink/np/nwltdqr-home";
+    let url = "https://s.manal.ink/wallet/depositqr/request/nwltdqr-ppayqr";
     this.svc.visitEndpoint(this.mcontentid, url);
   }
 
