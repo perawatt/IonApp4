@@ -5,13 +5,13 @@
 </ion-header>
 
 <ion-content class="ion-padding-top" mode="ios">
-  <ng-container *ngIf="true">
 
+  <ng-container *ngIf="data$ | async as data">
     <ion-item color="tertiary" class="ion-margin-bottom" lines="none">
       <ion-label>
         <h3>กระเป๋าที่เติมเข้า</h3>
         <h2>
-          <b>กระเป๋าของฉัน</b>
+          <b>{{data.walletName}}</b>
         </h2>
       </ion-label>
     </ion-item>
@@ -22,17 +22,19 @@
       <ion-label class="ion-padding">
         <h2>จำนวนที่ต้องการเติม</h2>
         <ion-text color="danger">
-          <h1><b>100.00 <small>THB</small></b></h1>
+          <h1><b>{{data.amountUnit | number:'1.2-2'}} <small>THB</small></b></h1>
         </ion-text>
       </ion-label>
     </ion-item>
   </ng-container>
 
-  <ng-container *ngIf="true">
+  <ng-container *ngIf="!hasLoaded">
     <ion-item lines="none">
-      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-label>
     </ion-item>
-    <br>
     <ion-item lines="none">
       <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
     </ion-item>
