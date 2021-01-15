@@ -6,57 +6,91 @@
 
 <ion-content class="ion-padding-top" mode="ios">
 
-  <ion-list>
-    <ion-item color="tertiary" class="ion-no-padding" lines="inset">
-      <ion-avatar color="tertiary" slot="start" class="ion-margin-start avatar-xs">
-        <img src="assets/imgs/walletgray.png" class="non-circle">
-      </ion-avatar>
-      <ion-label color="dark">
-        <h2>กระเป๋าที่เติมเข้า</h2>
-      </ion-label>
-      <ion-note>
+  <ng-container *ngIf="data$ | async as data">
+    <ion-list>
+      <ion-item color="tertiary" class="ion-no-padding" lines="inset">
+        <ion-avatar color="tertiary" slot="start" class="ion-margin-start avatar-xs">
+          <img src="assets/imgs/walletgray.png" class="non-circle">
+        </ion-avatar>
         <ion-label color="dark">
-          <h2><b>กระเป๋าของฉัน</b></h2>
+          <h2>กระเป๋าที่เติมเข้า</h2>
         </ion-label>
-      </ion-note>
+        <ion-note>
+          <ion-label color="dark">
+            <h2><b>{{ data.walletName }}</b></h2>
+          </ion-label>
+        </ion-note>
+      </ion-item>
+
+      <ion-item color="tertiary" class="ion-no-padding" lines="none">
+        <ion-avatar color="tertiary" slot="start" class="ion-margin-start avatar-xs">
+          <img src="assets/imgs/menuaccount.png" class="non-circle">
+        </ion-avatar>
+        <ion-label color="dark">
+          <h2>บัญชีที่ใช้เติม</h2>
+        </ion-label>
+        <ion-note>
+          <ion-label color="dark">
+            <h2><b>{{ data.externalAccountName }}</b></h2>
+          </ion-label>
+        </ion-note>
+      </ion-item>
+    </ion-list>
+
+    <ion-item lines="none">
+      <ion-label class="ion-text-wrap" color="primary">
+        <h2>
+          *บัญชีพร้อมเพย์ที่ผูกกับธนาคารกรุงไทยจะไม่สามารถส่งคำขอเติมเงินได้
+        </h2>
+      </ion-label>
     </ion-item>
 
-    <ion-item color="tertiary" class="ion-no-padding" lines="none">
-      <ion-avatar color="tertiary" slot="start" class="ion-margin-start avatar-xs">
-        <img src="assets/imgs/menuaccount.png" class="non-circle">
-      </ion-avatar>
-      <ion-label color="dark">
-        <h2>บัญชีที่ใช้เติม</h2>
-      </ion-label>
-      <ion-note>
-        <ion-label color="dark">
-          <h2><b>บัญชีของฉัน</b></h2>
+    <form [formGroup]="fg" (ngSubmit)="onSave()" class="ion-margin-top">
+      <ion-item color="tertiary" lines="none">
+        <ion-label>
+          <h2>จำนวนที่ต้องการเติม</h2>
         </ion-label>
-      </ion-note>
-    </ion-item>
-  </ion-list>
+      </ion-item>
+      <ion-item color="tertiary" lines="none">
+        <ion-input type="number" placeholder="ระบุยอดเงิน" class="ion-text-center input-money" color="danger"
+          formControlName="amountUnit" (ionChange)="AmountChanged($event)"></ion-input>
+        <ion-label slot="end" class="ion-no-margin">
+          <h3>THB</h3>
+        </ion-label>
+      </ion-item>
+      <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit"
+        [disabled]="fg.invalid">ตกลง
+      </ion-button>
+    </form>
+  </ng-container>
 
-  <ion-item lines="none" >
-  <ion-label class="ion-text-wrap" color="primary">
-    <h2>
-      *บัญชีพร้อมเพย์ที่ผูกกับธนาคารกรุงไทยจะไม่สามารถส่งคำขอเติมเงินได้
-    </h2>
-  </ion-label>
-  </ion-item>
-
-  <form class="ion-margin-top">
-    <ion-item color="tertiary" lines="none">
+  <ng-container *ngIf="!hasLoaded">
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
       <ion-label>
-        <h2>จำนวนที่ต้องการเติม</h2>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
       </ion-label>
     </ion-item>
-    <ion-item color="tertiary" lines="none">
-      <ion-input type="number" placeholder="ระบุยอดเงิน" class="ion-text-center"></ion-input>
-      <ion-label slot="end" class="ion-no-margin">
-        <h3>THB</h3>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <h3>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </h3>
       </ion-label>
     </ion-item>
-    <ion-button id="app-form-submit" color="danger" class="ion-no-margin" expand="full" type="submit">ตกลง</ion-button>
-  </form>
+    <br>
+    <ion-item lines="none">
+      <ion-skeleton-text animated style="height: 70px; width: 100%;"></ion-skeleton-text>
+    </ion-item>
+  </ng-container>
 
 </ion-content>
