@@ -18,7 +18,7 @@ export class AccountCreateBankaccountPage implements OnInit {
     this.fg = this.fb.group({
       'displayName': [null, Validators.required],
       'accountCode': ["KTB", Validators.required],
-      'accountNumber': [null, Validators.required],
+      'accountNumber': [null, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
     });
 
     this.fg.valueChanges.subscribe(_ => {

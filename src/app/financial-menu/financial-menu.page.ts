@@ -39,7 +39,7 @@ export class FinancialMenuPage implements OnInit {
   }
 
   public onDeposit() {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/msg/underconstruction");
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nwltdep-home");
 
     // HACK: Demo bank
     // let depositURL = "https://s.manal.ink/np/ndptbnk-";
@@ -52,7 +52,7 @@ export class FinancialMenuPage implements OnInit {
   }
 
   public onWithdraw() {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/msg/underconstruction");
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nwltwit-home");
     
     // HACK: Demo bank
     // let withdrawURL = "https://s.manal.ink/np/nwdwbnk-";
@@ -64,7 +64,7 @@ export class FinancialMenuPage implements OnInit {
   }
 
   public onManage() {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/msg/underconstruction");
+    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/neaclst-home");
   }
 
   public onCurrentWallet() {
