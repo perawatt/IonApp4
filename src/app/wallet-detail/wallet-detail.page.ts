@@ -76,7 +76,4 @@ export class WalletDetailPage implements OnInit {
 
   public ParseToTwoDecimal(value: number) { return this.parse.ParseToTwoDecimal(value); }
 
-  gotrackmoney() {
-    this.svc.visitEndpoint(this.mcontentid, "https://s.manal.ink/np/nxxxyyy-004");
-  }
 }
