@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IonManaLib } from 'ion-m-lib';
+import { ParseDataProvider } from 'src/providers/parse-data';
 
 @Component({
   selector: 'app-account-create-ppay',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountCreatePpayPage implements OnInit {
 
-  constructor() { }
+  public fg: FormGroup;
+  private mcontentid = "account-create-ppay";
+
+  constructor(private svc: IonManaLib, private fb: FormBuilder, private parse: ParseDataProvider) {
+    this.fg = this.fb.group({
+      'displayName': [null, Validators.required],
+      'type': ["mobile", Validators.required],
+      'promptPayNumber': [null, Validators.required],
+    });
+
+    this.fg.valueChanges.subscribe(_ => {
+      this.svc.validForm(this.fg.valid)
+    });
+  }
 
   ngOnInit() {
   }
 
+  onSave() {
+    if (this.fg.valid) {
+      this.svc.submitFormData(this.mcontentid, this.fg.value, true);
+    }
+  }
 }

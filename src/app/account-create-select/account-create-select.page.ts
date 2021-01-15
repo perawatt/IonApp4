@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IonManaLib } from 'ion-m-lib';
 
 @Component({
   selector: 'app-account-create-select',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountCreateSelectPage implements OnInit {
 
-  constructor() { }
+  private mcontentid = "account-create-select";
+
+  constructor(private svc: IonManaLib) { }
 
   ngOnInit() {
   }
 
+  public onSelectPromptPay() {
+    let url = "https://s.manal.ink/externalaccount/add/promptpay/neaclst-home";
+    this.svc.visitEndpoint(this.mcontentid, url);
+  }
+
+  public onSelectBank() {
+    let url = "https://s.manal.ink/externalaccount/add/bankaccount/neaclst-home";
+    this.svc.visitEndpoint(this.mcontentid, url);
+  }
 }

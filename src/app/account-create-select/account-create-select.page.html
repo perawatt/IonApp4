@@ -10,10 +10,10 @@
     <ion-list-header lines="none" mode="md">
       <ion-label>เลือกรูปแบบบัญชี</ion-label>
     </ion-list-header>
-    <ion-item color="tertiary">
+    <ion-item color="tertiary" (click)="onSelectPromptPay()">
       <ion-label><b>พร้อมเพย์</b></ion-label>
     </ion-item>
-    <ion-item color="tertiary" class="ion-margin-top">
+    <ion-item color="tertiary" class="ion-margin-top" (click)="onSelectBank()">
       <ion-label><b>บัญชีธนาคาร</b></ion-label>
     </ion-item>
   </ion-list>
