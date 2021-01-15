@@ -6,18 +6,6 @@
 
 <ion-content mode="ios">
 
-  <ion-item lines="none" color="danger" (click)="gotrackmoney()">
-    <img slot="start" class="logo-xs ion-no-margin" src="assets/imgs/walletwhite.png" />
-    <ion-label>
-      <h3>&nbsp;TrackMoney</h3>
-    </ion-label>
-    <ion-label slot="end" class="ion-text-right">
-      <h3>
-        <ion-icon color="light" name="star"></ion-icon> 500.00 ฿
-      </h3>
-    </ion-label>
-  </ion-item>
-
   <ng-container *ngIf="data$ | async as data">
     <ion-item lines="none" color="danger">
       <img slot="start" class="logo-xs ion-no-margin" src="assets/imgs/walletwhite.png" />
