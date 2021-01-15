@@ -24,11 +24,15 @@ export class AccountCreateBankaccountPage implements OnInit {
     this.fg.valueChanges.subscribe(_ => {
       this.svc.validForm(this.fg.valid)
     });
-    
+
     this.displayBankName = "กรุงไทย";
   }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.svc.initPageApi(this.mcontentid);
   }
 
   openSelectBankDialog() {

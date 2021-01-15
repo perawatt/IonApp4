@@ -27,6 +27,10 @@ export class AccountCreatePpayPage implements OnInit {
 
   ngOnInit() {
   }
+  
+  ionViewDidEnter() {
+    this.svc.initPageApi(this.mcontentid);
+  }
 
   onSave() {
     if (this.fg.valid) {

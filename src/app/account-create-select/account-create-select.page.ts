@@ -16,12 +16,12 @@ export class AccountCreateSelectPage implements OnInit {
   }
 
   public onSelectPromptPay() {
-    let url = "https://s.manal.ink/externalaccount/add/promptpay/neaclst-home";
+    let url = "https://s.manal.ink/externalaccount/add/promptpay/neacadd-home";
     this.svc.visitEndpoint(this.mcontentid, url);
   }
 
   public onSelectBank() {
-    let url = "https://s.manal.ink/externalaccount/add/bankaccount/neaclst-home";
+    let url = "https://s.manal.ink/externalaccount/add/bankaccount/neacadd-home";
     this.svc.visitEndpoint(this.mcontentid, url);
   }
 }
