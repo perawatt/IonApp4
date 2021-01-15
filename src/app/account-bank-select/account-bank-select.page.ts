@@ -9,8 +9,16 @@ import { IonManaLib } from 'ion-m-lib';
 })
 export class AccountBankSelectPage implements OnInit {
 
-  public hasLoaded: string;
-  public data$ = Promise.resolve<{}>({});
+  public data = [
+    { id: "KTB", name: "กรุงไทย", logo: "assets/imgs/HowTo/BankLogo/ktb.png" },
+    { id: "KBANK", name: "กสิกรไทย", logo: "assets/imgs/HowTo/BankLogo/kbank.png" },
+    { id: "SCB", name: "ไทยพาณิชย์", logo: "assets/imgs/HowTo/BankLogo/scb.png" },
+    { id: "TMB", name: "ทหารไทย", logo: "assets/imgs/HowTo/BankLogo/tmb.png" },
+    { id: "BAY", name: "กรุงศรีอยุธยา", logo: "assets/imgs/HowTo/BankLogo/bay.png" },
+    { id: "NBANK", name: "ธนชาติ", logo: "assets/imgs/HowTo/BankLogo/tbank.png" },
+    { id: "BBL", name: "กรุงเทพ", logo: "assets/imgs/HowTo/BankLogo/bbl.png" },
+    { id: "GSB", name: "ออมสิน", logo: "assets/imgs/HowTo/BankLogo/gsb.png" },
+  ];
   public fg: FormGroup;
   private mcontentid = "account-bank-select";
 
@@ -31,28 +39,10 @@ export class AccountBankSelectPage implements OnInit {
   }
 
   private refreshCallBack() {
-    this.hasLoaded = null;
     let default$ = this.loadDefault$();
     default$.then((it: any) => {
       this.defaultValue = it;
-      let load$ = this.loadDaa$();
-      this.data$ = load$;
-      load$.then((it: any[]) => {
-        var selected = it.filter((item) => {
-          return item._id == this.defaultValue._id;
-        })[0];
-        this.fg.get("id").setValue(selected.id);
-        this.fg.get("name").setValue(selected.name);
-        this.hasLoaded = it ? "y" : "n";
-      });
     });
-  }
-
-  private loadDaa$() {
-    return this.svc.initPageApi(this.mcontentid)
-      .then(_ => {
-        return this.svc.getApiData(this.mcontentid);
-      })
   }
 
   private loadDefault$() {
