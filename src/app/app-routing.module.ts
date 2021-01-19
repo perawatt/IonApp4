@@ -423,29 +423,14 @@ const routes: Routes = [
   {
     path: 'gps-select-address',
     loadChildren: () => import('./gps-select-address/gps-select-address.module').then(m => m.GpsSelectAddressPageModule)
-  },  {
+  },
+  {
     path: 'user-profile-image-edit',
     loadChildren: () => import('./user-profile-image-edit/user-profile-image-edit.module').then(m => m.UserProfileImageEditPageModule)
   },
   {
     path: 'add-dev-device',
     loadChildren: () => import('./add-dev-device/add-dev-device.module').then(m => m.AddDevDevicePageModule)
-  },
-  {
-    path: 'chatlistinfo',
-    loadChildren: () => import('./chatlistinfo/chatlistinfo.module').then(m => m.ChatlistinfoPageModule)
-  },
-  {
-    path: 'trackdetail',
-    loadChildren: () => import('./trackdetail/trackdetail.module').then(m => m.TrackdetailPageModule)
-  },
-  {
-    path: 'trackmoneys',
-    loadChildren: () => import('./trackmoneys/trackmoneys.module').then(m => m.TrackmoneysPageModule)
-  },
-  {
-    path: 'slidersdetail',
-    loadChildren: () => import('./slidersdetail/slidersdetail.module').then(m => m.SlidersdetailPageModule)
   },
   {
     path: 'shortcut-list',
