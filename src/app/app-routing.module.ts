@@ -436,6 +436,78 @@ const routes: Routes = [
     path: 'shortcut-list',
     loadChildren: () => import('./shortcut-list/shortcut-list.module').then( m => m.ShortcutListPageModule)
   },
+  {
+    path: 'wallet-topup',
+    loadChildren: () => import('./wallet-topup/wallet-topup.module').then( m => m.WalletTopupPageModule)
+  },
+  {
+    path: 'wallet-topup-ppay',
+    loadChildren: () => import('./wallet-topup-ppay/wallet-topup-ppay.module').then( m => m.WalletTopupPpayPageModule)
+  },
+  {
+    path: 'wallet-topup-ppay-confirm',
+    loadChildren: () => import('./wallet-topup-ppay-confirm/wallet-topup-ppay-confirm.module').then( m => m.WalletTopupPpayConfirmPageModule)
+  },
+  {
+    path: 'wallet-topup-bankaccount',
+    loadChildren: () => import('./wallet-topup-bankaccount/wallet-topup-bankaccount.module').then( m => m.WalletTopupBankaccountPageModule)
+  },
+  {
+    path: 'wallet-topup-bankaccount-confirm',
+    loadChildren: () => import('./wallet-topup-bankaccount-confirm/wallet-topup-bankaccount-confirm.module').then( m => m.WalletTopupBankaccountConfirmPageModule)
+  },
+  {
+    path: 'wallet-topup-complete-qr',
+    loadChildren: () => import('./wallet-topup-complete-qr/wallet-topup-complete-qr.module').then( m => m.WalletTopupCompleteQrPageModule)
+  },
+  {
+    path: 'wallet-topup-qr-create',
+    loadChildren: () => import('./wallet-topup-qr-create/wallet-topup-qr-create.module').then( m => m.WalletTopupQrCreatePageModule)
+  },
+  {
+    path: 'wallet-topup-qr-confirm',
+    loadChildren: () => import('./wallet-topup-qr-confirm/wallet-topup-qr-confirm.module').then( m => m.WalletTopupQrConfirmPageModule)
+  },
+  {
+    path: 'wallet-withdraw',
+    loadChildren: () => import('./wallet-withdraw/wallet-withdraw.module').then( m => m.WalletWithdrawPageModule)
+  },
+  {
+    path: 'wallet-withdraw-bankaccount',
+    loadChildren: () => import('./wallet-withdraw-bankaccount/wallet-withdraw-bankaccount.module').then( m => m.WalletWithdrawBankaccountPageModule)
+  },
+  {
+    path: 'wallet-withdraw-bankaccount-confirm',
+    loadChildren: () => import('./wallet-withdraw-bankaccount-confirm/wallet-withdraw-bankaccount-confirm.module').then( m => m.WalletWithdrawBankaccountConfirmPageModule)
+  },
+  {
+    path: 'account-main',
+    loadChildren: () => import('./account-main/account-main.module').then( m => m.AccountMainPageModule)
+  },
+  {
+    path: 'account-create-select',
+    loadChildren: () => import('./account-create-select/account-create-select.module').then( m => m.AccountCreateSelectPageModule)
+  },
+  {
+    path: 'account-create-ppay',
+    loadChildren: () => import('./account-create-ppay/account-create-ppay.module').then( m => m.AccountCreatePpayPageModule)
+  },
+  {
+    path: 'account-confirm-ppay',
+    loadChildren: () => import('./account-confirm-ppay/account-confirm-ppay.module').then( m => m.AccountConfirmPpayPageModule)
+  },
+  {
+    path: 'account-create-bankaccount',
+    loadChildren: () => import('./account-create-bankaccount/account-create-bankaccount.module').then( m => m.AccountCreateBankaccountPageModule)
+  },
+  {
+    path: 'account-confirm-bankaccount',
+    loadChildren: () => import('./account-confirm-bankaccount/account-confirm-bankaccount.module').then( m => m.AccountConfirmBankaccountPageModule)
+  },
+  {
+    path: 'account-bank-select',
+    loadChildren: () => import('./account-bank-select/account-bank-select.module').then( m => m.AccountBankSelectPageModule)
+  },
 
 ];
 

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>เลือกธนาคาร</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios" color="tertiary">
+
+    <form [formGroup]="fg" (ngSubmit)="onSave()">
+      <ion-list lines="inset">
+        <ion-list-header mode="md">
+          <ion-label>เลือกธนาคาร</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let item of data" (click)="onSelectItem(item)" color="tertiary">
+          <ion-avatar slot="start">
+            <img [src]="item.logo">
+          </ion-avatar>
+          <ion-label>
+            <b>{{ item.name }}</b>
+            <ion-text color="medium">
+              <h3>{{ item.id }}</h3>
+            </ion-text>
+          </ion-label>
+          <img width="20" height="20" class="qr"
+            [src]="isChecked(item) ? 'assets/imgs/correctblue.png' : 'assets/imgs/correctgray.png'" />
+        </ion-item>
+      </ion-list>
+      <ion-button id="app-form-submit" type="submit" color="danger" [disabled]="fg.invalid" ion-button expand="full"
+        no-margin>ยืนยัน</ion-button>
+    </form>
+
+</ion-content>

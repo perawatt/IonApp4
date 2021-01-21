@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ยืนยันบัญชีนี้</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-top" mode="ios">
+
+  <ng-container *ngIf="data$ | async as data">
+    <ion-item color="tertiary" class="ion-margin-bottom" lines="none">
+      <ion-label>
+        <h3>กระเป๋าที่ถอนออก</h3>
+        <h2>
+          <b>{{data.fromWalletDisplayName}}</b>
+        </h2>
+      </ion-label>
+    </ion-item>
+
+    <ion-list>
+      <ion-item color="tertiary">
+        <ion-label>
+          <h3>บัญชีที่รับเงิน</h3>
+          <h2>
+            <b>{{data.accountNumber}}</b>
+          </h2>
+          <h2>
+            <b>{{data.accountType}}</b>
+          </h2>
+        </ion-label>
+      </ion-item>
+      <ion-item color="tertiary" lines="none">
+        <ion-label>
+          <h3>ชื่อบัญชี</h3>
+          <h2>
+            <b>{{data.accountNameTH}}</b>
+          </h2>
+          <h2>
+            <b>{{data.accountNameEN}}</b>
+          </h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-item color="tertiary" lines="none" class="ion-margin-top">
+      <ion-avatar class="avatar-m non-circle" slot="start"><img class="non-circle" src="assets/imgs/icontopup.png">
+      </ion-avatar>
+      <ion-label class="ion-padding">
+        <h2>จำนวนที่ต้องการถอน</h2>
+        <ion-text color="danger">
+          <h1><b>{{data.amountUnit | number:'1.2-2'}} <small>{{data.currency}}</small></b></h1>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ng-container>
+
+  <ng-container *ngIf="!hasLoaded">
+    <ion-item lines="none">
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-label>
+    </ion-item>
+  </ng-container>
+</ion-content>
